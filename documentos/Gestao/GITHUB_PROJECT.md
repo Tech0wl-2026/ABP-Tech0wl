@@ -51,7 +51,7 @@ A leitura pública do Project não concede edição. Para assumir issues, o inte
 
 ## Daily Scrum
 
-Reunião de até 15 minutos. Conforme orientação do professor, registrar a data e uma tabela com integrante, atividade do dia e ânimo em `documentos/Daily Scrum/AAAA-MM-DD.md`, usando o [modelo simples](../Daily%20Scrum/TEMPLATE.md). Preencher com os relatos reais da equipe; os registros anteriores permanecem como referência.
+Reunião de até 15 minutos. Conforme orientação do professor, registrar a data e uma tabela com integrante e atividade do dia em `documentos/Daily Scrum/AAAA-MM-DD.md`, usando o [modelo simples](../Daily%20Scrum/TEMPLATE.md). Preencher com os relatos reais da equipe; os registros anteriores permanecem como referência.
 
 ## Automação e verificação
 

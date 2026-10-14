@@ -4,7 +4,7 @@
 
 1. Consultar [Backlog](documentos/Gestao/BACKLOG.md) e escolher uma issue da Sprint atual sem responsável.
 2. Ler critérios de aceite e dependências. Atribuir a issue a si em **Assignees**; se a permissão não permitir, solicitar a atribuição ao Scrum Master.
-3. Registrar o início e o plano na issue e mover o item no Project para **Em andamento**. Na Daily, registrar apenas a atividade do dia e o ânimo, conforme o [modelo simples](documentos/Daily%20Scrum/TEMPLATE.md).
+3. Registrar o início e o plano na issue e mover o item no Project para **Em andamento**. Na Daily, registrar apenas a atividade do dia, conforme o [modelo simples](documentos/Daily%20Scrum/TEMPLATE.md).
 4. Manter uma atividade principal por pessoa em andamento; revisar o limite com a equipe.
 
 ## Branches
