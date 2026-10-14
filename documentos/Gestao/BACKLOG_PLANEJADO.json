@@ -2,13 +2,28 @@
   "repository": "Tech0wl-2026/ABP-Tech0wl",
   "project": {
     "title": "ABP Tech0wl | 2026-2",
-    "status": "planejado, ainda não criado",
+    "status": "criado e verificado",
     "fields": {
-      "Sprint": [
-        "Sprint 1",
-        "Sprint 2",
-        "Sprint 3"
-      ],
+      "Sprint": {
+        "type": "iteration",
+        "iterations": [
+          {
+            "title": "Sprint 1",
+            "start_date": "2026-09-28",
+            "duration_days": 25
+          },
+          {
+            "title": "Sprint 2",
+            "start_date": "2026-10-23",
+            "duration_days": 14
+          },
+          {
+            "title": "Sprint 3",
+            "start_date": "2026-11-06",
+            "duration_days": 20
+          }
+        ]
+      },
       "Status": [
         "Backlog",
         "Pronto para iniciar",
@@ -42,7 +57,9 @@
       "Quadro da Sprint 3",
       "Minhas atividades",
       "Roadmap por Sprint"
-    ]
+    ],
+    "url": "https://github.com/users/Tech0wl-2026/projects/7",
+    "number": 7
   },
   "milestones": [
     {

@@ -22,7 +22,13 @@ Até 22/10: Figma completo de RF01 a RF21 e modelagem completa do sistema, inclu
 
 ## GitHub Project
 
-O repositório anterior continha a especificação do Project, mas não um Project visual criado. Essa especificação também foi copiada em `GITHUB_PROJECT.md`. A cópia dos arquivos não significa que o quadro visual existe.
+O [Project oficial ABP Tech0wl | 2026-2](https://github.com/users/Tech0wl-2026/projects/7) foi criado, publicado e vinculado ao repositório. Contém 107 issues, com 50/31/26 atividades nas três sprints e seis visualizações: Backlog geral, Quadros das Sprints 1/2/3, Minhas atividades e Roadmap por Sprint.
+
+As iterações respeitam os períodos 28/09–22/10, 23/10–05/11 e 06/11–25/11/2026, com durações de 25, 14 e 20 dias. Foram preenchidos Sprint, Status, Área, Prioridade, Início e Prazo. As 107 atividades estão em Backlog e sem responsável; estimativas permanecem em branco.
+
+A [execução validada](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/38497740488) conferiu a presença das 107 issues e as sprints. A reexecução não criou novos itens nem duplicou issues. O workflow `.github/workflows/verificar-project.yml` oferece uma conferência adicional somente de leitura. Os segredos são consumidos dentro do GitHub Actions; seus valores não são publicados.
+
+O guia de uso e as possibilidades de ajuste visual estão em [GITHUB_PROJECT.md](GITHUB_PROJECT.md).
 
 ## Estado da execução
 

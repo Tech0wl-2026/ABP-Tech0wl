@@ -18,6 +18,10 @@ Projeto de Aprendizagem Baseada em Projetos do **1º DSM da Fatec Jacareí**, se
 
 ## Atividades por Sprint
 
+**[Abrir o Project oficial — ABP Tech0wl | 2026-2](https://github.com/users/Tech0wl-2026/projects/7)**
+
+O Project reúne backlog, quadros das três sprints, Minhas atividades e Roadmap. Cada atividade possui sprint, área, prioridade e datas planejadas. Consulte o [guia do Project](documentos/Gestao/GITHUB_PROJECT.md) para assumir e acompanhar uma atividade.
+
 - [Sprint 1 — 50 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/1)
 - [Sprint 2 — 31 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/2)
 - [Sprint 3 — 26 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3)
@@ -59,7 +63,7 @@ As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Cons
 - [Figma](documentos/Prototipo/README.md)
 - [Modelagem do banco](documentos/Modelagem/README.md)
 - [UML](documentos/UML/README.md)
-- [Configuração planejada do GitHub Project](documentos/Gestao/GITHUB_PROJECT.md)
+- [Guia do GitHub Project](documentos/Gestao/GITHUB_PROJECT.md)
 
 ## Equipe
 
