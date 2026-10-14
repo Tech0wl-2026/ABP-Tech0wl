@@ -1,0 +1,48 @@
+name: Configurar Project oficial da ABP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/configurar-project.yml
+      - .github/scripts/configurar-project.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+
+concurrency:
+  group: configurar-project-abp
+  cancel-in-progress: false
+
+jobs:
+  configurar:
+    if: github.repository == 'Tech0wl-2026/ABP-Tech0wl'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Criar Project e organizar atividades das sprints
+        env:
+          ABP_PROJECT_TOKEN: ${{ secrets.ABP_PROJECT_TOKEN }}
+          ABP_REPO_TOKEN: ${{ github.token }}
+          ABP_REF: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import base64, os
+          from urllib.parse import quote
+          from urllib.request import Request, urlopen
+          import json
+
+          repo = os.environ['GITHUB_REPOSITORY']
+          ref = quote(os.environ['ABP_REF'], safe='')
+          url = 'https://api.github.com/repos/' + repo + '/contents/.github/scripts/configurar-project.py?ref=' + ref
+          req = Request(url, headers={
+              'Authorization': 'Bearer ' + os.environ['ABP_REPO_TOKEN'],
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+          })
+          with urlopen(req, timeout=30) as response:
+              source = base64.b64decode(json.load(response)['content']).decode('utf-8')
+          exec(compile(source, '.github/scripts/configurar-project.py', 'exec'), {'__name__': '__main__'})
+          PY
