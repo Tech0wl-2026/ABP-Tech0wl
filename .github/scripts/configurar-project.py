@@ -339,6 +339,8 @@ Repositório: https://github.com/Tech0wl-2026/ABP-Tech0wl
     if "createProjectV2View" in mutations and "updateProjectV2View" in mutations:
         by_name = {v["name"]: v for v in views}
         for index, (name, layout, filter_text) in enumerate(desired_views):
+            view_config = ({"configuration": {"visibleFieldIds": visible}}
+                           if layout != "ROADMAP_LAYOUT" else {})
             view = by_name.get(name)
             # Reuse only the untouched default view of a newly created project.
             if not view and not existing and index == 0 and len(views) == 1:
@@ -346,11 +348,11 @@ Repositório: https://github.com/Tech0wl-2026/ABP-Tech0wl
             if not view:
                 view = mutation("createProjectV2View", "CreateProjectV2ViewInput", {
                     "projectId": project_id, "name": name, "layout": layout,
-                    "configuration": {"visibleFieldIds": visible},
+                    **view_config,
                 }, "projectV2View{id name layout filter}")["projectV2View"]
             mutation("updateProjectV2View", "UpdateProjectV2ViewInput", {
                 "viewId": view["id"], "name": name, "layout": layout, "filter": filter_text,
-                "configuration": {"visibleFieldIds": visible},
+                **view_config,
             }, "projectV2View{id name layout filter}")
     else:
         WARNINGS.append("A API desta conta não expõe criação e edição de visualizações")
