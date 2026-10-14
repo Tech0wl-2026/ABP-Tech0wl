@@ -6,7 +6,7 @@ Registro de 13/10/2026. Repositório público `Tech0wl-2026/ABP-Tech0wl`.
 
 Estrutura replicada do repositório de preparação `breesiqueiramkt/DSM-ABP-breno-`, conforme solicitação da equipe. Os links de trabalho e os nomes do repositório foram atualizados para o endereço oficial.
 
-## Estrutura prevista nesta replicação
+## Publicado e conferido
 
 - Os 31 arquivos de documentação e configuração do repositório anterior.
 - 107 issues: 91 tasks da planilha e 16 atividades complementares.
@@ -26,7 +26,11 @@ O repositório anterior continha a especificação do Project, mas não um Proje
 
 ## Estado da execução
 
-Aguardando conferência da importação automática de issues e milestones e criação das branches de trabalho. O resultado será registrado após a execução do workflow.
+As 107 issues foram conferidas com os títulos, descrições, critérios e etiquetas da origem, sem duplicações, todas abertas e sem atribuição. As milestones possuem 50, 31 e 26 atividades e prazos em 22/10, 05/11 e 25/11/2026.
+
+A correção de datas e a conferência final foram executadas com sucesso no [workflow de configuração](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/38495063921). Os números reais das issues foram vinculados ao backlog e as cinco branches foram criadas.
+
+O conteúdo original de 31 arquivos foi replicado com os endereços oficiais. O arquivo adicional `.github/abp-backlog.json` contém o snapshot necessário para a importação reproduzível das atividades. O workflow pode ser reexecutado sem criar novamente uma task que já possua o mesmo identificador.
 
 ## Limites
 
