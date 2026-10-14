@@ -1,0 +1,153 @@
+name: Configurar Sprints e etiquetas da ABP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/configurar-abp.yml
+      - .github/abp-backlog.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: configurar-abp
+  cancel-in-progress: false
+
+jobs:
+  configurar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Replicar backlog milestones e etiquetas
+        env:
+          ABP_TOKEN: ${{ github.token }}
+          ABP_REPOSITORY: ${{ github.repository }}
+          ABP_REF: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os, re, time
+          from urllib.request import Request, urlopen
+          from urllib.parse import quote
+
+          repo = os.environ['ABP_REPOSITORY']
+          origin = 'https://api.github.com/repos/' + repo
+          headers = {
+              'Authorization': 'Bearer ' + os.environ['ABP_TOKEN'],
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+              'Content-Type': 'application/json',
+              'User-Agent': 'ABP-Repository-Setup',
+          }
+
+          def api(path, method='GET', data=None):
+              body = json.dumps(data).encode() if data is not None else None
+              request = Request(origin + path, data=body, headers=headers, method=method)
+              with urlopen(request, timeout=30) as response:
+                  result = json.load(response)
+              if method != 'GET':
+                  time.sleep(1)
+              return result
+
+          def pages(path):
+              output = []
+              page = 1
+              separator = '&' if '?' in path else '?'
+              while True:
+                  items = api(path + separator + 'per_page=100&page=' + str(page))
+                  output.extend(items)
+                  if len(items) < 100:
+                      return output
+                  page += 1
+
+          content = api('/contents/.github/abp-backlog.json?ref=' + quote(os.environ['ABP_REF'], safe=''))
+          snapshot = json.loads(base64.b64decode(content['content']))
+          if snapshot['target_repository'].lower() != repo.lower():
+              raise RuntimeError('Snapshot não corresponde ao repositório de destino')
+          source_base = 'https://github.com/' + snapshot['source_repository']
+          target_base = 'https://github.com/' + repo
+          labels = {item['name']: item for item in pages('/labels')}
+          for data in snapshot['labels']:
+              previous = labels.get(data['name'])
+              data = {k: data[k] for k in ['name', 'color', 'description']}
+              if previous:
+                  if any(previous.get(k) != data[k] for k in ['color', 'description']):
+                      api('/labels/' + quote(data['name'], safe=''), 'PATCH', data)
+              else:
+                  api('/labels', 'POST', data)
+
+          existing_milestones = {item['title']: item for item in pages('/milestones?state=all')}
+          milestones = {}
+          for definition in snapshot['milestones']:
+              data = {k: definition[k] for k in ['title', 'description', 'due_on']}
+              previous = existing_milestones.get(data['title'])
+              if previous:
+                  milestone = previous
+                  if any(previous.get(k) != data[k] for k in ['description', 'due_on']):
+                      milestone = api('/milestones/' + str(previous['number']), 'PATCH', data)
+              else:
+                  milestone = api('/milestones', 'POST', data)
+              milestones[definition['source_number']] = milestone
+
+          def task_key(issue):
+              match = re.search(r'<!-- abp-task:(T\d+) -->', issue.get('body') or '')
+              return match.group(1) if match else None
+
+          existing_issues = {}
+          for issue in pages('/issues?state=all'):
+              if 'pull_request' in issue:
+                  continue
+              key = task_key(issue)
+              if key:
+                  if key in existing_issues:
+                      raise RuntimeError('Task duplicada no destino: ' + key)
+                  existing_issues[key] = issue
+
+          imported = {}
+          for definition in sorted(snapshot['issues'], key=lambda item: item['original_number']):
+              key = definition['key']
+              if not key:
+                  raise RuntimeError('Issue de origem sem identificador de task')
+              milestone_number = milestones[definition['source_milestone']]['number']
+              issue = existing_issues.get(key)
+              if issue:
+                  if not issue.get('milestone') or issue['milestone']['number'] != milestone_number:
+                      issue = api('/issues/' + str(issue['number']), 'PATCH', {'milestone': milestone_number})
+              else:
+                  issue = api('/issues', 'POST', {
+                      'title': definition['title'],
+                      'body': definition['body'].replace(source_base, target_base),
+                      'labels': definition['labels'],
+                      'milestone': milestone_number,
+                  })
+              imported[key] = issue
+
+          number_map = {item['original_number']: imported[item['key']]['number'] for item in snapshot['issues']}
+          old_issue = re.compile(re.escape(source_base) + r'/issues/(\d+)\b')
+          counts = {1: 0, 2: 0, 3: 0}
+          for definition in snapshot['issues']:
+              issue = imported[definition['key']]
+              body = old_issue.sub(lambda match: target_base + '/issues/' + str(number_map[int(match.group(1))]), definition['body'])
+              body = body.replace(source_base, target_base)
+              if issue.get('body') != body:
+                  issue = api('/issues/' + str(issue['number']), 'PATCH', {'body': body})
+                  imported[definition['key']] = issue
+              sprint_labels = [label['name'] for label in issue['labels'] if label['name'] in ['sprint:1', 'sprint:2', 'sprint:3']]
+              if len(sprint_labels) != 1:
+                  raise RuntimeError('Issue sem Sprint única: ' + str(issue['number']))
+              counts[int(sprint_labels[0].split(':')[1])] += 1
+
+          if counts != {1: 50, 2: 31, 3: 26} or len(imported) != 107:
+              raise RuntimeError('Contagem de atividades diferente da origem: ' + str(counts))
+          lines = ['# Estrutura da ABP replicada', '', '| Sprint | Issues | Milestone |', '|---|---:|---|']
+          for source_number, milestone in milestones.items():
+              lines.append('| ' + str(source_number) + ' | ' + str(counts[source_number]) + ' | [' + milestone['title'] + '](' + milestone['html_url'] + ') |')
+          lines += ['', '107 atividades importadas. Nenhuma foi atribuída ou encerrada.', '',
+                    'A especificação do GitHub Project foi copiada; o quadro visual não é criado por este workflow.']
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('\n'.join(lines) + '\n')
+          print('Issues por Sprint:', counts)
+          print('ABP_TASK_MAP=' + json.dumps({key: {'number': value['number'], 'url': value['html_url']} for key, value in imported.items()}))
+          PY

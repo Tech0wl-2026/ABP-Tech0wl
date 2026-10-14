@@ -1,0 +1,28 @@
+name: Inconsistência ou bug
+description: Registrar problema com evidências reproduzíveis
+title: "[BUG] Descrição do problema"
+body:
+  - type: input
+    id: requisito
+    attributes:
+      label: Requisito e ambiente
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: observado
+    attributes:
+      label: Resultado observado e evidências
+    validations:
+      required: true

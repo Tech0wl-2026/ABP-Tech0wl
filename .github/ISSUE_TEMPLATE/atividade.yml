@@ -1,0 +1,40 @@
+name: Atividade da ABP
+description: Propor uma atividade rastreável com critérios de aceite
+title: "[Sprint][RF] Descrição da atividade"
+body:
+  - type: input
+    id: requisito
+    attributes:
+      label: Requisitos e task de origem
+      description: Informe RF, RNF, RP e task da Sprint Planning
+    validations:
+      required: true
+  - type: dropdown
+    id: sprint
+    attributes:
+      label: Sprint
+      options:
+        - Sprint 1 — 28/09 a 22/10
+        - Sprint 2 — 23/10 a 05/11
+        - Sprint 3 — 06/11 a 25/11
+    validations:
+      required: true
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo e escopo
+    validations:
+      required: true
+  - type: textarea
+    id: aceite
+    attributes:
+      label: Critérios de aceite
+      description: Use uma lista de critérios observáveis
+      value: "- [ ] Entrega demonstrável e vinculada ao requisito
+- [ ] Evidência de validação e revisão"
+    validations:
+      required: true
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: Dependências e evidências esperadas

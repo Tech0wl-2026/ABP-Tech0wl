@@ -1,0 +1,1684 @@
+{
+  "repository": "Tech0wl-2026/ABP-Tech0wl",
+  "project": {
+    "title": "ABP Tech0wl | 2026-2",
+    "status": "planejado, ainda não criado",
+    "fields": {
+      "Sprint": [
+        "Sprint 1",
+        "Sprint 2",
+        "Sprint 3"
+      ],
+      "Status": [
+        "Backlog",
+        "Pronto para iniciar",
+        "Em andamento",
+        "Em revisão",
+        "Concluído"
+      ],
+      "Prioridade": [
+        "Alta",
+        "Normal"
+      ],
+      "Área": [
+        "backend",
+        "conteudo",
+        "figma",
+        "frontend",
+        "gestao",
+        "infra",
+        "modelagem",
+        "testes",
+        "uml"
+      ],
+      "Estimativa": "número, a confirmar com a equipe",
+      "Início": "data",
+      "Prazo": "data"
+    },
+    "views": [
+      "Backlog geral",
+      "Quadro da Sprint 1",
+      "Quadro da Sprint 2",
+      "Quadro da Sprint 3",
+      "Minhas atividades",
+      "Roadmap por Sprint"
+    ]
+  },
+  "milestones": [
+    {
+      "title": "Sprint 1 — Protótipo completo e modelagem integral",
+      "start_date": "28/09/2026",
+      "end_date": "22/10/2026"
+    },
+    {
+      "title": "Sprint 2 — Implementação do portal e motor da certificação",
+      "start_date": "23/10/2026",
+      "end_date": "05/11/2026"
+    },
+    {
+      "title": "Sprint 3 — Resultados certificados e entrega final",
+      "start_date": "06/11/2026",
+      "end_date": "25/11/2026"
+    }
+  ],
+  "branches": [
+    "develop",
+    "sprint/1-prototipo-modelagem",
+    "sprint/2-certificacao",
+    "sprint/3-entrega-final"
+  ],
+  "issues": [
+    {
+      "key": "T001",
+      "title": "[S2][T001][RF01] Implementar página inicial e instruções da certificação",
+      "sprint": 2,
+      "requirements": [
+        "RF01"
+      ],
+      "area": "frontend",
+      "depends_on": [],
+      "task_origin": "001",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/2",
+      "github_issue_number": 2
+    },
+    {
+      "key": "T002",
+      "title": "[S1][T002][RF01] Prototipar a página inicial",
+      "sprint": 1,
+      "requirements": [
+        "RF01"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "002",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/3",
+      "github_issue_number": 3
+    },
+    {
+      "key": "T003",
+      "title": "[S1][T003][RF01] Modelar em UML a navegação inicial",
+      "sprint": 1,
+      "requirements": [
+        "RF01"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "003",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/4",
+      "github_issue_number": 4
+    },
+    {
+      "key": "T004",
+      "title": "[S1][T004][RF01] Documentar os dados e decisões de persistência da tela inicial",
+      "sprint": 1,
+      "requirements": [
+        "RF01"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "004",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/5",
+      "github_issue_number": 5
+    },
+    {
+      "key": "T005",
+      "title": "[S2][T005][RF02] Implementar as ações de iniciar e retornar à certificação",
+      "sprint": 2,
+      "requirements": [
+        "RF02"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T018",
+        "T019"
+      ],
+      "task_origin": "005",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/6",
+      "github_issue_number": 6
+    },
+    {
+      "key": "T006",
+      "title": "[S1][T006][RF02] Prototipar início e retorno à certificação",
+      "sprint": 1,
+      "requirements": [
+        "RF02"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "006",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/7",
+      "github_issue_number": 7
+    },
+    {
+      "key": "T007",
+      "title": "[S1][T007][RF02] Modelar em UML início e retorno à certificação",
+      "sprint": 1,
+      "requirements": [
+        "RF02"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "007",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/8",
+      "github_issue_number": 8
+    },
+    {
+      "key": "T008",
+      "title": "[S1][T008][RF02] Modelar o estado da certificação e a retomada",
+      "sprint": 1,
+      "requirements": [
+        "RF02"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "008",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/9",
+      "github_issue_number": 9
+    },
+    {
+      "key": "T009",
+      "title": "[S2][T009][RF03] Implementar formulário de cadastro",
+      "sprint": 2,
+      "requirements": [
+        "RF03"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T010"
+      ],
+      "task_origin": "009",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/10",
+      "github_issue_number": 10
+    },
+    {
+      "key": "T010",
+      "title": "[S1][T010][RF03] Prototipar o cadastro e seus estados de validação",
+      "sprint": 1,
+      "requirements": [
+        "RF03"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "010",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/11",
+      "github_issue_number": 11
+    },
+    {
+      "key": "T011",
+      "title": "[S1][T011][RF03] Modelar em UML o cadastro",
+      "sprint": 1,
+      "requirements": [
+        "RF03"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "011",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/12",
+      "github_issue_number": 12
+    },
+    {
+      "key": "T012",
+      "title": "[S1][T012][RF03] Modelar candidatos e unicidade do CPF",
+      "sprint": 1,
+      "requirements": [
+        "RF03"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "012",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/13",
+      "github_issue_number": 13
+    },
+    {
+      "key": "T013",
+      "title": "[S2][T013][RF03] Implementar persistência e validação do cadastro",
+      "sprint": 2,
+      "requirements": [
+        "RF03"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T012"
+      ],
+      "task_origin": "013",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/14",
+      "github_issue_number": 14
+    },
+    {
+      "key": "T014",
+      "title": "[S2][T014][RF04] Implementar formulário de login com CPF e senha",
+      "sprint": 2,
+      "requirements": [
+        "RF04"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T015"
+      ],
+      "task_origin": "014",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/15",
+      "github_issue_number": 15
+    },
+    {
+      "key": "T015",
+      "title": "[S1][T015][RF04] Prototipar login com CPF e senha",
+      "sprint": 1,
+      "requirements": [
+        "RF04"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "015",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/16",
+      "github_issue_number": 16
+    },
+    {
+      "key": "T016",
+      "title": "[S1][T016][RF04] Modelar em UML autenticação e sessão",
+      "sprint": 1,
+      "requirements": [
+        "RF04"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "016",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/17",
+      "github_issue_number": 17
+    },
+    {
+      "key": "T017",
+      "title": "[S1][T017][RF04] Modelar os dados necessários à autenticação",
+      "sprint": 1,
+      "requirements": [
+        "RF04"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "017",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/18",
+      "github_issue_number": 18
+    },
+    {
+      "key": "T018",
+      "title": "[S2][T018][RF04] Implementar autenticação com CPF e senha",
+      "sprint": 2,
+      "requirements": [
+        "RF04"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T017",
+        "T013"
+      ],
+      "task_origin": "018",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/19",
+      "github_issue_number": 19
+    },
+    {
+      "key": "T019",
+      "title": "[S2][T019][RF05] Implementar consulta dos 12 temas da certificação",
+      "sprint": 2,
+      "requirements": [
+        "RF05"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T026"
+      ],
+      "task_origin": "019",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/20",
+      "github_issue_number": 20
+    },
+    {
+      "key": "T020",
+      "title": "[S2][T020][RF05] Implementar tela reutilizável de questão",
+      "sprint": 2,
+      "requirements": [
+        "RF05"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T021",
+        "T024"
+      ],
+      "task_origin": "020",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/21",
+      "github_issue_number": 21
+    },
+    {
+      "key": "T021",
+      "title": "[S1][T021][RF05] Prototipar a avaliação por tema",
+      "sprint": 1,
+      "requirements": [
+        "RF05"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "021",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/22",
+      "github_issue_number": 22
+    },
+    {
+      "key": "T022",
+      "title": "[S1][T022][RF05] Modelar em UML a execução da certificação",
+      "sprint": 1,
+      "requirements": [
+        "RF05"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "022",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/23",
+      "github_issue_number": 23
+    },
+    {
+      "key": "T023",
+      "title": "[S1][T023][RF05] Modelar certificação e temas respondidos",
+      "sprint": 1,
+      "requirements": [
+        "RF05"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "023",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/24",
+      "github_issue_number": 24
+    },
+    {
+      "key": "T024",
+      "title": "[S2][T024][RF06] Implementar sorteio de uma questão entre quatro por tema",
+      "sprint": 2,
+      "requirements": [
+        "RF06"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T026"
+      ],
+      "task_origin": "024",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/25",
+      "github_issue_number": 25
+    },
+    {
+      "key": "T025",
+      "title": "[S1][T025][RF06] Modelar em UML o sorteio das questões",
+      "sprint": 1,
+      "requirements": [
+        "RF06"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "025",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/26",
+      "github_issue_number": 26
+    },
+    {
+      "key": "T026",
+      "title": "[S1][T026][RF06] Modelar temas e banco de questões",
+      "sprint": 1,
+      "requirements": [
+        "RF06"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "026",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/27",
+      "github_issue_number": 27
+    },
+    {
+      "key": "T027",
+      "title": "[S2][T027][RF07] Implementar listagem dos temas para estudo",
+      "sprint": 2,
+      "requirements": [
+        "RF07"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T029"
+      ],
+      "task_origin": "027",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/28",
+      "github_issue_number": 28
+    },
+    {
+      "key": "T028",
+      "title": "[S2][T028][RF07] Implementar página de conteúdo didático por tema",
+      "sprint": 2,
+      "requirements": [
+        "RF07"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T027",
+        "T094"
+      ],
+      "task_origin": "028",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/29",
+      "github_issue_number": 29
+    },
+    {
+      "key": "T029",
+      "title": "[S1][T029][RF07] Prototipar a área de estudos",
+      "sprint": 1,
+      "requirements": [
+        "RF07"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "029",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/30",
+      "github_issue_number": 30
+    },
+    {
+      "key": "T030",
+      "title": "[S1][T030][RF07] Modelar em UML a navegação nos estudos",
+      "sprint": 1,
+      "requirements": [
+        "RF07"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "030",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/31",
+      "github_issue_number": 31
+    },
+    {
+      "key": "T031",
+      "title": "[S2][T031][RF08] Validar imagem e quatro alternativas com uma correta",
+      "sprint": 2,
+      "requirements": [
+        "RF08"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T026"
+      ],
+      "task_origin": "031",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/32",
+      "github_issue_number": 32
+    },
+    {
+      "key": "T032",
+      "title": "[S2][T032][RF09] Implementar feedback da resposta e ações de continuidade",
+      "sprint": 2,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T020",
+        "T035"
+      ],
+      "task_origin": "032",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/33",
+      "github_issue_number": 33
+    },
+    {
+      "key": "T033",
+      "title": "[S1][T033][RF09] Prototipar feedback e continuidade após uma resposta",
+      "sprint": 1,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "033",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/34",
+      "github_issue_number": 34
+    },
+    {
+      "key": "T034",
+      "title": "[S2][T034][RF09] Consultar a alternativa correta após encerrar a questão",
+      "sprint": 2,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T024"
+      ],
+      "task_origin": "034",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/35",
+      "github_issue_number": 35
+    },
+    {
+      "key": "T035",
+      "title": "[S2][T035][RF09] Persistir respostas e estado da certificação",
+      "sprint": 2,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T037"
+      ],
+      "task_origin": "035",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/36",
+      "github_issue_number": 36
+    },
+    {
+      "key": "T036",
+      "title": "[S1][T036][RF09] Modelar em UML resposta feedback e continuidade",
+      "sprint": 1,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "036",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/37",
+      "github_issue_number": 37
+    },
+    {
+      "key": "T037",
+      "title": "[S1][T037][RF09] Modelar respostas e estados de resolução",
+      "sprint": 1,
+      "requirements": [
+        "RF09"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "037",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/38",
+      "github_issue_number": 38
+    },
+    {
+      "key": "T038",
+      "title": "[S2][T038][RF10] Implementar cronômetro regressivo de 150 segundos",
+      "sprint": 2,
+      "requirements": [
+        "RF10"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T020",
+        "T095"
+      ],
+      "task_origin": "038",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/39",
+      "github_issue_number": 39
+    },
+    {
+      "key": "T039",
+      "title": "[S2][T039][RF11] Encerrar questão não respondida ao esgotar o tempo",
+      "sprint": 2,
+      "requirements": [
+        "RF11"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T038",
+        "T035"
+      ],
+      "task_origin": "039",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/40",
+      "github_issue_number": 40
+    },
+    {
+      "key": "T040",
+      "title": "[S2][T040][RF12] Oferecer continuar ou encerrar a sessão após cada resposta",
+      "sprint": 2,
+      "requirements": [
+        "RF12"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T032"
+      ],
+      "task_origin": "040",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/41",
+      "github_issue_number": 41
+    },
+    {
+      "key": "T041",
+      "title": "[S2][T041][RF13] Persistir a retomada pelo próximo tema pendente",
+      "sprint": 2,
+      "requirements": [
+        "RF13"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T035"
+      ],
+      "task_origin": "041",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/42",
+      "github_issue_number": 42
+    },
+    {
+      "key": "T042",
+      "title": "[S2][T042][RF13] Implementar interface de interrupção e retomada",
+      "sprint": 2,
+      "requirements": [
+        "RF13"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T041",
+        "T043"
+      ],
+      "task_origin": "042",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/43",
+      "github_issue_number": 43
+    },
+    {
+      "key": "T043",
+      "title": "[S2][T043][RF14] Encerrar a questão em perda de conexão ou fechamento",
+      "sprint": 2,
+      "requirements": [
+        "RF14"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T095",
+        "T035"
+      ],
+      "task_origin": "043",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/44",
+      "github_issue_number": 44
+    },
+    {
+      "key": "T044",
+      "title": "[S2][T044][RF15] Impedir nova resposta a um tema encerrado",
+      "sprint": 2,
+      "requirements": [
+        "RF15"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T023",
+        "T035"
+      ],
+      "task_origin": "044",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/45",
+      "github_issue_number": 45
+    },
+    {
+      "key": "T045",
+      "title": "[S2][T045][RF15] Bloquear repetição também na interface",
+      "sprint": 2,
+      "requirements": [
+        "RF15"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T044"
+      ],
+      "task_origin": "045",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/46",
+      "github_issue_number": 46
+    },
+    {
+      "key": "T046",
+      "title": "[S3][T046][RF16] Implementar página de resultado final",
+      "sprint": 3,
+      "requirements": [
+        "RF16"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T048"
+      ],
+      "task_origin": "046",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/47",
+      "github_issue_number": 47
+    },
+    {
+      "key": "T047",
+      "title": "[S1][T047][RF16] Prototipar resultado final",
+      "sprint": 1,
+      "requirements": [
+        "RF16"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "047",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/48",
+      "github_issue_number": 48
+    },
+    {
+      "key": "T048",
+      "title": "[S3][T048][RF16] Calcular a nota final no back-end após 12 temas",
+      "sprint": 3,
+      "requirements": [
+        "RF16"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T035",
+        "T044"
+      ],
+      "task_origin": "048",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/49",
+      "github_issue_number": 49
+    },
+    {
+      "key": "T049",
+      "title": "[S1][T049][RF16] Modelar em UML o cálculo do resultado",
+      "sprint": 1,
+      "requirements": [
+        "RF16"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "049",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/50",
+      "github_issue_number": 50
+    },
+    {
+      "key": "T050",
+      "title": "[S1][T050][RF16] Modelar os dados do resultado final",
+      "sprint": 1,
+      "requirements": [
+        "RF16"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "050",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/51",
+      "github_issue_number": 51
+    },
+    {
+      "key": "T051",
+      "title": "[S3][T051][RF17] Emitir certificado somente com aproveitamento mínimo de 65%",
+      "sprint": 3,
+      "requirements": [
+        "RF17"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T048",
+        "T053"
+      ],
+      "task_origin": "051",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/52",
+      "github_issue_number": 52
+    },
+    {
+      "key": "T052",
+      "title": "[S1][T052][RF17] Prototipar aprovação e reprovação",
+      "sprint": 1,
+      "requirements": [
+        "RF17"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "052",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/53",
+      "github_issue_number": 53
+    },
+    {
+      "key": "T053",
+      "title": "[S1][T053][RF17] Modelar a elegibilidade do certificado",
+      "sprint": 1,
+      "requirements": [
+        "RF17"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "053",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/54",
+      "github_issue_number": 54
+    },
+    {
+      "key": "T054",
+      "title": "[S1][T054][RF17] Modelar em UML a emissão condicionada à aprovação",
+      "sprint": 1,
+      "requirements": [
+        "RF17"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "054",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/55",
+      "github_issue_number": 55
+    },
+    {
+      "key": "T055",
+      "title": "[S3][T055][RF18] Gerar QR Code e dados de emissão do certificado",
+      "sprint": 3,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T051",
+        "T060"
+      ],
+      "task_origin": "055",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/56",
+      "github_issue_number": 56
+    },
+    {
+      "key": "T056",
+      "title": "[S3][T056][RF18] Implementar apresentação e exportação do certificado",
+      "sprint": 3,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T055",
+        "T058"
+      ],
+      "task_origin": "056",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/57",
+      "github_issue_number": 57
+    },
+    {
+      "key": "T057",
+      "title": "[S3][T057][RF18] Consultar resultado para compor o certificado",
+      "sprint": 3,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T048"
+      ],
+      "task_origin": "057",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/58",
+      "github_issue_number": 58
+    },
+    {
+      "key": "T058",
+      "title": "[S3][T058][RF18] Consultar os dados do candidato para o certificado",
+      "sprint": 3,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T013"
+      ],
+      "task_origin": "058",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/59",
+      "github_issue_number": 59
+    },
+    {
+      "key": "T059",
+      "title": "[S1][T059][RF18] Prototipar certificado eletrônico",
+      "sprint": 1,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "059",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/60",
+      "github_issue_number": 60
+    },
+    {
+      "key": "T060",
+      "title": "[S1][T060][RF18] Modelar certificado e identificador de validação",
+      "sprint": 1,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "060",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/61",
+      "github_issue_number": 61
+    },
+    {
+      "key": "T061",
+      "title": "[S1][T061][RF18] Modelar em UML a geração do certificado",
+      "sprint": 1,
+      "requirements": [
+        "RF18"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "061",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/62",
+      "github_issue_number": 62
+    },
+    {
+      "key": "T062",
+      "title": "[S3][T062][RF19] Consultar autenticidade do certificado pelo identificador",
+      "sprint": 3,
+      "requirements": [
+        "RF19"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T051",
+        "T060"
+      ],
+      "task_origin": "062",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/63",
+      "github_issue_number": 63
+    },
+    {
+      "key": "T063",
+      "title": "[S3][T063][RF19] Implementar página pública de validação do certificado",
+      "sprint": 3,
+      "requirements": [
+        "RF19"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T062"
+      ],
+      "task_origin": "063",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/64",
+      "github_issue_number": 64
+    },
+    {
+      "key": "T064",
+      "title": "[S2][T064][RF20] Registrar histórico completo de respostas da certificação",
+      "sprint": 2,
+      "requirements": [
+        "RF20"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T035"
+      ],
+      "task_origin": "064",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/65",
+      "github_issue_number": 65
+    },
+    {
+      "key": "T065",
+      "title": "[S3][T065][RF21] Exibir temas concluídos e pendentes na certificação",
+      "sprint": 3,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T069"
+      ],
+      "task_origin": "065",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/66",
+      "github_issue_number": 66
+    },
+    {
+      "key": "T066",
+      "title": "[S3][T066][RF21] Implementar painel de progresso da certificação",
+      "sprint": 3,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T069"
+      ],
+      "task_origin": "066",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/67",
+      "github_issue_number": 67
+    },
+    {
+      "key": "T067",
+      "title": "[S1][T067][RF21] Prototipar o acompanhamento de progresso",
+      "sprint": 1,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "067",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/68",
+      "github_issue_number": 68
+    },
+    {
+      "key": "T068",
+      "title": "[S3][T068][RF21] Persistir temas concluídos na certificação",
+      "sprint": 3,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T035"
+      ],
+      "task_origin": "068",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/69",
+      "github_issue_number": 69
+    },
+    {
+      "key": "T069",
+      "title": "[S3][T069][RF21] Consultar progresso do candidato",
+      "sprint": 3,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T068"
+      ],
+      "task_origin": "069",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/70",
+      "github_issue_number": 70
+    },
+    {
+      "key": "T070",
+      "title": "[S1][T070][RF21] Modelar o progresso da certificação",
+      "sprint": 1,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "070",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/71",
+      "github_issue_number": 71
+    },
+    {
+      "key": "T071",
+      "title": "[S1][T071][RF21] Modelar em UML o acompanhamento de progresso",
+      "sprint": 1,
+      "requirements": [
+        "RF21"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": "071",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/72",
+      "github_issue_number": 72
+    },
+    {
+      "key": "T072",
+      "title": "[S1][T072][RNF01] Prototipar estados responsivos para celular e computador",
+      "sprint": 1,
+      "requirements": [
+        "RNF01"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": "072",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/73",
+      "github_issue_number": 73
+    },
+    {
+      "key": "T073",
+      "title": "[S3][T073][RNF01] Validar responsividade das telas implementadas",
+      "sprint": 3,
+      "requirements": [
+        "RNF01"
+      ],
+      "area": "frontend",
+      "depends_on": [],
+      "task_origin": "073",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/74",
+      "github_issue_number": 74
+    },
+    {
+      "key": "T074",
+      "title": "[S3][T074][RNF02] Medir e melhorar o carregamento de páginas e questões",
+      "sprint": 3,
+      "requirements": [
+        "RNF02"
+      ],
+      "area": "frontend",
+      "depends_on": [],
+      "task_origin": "074",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/75",
+      "github_issue_number": 75
+    },
+    {
+      "key": "T075",
+      "title": "[S2][T075][RNF03] Implementar proteção e minimização de dados pessoais",
+      "sprint": 2,
+      "requirements": [
+        "RNF03"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T012",
+        "T101"
+      ],
+      "task_origin": "075",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/76",
+      "github_issue_number": 76
+    },
+    {
+      "key": "T076",
+      "title": "[S3][T076][RNF04] Impedir manipulação da nota no back-end",
+      "sprint": 3,
+      "requirements": [
+        "RNF04"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T048"
+      ],
+      "task_origin": "076",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/77",
+      "github_issue_number": 77
+    },
+    {
+      "key": "T077",
+      "title": "[S1][T077][RNF05] Organizar Product Backlog e rastreabilidade dos requisitos",
+      "sprint": 1,
+      "requirements": [
+        "RNF05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "077",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/78",
+      "github_issue_number": 78
+    },
+    {
+      "key": "T078",
+      "title": "[S1][T078][RNF05] Formalizar as metas e o planejamento das três Sprints",
+      "sprint": 1,
+      "requirements": [
+        "RNF05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "078",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/79",
+      "github_issue_number": 79
+    },
+    {
+      "key": "T079",
+      "title": "[S1][T079][RNF05] Documentar branches commits e fluxo de Pull Requests",
+      "sprint": 1,
+      "requirements": [
+        "RNF05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "079",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/80",
+      "github_issue_number": 80
+    },
+    {
+      "key": "T080",
+      "title": "[S1][T080][RNF05] Definir critérios de pronto da equipe",
+      "sprint": 1,
+      "requirements": [
+        "RNF05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "080",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/1",
+      "github_issue_number": 1
+    },
+    {
+      "key": "T081",
+      "title": "[S1][T081][RNF05] Revisar estimativas com a equipe",
+      "sprint": 1,
+      "requirements": [
+        "RNF05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "081",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/81",
+      "github_issue_number": 81
+    },
+    {
+      "key": "T082",
+      "title": "[S1][T082][RNF06] Consolidar modelo conceitual lógico físico e DDL PostgreSQL",
+      "sprint": 1,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": "082",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/82",
+      "github_issue_number": 82
+    },
+    {
+      "key": "T083",
+      "title": "[S3][T083][RNF06] Documentar instalação e execução do projeto",
+      "sprint": 3,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "083",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/83",
+      "github_issue_number": 83
+    },
+    {
+      "key": "T084",
+      "title": "[S3][T084][RNF06] Documentar a API do portal",
+      "sprint": 3,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "084",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/84",
+      "github_issue_number": 84
+    },
+    {
+      "key": "T085",
+      "title": "[S3][T085][RNF06] Documentar funcionalidades implementadas e limitações",
+      "sprint": 3,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "085",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/85",
+      "github_issue_number": 85
+    },
+    {
+      "key": "T086",
+      "title": "[S1][T086][RNF06] Registrar Daily Scrum Review e Retrospective",
+      "sprint": 1,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "086",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/86",
+      "github_issue_number": 86
+    },
+    {
+      "key": "T087",
+      "title": "[S1][T087][RNF06] Registrar dúvidas e alinhamentos com o cliente ou professor",
+      "sprint": 1,
+      "requirements": [
+        "RNF06"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": "087",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/87",
+      "github_issue_number": 87
+    },
+    {
+      "key": "T088",
+      "title": "[S2][T088][RNF07] Criar serviços de aplicação e PostgreSQL com Docker Compose",
+      "sprint": 2,
+      "requirements": [
+        "RNF07"
+      ],
+      "area": "infra",
+      "depends_on": [
+        "T092",
+        "T082"
+      ],
+      "task_origin": "088",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/88",
+      "github_issue_number": 88
+    },
+    {
+      "key": "T089",
+      "title": "[S3][T089][RNF07] Integrar aplicação e banco no ambiente de containers",
+      "sprint": 3,
+      "requirements": [
+        "RNF07"
+      ],
+      "area": "infra",
+      "depends_on": [
+        "T088"
+      ],
+      "task_origin": "089",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/89",
+      "github_issue_number": 89
+    },
+    {
+      "key": "T090",
+      "title": "[S3][T090][RNF07] Validar dependências e configuração dos containers",
+      "sprint": 3,
+      "requirements": [
+        "RNF07"
+      ],
+      "area": "infra",
+      "depends_on": [
+        "T089"
+      ],
+      "task_origin": "090",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/90",
+      "github_issue_number": 90
+    },
+    {
+      "key": "T091",
+      "title": "[S2][T091][RNF08] Produzir as 48 questões com imagens e alternativas",
+      "sprint": 2,
+      "requirements": [
+        "RNF08"
+      ],
+      "area": "conteudo",
+      "depends_on": [
+        "T102"
+      ],
+      "task_origin": "091",
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/91",
+      "github_issue_number": 91
+    },
+    {
+      "key": "T092",
+      "title": "[S1][T092] Documentar arquitetura e escolher tecnologia do back-end",
+      "sprint": 1,
+      "requirements": [
+        "RP01",
+        "RP02",
+        "RP03",
+        "RP05"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/92",
+      "github_issue_number": 92
+    },
+    {
+      "key": "T093",
+      "title": "[S1][T093] Completar protótipo de validação pública e histórico",
+      "sprint": 1,
+      "requirements": [
+        "RF19",
+        "RF20"
+      ],
+      "area": "figma",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/93",
+      "github_issue_number": 93
+    },
+    {
+      "key": "T094",
+      "title": "[S1][T094] Completar modelo de estudos imagens e histórico",
+      "sprint": 1,
+      "requirements": [
+        "RF07",
+        "RF20",
+        "RP04",
+        "RP07"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/94",
+      "github_issue_number": 94
+    },
+    {
+      "key": "T095",
+      "title": "[S1][T095] Modelar máquina de estados e contratos da certificação",
+      "sprint": 1,
+      "requirements": [
+        "RF09",
+        "RF10",
+        "RF11",
+        "RF12",
+        "RF13",
+        "RF14",
+        "RF15"
+      ],
+      "area": "uml",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/95",
+      "github_issue_number": 95
+    },
+    {
+      "key": "T096",
+      "title": "[S2][T096] Validar jornada inicial cadastro e login",
+      "sprint": 2,
+      "requirements": [
+        "RF01",
+        "RF02",
+        "RF03",
+        "RF04"
+      ],
+      "area": "testes",
+      "depends_on": [
+        "T001",
+        "T005",
+        "T013",
+        "T018"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/96",
+      "github_issue_number": 96
+    },
+    {
+      "key": "T097",
+      "title": "[S2][T097] Validar prova tempo interrupção e retomada",
+      "sprint": 2,
+      "requirements": [
+        "RF05",
+        "RF06",
+        "RF08",
+        "RF09",
+        "RF10",
+        "RF11",
+        "RF12",
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF20"
+      ],
+      "area": "testes",
+      "depends_on": [
+        "T031",
+        "T039",
+        "T043",
+        "T044",
+        "T064"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/97",
+      "github_issue_number": 97
+    },
+    {
+      "key": "T098",
+      "title": "[S3][T098] Validar resultado certificado e proteção da nota",
+      "sprint": 3,
+      "requirements": [
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RNF04"
+      ],
+      "area": "testes",
+      "depends_on": [
+        "T048",
+        "T051",
+        "T056",
+        "T063",
+        "T076"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/98",
+      "github_issue_number": 98
+    },
+    {
+      "key": "T099",
+      "title": "[S3][T099] Executar validação integral do MVP",
+      "sprint": 3,
+      "requirements": [
+        "RNF01",
+        "RNF02",
+        "RP09"
+      ],
+      "area": "testes",
+      "depends_on": [
+        "T096",
+        "T097",
+        "T098",
+        "T073"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/99",
+      "github_issue_number": 99
+    },
+    {
+      "key": "T100",
+      "title": "[S2][T100] Revisar tecnicamente questões imagens e material didático",
+      "sprint": 2,
+      "requirements": [
+        "RNF08",
+        "RP06",
+        "RP07"
+      ],
+      "area": "conteudo",
+      "depends_on": [
+        "T091"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/100",
+      "github_issue_number": 100
+    },
+    {
+      "key": "T101",
+      "title": "[S1][T101] Definir proteção dos dados no modelo e na arquitetura",
+      "sprint": 1,
+      "requirements": [
+        "RNF03",
+        "RNF04",
+        "RF18",
+        "RF19"
+      ],
+      "area": "modelagem",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/101",
+      "github_issue_number": 101
+    },
+    {
+      "key": "T102",
+      "title": "[S1][T102] Selecionar os 12 temas e esclarecer regras em aberto",
+      "sprint": 1,
+      "requirements": [
+        "RF05",
+        "RF06",
+        "RF07",
+        "RP06",
+        "RP07"
+      ],
+      "area": "gestao",
+      "depends_on": [],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/102",
+      "github_issue_number": 102
+    },
+    {
+      "key": "T103",
+      "title": "[S3][T103] Validar execução do projeto em ambiente limpo",
+      "sprint": 3,
+      "requirements": [
+        "RNF07",
+        "RP05"
+      ],
+      "area": "infra",
+      "depends_on": [
+        "T083",
+        "T089",
+        "T090"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/103",
+      "github_issue_number": 103
+    },
+    {
+      "key": "T104",
+      "title": "[S3][T104] Preparar entrega apresentação Review e Retrospective finais",
+      "sprint": 3,
+      "requirements": [
+        "RNF05",
+        "RNF06",
+        "RP09"
+      ],
+      "area": "gestao",
+      "depends_on": [
+        "T099",
+        "T103",
+        "T085"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/104",
+      "github_issue_number": 104
+    },
+    {
+      "key": "T105",
+      "title": "[S2][T105] Integrar front-end e API com tratamento de erros",
+      "sprint": 2,
+      "requirements": [
+        "RP03",
+        "RF03",
+        "RF04",
+        "RF05",
+        "RF06",
+        "RF07",
+        "RF09",
+        "RF13"
+      ],
+      "area": "backend",
+      "depends_on": [
+        "T092",
+        "T013",
+        "T018",
+        "T024",
+        "T035"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/105",
+      "github_issue_number": 105
+    },
+    {
+      "key": "T106",
+      "title": "[S1][T106] Revisar entrega integral do Figma UML e banco da Sprint 1",
+      "sprint": 1,
+      "requirements": [
+        "RNF06",
+        "RF01",
+        "RF02",
+        "RF03",
+        "RF04",
+        "RF05",
+        "RF06",
+        "RF07",
+        "RF08",
+        "RF09",
+        "RF10",
+        "RF11",
+        "RF12",
+        "RF13",
+        "RF14",
+        "RF15",
+        "RF16",
+        "RF17",
+        "RF18",
+        "RF19",
+        "RF20",
+        "RF21"
+      ],
+      "area": "testes",
+      "depends_on": [
+        "T082",
+        "T093",
+        "T094",
+        "T095",
+        "T101",
+        "T102"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/106",
+      "github_issue_number": 106
+    },
+    {
+      "key": "T107",
+      "title": "[S3][T107][RF20] Implementar consulta e tela do histórico da certificação",
+      "sprint": 3,
+      "requirements": [
+        "RF20"
+      ],
+      "area": "frontend",
+      "depends_on": [
+        "T064",
+        "T093"
+      ],
+      "task_origin": null,
+      "github_issue_url": "https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/107",
+      "github_issue_number": 107
+    }
+  ]
+}
