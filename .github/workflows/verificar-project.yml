@@ -65,7 +65,10 @@ jobs:
               cursor = data['pageInfo']['endCursor']
           metadata = query('''query($id:ID!){node(id:$id){... on ProjectV2{
             repositories(first:20){nodes{nameWithOwner}}
-            views(first:100){nodes{id name layout filter}}
+            views(first:100){nodes{id name layout filter
+              groupByFields(first:10){nodes{... on ProjectV2FieldCommon{name}}}
+              verticalGroupByFields(first:10){nodes{... on ProjectV2FieldCommon{name}}}
+            }}
             fields(first:100){nodes{
               ... on ProjectV2FieldCommon{id name dataType}
               ... on ProjectV2IterationField{configuration{
@@ -74,6 +77,9 @@ jobs:
             }}
           }}}''', {'id': project['id']})['node']
           counts, states, incomplete, assigned = collections.Counter(), collections.Counter(), [], 0
+          windows = {'Sprint 1': ('2026-09-28','2026-10-22'),
+                     'Sprint 2': ('2026-10-23','2026-11-05'),
+                     'Sprint 3': ('2026-11-06','2026-11-25')}
           for item in items:
               issue = item.get('content')
               if not issue or issue['repository']['nameWithOwner'] != 'Tech0wl-2026/ABP-Tech0wl':
@@ -83,6 +89,11 @@ jobs:
               states[values.get('Status', {}).get('name', 'Sem status')] += 1
               assigned += bool(issue['assignees']['totalCount'])
               missing = [f for f in ['Sprint','Status','Área','Prioridade','Início','Prazo'] if f not in values]
+              window = windows.get(values.get('Sprint', {}).get('title'))
+              if window:
+                  for field, expected in zip(['Início', 'Prazo'], window):
+                      if values.get(field, {}).get('date') != expected:
+                          missing.append(field + ': data divergente')
               if missing:
                   incomplete.append({'issue': issue['number'], 'missing': missing})
           report = {'project': project, 'metadata': metadata, 'items': len(items),
