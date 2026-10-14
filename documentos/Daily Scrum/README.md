@@ -1,9 +1,11 @@
 # Daily Scrum — TechOwl
 
-Este diretório guarda os registros reais de Daily Scrum da ABP, em reuniões previstas de 15 minutos. Cada reunião utiliza um arquivo `AAAA-MM-DD.md`.
+Esta pasta reúne os registros das reuniões diárias de até 15 minutos da equipe.
 
-Registrar avanços, plano até a próxima reunião, impedimentos, decisões, responsáveis e evidências. Discussões técnicas extensas ficam para depois da Daily.
+Conforme orientação do professor, cada registro contém apenas a data e uma tabela com **integrante, atividade do dia e ânimo**. Uma frase curta em cada campo é suficiente.
 
-Use [TEMPLATE.md](TEMPLATE.md). O histórico anterior disponível foi reconstruído e precisa de validação: veja [REGISTROS_RECONSTRUIDOS.md](REGISTROS_RECONSTRUIDOS.md). Não tratar esses rascunhos como prova de presença ou de entregas concluídas.
+Para registrar uma reunião, copie [TEMPLATE.md](TEMPLATE.md), preencha com os relatos da equipe e salve como `AAAA-MM-DD.md`, por exemplo, `2026-10-14.md`.
 
-Se uma reunião não ocorrer, registrar “Daily não realizada” somente quando confirmado pela equipe. Não inventar reuniões para datas sem informação.
+Em **atividade do dia**, escreva no que a pessoa está trabalhando. Em **ânimo**, use as palavras dela, como “animado”, “tranquilo” ou “cansado”. Se a informação não foi compartilhada, mantenha “A informar”.
+
+Os [registros anteriores](REGISTROS_RECONSTRUIDOS.md) permanecem como referência; o modelo atual é o [TEMPLATE.md](TEMPLATE.md).

@@ -1,5 +1,7 @@
 # Registros anteriores pendentes de validação
 
+> Histórico com o formato antigo. Para as próximas reuniões, usar o [modelo simples de atividade do dia e ânimo](TEMPLATE.md). Os relatos abaixo continuam pendentes de validação pela equipe.
+
 Arquivo de referência de 28/09 a 06/10. Contém sínteses sugeridas, não atas confirmadas. O escopo atualizado da Sprint 1 é somente protótipo e modelagem integral; consultar `../Gestao/SPRINTS.md` quando o texto antigo divergir.
 
 ```text

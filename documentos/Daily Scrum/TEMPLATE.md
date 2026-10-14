@@ -1,33 +1,11 @@
 # Daily Scrum — DD/MM/AAAA
 
-- Sprint e meta:
-- Horário real e duração:
-- Participantes e ausentes:
-- Responsável pelo registro:
-- RFs e issues relacionados:
-
-## Avanços desde a última Daily
-
-- Atividade, responsável e evidência:
-
-## Plano até a próxima Daily
-
-- Ação, responsável, prazo e resultado esperado:
-
-## Impedimentos
-
-- Problema, impacto e encaminhamento:
-
-## Assuntos e decisões reais
-
-- Decisão, justificativa e requisito/issue afetado:
-
-## Alterações no backlog
-
-- Issue, mudança e motivo:
-
-## Evidências e próxima reunião
-
-- Links:
-- Próxima Daily:
-- Validação do registro:
+| Integrante | Atividade do dia | Ânimo |
+|---|---|---|
+| Abdi | A informar | A informar |
+| Breno | A informar | A informar |
+| Gabriel A. | A informar | A informar |
+| Guilherme | A informar | A informar |
+| Miguel | A informar | A informar |
+| Sophia | A informar | A informar |
+| Tiago | A informar | A informar |

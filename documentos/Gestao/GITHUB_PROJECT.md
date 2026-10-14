@@ -51,7 +51,7 @@ A leitura pública do Project não concede edição. Para assumir issues, o inte
 
 ## Daily Scrum
 
-Reunião de 15 minutos para compartilhar o que avançou, o próximo passo e os impedimentos. Registrar as informações reais em `documentos/Daily Scrum`, incluindo links das issues e dos PRs discutidos. Os registros reconstruídos continuam identificados como tal.
+Reunião de até 15 minutos. Conforme orientação do professor, registrar a data e uma tabela com integrante, atividade do dia e ânimo em `documentos/Daily Scrum/AAAA-MM-DD.md`, usando o [modelo simples](../Daily%20Scrum/TEMPLATE.md). Preencher com os relatos reais da equipe; os registros anteriores permanecem como referência.
 
 ## Automação e verificação
 
