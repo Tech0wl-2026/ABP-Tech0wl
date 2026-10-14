@@ -2,10 +2,10 @@
 
 | Integrante | Atividade do dia |
 |---|---|
-| Abdi | A informar |
-| Breno | A informar |
-| Gabriel A. | A informar |
-| Guilherme | A informar |
-| Miguel | A informar |
-| Sophia | A informar |
-| Tiago | A informar |
+| Abdi |  |
+| Breno |  |
+| Gabriel A. |  |
+| Guilherme |  |
+| Miguel |  |
+| Sophia |  |
+| Tiago |  |
