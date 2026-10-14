@@ -1,0 +1,97 @@
+name: Verificar Project da ABP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/verificar-project.yml
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  verificar:
+    if: github.repository == 'Tech0wl-2026/ABP-Tech0wl'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Consultar Project sem modificar dados
+        env:
+          ABP_PROJECT_TOKEN: ${{ secrets.ABP_PROJECT_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import collections, json, os
+          from urllib.request import Request, urlopen
+
+          token = os.environ.get('ABP_PROJECT_TOKEN', '')
+          if not token:
+              raise RuntimeError('Secret ABP_PROJECT_TOKEN não configurado')
+
+          def query(text, variables=None):
+              assert text.lstrip().startswith('query'), 'Este workflow aceita somente consultas'
+              req = Request('https://api.github.com/graphql',
+                  data=json.dumps({'query': text, 'variables': variables or {}}).encode(),
+                  headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json',
+                           'User-Agent': 'ABP-Project-Read-Only-Check'})
+              with urlopen(req, timeout=60) as response:
+                  result = json.load(response)
+              if result.get('errors'):
+                  message = '; '.join(e.get('message', 'Erro GraphQL') for e in result['errors'])
+                  raise RuntimeError(message.replace(token, '[redacted]'))
+              return result['data']
+
+          projects = query('''query{user(login:"Tech0wl-2026"){
+            projectsV2(first:100){nodes{id title number url public}}
+          }}''')['user']['projectsV2']['nodes']
+          matches = [p for p in projects if p['title'] == 'ABP Tech0wl | 2026-2']
+          if len(matches) != 1:
+              raise RuntimeError('Esperado exatamente um Project oficial com o título configurado')
+          project = matches[0]
+          cursor, items = None, []
+          while True:
+              data = query('''query($id:ID!,$cursor:String){node(id:$id){... on ProjectV2{
+                items(first:100,after:$cursor){totalCount pageInfo{hasNextPage endCursor} nodes{
+                  id content{... on Issue{number repository{nameWithOwner} assignees(first:20){totalCount}}}
+                  fieldValues(first:30){nodes{
+                    ... on ProjectV2ItemFieldIterationValue{title field{... on ProjectV2FieldCommon{name}}}
+                    ... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2FieldCommon{name}}}
+                    ... on ProjectV2ItemFieldDateValue{date field{... on ProjectV2FieldCommon{name}}}
+                  }}
+                }}
+              }}}''', {'id': project['id'], 'cursor': cursor})['node']['items']
+              items.extend(data['nodes'])
+              if not data['pageInfo']['hasNextPage']:
+                  break
+              cursor = data['pageInfo']['endCursor']
+          metadata = query('''query($id:ID!){node(id:$id){... on ProjectV2{
+            repositories(first:20){nodes{nameWithOwner}}
+            views(first:100){nodes{id name layout filter}}
+            fields(first:100){nodes{
+              ... on ProjectV2FieldCommon{id name dataType}
+              ... on ProjectV2IterationField{configuration{
+                iterations{id title startDate duration} completedIterations{id title startDate duration}
+              }}
+            }}
+          }}}''', {'id': project['id']})['node']
+          counts, states, incomplete, assigned = collections.Counter(), collections.Counter(), [], 0
+          for item in items:
+              issue = item.get('content')
+              if not issue or issue['repository']['nameWithOwner'] != 'Tech0wl-2026/ABP-Tech0wl':
+                  continue
+              values = {v['field']['name']: v for v in item['fieldValues']['nodes'] if v.get('field')}
+              counts[values.get('Sprint', {}).get('title', 'Sem sprint')] += 1
+              states[values.get('Status', {}).get('name', 'Sem status')] += 1
+              assigned += bool(issue['assignees']['totalCount'])
+              missing = [f for f in ['Sprint','Status','Área','Prioridade','Início','Prazo'] if f not in values]
+              if missing:
+                  incomplete.append({'issue': issue['number'], 'missing': missing})
+          report = {'project': project, 'metadata': metadata, 'items': len(items),
+                    'sprint_counts': dict(counts), 'status_counts': dict(states),
+                    'assigned_issues': assigned, 'incomplete': incomplete}
+          print('PROJECT_CHECK=' + json.dumps(report, ensure_ascii=False))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+              output.write('# Conferência do Project\n\n[Abrir Project](' + project['url'] + ')\n\n')
+              output.write('Itens: ' + str(len(items)) + '\n\n')
+              output.write('Sprints: ' + json.dumps(dict(counts), ensure_ascii=False) + '\n\n')
+              output.write('Itens com campos pendentes: ' + str(len(incomplete)) + '\n')
+          PY
