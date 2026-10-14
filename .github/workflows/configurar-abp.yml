@@ -82,10 +82,14 @@ jobs:
           milestones = {}
           for definition in snapshot['milestones']:
               data = {k: definition[k] for k in ['title', 'description', 'due_on']}
+              desired_day = definition['due_on'][:10]
+              # GitHub interpreta o prazo como data de calendário. Meio-dia UTC
+              # evita que a conversão local desloque a data para o dia anterior.
+              data['due_on'] = desired_day + 'T12:00:00Z'
               previous = existing_milestones.get(data['title'])
               if previous:
                   milestone = previous
-                  if any(previous.get(k) != data[k] for k in ['description', 'due_on']):
+                  if previous.get('description') != data['description'] or (previous.get('due_on') or '')[:10] != desired_day:
                       milestone = api('/milestones/' + str(previous['number']), 'PATCH', data)
               else:
                   milestone = api('/milestones', 'POST', data)
@@ -151,3 +155,4 @@ jobs:
           print('Issues por Sprint:', counts)
           print('ABP_TASK_MAP=' + json.dumps({key: {'number': value['number'], 'url': value['html_url']} for key, value in imported.items()}))
           PY
+
