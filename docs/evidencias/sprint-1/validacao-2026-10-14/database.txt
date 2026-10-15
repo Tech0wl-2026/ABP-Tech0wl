@@ -1,0 +1,12 @@
+BEGIN
+SET
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+DO
+ verificacoes_de_integridade
+-----------------------------
+                          24
+(1 row)
+
+ROLLBACK

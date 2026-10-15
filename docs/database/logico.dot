@@ -1,0 +1,25 @@
+digraph Modelo {
+ graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.45", ranksep="0.7", fontname="Arial", label="Tech0wl — modelo lógico de referência", labelloc=t, fontsize=22];
+ node [shape=Mrecord, style="rounded,filled", fillcolor="#edf4ff", color="#4a6a94", fontname="Arial", fontsize=12, margin="0.18,0.12"];
+ edge [fontname="Arial", fontsize=10, color="#5c6e86"];
+ candidato [label="{Candidato|PK id: int8\lcpf: varchar\lnome_completo: varchar\lemail: varchar\lsenha_hash: text\lcriado_em: timestamptz\l}"];
+ tema [label="{Tema|PK id: int8\lnome: varchar\lordem: int2\lselecionado: bool\l}"];
+ conteudo_estudo [label="{Conteúdo de estudo|PK id: int8\lFK tema_id: int8\ltitulo: varchar\lcorpo_markdown: text\lfontes: text\lversao: int4\lpublicado: bool\l}"];
+ questao [label="{Questão versionada|PK id: int8\lFK tema_id: int8\lnumero: int2\lversao: int4\lenunciado: text\limagem_caminho: text\limagem_descricao: text\limagem_fonte: text\ljustificativa: text\lfonte_conteudo: text\lpublicada: bool\l}"];
+ alternativa [label="{Alternativa|PK questao_id: int8\lPK letra: bpchar\ltexto: text\lcorreta: bool\l}"];
+ tentativa [label="{Tentativa|PK id: int8\lFK candidato_id: int8\lestado: varchar\liniciada_em: timestamptz\lconcluida_em: timestamptz ?\lversao_regra: text\l}"];
+ etapa_avaliacao [label="{Etapa da avaliação|PK id: int8\lFK tentativa_id: int8\lFK tema_id: int8\lFK questao_id: int8\lordem: int2\lestado: varchar\lapresentada_em: timestamptz ?\lprazo_em: timestamptz ?\lencerrada_em: timestamptz ?\l}"];
+ resposta [label="{Resposta|PK etapa_id: int8\lFK questao_id: int8\lalternativa_escolhida: bpchar ?\lalternativa_correta: bpchar\lregistrada_em: timestamptz\lacertou: bool ?\l}"];
+ resultado [label="{Resultado|PK tentativa_id: int8\lacertos: int2\ltotal_temas: int2\lpercentual: numeric ?\lnota: numeric ?\lcalculado_em: timestamptz\l}"];
+ certificado [label="{Certificado|PK id: uuid\lFK tentativa_id: int8\ltoken_validacao: uuid\lnome_titular: varchar\lcpf_titular: varchar\lemail_titular: varchar\lnota: numeric\lpercentual: numeric\lemitido_em: timestamptz\l}"];
+ candidato -> tentativa [label="1 : 0..N"];
+ tema -> conteudo_estudo [label="1 : 0..N"];
+ tema -> questao [label="1 : 0..N versões"];
+ questao -> alternativa [label="1 : 4 publicadas"];
+ tentativa -> etapa_avaliacao [label="1 : 0..12"];
+ tema -> etapa_avaliacao [label="1 : 0..N"];
+ questao -> etapa_avaliacao [label="1 : 0..N"];
+ etapa_avaliacao -> resposta [label="1 : 0..1"];
+ tentativa -> resultado [label="1 : 0..1"];
+ resultado -> certificado [label="1 : 0..1"];
+}

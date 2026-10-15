@@ -955,7 +955,8 @@
       "title": "[S3][T062][RF19] Consultar autenticidade do certificado pelo identificador",
       "sprint": 3,
       "requirements": [
-        "RF19"
+        "RF19",
+        "RP08"
       ],
       "area": "backend",
       "depends_on": [
@@ -971,7 +972,8 @@
       "title": "[S3][T063][RF19] Implementar página pública de validação do certificado",
       "sprint": 3,
       "requirements": [
-        "RF19"
+        "RF19",
+        "RP08"
       ],
       "area": "frontend",
       "depends_on": [
@@ -1493,7 +1495,8 @@
         "RF17",
         "RF18",
         "RF19",
-        "RNF04"
+        "RNF04",
+        "RP08"
       ],
       "area": "testes",
       "depends_on": [

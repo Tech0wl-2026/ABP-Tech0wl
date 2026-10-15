@@ -1,0 +1,23 @@
+@startuml
+hide methods
+class Candidato
+class Tema
+class ConteudoEstudo
+class Questao
+class Alternativa
+class Tentativa
+class EtapaAvaliacao
+class Resposta
+class Resultado
+class Certificado
+Candidato "1" -- "0..*" Tentativa
+Tema "1" -- "0..*" ConteudoEstudo
+Tema "1" -- "0..*" Questao
+Questao "1" -- "0..4" Alternativa : rascunho; publicada exige 4
+Tentativa "1" -- "0..12" EtapaAvaliacao
+Tema "1" -- "0..*" EtapaAvaliacao
+Questao "1" -- "0..*" EtapaAvaliacao
+EtapaAvaliacao "1" -- "0..1" Resposta
+Tentativa "1" -- "0..1" Resultado
+Resultado "1" -- "0..1" Certificado : aproveitamento >= 65%
+@enduml

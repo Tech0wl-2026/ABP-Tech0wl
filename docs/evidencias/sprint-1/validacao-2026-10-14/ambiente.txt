@@ -1,0 +1,13 @@
+                                         version
+------------------------------------------------------------------------------------------
+ PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+(1 row)
+
+ temas_selecionados | pronta_para_certificacao
+--------------------+--------------------------
+                  0 | f
+(1 row)
+
+CONTAINER                REPOSITORY             TAG                 PLATFORM            IMAGE ID            SIZE                CREATED
+abp-tech0wl-db-1         postgres               17-alpine           linux/amd64         79bd7c99e923        297MB               292 years ago
+abp-tech0wl-frontend-1   abp-tech0wl-frontend   latest              linux/amd64         fc538c3e1470        68.4MB              6 seconds ago

@@ -1,11 +1,6 @@
 name: Configurar Project oficial da ABP
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/configurar-project.yml
-      - .github/scripts/configurar-project.py
   workflow_dispatch:
 
 permissions:

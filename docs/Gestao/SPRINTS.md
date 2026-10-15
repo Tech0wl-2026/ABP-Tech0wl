@@ -10,7 +10,7 @@ Entregar Figma navegável de RF01 a RF21, fluxos principais e de exceção, mode
 
 Os diagramas devem incluir atores/casos de uso, classes ou domínio, atividades/sequências pertinentes e estados da certificação. O Astah aparece na planilha; o formato editável definitivo deve ser acordado com a equipe.
 
-Não há obrigação de entregar cadastro, login ou prova implementados nesta Sprint. O desenho desses fluxos deve estar completo.
+Cadastro, login e prova continuam previstos para as próximas Sprints. A rubrica exige DW01 nas três Sprints: esta revisão acrescenta uma página informativa HTML/CSS/JS como incremento transversal. O desenho completo dos fluxos continua sendo meta da Sprint 1. Consulte o [plano de cobertura](../plano-de-entregas.md).
 
 ## Sprint 2 — 23 de outubro a 5 de novembro
 

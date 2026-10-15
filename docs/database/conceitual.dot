@@ -1,0 +1,25 @@
+digraph Modelo {
+ graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.45", ranksep="0.7", fontname="Arial", label="Tech0wl — modelo conceitual de referência", labelloc=t, fontsize=22];
+ node [shape=box, style="rounded,filled", fillcolor="#edf4ff", color="#4a6a94", fontname="Arial", fontsize=12, margin="0.18,0.12"];
+ edge [fontname="Arial", fontsize=10, color="#5c6e86"];
+ candidato [label="Candidato"];
+ tema [label="Tema"];
+ conteudo_estudo [label="Conteúdo de estudo"];
+ questao [label="Questão versionada"];
+ alternativa [label="Alternativa"];
+ tentativa [label="Tentativa"];
+ etapa_avaliacao [label="Etapa da avaliação"];
+ resposta [label="Resposta"];
+ resultado [label="Resultado"];
+ certificado [label="Certificado"];
+ candidato -> tentativa [label="1 : 0..N"];
+ tema -> conteudo_estudo [label="1 : 0..N"];
+ tema -> questao [label="1 : 0..N versões"];
+ questao -> alternativa [label="1 : 4 publicadas"];
+ tentativa -> etapa_avaliacao [label="1 : 0..12"];
+ tema -> etapa_avaliacao [label="1 : 0..N"];
+ questao -> etapa_avaliacao [label="1 : 0..N"];
+ etapa_avaliacao -> resposta [label="1 : 0..1"];
+ tentativa -> resultado [label="1 : 0..1"];
+ resultado -> certificado [label="1 : 0..1"];
+}

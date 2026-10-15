@@ -1,0 +1,299 @@
+{
+  "fonte": "docs/referencias/rubrica-sprints-2026-2.pdf",
+  "total_pontos": 100,
+  "plano_status": "Proposta de cobertura a confirmar com o professor; sem atribuição automática de nota",
+  "criterios": [
+    {
+      "id": "ES01",
+      "pontos": 4,
+      "titulo": "Product Backlog",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/Gestao/BACKLOG.md",
+      "situacao": "107 atividades vinculadas a requisitos; refinamento e prioridade exigem acompanhamento."
+    },
+    {
+      "id": "ES02",
+      "pontos": 4,
+      "titulo": "Planejamento da Sprint",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/plano-de-entregas.md",
+      "situacao": "Metas e períodos registrados; horário de fechamento e aceite do plano com professor pendentes."
+    },
+    {
+      "id": "ES03",
+      "pontos": 2,
+      "titulo": "Critérios de aceite",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/Gestao/BACKLOG_PLANEJADO.json",
+      "situacao": "Critérios estão nas issues; conclusão depende de demonstrar cada critério."
+    },
+    {
+      "id": "ES04",
+      "pontos": 3,
+      "titulo": "Rastreabilidade",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/avaliacao/RASTREABILIDADE.md",
+      "situacao": "Mapa requisito → issues → artefatos → validação, sem converter planejamento em conclusão."
+    },
+    {
+      "id": "ES05",
+      "pontos": 2,
+      "titulo": "Entrega incremental",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "frontend/index.html",
+      "situacao": "Primeiro incremento informativo e banco de referência; validar evolução em cada fechamento."
+    },
+    {
+      "id": "ES06",
+      "pontos": 3,
+      "titulo": "Review e Retrospectiva",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/sprints/sprint-1.md",
+      "situacao": "Sem ata real de Review/Retrospectiva ou feedback do professor; preencher após reunião."
+    },
+    {
+      "id": "ES07",
+      "pontos": 2,
+      "titulo": "Definition of Done",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/Gestao/DEFINITION_OF_DONE.md",
+      "situacao": "Proposta publicada; registrar adoção e aplicação pela equipe."
+    },
+    {
+      "id": "ES08",
+      "pontos": 2,
+      "titulo": "Documentação e execução",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/Tecnico/INSTALACAO.md",
+      "situacao": "Comandos reproduzíveis e limitações publicados; registrar execução no ambiente de entrega."
+    },
+    {
+      "id": "ES09",
+      "pontos": 8,
+      "titulo": "Participação individual",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/evidencias/sprint-1/participacao.md",
+      "situacao": "Atas inventadas não são evidência; faltam vínculos verificáveis de todos os integrantes."
+    },
+    {
+      "id": "DW01",
+      "pontos": 3,
+      "titulo": "HTML, CSS e JavaScript sem framework",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "frontend/index.html",
+      "situacao": "Página inicial real com menu e busca; frontend não possui framework."
+    },
+    {
+      "id": "DW02",
+      "pontos": 4,
+      "titulo": "Responsividade, semântica e validação",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "testes/frontend.spec.mjs",
+      "situacao": "Página informativa responsiva; formulários reais de cadastro/login ainda não existem."
+    },
+    {
+      "id": "DW03",
+      "pontos": 5,
+      "titulo": "Backend HTTP e PostgreSQL",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "docs/Tecnico/ARQUITETURA.md",
+      "situacao": "Backend e integração HTTP não implementados."
+    },
+    {
+      "id": "DW04",
+      "pontos": 5,
+      "titulo": "Estudos e base de 48 questões",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "docs/conteudo/questoes.md",
+      "situacao": "Somente amostra com 1 tema e 4 questões; faltam seleção dos 12 temas e conteúdo completo."
+    },
+    {
+      "id": "DW05",
+      "pontos": 6,
+      "titulo": "Motor completo de certificação",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "database/schema.sql",
+      "situacao": "Restrições de referência e testes SQL; falta fluxo real no servidor/interface."
+    },
+    {
+      "id": "DW06",
+      "pontos": 4,
+      "titulo": "Autenticação e integridade no servidor",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "docs/Tecnico/API.md",
+      "situacao": "CPF único e hash no modelo; autenticação, autorização e hash real ainda não implementados."
+    },
+    {
+      "id": "DW07",
+      "pontos": 3,
+      "titulo": "Docker Compose reproduzível",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "compose.yaml",
+      "situacao": "Incremento estático e PostgreSQL em containers; API futura precisará ser integrada."
+    },
+    {
+      "id": "BD01",
+      "pontos": 5,
+      "titulo": "Modelo conceitual e DER",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/database/conceitual.png",
+      "situacao": "Diagrama e fonte editável publicados como proposta técnica para revisão do grupo."
+    },
+    {
+      "id": "BD02",
+      "pontos": 5,
+      "titulo": "Modelo lógico e normalização",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/database/logico.png",
+      "situacao": "Chaves, dicionário e justificativa de 3FN; validar com responsável de modelagem."
+    },
+    {
+      "id": "BD03",
+      "pontos": 5,
+      "titulo": "Modelo físico e DDL PostgreSQL",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "database/schema.sql",
+      "situacao": "DDL executável e suíte em banco vazio; validação no PostgreSQL 17 via CI."
+    },
+    {
+      "id": "BD04",
+      "pontos": 5,
+      "titulo": "DML e consultas parametrizadas",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "database/consultas-exemplo.sql",
+      "situacao": "Seed e PREPARE demonstram SQL; execução pelo driver da futura API está pendente."
+    },
+    {
+      "id": "BD05",
+      "pontos": 5,
+      "titulo": "Persistência e histórico consistente",
+      "sprints_propostas": [
+        2,
+        3
+      ],
+      "evidencia": "testes/database.sql",
+      "situacao": "Restrições e testes de histórico presentes; integração ponta a ponta pendente."
+    },
+    {
+      "id": "DD01",
+      "pontos": 4,
+      "titulo": "Fluxos e wireframes",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/design/fluxo-de-telas.md",
+      "situacao": "Fluxos de referência publicados; faltam wireframes completos revisados e vínculo ao Figma."
+    },
+    {
+      "id": "DD02",
+      "pontos": 4,
+      "titulo": "Figma navegável e evidências",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/design/figma.md",
+      "situacao": "URL real, navegação, versão e exportações ainda não disponibilizadas."
+    },
+    {
+      "id": "DD03",
+      "pontos": 4,
+      "titulo": "Consistência e recursos visuais",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/design/sistema-visual.md",
+      "situacao": "Referência de cores, tipografia e créditos; falta comparação com Figma aprovado."
+    },
+    {
+      "id": "DD04",
+      "pontos": 3,
+      "titulo": "Mobile/desktop e usabilidade",
+      "sprints_propostas": [
+        1,
+        2,
+        3
+      ],
+      "evidencia": "docs/design/usabilidade.md",
+      "situacao": "Verificação técnica responsiva prevista; teste com colegas e comparação com Figma pendentes."
+    }
+  ]
+}

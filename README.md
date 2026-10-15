@@ -1,73 +1,62 @@
-# DSM ABP — TechOwl
+# Tech0wl · Portal de Certificação em Metodologias Ágeis
 
-## Portal de Certificação em Metodologias Ágeis
+ABP do **1º DSM da Fatec Jacareí · 2026-2**. O produto previsto reúne estudos por tema, avaliação e certificado verificável.
 
-Projeto de Aprendizagem Baseada em Projetos do **1º DSM da Fatec Jacareí**, semestre **2026-2**. O portal reúne estudo por tema, avaliação de conhecimentos sobre metodologias ágeis e emissão de certificado verificável.
+**Estado atual:** planejamento, modelos de referência e primeiro incremento informativo. A página inicial funciona em HTML/CSS/JS; o PostgreSQL possui schema e amostra com quatro questões. Cadastro, login, prova e emissão/validação de certificado ainda serão implementados. O frontend estático e o banco não estão integrados por uma API.
 
-**Situação:** planejamento e organização inicial do repositório. O código da aplicação ainda será desenvolvido; este README não declara o sistema implementado.
+[Project oficial](https://github.com/users/Tech0wl-2026/projects/7) · [Auditoria dos 25 critérios da rubrica](docs/avaliacao/AUDITORIA.md) · [Instalação](docs/Tecnico/INSTALACAO.md) · [Validação](testes/README.md)
 
-## Entregas e cronograma
+## Executar o incremento
 
-| Sprint | Período | Entrega |
+Requisitos: Docker e Docker Compose v2. Em uma cópia deste repositório:
+
+```sh
+cp .env.example .env
+# Defina uma senha local no .env.
+docker compose up --build -d --wait
+```
+
+Abrir **http://localhost:8080**. O banco é inicializado em volume vazio; dados persistem entre reinícios. Não existe conta de teste ou login nesta etapa. Consulte [instruções completas e limites](docs/Tecnico/INSTALACAO.md).
+
+## Entregas
+
+| Sprint | Período | Meta |
 |---|---|---|
-| 1 | 28/09 a 22/10/2026 | Figma completo de RF01 a RF21; UML; modelos conceitual, lógico e físico; DER; dicionário de dados; DDL PostgreSQL |
-| 2 | 23/10 a 05/11/2026 | Portal, cadastro/login, estudos e motor da prova com sorteio, cronômetro, feedback, interrupção, retomada e persistência |
-| 3 | 06/11 a 25/11/2026 | Resultado, certificado, QR Code, validação pública, histórico/progresso, validação integral e documentação final |
+| [1](docs/sprints/sprint-1.md) | 28/09–22/10/2026 | Figma completo RF01–RF21, UML e modelagem integral; incremento inicial para DW01 |
+| [2](docs/sprints/sprint-2.md) | 23/10–05/11/2026 | Portal, cadastro/login, estudos e motor da avaliação com persistência/retomada |
+| [3](docs/sprints/sprint-3.md) | 06/11–25/11/2026 | Resultado, certificado/QR, validação pública, histórico/progresso e regressão |
 
-**Apresentação final:** 26/11/2026. A Sprint 1 segue o escopo confirmado pelo grupo: protótipo e modelagem integral, incluindo os requisitos programados nas próximas Sprints.
+Apresentação: **26/11/2026**. Hora de fechamento a confirmar. [Plano de cobertura da rubrica](docs/plano-de-entregas.md): ES01–ES09 e DW01 devem ser demonstrados nas três Sprints. Modelos publicados nesta revisão são propostas técnicas, sujeitas a revisão do grupo. Nenhuma tag final foi criada antecipadamente.
 
-## Atividades por Sprint
+O Project organiza backlog, três quadros de Sprint, Minhas atividades e Roadmap. As milestones têm [50 atividades na Sprint 1](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/1), [31 na Sprint 2](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/2) e [26 na Sprint 3](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3). Estado e responsáveis reais devem ser consultados nas issues; alguns integrantes já assumiram tarefas. A existência de uma issue não representa entrega.
 
-**[Abrir o Project oficial — ABP Tech0wl | 2026-2](https://github.com/users/Tech0wl-2026/projects/7)**
+## Regras principais
 
-O Project reúne backlog, quadros das três sprints, Minhas atividades e Roadmap. Cada atividade possui sprint, área, prioridade e datas planejadas. Consulte o [guia do Project](docs/Gestao/GITHUB_PROJECT.md) para assumir e acompanhar uma atividade.
+- CPF único no cadastro; login por CPF/senha.
+- Estudos nos mesmos 12 temas da avaliação; quatro questões por tema, total de 48.
+- Uma questão sorteada por tema, imagem, A/B/C/D e uma correta.
+- Prazo de 150 segundos validado pelo servidor; expiração sem envio é incorreta, com feedback.
+- Questão interrompida é encerrada, sem reabertura; retomar no próximo tema pendente.
+- Resultado após os 12 temas; certificado com aproveitamento ≥65%, campos obrigatórios e QR de validação pública.
+- Histórico preservado e progresso dos temas. Ver [requisitos completos](docs/Requisitos/REQUISITOS.md) e [decisões pendentes](docs/Gestao/DECISOES.md).
 
-- [Sprint 1 — 50 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/1)
-- [Sprint 2 — 31 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/2)
-- [Sprint 3 — 26 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3)
+## Estrutura e evidências
 
-As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Consultar o [backlog](docs/Gestao/BACKLOG.md) para critérios e dependências.
-
-## Regras principais do portal
-
-- Cadastro com CPF único, nome completo, e-mail e senha; login por CPF e senha.
-- Área de estudos organizada pelos mesmos **12 temas** da avaliação.
-- **4 questões por tema**, totalizando **48**; uma questão sorteada por tema para cada candidato.
-- Cada questão tem imagem, alternativas A/B/C/D e uma única correta.
-- Cronômetro visível de **150 segundos**; sem resposta no prazo, a questão encerra como incorreta e mostra a correta.
-- Questão interrompida é encerrada e não pode ser respondida novamente. Retomada no próximo tema pendente.
-- Nota após os 12 temas; certificado apenas com aproveitamento **≥65%**.
-- Certificado com nome, CPF, e-mail, data/hora, nota, percentual e QR Code; validação pública.
-- Histórico de todas as avaliações e acompanhamento de temas concluídos/pendentes.
-
-## Tecnologias e restrições
-
-| Camada | Diretriz do desafio |
+| Local | Conteúdo |
 |---|---|
-| Protótipo | Figma navegável |
-| Modelagem | UML e modelos conceitual, lógico e físico completos |
-| Front-end | HTML, CSS e JavaScript, **sem frameworks** |
-| Back-end | Tecnologia Web a definir com a equipe; API e regras no servidor |
-| Banco | PostgreSQL com DDL e DML |
-| Execução | Aplicação e banco em Docker, orquestrados com Docker Compose |
-| Gestão | Scrum, Git, backlog, Sprints e critérios de pronto |
-
-## Navegação da documentação
-
-- [Requisitos oficiais transcritos](docs/Requisitos/REQUISITOS.md)
-- [Backlog e atividades](docs/Gestao/BACKLOG.md)
-- [Planejamento das Sprints](docs/Gestao/SPRINTS.md)
-- [Como contribuir e assumir uma atividade](CONTRIBUTING.md)
-- [Definition of Done](docs/Gestao/DEFINITION_OF_DONE.md)
-- [Daily Scrum](docs/Daily%20Scrum/README.md)
-- [Figma](docs/Prototipo/README.md)
-- [Modelagem do banco](docs/Modelagem/README.md)
-- [UML](docs/UML/README.md)
-- [Guia do GitHub Project](docs/Gestao/GITHUB_PROJECT.md)
+| [frontend](frontend/README.md) | HTML/CSS/JS sem framework, navegação mobile e busca |
+| [backend](backend/README.md) | Limites e integração ainda pendente |
+| [database](docs/database/README.md) | DER conceitual/lógico, fontes editáveis, dicionário, 3FN e DDL PostgreSQL |
+| [Design e Figma](docs/design/figma.md) | Fluxos, referência visual, versão/exportações pendentes |
+| [UML](docs/UML/README.md) | Orientações Astah, domínio editável e vínculo aos estados |
+| [Gestão](docs/Gestao/GITHUB_PROJECT.md) | [Backlog](docs/Gestao/BACKLOG.md), [DoD](docs/Gestao/DEFINITION_OF_DONE.md), [rastreabilidade](docs/avaliacao/RASTREABILIDADE.md) |
+| [Daily Scrum](docs/Daily%20Scrum/README.md) | Um arquivo por dia, apenas integrante/atividade; rascunhos identificados |
+| [Testes](testes/README.md) | Integridade SQL, navegador e CI do incremento |
+| [Conteúdo](docs/conteudo/questoes.md) | Amostra de quatro questões; completar/revisar 12 temas e 48 questões |
 
 ## Equipe
 
-| Integrante | Papel registrado no planejamento |
+| Integrante | Papel planejado |
 |---|---|
 | Abdi | Product Owner |
 | Breno | Scrum Master |
@@ -77,12 +66,10 @@ As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Cons
 | Sophia | Developer |
 | Tiago | Developer |
 
-Os nomes de usuário GitHub dos integrantes serão confirmados antes de atribuições e convites. As issues começam sem responsáveis, disponíveis para autoatribuição por colaboradores com as permissões necessárias.
+Confirmar identidades GitHub antes de novas atribuições. [Como contribuir](CONTRIBUTING.md) e [participação verificável](docs/evidencias/sprint-1/participacao.md). As atividades inventadas nos primeiros registros de Daily não são evidência de reunião ou participação.
 
-## Execução
+## Pendências para a entrega
 
-A aplicação ainda está em desenvolvimento. As instruções validadas serão mantidas em [INSTALACAO.md](docs/Tecnico/INSTALACAO.md). Não há comando de execução funcional publicado nesta etapa.
+Vincular o Figma real navegável e sua versão/exportações; revisar os modelos com a equipe; comprovar contribuições de todos; confirmar decisões de nota/tentativas e critérios planejados; realizar teste com colegas, Review e Retrospectiva reais. O CI verifica o incremento disponível e não certifica atendimento integral da rubrica.
 
-## Fontes
-
-Desafio 1DSM 2026-2, versão 29/06/2026; Sprint Planning de 28/09/2026; escopo da Sprint 1 confirmado pelo grupo em 13/10/2026.
+Fontes: [rubrica recebida](docs/referencias/rubrica-sprints-2026-2.pdf), desafio 1DSM 2026-2 (29/06/2026), planejamento de 28/09 e escopo da Sprint 1 confirmado pelo grupo. Não há licença global definida; confirmar direitos com os autores antes de reutilização externa.
