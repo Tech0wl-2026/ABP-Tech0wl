@@ -155,7 +155,7 @@ def main():
         raise RuntimeError("Automação limitada ao repositório oficial da ABP")
     if not PROJECT_TOKEN:
         raise RuntimeError("Configure o secret de Actions ABP_PROJECT_TOKEN (escopo project)")
-    plan = contents("documentos/Gestao/BACKLOG_PLANEJADO.json")
+    plan = contents("docs/Gestao/BACKLOG_PLANEJADO.json")
     if plan["repository"].lower() != REPO.lower():
         raise RuntimeError("Planejamento não corresponde ao repositório")
     tasks = plan["issues"]
@@ -211,7 +211,7 @@ Planejamento oficial do 1º DSM da Fatec Jacareí, 2026-2.
 5. Use Concluído após revisão e validação dos critérios de pronto.
 
 Daily Scrum de 15 minutos: realizado desde a última reunião, próximo passo e impedimentos.
-Registre atas reais em documentos/Daily Scrum. Registros reconstruídos devem permanecer identificados.
+Registre atas reais em docs/Daily Scrum. Registros reconstruídos devem permanecer identificados.
 
 As datas Início/Prazo representam a janela planejada da sprint, não evidência de início efetivo.
 Estimativas e responsáveis devem ser definidos pela equipe. Nenhuma atividade foi concluída automaticamente.

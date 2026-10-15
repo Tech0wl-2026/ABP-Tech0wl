@@ -20,13 +20,13 @@ Projeto de Aprendizagem Baseada em Projetos do **1º DSM da Fatec Jacareí**, se
 
 **[Abrir o Project oficial — ABP Tech0wl | 2026-2](https://github.com/users/Tech0wl-2026/projects/7)**
 
-O Project reúne backlog, quadros das três sprints, Minhas atividades e Roadmap. Cada atividade possui sprint, área, prioridade e datas planejadas. Consulte o [guia do Project](documentos/Gestao/GITHUB_PROJECT.md) para assumir e acompanhar uma atividade.
+O Project reúne backlog, quadros das três sprints, Minhas atividades e Roadmap. Cada atividade possui sprint, área, prioridade e datas planejadas. Consulte o [guia do Project](docs/Gestao/GITHUB_PROJECT.md) para assumir e acompanhar uma atividade.
 
 - [Sprint 1 — 50 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/1)
 - [Sprint 2 — 31 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/2)
 - [Sprint 3 — 26 atividades](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3)
 
-As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Consultar o [backlog](documentos/Gestao/BACKLOG.md) para critérios e dependências.
+As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Consultar o [backlog](docs/Gestao/BACKLOG.md) para critérios e dependências.
 
 ## Regras principais do portal
 
@@ -54,16 +54,16 @@ As 107 issues estão abertas, sem atribuição e vinculadas às milestones. Cons
 
 ## Navegação da documentação
 
-- [Requisitos oficiais transcritos](documentos/Requisitos/REQUISITOS.md)
-- [Backlog e atividades](documentos/Gestao/BACKLOG.md)
-- [Planejamento das Sprints](documentos/Gestao/SPRINTS.md)
+- [Requisitos oficiais transcritos](docs/Requisitos/REQUISITOS.md)
+- [Backlog e atividades](docs/Gestao/BACKLOG.md)
+- [Planejamento das Sprints](docs/Gestao/SPRINTS.md)
 - [Como contribuir e assumir uma atividade](CONTRIBUTING.md)
-- [Definition of Done](documentos/Gestao/DEFINITION_OF_DONE.md)
-- [Daily Scrum](documentos/Daily%20Scrum/README.md)
-- [Figma](documentos/Prototipo/README.md)
-- [Modelagem do banco](documentos/Modelagem/README.md)
-- [UML](documentos/UML/README.md)
-- [Guia do GitHub Project](documentos/Gestao/GITHUB_PROJECT.md)
+- [Definition of Done](docs/Gestao/DEFINITION_OF_DONE.md)
+- [Daily Scrum](docs/Daily%20Scrum/README.md)
+- [Figma](docs/Prototipo/README.md)
+- [Modelagem do banco](docs/Modelagem/README.md)
+- [UML](docs/UML/README.md)
+- [Guia do GitHub Project](docs/Gestao/GITHUB_PROJECT.md)
 
 ## Equipe
 
@@ -81,7 +81,7 @@ Os nomes de usuário GitHub dos integrantes serão confirmados antes de atribui�
 
 ## Execução
 
-A aplicação ainda está em desenvolvimento. As instruções validadas serão mantidas em [INSTALACAO.md](documentos/Tecnico/INSTALACAO.md). Não há comando de execução funcional publicado nesta etapa.
+A aplicação ainda está em desenvolvimento. As instruções validadas serão mantidas em [INSTALACAO.md](docs/Tecnico/INSTALACAO.md). Não há comando de execução funcional publicado nesta etapa.
 
 ## Fontes
 
