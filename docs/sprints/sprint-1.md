@@ -14,6 +14,8 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 - [Figma](../design/figma.md): URL, versão e navegação pendentes; imagens existentes não comprovam protótipo completo.
 - [Participação individual](../evidencias/sprint-1/participacao.md): relatos disponíveis e lacunas separados.
 
+- [Validação técnica de 14/10](../evidencias/sprint-1/validacao-2026-10-14/README.md): CI aprovado, 24 verificações SQL e quatro testes de navegador. Não encerra a Sprint.
+
 ## Registro obrigatório no fechamento
 
 | Campo | Estado atual |

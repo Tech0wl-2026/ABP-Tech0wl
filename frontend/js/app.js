@@ -26,7 +26,11 @@ document.addEventListener("keydown", (event) => {
 const search = document.querySelector("#busca");
 const questions = [...document.querySelectorAll(".faq-list details")];
 const status = document.querySelector("#resultado-busca");
-const normalize = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
+const normalize = (text) =>
+  text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("pt-BR");
 search.addEventListener("input", () => {
   const query = normalize(search.value.trim());
   let visible = 0;
@@ -35,5 +39,8 @@ search.addEventListener("input", () => {
     question.hidden = !match;
     if (match) visible++;
   }
-  status.textContent = visible === 0 ? "Nenhuma dúvida encontrada. Tente outra palavra." : `${visible} ${visible === 1 ? "dúvida encontrada" : "dúvidas encontradas"}.`;
+  status.textContent =
+    visible === 0
+      ? "Nenhuma dúvida encontrada. Tente outra palavra."
+      : `${visible} ${visible === 1 ? "dúvida encontrada" : "dúvidas encontradas"}.`;
 });

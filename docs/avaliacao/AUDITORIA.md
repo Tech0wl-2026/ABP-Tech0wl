@@ -56,3 +56,7 @@ ES09 exige participação relevante e verificável de todos. O número de commit
 ## Critérios de conclusão desta revisão técnica
 
 Executar os comandos de [validação](../../testes/README.md), conferir o resultado do CI do commit e revisar o diff antes de integrar. As pendências pedagógicas acima permanecem abertas, mesmo com CI aprovado. Os registros de [Sprint](../sprints/sprint-1.md) devem receber evidências reais no fechamento.
+
+## Resultado observado nesta revisão
+
+O [registro de execução real](../evidencias/sprint-1/validacao-2026-10-14/README.md) conserva hash, CI aprovado, PostgreSQL 17.11, resultado dos 24 testes SQL e capturas dos quatro testes de navegador. As limitações de produto e evidência listadas acima permanecem. RP08 foi acrescentado às issues T062/T063/T098, preservando seus textos e estados.

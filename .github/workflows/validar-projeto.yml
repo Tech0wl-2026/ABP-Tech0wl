@@ -23,6 +23,7 @@ jobs:
       - name: Documentação e sintaxe
         run: |
           python3 scripts/validar-repositorio.py
+          python3 -m unittest discover -s testes -p 'test_*.py'
           node --check frontend/js/app.js
           node --check scripts/servidor-local.mjs
           python3 -m py_compile .github/scripts/configurar-project.py

@@ -4,10 +4,11 @@
 
 ```sh
 python3 scripts/validar-repositorio.py
+python3 -m unittest discover -s testes -p 'test_*.py'
 node --check frontend/js/app.js
 ```
 
-Confere links locais, 25 critérios/100 pontos, cobertura transversal ES01–ES09/DW01, tarefas/requisitos rastreáveis, imagens do seed e sintaxe dos workflows. Não concede nota nem transforma pendências em atendimento.
+O teste de regressão do importador confirma que uma issue refinada/encerrada, com responsável e milestone modificados, não é restaurada ao snapshot antigo. A verificação estrutural confere links locais, 25 critérios/100 pontos, cobertura transversal ES01–ES09/DW01, tarefas/requisitos rastreáveis, imagens do seed e sintaxe dos workflows. Não concede nota nem transforma pendências em atendimento.
 
 ## Banco vazio — PostgreSQL 17
 
