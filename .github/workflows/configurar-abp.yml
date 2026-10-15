@@ -1,11 +1,6 @@
 name: Configurar Sprints e etiquetas da ABP
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/configurar-abp.yml
-      - .github/abp-backlog.json
   workflow_dispatch:
 
 permissions:
@@ -89,8 +84,7 @@ jobs:
               previous = existing_milestones.get(data['title'])
               if previous:
                   milestone = previous
-                  if previous.get('description') != data['description'] or (previous.get('due_on') or '')[:10] != desired_day:
-                      milestone = api('/milestones/' + str(previous['number']), 'PATCH', data)
+                  # Preservar ajustes feitos pela equipe após a importação inicial.
               else:
                   milestone = api('/milestones', 'POST', data)
               milestones[definition['source_number']] = milestone
@@ -116,13 +110,10 @@ jobs:
                   raise RuntimeError('Issue de origem sem identificador de task')
               milestone_number = milestones[definition['source_milestone']]['number']
               issue = existing_issues.get(key)
-              if issue:
-                  if not issue.get('milestone') or issue['milestone']['number'] != milestone_number:
-                      issue = api('/issues/' + str(issue['number']), 'PATCH', {'milestone': milestone_number})
-              else:
+              if not issue:
                   issue = api('/issues', 'POST', {
                       'title': definition['title'],
-                      'body': definition['body'].replace(source_base, target_base),
+                      'body': definition['body'],
                       'labels': definition['labels'],
                       'milestone': milestone_number,
                   })
@@ -133,7 +124,8 @@ jobs:
           counts = {1: 0, 2: 0, 3: 0}
           for definition in snapshot['issues']:
               issue = imported[definition['key']]
-              body = old_issue.sub(lambda match: target_base + '/issues/' + str(number_map[int(match.group(1))]), definition['body'])
+              body = old_issue.sub(lambda match: target_base + '/issues/' + str(number_map[int(match.group(1))]), issue.get('body') or '')
+              # Normalizar apenas URLs antigas, preservando refinamentos/checkboxes.
               body = body.replace(source_base, target_base)
               if issue.get('body') != body:
                   issue = api('/issues/' + str(issue['number']), 'PATCH', {'body': body})
@@ -148,7 +140,7 @@ jobs:
           lines = ['# Estrutura da ABP replicada', '', '| Sprint | Issues | Milestone |', '|---|---:|---|']
           for source_number, milestone in milestones.items():
               lines.append('| ' + str(source_number) + ' | ' + str(counts[source_number]) + ' | [' + milestone['title'] + '](' + milestone['html_url'] + ') |')
-          lines += ['', '107 atividades importadas. Nenhuma foi atribuída ou encerrada.', '',
+          lines += ['', '107 atividades verificadas. Corpos refinados, responsáveis, estados e milestones existentes foram preservados.', '',
                     'A especificação do GitHub Project foi copiada; o quadro visual não é criado por este workflow.']
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write('\n'.join(lines) + '\n')

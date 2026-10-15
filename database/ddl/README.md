@@ -1,3 +1,3 @@
-# database/ddl
+# DDL
 
-Diretório reservado para os artefatos reais da equipe. A implementação ainda será adicionada. Vincular alterações às issues e seguir a documentação do projeto.
+O script inicial canônico está em [schema.sql](../schema.sql), para evitar cópias divergentes. Consultar [modelo/dicionário](../../docs/database/README.md) e [execução](../../docs/Tecnico/INSTALACAO.md). Este diretório permanece como referência de organização, sem um segundo schema.

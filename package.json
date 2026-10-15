@@ -1,0 +1,17 @@
+{
+  "name": "abp-tech0wl-validacao",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ferramentas de valida\u00e7\u00e3o; frontend utiliza HTML/CSS/JS sem framework",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test testes/frontend.spec.mjs",
+    "serve": "node scripts/servidor-local.mjs",
+    "check": "python3 scripts/validar-repositorio.py"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  }
+}

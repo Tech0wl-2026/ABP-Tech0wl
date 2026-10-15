@@ -1,0 +1,1792 @@
+{
+  "motor": "PostgreSQL, metadados extraídos via PGlite 18.6 para documentação; validar DDL no PostgreSQL 17 do CI",
+  "colunas": [
+    {
+      "table_name": "alternativa",
+      "column_name": "questao_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "alternativa",
+      "column_name": "letra",
+      "data_type": "character",
+      "udt_name": "bpchar",
+      "character_maximum_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "alternativa",
+      "column_name": "texto",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "alternativa",
+      "column_name": "correta",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "false",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "cpf",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 11,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "nome_completo",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 160,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "email",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 254,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "senha_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "candidato",
+      "column_name": "criado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "tentativa_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "token_validacao",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "nome_titular",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 160,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "cpf_titular",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 11,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "email_titular",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 254,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "nota",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 4,
+      "numeric_scale": 2,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "percentual",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 5,
+      "numeric_scale": 2,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "certificado",
+      "column_name": "emitido_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "clock_timestamp()",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "tema_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "titulo",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 180,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "corpo_markdown",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "fontes",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "versao",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "1",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "conteudo_estudo",
+      "column_name": "publicado",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "false",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "tentativa_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "tema_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "questao_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "ordem",
+      "data_type": "smallint",
+      "udt_name": "int2",
+      "character_maximum_length": null,
+      "numeric_precision": 16,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "estado",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 16,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'PENDENTE'::character varying",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "apresentada_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "prazo_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "etapa_avaliacao",
+      "column_name": "encerrada_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "tema_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "numero",
+      "data_type": "smallint",
+      "udt_name": "int2",
+      "character_maximum_length": null,
+      "numeric_precision": 16,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "versao",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "1",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "enunciado",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "imagem_caminho",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "imagem_descricao",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "imagem_fonte",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "justificativa",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "fonte_conteudo",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "questao",
+      "column_name": "publicada",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "false",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "etapa_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "questao_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "alternativa_escolhida",
+      "data_type": "character",
+      "udt_name": "bpchar",
+      "character_maximum_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "alternativa_correta",
+      "data_type": "character",
+      "udt_name": "bpchar",
+      "character_maximum_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "registrada_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "clock_timestamp()",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resposta",
+      "column_name": "acertou",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "ALWAYS",
+      "generation_expression": "((alternativa_escolhida IS NOT NULL) AND (alternativa_escolhida = alternativa_correta))"
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "tentativa_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "acertos",
+      "data_type": "smallint",
+      "udt_name": "int2",
+      "character_maximum_length": null,
+      "numeric_precision": 16,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "total_temas",
+      "data_type": "smallint",
+      "udt_name": "int2",
+      "character_maximum_length": null,
+      "numeric_precision": 16,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "12",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "percentual",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 5,
+      "numeric_scale": 2,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "ALWAYS",
+      "generation_expression": "round((((acertos)::numeric * 100.0) / (12)::numeric), 2)"
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "nota",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 4,
+      "numeric_scale": 2,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "ALWAYS",
+      "generation_expression": "round((((acertos)::numeric * 10.0) / (12)::numeric), 2)"
+    },
+    {
+      "table_name": "resultado",
+      "column_name": "calculado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "clock_timestamp()",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tema",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tema",
+      "column_name": "nome",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 120,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tema",
+      "column_name": "ordem",
+      "data_type": "smallint",
+      "udt_name": "int2",
+      "character_maximum_length": null,
+      "numeric_precision": 16,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tema",
+      "column_name": "selecionado",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "false",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "candidato_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "estado",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 16,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'EM_ANDAMENTO'::character varying",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "iniciada_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "concluida_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    },
+    {
+      "table_name": "tentativa",
+      "column_name": "versao_regra",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'peso-igual-v1-proposta'::text",
+      "is_identity": "NO",
+      "is_generated": "NEVER",
+      "generation_expression": null
+    }
+  ],
+  "restricoes": [
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_correta_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL correta"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_letra_check",
+      "tipo": "c",
+      "definicao": "CHECK ((letra = ANY (ARRAY['A'::bpchar, 'B'::bpchar, 'C'::bpchar, 'D'::bpchar])))"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_letra_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL letra"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (questao_id, letra)"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_questao_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (questao_id) REFERENCES questao(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_questao_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL questao_id"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_texto_check",
+      "tipo": "c",
+      "definicao": "CHECK ((length(TRIM(BOTH FROM texto)) > 0))"
+    },
+    {
+      "tabela": "alternativa",
+      "nome": "alternativa_texto_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL texto"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_cpf_check",
+      "tipo": "c",
+      "definicao": "CHECK (((cpf)::text ~ '^[0-9]{11}$'::text))"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_cpf_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (cpf)"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_cpf_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL cpf"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_criado_em_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_email_check",
+      "tipo": "c",
+      "definicao": "CHECK ((POSITION(('@'::text) IN (email)) > 1))"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_email_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL email"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_nome_completo_check",
+      "tipo": "c",
+      "definicao": "CHECK ((length(TRIM(BOTH FROM nome_completo)) > 0))"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_nome_completo_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL nome_completo"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_senha_hash_check",
+      "tipo": "c",
+      "definicao": "CHECK ((length(senha_hash) >= 20))"
+    },
+    {
+      "tabela": "candidato",
+      "nome": "candidato_senha_hash_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL senha_hash"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_cpf_titular_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL cpf_titular"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_email_titular_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL email_titular"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_emitido_em_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL emitido_em"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_nome_titular_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL nome_titular"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_nota_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL nota"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_percentual_check",
+      "tipo": "c",
+      "definicao": "CHECK (((percentual >= (65)::numeric) AND (percentual <= (100)::numeric)))"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_percentual_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL percentual"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_tentativa_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tentativa_id) REFERENCES resultado(tentativa_id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_tentativa_id_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (tentativa_id)"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_tentativa_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tentativa_id"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_token_validacao_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (token_validacao)"
+    },
+    {
+      "tabela": "certificado",
+      "nome": "certificado_token_validacao_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL token_validacao"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_corpo_markdown_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL corpo_markdown"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_fontes_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL fontes"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_publicado_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL publicado"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_tema_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tema_id) REFERENCES tema(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_tema_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tema_id"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_tema_id_titulo_versao_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (tema_id, titulo, versao)"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_titulo_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL titulo"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_versao_check",
+      "tipo": "c",
+      "definicao": "CHECK ((versao > 0))"
+    },
+    {
+      "tabela": "conteudo_estudo",
+      "nome": "conteudo_estudo_versao_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL versao"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_check",
+      "tipo": "c",
+      "definicao": "CHECK (((((estado)::text = 'PENDENTE'::text) AND (apresentada_em IS NULL) AND (prazo_em IS NULL) AND (encerrada_em IS NULL)) OR (((estado)::text = 'EM_ANDAMENTO'::text) AND (apresentada_em IS NOT NULL) AND (prazo_em IS NOT NULL) AND (encerrada_em IS NULL)) OR (((estado)::text = ANY ((ARRAY['RESPONDIDA'::character varying, 'EXPIRADA'::character varying, 'INTERROMPIDA'::character varying])::text[])) AND (apresentada_em IS NOT NULL) AND (prazo_em IS NOT NULL) AND (encerrada_em IS NOT NULL))))"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_check1",
+      "tipo": "c",
+      "definicao": "CHECK (((prazo_em IS NULL) OR (prazo_em = (apresentada_em + '00:02:30'::interval))))"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_check2",
+      "tipo": "c",
+      "definicao": "CHECK (((encerrada_em IS NULL) OR (encerrada_em >= apresentada_em)))"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_estado_check",
+      "tipo": "c",
+      "definicao": "CHECK (((estado)::text = ANY ((ARRAY['PENDENTE'::character varying, 'EM_ANDAMENTO'::character varying, 'RESPONDIDA'::character varying, 'EXPIRADA'::character varying, 'INTERROMPIDA'::character varying])::text[])))"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_estado_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL estado"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_id_questao_id_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (id, questao_id)"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_ordem_check",
+      "tipo": "c",
+      "definicao": "CHECK (((ordem >= 1) AND (ordem <= 12)))"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_ordem_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL ordem"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_questao_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL questao_id"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_questao_id_tema_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (questao_id, tema_id) REFERENCES questao(id, tema_id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tema_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tema_id) REFERENCES tema(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tema_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tema_id"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tentativa_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tentativa_id) REFERENCES tentativa(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tentativa_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tentativa_id"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tentativa_id_ordem_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (tentativa_id, ordem)"
+    },
+    {
+      "tabela": "etapa_avaliacao",
+      "nome": "etapa_avaliacao_tentativa_id_tema_id_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (tentativa_id, tema_id)"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_enunciado_check",
+      "tipo": "c",
+      "definicao": "CHECK ((length(TRIM(BOTH FROM enunciado)) > 0))"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_enunciado_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL enunciado"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_fonte_conteudo_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL fonte_conteudo"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_id_tema_id_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (id, tema_id)"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_imagem_caminho_check",
+      "tipo": "c",
+      "definicao": "CHECK ((length(TRIM(BOTH FROM imagem_caminho)) > 0))"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_imagem_caminho_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL imagem_caminho"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_imagem_descricao_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL imagem_descricao"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_imagem_fonte_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL imagem_fonte"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_justificativa_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL justificativa"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_numero_check",
+      "tipo": "c",
+      "definicao": "CHECK (((numero >= 1) AND (numero <= 4)))"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_numero_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL numero"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_publicada_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL publicada"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_tema_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tema_id) REFERENCES tema(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_tema_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tema_id"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_tema_id_numero_versao_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (tema_id, numero, versao)"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_versao_check",
+      "tipo": "c",
+      "definicao": "CHECK ((versao > 0))"
+    },
+    {
+      "tabela": "questao",
+      "nome": "questao_versao_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL versao"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_alternativa_correta_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL alternativa_correta"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_etapa_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL etapa_id"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_etapa_id_questao_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (etapa_id, questao_id) REFERENCES etapa_avaliacao(id, questao_id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (etapa_id)"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_questao_id_alternativa_correta_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (questao_id, alternativa_correta) REFERENCES alternativa(questao_id, letra) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_questao_id_alternativa_escolhida_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (questao_id, alternativa_escolhida) REFERENCES alternativa(questao_id, letra) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_questao_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL questao_id"
+    },
+    {
+      "tabela": "resposta",
+      "nome": "resposta_registrada_em_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL registrada_em"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_acertos_check",
+      "tipo": "c",
+      "definicao": "CHECK (((acertos >= 0) AND (acertos <= 12)))"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_acertos_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL acertos"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_calculado_em_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL calculado_em"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (tentativa_id)"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_tentativa_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (tentativa_id) REFERENCES tentativa(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_tentativa_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL tentativa_id"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_total_temas_check",
+      "tipo": "c",
+      "definicao": "CHECK ((total_temas = 12))"
+    },
+    {
+      "tabela": "resultado",
+      "nome": "resultado_total_temas_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL total_temas"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_nome_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (nome)"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_nome_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL nome"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_ordem_check",
+      "tipo": "c",
+      "definicao": "CHECK (((ordem >= 1) AND (ordem <= 12)))"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_ordem_key",
+      "tipo": "u",
+      "definicao": "UNIQUE (ordem)"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_ordem_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL ordem"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "tema",
+      "nome": "tema_selecionado_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL selecionado"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_candidato_id_fkey",
+      "tipo": "f",
+      "definicao": "FOREIGN KEY (candidato_id) REFERENCES candidato(id) ON DELETE RESTRICT"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_candidato_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL candidato_id"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_check",
+      "tipo": "c",
+      "definicao": "CHECK (((((estado)::text = 'CONCLUIDA'::text) AND (concluida_em IS NOT NULL)) OR (((estado)::text <> 'CONCLUIDA'::text) AND (concluida_em IS NULL))))"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_check1",
+      "tipo": "c",
+      "definicao": "CHECK (((concluida_em IS NULL) OR (concluida_em >= iniciada_em)))"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_estado_check",
+      "tipo": "c",
+      "definicao": "CHECK (((estado)::text = ANY ((ARRAY['EM_ANDAMENTO'::character varying, 'PAUSADA'::character varying, 'CONCLUIDA'::character varying])::text[])))"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_estado_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL estado"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_id_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_iniciada_em_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL iniciada_em"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_pkey",
+      "tipo": "p",
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "tentativa",
+      "nome": "tentativa_versao_regra_not_null",
+      "tipo": "n",
+      "definicao": "NOT NULL versao_regra"
+    }
+  ],
+  "indices": [
+    {
+      "tablename": "alternativa",
+      "indexname": "alternativa_pkey",
+      "indexdef": "CREATE UNIQUE INDEX alternativa_pkey ON public.alternativa USING btree (questao_id, letra)"
+    },
+    {
+      "tablename": "alternativa",
+      "indexname": "alternativa_uma_correta",
+      "indexdef": "CREATE UNIQUE INDEX alternativa_uma_correta ON public.alternativa USING btree (questao_id) WHERE correta"
+    },
+    {
+      "tablename": "candidato",
+      "indexname": "candidato_cpf_key",
+      "indexdef": "CREATE UNIQUE INDEX candidato_cpf_key ON public.candidato USING btree (cpf)"
+    },
+    {
+      "tablename": "candidato",
+      "indexname": "candidato_pkey",
+      "indexdef": "CREATE UNIQUE INDEX candidato_pkey ON public.candidato USING btree (id)"
+    },
+    {
+      "tablename": "certificado",
+      "indexname": "certificado_pkey",
+      "indexdef": "CREATE UNIQUE INDEX certificado_pkey ON public.certificado USING btree (id)"
+    },
+    {
+      "tablename": "certificado",
+      "indexname": "certificado_tentativa_id_key",
+      "indexdef": "CREATE UNIQUE INDEX certificado_tentativa_id_key ON public.certificado USING btree (tentativa_id)"
+    },
+    {
+      "tablename": "certificado",
+      "indexname": "certificado_token_validacao_key",
+      "indexdef": "CREATE UNIQUE INDEX certificado_token_validacao_key ON public.certificado USING btree (token_validacao)"
+    },
+    {
+      "tablename": "conteudo_estudo",
+      "indexname": "conteudo_estudo_pkey",
+      "indexdef": "CREATE UNIQUE INDEX conteudo_estudo_pkey ON public.conteudo_estudo USING btree (id)"
+    },
+    {
+      "tablename": "conteudo_estudo",
+      "indexname": "conteudo_estudo_tema_id_titulo_versao_key",
+      "indexdef": "CREATE UNIQUE INDEX conteudo_estudo_tema_id_titulo_versao_key ON public.conteudo_estudo USING btree (tema_id, titulo, versao)"
+    },
+    {
+      "tablename": "conteudo_estudo",
+      "indexname": "conteudo_tema",
+      "indexdef": "CREATE INDEX conteudo_tema ON public.conteudo_estudo USING btree (tema_id)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_avaliacao_id_questao_id_key",
+      "indexdef": "CREATE UNIQUE INDEX etapa_avaliacao_id_questao_id_key ON public.etapa_avaliacao USING btree (id, questao_id)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_avaliacao_pkey",
+      "indexdef": "CREATE UNIQUE INDEX etapa_avaliacao_pkey ON public.etapa_avaliacao USING btree (id)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_avaliacao_tentativa_id_ordem_key",
+      "indexdef": "CREATE UNIQUE INDEX etapa_avaliacao_tentativa_id_ordem_key ON public.etapa_avaliacao USING btree (tentativa_id, ordem)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_avaliacao_tentativa_id_tema_id_key",
+      "indexdef": "CREATE UNIQUE INDEX etapa_avaliacao_tentativa_id_tema_id_key ON public.etapa_avaliacao USING btree (tentativa_id, tema_id)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_questao",
+      "indexdef": "CREATE INDEX etapa_questao ON public.etapa_avaliacao USING btree (questao_id)"
+    },
+    {
+      "tablename": "etapa_avaliacao",
+      "indexname": "etapa_uma_questao_ativa",
+      "indexdef": "CREATE UNIQUE INDEX etapa_uma_questao_ativa ON public.etapa_avaliacao USING btree (tentativa_id) WHERE ((estado)::text = 'EM_ANDAMENTO'::text)"
+    },
+    {
+      "tablename": "questao",
+      "indexname": "questao_id_tema_id_key",
+      "indexdef": "CREATE UNIQUE INDEX questao_id_tema_id_key ON public.questao USING btree (id, tema_id)"
+    },
+    {
+      "tablename": "questao",
+      "indexname": "questao_pkey",
+      "indexdef": "CREATE UNIQUE INDEX questao_pkey ON public.questao USING btree (id)"
+    },
+    {
+      "tablename": "questao",
+      "indexname": "questao_slot_publicado",
+      "indexdef": "CREATE UNIQUE INDEX questao_slot_publicado ON public.questao USING btree (tema_id, numero) WHERE publicada"
+    },
+    {
+      "tablename": "questao",
+      "indexname": "questao_tema_id_numero_versao_key",
+      "indexdef": "CREATE UNIQUE INDEX questao_tema_id_numero_versao_key ON public.questao USING btree (tema_id, numero, versao)"
+    },
+    {
+      "tablename": "resposta",
+      "indexname": "resposta_pkey",
+      "indexdef": "CREATE UNIQUE INDEX resposta_pkey ON public.resposta USING btree (etapa_id)"
+    },
+    {
+      "tablename": "resultado",
+      "indexname": "resultado_pkey",
+      "indexdef": "CREATE UNIQUE INDEX resultado_pkey ON public.resultado USING btree (tentativa_id)"
+    },
+    {
+      "tablename": "tema",
+      "indexname": "tema_nome_key",
+      "indexdef": "CREATE UNIQUE INDEX tema_nome_key ON public.tema USING btree (nome)"
+    },
+    {
+      "tablename": "tema",
+      "indexname": "tema_ordem_key",
+      "indexdef": "CREATE UNIQUE INDEX tema_ordem_key ON public.tema USING btree (ordem)"
+    },
+    {
+      "tablename": "tema",
+      "indexname": "tema_pkey",
+      "indexdef": "CREATE UNIQUE INDEX tema_pkey ON public.tema USING btree (id)"
+    },
+    {
+      "tablename": "tentativa",
+      "indexname": "tentativa_candidato",
+      "indexdef": "CREATE INDEX tentativa_candidato ON public.tentativa USING btree (candidato_id)"
+    },
+    {
+      "tablename": "tentativa",
+      "indexname": "tentativa_pkey",
+      "indexdef": "CREATE UNIQUE INDEX tentativa_pkey ON public.tentativa USING btree (id)"
+    }
+  ]
+}

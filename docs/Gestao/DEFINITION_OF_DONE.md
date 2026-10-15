@@ -39,3 +39,12 @@ Proposta inicial para validação pela equipe na issue T080. A criação deste d
 - Texto representa o estado real do produto.
 - Links internos funcionam e fontes estão identificadas.
 - Registros reconstruídos de reuniões não são apresentados como atas confirmadas.
+
+## Fechamento da Sprint
+
+- Critérios planejados e horário acordados com professor.
+- CI aprovado no hash entregue e teste manual registrado quando pertinente.
+- Versão/exportação do Figma e fontes editáveis dos modelos no commit.
+- Evidência individual real, Review, Retrospectiva e melhoria acompanhada.
+- Registro em `docs/sprints/`, snapshot das issues e tag imutável apenas no fechamento.
+- Nenhuma funcionalidade, autoria ou aprovação anunciada sem evidência.

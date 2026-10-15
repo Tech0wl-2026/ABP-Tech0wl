@@ -20,7 +20,7 @@ Adicionar novos registros nos dias em que houver Daily Scrum. Se faltar o relato
 
 Os arquivos de **28/09 a 13/10** contêm atividades fictícias sugeridas a pedido da equipe, ainda pendentes de validação. A existência dos arquivos, inclusive nos fins de semana, não confirma que houve reunião nessas datas. Ajustar os relatos e manter apenas as datas confirmadas antes de usá-los como atas reais.
 
-O registro de **14/10** está com as atividades em branco para preenchimento pela equipe.
+O registro de **14/10** foi preenchido pela equipe. O arquivo de **16/10** foi reservado e só deve ser tratado como reunião após confirmação e relato real.
 
 - [28/09/2026](2026-09-28.md)
 - [29/09/2026](2026-09-29.md)
@@ -39,5 +39,6 @@ O registro de **14/10** está com as atividades em branco para preenchimento pel
 - [12/10/2026](2026-10-12.md)
 - [13/10/2026](2026-10-13.md)
 - [14/10/2026](2026-10-14.md)
+- [16/10/2026 — reservado](2026-10-16.md)
 
 A [versão anterior consolidada](https://github.com/Tech0wl-2026/ABP-Tech0wl/blob/36799cb1a4db10448bc168d4740c330ef623af3c/documentos/Daily%20Scrum/REGISTROS_RECONSTRUIDOS.md) permanece disponível no histórico do Git.

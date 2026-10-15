@@ -1,7 +1,3 @@
-# Protótipo Figma
+# Protótipo
 
-Entrega prevista até **22/10/2026**. Inserir o link real do Figma e evidências quando o artefato existir.
-
-Cobrir RF01 a RF21: home, cadastro, login, estudos/temas/conteúdo, início e retomada, questão com imagem e alternativas, cronômetro, feedback, expiração/interrupção, continuidade, resultado, certificado, validação pública, histórico e progresso. Prever versão móvel e estados de erro.
-
-Registrar decisões, frames e cobertura de requisitos na issue correspondente. A presença deste README não significa que o protótipo está concluído.
+Os estudos visuais enviados pela equipe permanecem nesta pasta. O [registro do Figma](../design/figma.md) identifica os arquivos, as revisões necessárias e a ausência atual de URL/versão navegável. Consultar [fluxos](../design/fluxo-de-telas.md) e [referência visual](../design/sistema-visual.md). Não tratar PNG isolado como protótipo completo.
