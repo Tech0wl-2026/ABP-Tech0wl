@@ -1,0 +1,61 @@
+@startuml
+!pragma layout smetana
+left to right direction
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam ArrowFontSize 11
+skinparam classFontSize 14
+skinparam classAttributeFontSize 12
+skinparam nodesep 42
+skinparam ranksep 50
+skinparam padding 6
+skinparam classBorderColor #526982
+skinparam ArrowColor #526982
+skinparam backgroundColor white
+class "Aluno" as Candidato <<referencia>> #f0f2f6 {
+  -id: int
+}
+class "Tentativa" as Tentativa <<complemento>> #edf4ff {
+  -id: Inteiro64
+  -estado: EstadoTentativa
+  -iniciadaEm: Instante
+  -concluidaEm: Instante [0..1]
+  -versaoRegra: Texto
+  --
+  +proximaEtapaPendente(): EtapaAvaliacao [0..1]
+  +listarTemasConcluidos(): Lista<Temas>
+  +listarTemasPendentes(): Lista<Temas>
+  +consultarHistorico(): Lista<EtapaAvaliacao>
+}
+class "Resultado" as Resultado <<complemento>> #edf4ff {
+  -acertos: Inteiro {0..12}
+  -totalTemas: Inteiro {12}
+  /percentual: Decimal
+  /nota: Decimal
+  -calculadoEm: Instante
+  --
+  +permiteCertificado(): Boolean
+}
+class "Certificado" as Certificado <<complemento>> #edf4ff {
+  -id: UUID
+  -tokenValidacao: UUID {único}
+  -nomeTitular: Texto
+  -cpfTitular: Texto {tamanho=11}
+  -emailTitular: Texto
+  -nota: Decimal
+  -percentual: Decimal
+  -emitidoEm: Instante
+  /urlValidacao: URI
+  /qrCode: Bytes
+  --
+  +obterURLValidacao(base: URI): URI
+}
+Candidato "1" -- "0..*" Tentativa : realiza
+Tentativa "1" -- "0..1" Resultado : apurar após 12 temas
+Resultado "1" -- "0..1" Certificado : somente se >=65%
+@enduml

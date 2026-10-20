@@ -1,0 +1,40 @@
+[
+  {
+    "id": "01-area-estudos",
+    "titulo": "Área de estudos",
+    "classes": [
+      "Temas",
+      "ConteudoEstudo"
+    ],
+    "requisitos": "RF07 / RP07",
+    "nota": "Complementa Temas, já presente no questionário de Thiago. ConteudoEstudo é novo; não redesenha Questão ou Alternativa."
+  },
+  {
+    "id": "02-tentativa-retomada-historico",
+    "titulo": "Tentativa, retomada, histórico e progresso",
+    "classes": [
+      "Aluno",
+      "Temas",
+      "Questão",
+      "Resposta",
+      "Tentativa",
+      "EtapaAvaliacao",
+      "EstadoTentativa",
+      "EstadoEtapa"
+    ],
+    "requisitos": "RF02 / RF05 / RF10-RF15 / RF20 / RF21",
+    "nota": "Acrescenta Tentativa e EtapaAvaliacao. Aluno, Temas, Questão e Resposta são referências aos elementos existentes, sem alteração dos arquivos Astah."
+  },
+  {
+    "id": "03-resultado-validacao",
+    "titulo": "Resultado e dados do certificado",
+    "classes": [
+      "Aluno",
+      "Tentativa",
+      "Resultado",
+      "Certificado"
+    ],
+    "requisitos": "RF16-RF19 / RP08",
+    "nota": "Acrescenta os dados de Resultado/Certificado e a URL pública do QR. A operação de emissão do diagrama original de Thiago é mantida."
+  }
+]
