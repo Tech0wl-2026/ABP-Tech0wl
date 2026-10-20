@@ -1,11 +1,11 @@
 # Decisões e dúvidas de domínio
 
-As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. Propostas abaixo não foram aprovadas pelo professor.
+As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. D02 foi definida pelo grupo e informada por Breno em 20/10/2026; as demais propostas abaixo não foram aprovadas pelo professor.
 
 | ID | Decisão necessária | Proposta técnica desta revisão | Responsável pela validação |
 |---|---|---|---|
 | D01 | Tecnologia do backend e driver PostgreSQL | Escolher uma stack pequena que a equipe saiba manter; nenhuma API implementada ainda | Equipe técnica |
-| D02 | Seleção e ordem dos 12 temas | Validar com Gabriel A./PO; não tratar a amostra Scrum como seleção final | Conteúdo/PO |
+| D02 | Seleção e ordem dos 12 temas | **Definida em 20/10/2026:** [12 temas e numeração original](../conteudo/temas.md), com [catálogo JSON](../conteudo/temas.json). Conteúdo e 48 questões ainda precisam de produção/revisão | Definição do grupo informada por Breno; acompanhamento por Conteúdo/PO |
 | D03 | Pesos, escala e arredondamento da nota | DDL de referência usa pesos iguais, percentual `acertos/12*100` e nota 0–10, duas casas. 8 acertos = 66,67%, 7 = 58,33%. Confirmar antes de integrar | Professor/PO |
 | D04 | Pontuação em interrupção de questão | Amostra persiste sem resposta e incorreta; requisito garante encerramento, política exata deve ser confirmada | Professor/PO |
 | D05 | Limite de novas tentativas após finalizar | Modelo aceita várias tentativas, uma resposta por tema em cada tentativa. Confirmar se o desafio exige bloqueio por candidato em vez de por tentativa | Professor/PO |

@@ -34,3 +34,7 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 | Próxima ação e responsável | Preencher a partir da reunião real |
 
 Não preencher reuniões futuras como se já tivessem ocorrido. Não substituir registro de execução por um checklist marcado sem evidência.
+
+## Atualização de 20/10/2026
+
+Os [12 temas](../conteudo/temas.md) foram definidos e as [sequências UML](../UML/sequencias/README.md) foram revisadas em fontes PlantUML e imagens. A incorporação das correções no Astah, o Figma e o aceite integral continuam pendentes. Consultar a [lista atualizada para fechamento](pendencias-sprint-1-2026-10-20.md).

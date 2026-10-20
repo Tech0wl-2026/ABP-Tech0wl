@@ -14,3 +14,7 @@ Estado: **4 questões demonstrativas de um tema**, não 48 questões finais. O [
 O DDL permite rascunhos incompletos e só publica questão com quatro alternativas e uma correta. Questão utilizada e suas alternativas não são alteradas; despublicar e criar nova versão preserva o histórico. A base só fica pronta quando a seleção completa passa na view de prontidão.
 
 Conteúdo, gabarito e justificativa devem ficar no servidor durante resolução. Servir o seed ou enviar a alternativa correta antes de encerrar a questão violaria a integridade da avaliação.
+
+## Seleção temática definida
+
+Os [12 temas oficiais do projeto](temas.md) foram definidos em 20/10/2026. Esta base continua sendo amostra técnica, não o conjunto final de 48 questões. A distribuição final será de quatro questões revisadas por tema, ligadas ao conteúdo didático correspondente.

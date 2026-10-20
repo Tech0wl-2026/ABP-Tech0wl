@@ -1,0 +1,66 @@
+{
+  "definido_em": "2026-10-20",
+  "origem": "Temas definidos pelo grupo e informados por Breno nesta data. Não representa aprovação do professor sobre as demais regras.",
+  "temas": [
+    {
+      "ordem": 1,
+      "numero_original": 1,
+      "nome": "Fundamentos da Agilidade"
+    },
+    {
+      "ordem": 2,
+      "numero_original": 3,
+      "nome": "Introdução ao Scrum"
+    },
+    {
+      "ordem": 3,
+      "numero_original": 4,
+      "nome": "Papéis do Scrum"
+    },
+    {
+      "ordem": 4,
+      "numero_original": 5,
+      "nome": "Eventos do Scrum"
+    },
+    {
+      "ordem": 5,
+      "numero_original": 6,
+      "nome": "Artefatos do Scrum"
+    },
+    {
+      "ordem": 6,
+      "numero_original": 8,
+      "nome": "Gestão do Product Backlog"
+    },
+    {
+      "ordem": 7,
+      "numero_original": 9,
+      "nome": "Kanban"
+    },
+    {
+      "ordem": 8,
+      "numero_original": 10,
+      "nome": "Planejamento Ágil"
+    },
+    {
+      "ordem": 9,
+      "numero_original": 11,
+      "nome": "Métricas Ágeis"
+    },
+    {
+      "ordem": 10,
+      "numero_original": 13,
+      "nome": "Extreme Programming (XP)"
+    },
+    {
+      "ordem": 11,
+      "numero_original": 14,
+      "nome": "Ferramentas para Equipes Ágeis"
+    },
+    {
+      "ordem": 12,
+      "numero_original": 15,
+      "nome": "Boas Práticas em Projetos Ágeis"
+    }
+  ]
+}
