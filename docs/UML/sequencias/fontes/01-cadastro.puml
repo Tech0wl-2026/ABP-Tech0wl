@@ -1,0 +1,36 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS01A — Cadastro com CPF único
+actor Candidato as C
+boundary "Interface" as UI
+control "Controlador de autenticação" as API
+database PostgreSQL as DB
+C -> UI: Informar CPF, nome, email e senha
+UI -> API: solicitarCadastro(dados)
+API -> API: normalizar e validar dados\nproduzir hash seguro da senha
+alt dados inválidos
+ API --> UI: erro de validação
+ UI --> C: corrigir os dados
+else dados válidos
+ API -> DB: inserirCandidato(CPF, nome, email, hash)\nUNIQUE(CPF), em transação
+ alt CPF já cadastrado / conflito de unicidade
+  DB --> API: conflito
+  API --> UI: cadastro não realizado
+  UI --> C: orientar correção ou login
+ else inserção confirmada
+  DB --> API: id do candidato
+  API --> UI: cadastro realizado
+  UI --> C: seguir para o login
+ end
+end
+note over API, DB
+Senha de entrada não é persistida nem registrada em logs.
+Banco retorna ao controlador; não responde à interface diretamente.
+Hash/validação são responsabilidades da futura implementação.
+end note
+@enduml

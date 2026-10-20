@@ -1,0 +1,49 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS03 — Continuidade, pausa, retomada e progresso
+actor Candidato as C
+boundary "Portal" as UI
+control "Controlador de certificação" as API
+database PostgreSQL as DB
+loop para cada solicitação autenticada de continuar ou retomar
+ C -> UI: continuar / retomar certificação
+ UI -> API: consultar tentativa e próximo tema
+ API -> DB: validar sessão e titularidade\nobter estados e tratar etapa ativa anterior
+ DB --> API: concluídos, pendentes e eventual etapa interrompida
+ API -> API: finalizar etapa anterior conforme D04/D07\nsem permitir reabertura
+ API -> DB: consultar próximo tema ainda pendente
+ DB --> API: próximo tema ou nenhum
+ alt existe tema pendente
+  API --> UI: progresso e próximo tema
+  ref over C, DB
+   DS02 — Resolver e encerrar uma questão
+  end ref
+  alt candidato escolhe pausar após feedback
+   C -> UI: encerrar sessão
+   UI -> API: pausar tentativa
+   API -> DB: persistir estado PAUSADA
+   DB --> API: confirmado
+   API --> UI: pausa confirmada
+   break aguardar nova sessão autenticada
+    UI --> C: retornar posteriormente ao próximo tema pendente
+   end
+  else continuar
+   UI --> C: avançar para o próximo tema
+  end
+ else nenhum tema pendente e 12 encerrados
+  API -> DB: marcar tentativa CONCLUIDA e registrar horário
+  DB --> API: conclusão confirmada
+  API --> UI: avaliação concluída; consultar resultado
+ end
+end
+note over API, DB
+Uma etapa por tema/tentativa; encerradas não são reabertas.
+Novas tentativas após conclusão dependem de D05.
+O mecanismo concreto de detecção de interrupção depende de D07.
+end note
+@enduml
