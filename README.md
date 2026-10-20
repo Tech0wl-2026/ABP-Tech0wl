@@ -52,7 +52,7 @@ O Project organiza backlog, três quadros de Sprint, Minhas atividades e Roadmap
 | [Gestão](docs/Gestao/GITHUB_PROJECT.md) | [Backlog](docs/Gestao/BACKLOG.md), [DoD](docs/Gestao/DEFINITION_OF_DONE.md), [rastreabilidade](docs/avaliacao/RASTREABILIDADE.md) |
 | [Daily Scrum](docs/Daily%20Scrum/README.md) | Um arquivo por dia, apenas integrante/atividade; rascunhos identificados |
 | [Testes](testes/README.md) | Integridade SQL, navegador e CI do incremento |
-| [Conteúdo](docs/conteudo/questoes.md) | Amostra de quatro questões; completar/revisar 12 temas e 48 questões |
+| [Conteúdo](docs/conteudo/questoes.md) | Amostra de quatro questões; 12 temas definidos; produzir/revisar os materiais e as 48 questões |
 
 ## Equipe
 
@@ -73,3 +73,7 @@ Confirmar identidades GitHub antes de novas atribuições. [Como contribuir](CON
 Vincular o Figma real navegável e sua versão/exportações; revisar os modelos com a equipe; comprovar contribuições de todos; confirmar decisões de nota/tentativas e critérios planejados; realizar teste com colegas, Review e Retrospectiva reais. O CI verifica o incremento disponível e não certifica atendimento integral da rubrica.
 
 Fontes: [rubrica recebida](docs/referencias/rubrica-sprints-2026-2.pdf), desafio 1DSM 2026-2 (29/06/2026), planejamento de 28/09 e escopo da Sprint 1 confirmado pelo grupo. Não há licença global definida; confirmar direitos com os autores antes de reutilização externa.
+
+## Temas definidos
+
+A seleção dos [12 temas da certificação](docs/conteudo/temas.md) foi informada pelo grupo em 20/10/2026, com numeração original e ordem contínua registradas. A produção e a revisão dos materiais e das 48 questões continuam pendentes.
