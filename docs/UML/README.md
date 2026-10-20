@@ -1,9 +1,27 @@
-# UML de referência para Astah
+# UML do projeto
 
-A equipe relatou trabalho no Astah, mas não há arquivo `.asta` publicado nesta revisão. Não foram criadas evidências de edição ou autoria em nome dos colegas.
+## Diagramas de classes existentes - Thiago
 
-O [diagrama de estados de referência](../design/fluxo-de-telas.md) descreve o ciclo da questão, e o [modelo lógico](../database/logico.png) orienta as classes de domínio: Candidato, Tema, ConteudoEstudo, Questao, Alternativa, Tentativa, EtapaAvaliacao, Resposta, Resultado e Certificado. O [fonte PlantUML](dominio.puml) é editável e pode orientar a reprodução no Astah; não é um arquivo nativo do Astah.
+Os cinco arquivos abaixo foram publicados por **Tiago Oliveira** (Thiago, integrante confirmado pelo grupo) em 16/10/2026. Foram localizados na `main` e na branch `sprint/1-prototipo-modelagem` e trazidos para `develop` **sem alteração de conteúdo**. A autoria original permanece registrada no [commit de origem](https://github.com/Tech0wl-2026/ABP-Tech0wl/commit/40beab55c78411b683bfd7b6169498a4c27afd1f).
 
-No caso de uso, adotar ator **Candidato** e ator **Verificador público**, com fronteira “Portal de Certificação”. Casos: consultar instruções/estudos; cadastrar; autenticar; iniciar/retomar avaliação; responder questão; pausar; acompanhar progresso; consultar histórico/resultado; obter certificado se aprovado; validar certificado público. Tempo, sorteio, gabarito e cálculo são comportamentos internos, não atores humanos. Não usar `include` para simples ordem de telas; usar fluxos alternativos para expiração/interrupção e precondição para certificado ≥65%.
+| Tema | Projeto Astah preservado |
+|---|---|
+| Cadastro | [diagramacadastro.asta](diagramacadastro.asta) |
+| Login | [diagramalogin.asta](diagramalogin.asta) |
+| Questionário | [diagramaquestionario.asta](diagramaquestionario.asta) |
+| Resposta | [diagramaresposta.asta](diagramaresposta.asta) |
+| Emissão do certificado | [diagramaemissaocertificado.asta](diagramaemissaocertificado.asta) |
 
-Entregar o `.asta` real com casos de uso/descrições, classes, estados e sequências pertinentes, revisar contra RF01–RF21 e registrar autoria/revisão na issue.
+## Apenas os complementos ausentes
+
+Após comparar os elementos dos arquivos existentes com o desafio, foram acrescentadas três vistas: **área de estudos**, **tentativa/retomada/histórico/progresso** e **resultado/dados do certificado/validação pública**. Elas referenciam Aluno, Temas, Questão e Resposta já existentes, sem substituir seus diagramas.
+
+[Abrir os complementos](complementos/README.md) · [Review antes da publicação](REVISAO-CLASSES.md) · [Inventário e hashes dos originais](INVENTARIO-CLASSES-EXISTENTES.json)
+
+As novas fontes são **PlantUML**, com SVG e PNG. Não foram inseridas automaticamente nos projetos `.asta`. A equipe deve revisar os complementos e incorporá-los ao Astah se aprovar. A integração com a `main` está registrada no [PR #111](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/111). O [review](REVISAO-CLASSES.md) preserva o registro da publicação inicial em `develop`.
+
+## Caso de uso e outras referências
+
+- [Projeto Astah de caso de uso](PortalDeCertificacaoEmMetodologiasAgeis.asta) e [exportação PDF](casoDeUsoPortalDeCertificacaoEmMetodologiasAgeis.pdf), preservados.
+- [Resumo de domínio anterior](dominio.puml), mantido como referência histórica, sem impor mudança de nomes aos arquivos de Thiago.
+- [Requisitos](../Requisitos/REQUISITOS.md), [schema e dicionário](../database/README.md) e [decisões pendentes](../Gestao/DECISOES.md).
