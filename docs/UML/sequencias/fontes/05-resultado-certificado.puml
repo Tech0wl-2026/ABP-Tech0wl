@@ -1,0 +1,39 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS04 — Resultado e certificado condicionado à aprovação
+actor Candidato as C
+boundary "Portal" as UI
+control "Controlador de certificação" as API
+database PostgreSQL as DB
+C -> UI: consultar resultado da tentativa
+UI -> API: obterResultado(tentativa)
+API -> DB: validar titularidade e consultar etapas/respostas
+DB --> API: contagem e histórico persistidos
+alt menos de 12 temas encerrados
+ API --> UI: resultado ainda indisponível; progresso atual
+else 12 temas encerrados
+ API -> API: apurar nota/percentual conforme regra validada (D03)
+ API -> DB: registrar resultado único, sem alterar histórico
+ DB --> API: resultado persistido ou já existente
+ alt aproveitamento >= 65%
+  API -> DB: obter/criar certificado único do resultado\nsnapshot dos dados e token único
+  DB --> API: nome, CPF, email, nota, percentual, emissão e token
+  API -> API: gerar documento e QR apontando à URL pública do token
+  API --> UI: resultado aprovado e certificado privado
+  UI --> C: disponibilizar certificado
+ else aproveitamento < 65%
+  API --> UI: resultado reprovado, sem emissão de certificado
+  UI --> C: apresentar desempenho
+ end
+end
+note over API, DB
+D03: pesos, escala e arredondamento ainda pendentes de validação.
+Duplicidade não cria outro resultado/certificado para a mesma tentativa.
+Os dados pessoais completos pertencem ao documento privado.
+end note
+@enduml

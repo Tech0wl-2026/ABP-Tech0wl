@@ -1,0 +1,31 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS01B — Login por CPF e senha
+actor Candidato as C
+boundary "Interface" as UI
+control "Controlador de autenticação" as API
+database PostgreSQL as DB
+C -> UI: informar CPF e senha
+UI -> API: autenticar(CPF, senha)
+API -> DB: consultar candidato por CPF normalizado
+DB --> API: candidato com hash, ou inexistente
+API -> API: verificar credenciais no servidor\ncomparar senha com hash com rotina segura
+alt credenciais inválidas
+ API --> UI: erro genérico de autenticação
+ UI --> C: tentar novamente
+else credenciais válidas
+ API -> API: criar sessão protegida
+ API --> UI: acesso permitido, sem senha/hash
+ UI --> C: apresentar painel da certificação
+end
+note over API
+Limites de tentativas, mecanismo de sessão e expiração
+devem ser definidos pela equipe em D01/D07.
+Não presumir JWT ou política já aprovada.
+end note
+@enduml
