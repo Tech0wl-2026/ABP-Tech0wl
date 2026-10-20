@@ -1,0 +1,78 @@
+@startuml
+!pragma layout smetana
+top to bottom direction
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam ArrowFontSize 11
+skinparam classFontSize 14
+skinparam classAttributeFontSize 12
+skinparam nodesep 42
+skinparam ranksep 50
+skinparam padding 6
+skinparam classBorderColor #526982
+skinparam ArrowColor #526982
+skinparam backgroundColor white
+class "Aluno" as Candidato <<referencia>> #f0f2f6 {
+  -id: int
+}
+class "Temas" as Tema <<referencia>> #f0f2f6 {
+  -id: int
+  -nome: String
+}
+class "Questão" as Questao <<referencia>> #f0f2f6 {
+  -id: int
+}
+class "Resposta" as Resposta <<referencia>> #f0f2f6 {
+  -letraResposta: char
+  -dataHorarioResposta: DateTime
+  -acertou: boolean
+}
+class "Tentativa" as Tentativa <<complemento>> #edf4ff {
+  -id: Inteiro64
+  -estado: EstadoTentativa
+  -iniciadaEm: Instante
+  -concluidaEm: Instante [0..1]
+  -versaoRegra: Texto
+  --
+  +proximaEtapaPendente(): EtapaAvaliacao [0..1]
+  +listarTemasConcluidos(): Lista<Temas>
+  +listarTemasPendentes(): Lista<Temas>
+  +consultarHistorico(): Lista<EtapaAvaliacao>
+}
+class "EtapaAvaliacao" as EtapaAvaliacao <<complemento>> #edf4ff {
+  -id: Inteiro64
+  -ordem: Inteiro {1..12}
+  -estado: EstadoEtapa
+  -apresentadaEm: Instante [0..1]
+  -prazoEm: Instante [0..1]
+  -encerradaEm: Instante [0..1]
+  --
+  +iniciar(agora: Instante): Vazio
+  +podeResponder(agora: Instante): Boolean
+  +encerrar(estado: EstadoEtapa, agora: Instante): Vazio
+}
+enum "EstadoTentativa" as EstadoTentativa <<enumeration>> #e7f3ec {
+  EM_ANDAMENTO
+  PAUSADA
+  CONCLUIDA
+}
+enum "EstadoEtapa" as EstadoEtapa <<enumeration>> #e7f3ec {
+  PENDENTE
+  EM_ANDAMENTO
+  RESPONDIDA
+  EXPIRADA
+  INTERROMPIDA
+}
+Candidato "1" -- "0..*" Tentativa : realiza
+Tentativa "1" *-- "0..12" EtapaAvaliacao : etapas; concluir exige 12
+Tema "1" -- "0..*" EtapaAvaliacao : tema avaliado
+Questao "1" -- "0..*" EtapaAvaliacao : questão sorteada preservada
+EtapaAvaliacao "1" -- "0..1" Resposta : resposta única
+Tentativa ..> EstadoTentativa : estado
+EtapaAvaliacao ..> EstadoEtapa : estado
+@enduml

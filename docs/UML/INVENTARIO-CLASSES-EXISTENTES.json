@@ -1,0 +1,319 @@
+{
+  "data_revisao": "2026-10-19",
+  "autor_commit_original": "Tiago Oliveira",
+  "integrante_confirmado_pelo_usuario": "Thiago",
+  "commit_original": "40beab55c78411b683bfd7b6169498a4c27afd1f",
+  "branch_sprint_1": "60d22bdf5ef2b5e27d829c6315ca1b78a01a4100",
+  "metodo": "Leitura dos elementos serializados EntityStore com parser Python; sem executar classes Java. Conteúdo binário idêntico entre main e sprint/1-prototipo-modelagem. Não substitui revisão visual no Astah.",
+  "arquivos": [
+    {
+      "arquivo": "diagramacadastro.asta",
+      "git_blob_sha": "9812adcafa6241254cdd732e06d6410e2e564a09",
+      "sha256": "da3079bdbd2376275a7f37359f0751820453660a33b71ec924d6ba0cd5635a5d",
+      "classes": [
+        "FormularioCadastro",
+        "Aluno",
+        "datetime"
+      ],
+      "atributos": [
+        {
+          "dono": "Aluno",
+          "nome": "nome",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "email",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "cpf",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "senha_hash",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "criado_em",
+          "tipo": "datetime"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "certificado_hash",
+          "tipo": "string"
+        }
+      ],
+      "operacoes": [
+        {
+          "dono": "Aluno",
+          "nome": "cadastrar",
+          "tipo": null
+        }
+      ]
+    },
+    {
+      "arquivo": "diagramaresposta.asta",
+      "git_blob_sha": "e9fd36b872e9b1bef796779e8a91139bc5383595",
+      "sha256": "ca35531a2119defdeae9b5d132d2bb78b4062815ab6a5bebcec05bd5f25763a8",
+      "classes": [
+        "Questão",
+        "Resposta",
+        "DateTime",
+        "Aluno"
+      ],
+      "atributos": [
+        {
+          "dono": "Questão",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "letraResposta",
+          "tipo": "char"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "dataHorarioInicio",
+          "tipo": "DateTime"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "dataHorarioResposta",
+          "tipo": "DateTime"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "valida",
+          "tipo": "boolean"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "acertou",
+          "tipo": "boolean"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "id",
+          "tipo": "int"
+        }
+      ],
+      "operacoes": [
+        {
+          "dono": "Resposta",
+          "nome": "registrarResposta",
+          "tipo": null
+        },
+        {
+          "dono": "Resposta",
+          "nome": "verificarAcerto",
+          "tipo": null
+        },
+        {
+          "dono": "Resposta",
+          "nome": "verificarPrazo",
+          "tipo": null
+        }
+      ]
+    },
+    {
+      "arquivo": "diagramaquestionario.asta",
+      "git_blob_sha": "b980d11c7009555f28f4cf58172bb09f008cc440",
+      "sha256": "06fbc586e2c5492bfe03312a4fc93ba91401e839c860298384388f65c3ab3230",
+      "classes": [
+        "Alternativa",
+        "String",
+        "Temas",
+        "List",
+        "Questão"
+      ],
+      "atributos": [
+        {
+          "dono": "Alternativa",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "Alternativa",
+          "nome": "letra",
+          "tipo": "char"
+        },
+        {
+          "dono": "Alternativa",
+          "nome": "texto",
+          "tipo": "String"
+        },
+        {
+          "dono": "Temas",
+          "nome": "nome",
+          "tipo": "String"
+        },
+        {
+          "dono": "Temas",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "Temas",
+          "nome": "NumTema",
+          "tipo": "int"
+        },
+        {
+          "dono": "Questão",
+          "nome": "enunciado",
+          "tipo": "String"
+        },
+        {
+          "dono": "Questão",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "Questão",
+          "nome": "NumQuestao",
+          "tipo": "int"
+        },
+        {
+          "dono": "Questão",
+          "nome": "imagem_url",
+          "tipo": "String"
+        },
+        {
+          "dono": "Alternativa",
+          "nome": "correta",
+          "tipo": "boolean"
+        }
+      ],
+      "operacoes": [
+        {
+          "dono": "Temas",
+          "nome": "buscarProximoTema",
+          "tipo": null
+        },
+        {
+          "dono": "Temas",
+          "nome": "listarTemas",
+          "tipo": null
+        },
+        {
+          "dono": "Questão",
+          "nome": "sortearQuestao",
+          "tipo": null
+        }
+      ]
+    },
+    {
+      "arquivo": "diagramalogin.asta",
+      "git_blob_sha": "ad97569fce812b3912c03965de0f00ad348e996c",
+      "sha256": "2147428145c5292118040f61242083dd25c5f4f80507e7a3a6bd7a0ba407d8dd",
+      "classes": [
+        "FormularioCadastro",
+        "Aluno",
+        "aluno",
+        "FormularioLogin"
+      ],
+      "atributos": [
+        {
+          "dono": "Aluno",
+          "nome": "nome",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "email",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "cpf",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "senha",
+          "tipo": "string"
+        },
+        {
+          "dono": "Aluno",
+          "nome": "id",
+          "tipo": "int"
+        },
+        {
+          "dono": "aluno",
+          "nome": "cpf",
+          "tipo": "string"
+        },
+        {
+          "dono": "aluno",
+          "nome": "senha",
+          "tipo": "string"
+        }
+      ],
+      "operacoes": [
+        {
+          "dono": "Aluno",
+          "nome": "cadastrar",
+          "tipo": null
+        },
+        {
+          "dono": "aluno",
+          "nome": "informarCPF",
+          "tipo": null
+        },
+        {
+          "dono": "aluno",
+          "nome": "informarSenha",
+          "tipo": null
+        },
+        {
+          "dono": "aluno",
+          "nome": "enviarLogin",
+          "tipo": null
+        }
+      ]
+    },
+    {
+      "arquivo": "diagramaemissaocertificado.asta",
+      "git_blob_sha": "6025a40be34aff162b09556680d68c16c8de22df",
+      "sha256": "bffba420c109e0facdc72c0e516f91f88d7ceda8f76346aa42fe29d54ed12889",
+      "classes": [
+        "Resposta",
+        "Alunos",
+        "String"
+      ],
+      "atributos": [
+        {
+          "dono": "Resposta",
+          "nome": "valida",
+          "tipo": "boolean"
+        },
+        {
+          "dono": "Resposta",
+          "nome": "acertou",
+          "tipo": "boolean"
+        },
+        {
+          "dono": "Alunos",
+          "nome": "certificado_hash",
+          "tipo": "String"
+        }
+      ],
+      "operacoes": [
+        {
+          "dono": "Alunos",
+          "nome": "emitirCertificado",
+          "tipo": null
+        }
+      ]
+    }
+  ]
+}

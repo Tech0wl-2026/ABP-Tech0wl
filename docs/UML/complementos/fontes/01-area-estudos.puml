@@ -1,0 +1,35 @@
+@startuml
+!pragma layout smetana
+left to right direction
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam ArrowFontSize 11
+skinparam classFontSize 14
+skinparam classAttributeFontSize 12
+skinparam nodesep 42
+skinparam ranksep 50
+skinparam padding 6
+skinparam classBorderColor #526982
+skinparam ArrowColor #526982
+skinparam backgroundColor white
+class "Temas" as Tema <<referencia>> #f0f2f6 {
+  -id: int
+  -nome: String
+}
+class "ConteudoEstudo" as ConteudoEstudo <<complemento>> #edf4ff {
+  -id: Inteiro64
+  -titulo: Texto
+  -corpoMarkdown: Texto
+  -fontes: Texto
+  -versao: Inteiro
+  -publicado: Boolean
+  --
+  +obterMaterial(): Texto
+}
+Tema "1" -- "0..*" ConteudoEstudo : possui material versionado
+@enduml
