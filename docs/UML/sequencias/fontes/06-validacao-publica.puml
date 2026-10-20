@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS05 — Validar autenticidade pelo QR Code
+actor "Verificador público" as V
+boundary "Página de validação" as UI
+control "Controlador de certificados" as API
+database PostgreSQL as DB
+V -> UI: abrir URL do QR com token
+UI -> API: validarCertificado(token), sem login obrigatório
+API -> DB: consultar certificado por token opaco
+DB --> API: certificado válido ou inexistente
+alt token válido e certificado existente
+ API --> UI: autenticidade e dados públicos autorizados em D06
+ UI --> V: certificado válido
+else token inválido ou inexistente
+ API --> UI: certificado não encontrado
+ UI --> V: informar impossibilidade de validação
+end
+note over UI, DB
+Campos públicos dependem de decisão D06.
+Não expor CPF/email completos na consulta pública proposta.
+O QR precisa apontar à página real quando a função for implementada.
+end note
+@enduml

@@ -25,3 +25,7 @@ As novas fontes são **PlantUML**, com SVG e PNG. Não foram inseridas automatic
 - [Projeto Astah de caso de uso](PortalDeCertificacaoEmMetodologiasAgeis.asta) e [exportação PDF](casoDeUsoPortalDeCertificacaoEmMetodologiasAgeis.pdf), preservados.
 - [Resumo de domínio anterior](dominio.puml), mantido como referência histórica, sem impor mudança de nomes aos arquivos de Thiago.
 - [Requisitos](../Requisitos/REQUISITOS.md), [schema e dicionário](../database/README.md) e [decisões pendentes](../Gestao/DECISOES.md).
+
+## Sequências revisadas
+
+[Fontes e imagens corrigidas](sequencias/README.md), com cadastro/login, resolução da questão, pausa/retomada, resultado/certificado e validação pública. A [versão inicial do Astah](rascunhos/README.md) foi preservada para continuidade da equipe; a incorporação das correções no editor continua pendente.

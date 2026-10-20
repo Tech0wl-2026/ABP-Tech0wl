@@ -1,0 +1,49 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 230
+title DS02 — Resolver e encerrar uma questão
+actor Candidato as C
+boundary "Portal" as UI
+control "Controlador de certificação" as API
+database PostgreSQL as DB
+note over UI, DB
+Precondição: sessão válida, tentativa do candidato e tema pendente.
+Prazo e estado são controlados pelo servidor.
+end note
+C -> UI: iniciar próximo tema
+UI -> API: iniciarEtapa(tentativa)
+API -> DB: bloquear tentativa/etapa e validar titularidade\nconferir base pronta e tema ainda pendente
+DB --> API: etapa pendente e 4 questões publicadas do tema
+API -> API: sortear uma questão
+API -> DB: persistir versão sorteada e início\nprazo = início + 150 segundos; confirmar transação
+DB --> API: etapa em andamento e prazo do servidor
+API --> UI: imagem, A/B/C/D e prazo, sem gabarito
+UI --> C: apresentar questão e cronômetro de 150 segundos
+alt resposta enviada no prazo
+ C -> UI: escolher alternativa e enviar
+ UI -> API: responder(etapa, alternativa)
+ API -> DB: bloquear etapa e conferir estado/prazo\nregistrar resposta e encerrar atomicamente
+ DB --> API: resposta confirmada ou etapa já encerrada
+ API --> UI: estado final e feedback, com alternativa correta
+else prazo esgotado sem envio
+ API -> DB: encerrar etapa vencida sem escolha\nregistrar gabarito e horário, atomicamente
+ DB --> API: EXPIRADA, resposta incorreta
+ API --> UI: expiração e alternativa correta ao consultar/retornar
+else interrupção durante a resolução
+ API -> API: detectar/interpretar interrupção conforme D07
+ API -> DB: bloquear e encerrar sem reabrir a questão\npreservar sorteio e histórico
+ DB --> API: INTERROMPIDA
+ API --> UI: estado final e feedback na reconexão/consulta
+end
+UI --> C: feedback; oferecer continuar ou encerrar sessão
+note over API, DB
+Envio duplicado devolve estado já confirmado, sem nova resposta.
+Usar transação, bloqueio e chave única por etapa.
+A política de detecção de perda de conexão (D07) e o tratamento
+da interrupção (D04) ainda precisam de decisão da equipe/PO.
+end note
+@enduml
