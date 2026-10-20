@@ -18,7 +18,7 @@ Após comparar os elementos dos arquivos existentes com o desafio, foram acresce
 
 [Abrir os complementos](complementos/README.md) · [Review antes da publicação](REVISAO-CLASSES.md) · [Inventário e hashes dos originais](INVENTARIO-CLASSES-EXISTENTES.json)
 
-As novas fontes são **PlantUML**, com SVG e PNG. Não foram inseridas automaticamente nos projetos `.asta`. A equipe deve revisar os complementos e incorporá-los ao Astah se aprovar. Nenhum PR foi aberto por esta publicação; a revisão e o pedido de PR ficam com a equipe.
+As novas fontes são **PlantUML**, com SVG e PNG. Não foram inseridas automaticamente nos projetos `.asta`. A equipe deve revisar os complementos e incorporá-los ao Astah se aprovar. A integração com a `main` está registrada no [PR #111](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/111). O [review](REVISAO-CLASSES.md) preserva o registro da publicação inicial em `develop`.
 
 ## Caso de uso e outras referências
 
