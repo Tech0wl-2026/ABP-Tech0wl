@@ -14,9 +14,6 @@
 
 ## Imagens já recebidas
 
-Uma nova versão do logotipo [APREDIZAGEM-Photoroom.png](../Prototipo/APREDIZAGEM-Photoroom.png) foi enviada à main durante a revisão e preservada integralmente. Confirmar autoria e versão visual preferida com a equipe.
-
-- [APREDIZAGEM.png](../Prototipo/APREDIZAGEM.png): referência visual do logotipo; autoria/licença e grafia do nome do arquivo devem ser confirmadas. Preservada sem atribuição inventada.
 - [Prototipo-CertificadoV1.png](../Prototipo/Prototipo-CertificadoV1.png): estudo visual. Não comprova emissão nem QR funcional. Revisar o título “participação” para certificação por aproveitamento, o curso para metodologias ágeis, os dados fictícios e a assinatura institucional. Validar que nota, percentual, data/hora e QR correspondam ao resultado real. Não publicar CPF/e-mail reais em evidências públicas.
 
 A página HTML desta revisão é um incremento informativo independente; sua aparência azul ainda não foi homologada como identidade do Figma. Não declarar equivalência visual sem comparação.
