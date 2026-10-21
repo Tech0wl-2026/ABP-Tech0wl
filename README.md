@@ -17,6 +17,14 @@ O repositório reúne as páginas públicas e a API do portal, os scripts do ban
 | [.github](.github) | Modelos de issues e PRs, workflows e configuração do Project. |
 | [compose.yaml](compose.yaml) | Configuração dos containers do frontend, backend e PostgreSQL. |
 
+## Sprints no Project
+
+Acesse o quadro de atividades de cada sprint:
+
+- [Sprint 1 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/2)
+- [Sprint 2 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/3)
+- [Sprint 3 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/4)
+
 ## Documentação
 
 - [Requisitos](docs/Requisitos/REQUISITOS.md)
