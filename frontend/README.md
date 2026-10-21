@@ -1,5 +1,14 @@
 # Frontend
 
-Página informativa real em HTML/CSS/JavaScript puro. Inclui navegação responsiva, busca em perguntas frequentes e semântica/teclado. Não implementa autenticação, prova, resultado ou QR.
+Esta pasta contém a página inicial do portal em HTML, CSS e JavaScript.
 
-Executar por [Docker Compose ou servidor local](../docs/Tecnico/INSTALACAO.md). A organização separa `css/`, `js/` e `assets/`; Playwright é ferramenta de teste, não framework da interface. Os SVGs de questões são amostras para o seed, ainda sem tela de questão.
+| Arquivo ou pasta | Conteúdo |
+|---|---|
+| [index.html](index.html) | Página inicial, navegação e perguntas frequentes. |
+| [css/style.css](css/style.css) | Estilos e layout responsivo. |
+| [js/app.js](js/app.js) | Menu e busca nas perguntas frequentes. |
+| [assets/questoes](assets/questoes) | Imagens das questões de exemplo. |
+| [Dockerfile](Dockerfile) | Imagem do frontend para o Docker. |
+| [nginx.conf](nginx.conf) | Configuração do servidor Nginx. |
+
+As formas de executar a página estão no [guia de instalação](../docs/Tecnico/INSTALACAO.md).

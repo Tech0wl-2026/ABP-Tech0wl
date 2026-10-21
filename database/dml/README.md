@@ -1,3 +1,6 @@
 # DML
 
-[seed.sql](../seed.sql) contém INSERTs demonstrativos e [consultas-exemplo.sql](../consultas-exemplo.sql) apresenta consultas SQL explícitas parametrizadas com PREPARE. Não são conteúdo final nem integração com driver. A API futura deve executar parâmetros pelo driver PostgreSQL, com autorização do titular.
+Pasta de referência para os dados e as consultas do banco. Os scripts ficam na pasta acima:
+
+- [seed.sql](../seed.sql): dados de exemplo.
+- [consultas-exemplo.sql](../consultas-exemplo.sql): consultas parametrizadas com PREPARE.
