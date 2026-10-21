@@ -11,7 +11,7 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 ## Evidências disponíveis nesta revisão
 
 - [Página inicial](../../frontend/index.html), [DDL](../../database/schema.sql), [modelos/dicionário](../database/README.md) e [testes](../../testes/README.md) são artefatos reais de referência, sujeitos a aceite da equipe.
-- [Figma](../design/figma.md): URL, versão e navegação pendentes; imagens existentes não comprovam protótipo completo.
+- [Figma](../design/figma.md): links desktop/mobile acessíveis; versão de entrega, navegação integral e aceite ainda precisam de conferência.
 - [Participação individual](../evidencias/sprint-1/participacao.md): relatos disponíveis e lacunas separados.
 
 - [Validação técnica de 14/10](../evidencias/sprint-1/validacao-2026-10-14/README.md): CI aprovado, 24 verificações SQL e quatro testes de navegador. Não encerra a Sprint.
@@ -38,3 +38,7 @@ Não preencher reuniões futuras como se já tivessem ocorrido. Não substituir 
 ## Atualização de 20/10/2026
 
 Os [12 temas](../conteudo/temas.md) foram definidos e as [sequências UML](../UML/sequencias/README.md) foram revisadas em fontes PlantUML e imagens. A incorporação das correções no Astah, o Figma e o aceite integral continuam pendentes. Consultar a [lista atualizada para fechamento](pendencias-sprint-1-2026-10-20.md).
+
+## Atualização de 21/10/2026
+
+Acesso ao mobile liberado e páginas públicas desktop/mobile implementadas na develop. O [review das 50 issues da Sprint 1](review-sprint-1-2026-10-21.md) é a referência atual de pendências, sem declarar encerramento.

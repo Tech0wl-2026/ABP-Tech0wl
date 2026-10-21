@@ -1,19 +1,21 @@
-# Referência visual do incremento
+# Referência visual do Figma
 
-Proposta aplicada na página inicial; validar com responsáveis pelo Figma. Os dois estudos visuais anteriores permanecem preservados e podem usar outra paleta.
+Os [protótipos desktop e mobile](figma.md) orientam as três páginas públicas do frontend.
 
-| Elemento | Referência |
-|---|---|
-| Cor de texto e títulos | Azul escuro; consultar tokens em `frontend/css/style.css` |
-| Destaque e ação principal | Azul, com estado de foco/hover distinguível |
-| Superfícies | Branco e fundos azul claro; conteúdo legível sem depender só de cor |
-| Tipografia | Família de sistema, sem fonte externa; hierarquia H1/H2/H3 e texto com entrelinha |
-| Espaçamento e largura | Layout central, grades que passam para uma coluna no celular |
-| Interação | Menu com `aria-expanded`, navegação por teclado, link de pular conteúdo e busca com região de status |
-| Movimento | Respeitar preferência por movimento reduzido |
+| Elemento | Computador (1440 px) | Celular (393 px) |
+|---|---|---|
+| Abertura | Fundo preto e iluminação vertical azul, 1024 px de altura | Composição própria, 764 px de altura |
+| Navegação | Cápsula `#c4c5d8`, item ativo branco, Jost 24 px | Cápsula de 249 × 30 px, Jost 16 px |
+| Título de abertura | Joan 96 px | Joan 32 px |
+| Títulos de seção | Julius Sans One | Mesma família, tamanhos do frame mobile |
+| Textos | Kulim Park; Kumbh Sans em Sobre nós | Mesmas famílias, com larguras e quebras adaptadas |
+| Depoimentos | Kreon | Kreon |
+| Matrícula | Botão `#232596` | Mesmo fundo, botão de 148 × 38 px |
+| Faixa da Home | Roxo `#7215c9` | Faixa compacta com texto e padrão lateral |
+| Rodapé | Fundo `#21097e`, Jura e Gruppo | Mesmas cores e famílias, composição reduzida |
 
-## Recursos e créditos
+As oito famílias estão em `frontend/assets/fonts`, com as respectivas licenças OFL. Os arquivos foram obtidos do [repositório oficial Google Fonts](https://github.com/google/fonts/tree/main/ofl), nas pastas `joan`, `jost`, `juliussansone`, `kulimpark`, `kumbhsans`, `jura`, `gruppo` e `kreon`. O site não busca fontes externas durante a navegação.
 
-As quatro imagens `frontend/assets/questoes/demo-01.svg` a `demo-04.svg` são diagramas vetoriais didáticos criados nesta revisão a partir de texto e formas simples, sem recurso externo. Enunciados são amostra original baseada no Scrum Guide 2020; a fonte consta no seed. São material provisório, sem afirmar aprovação pedagógica.
+A composição usa HTML/CSS sem framework, foco visível, link para pular ao conteúdo e navegação utilizável sem JavaScript. O contexto original do Figma foi traduzido para essa estrutura; as capturas do protótipo servem apenas para comparação.
 
-As imagens anteriores em `docs/Prototipo/` precisam de confirmação de autoria e permissão pela equipe. Não atribuir créditos ou licença por inferência. Nenhuma licença foi aplicada ao repositório inteiro sem decisão dos autores.
+Os shaders, alguns vetores e fotografias tiveram [substituições autorizadas](conferencia-2026-10-21.md). As imagens da avaliação continuam em `backend/assets/questoes`; a amostra anterior fica em `frontend/assets/questoes`.

@@ -2,7 +2,7 @@
 
 | Parte | Situação |
 |---|---|
-| Página inicial | HTML/CSS/JavaScript, menu responsivo e busca nas dúvidas. |
+| Páginas públicas | Home, Curso e Sobre nós em HTML/CSS/JavaScript, navegação e layout desktop/mobile baseado no Figma. |
 | Cadastro/login | API com CPF único, bcrypt e JWT por uma hora. |
 | Conteúdo da prova | 12 temas do grupo, 48 questões, 192 alternativas e 48 imagens. |
 | Sorteio | Uma questão por tema/candidato, prazo persistido e controle de chamadas concorrentes. |

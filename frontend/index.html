@@ -1,221 +1,113 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Conheça o formato da certificação Tech0wl em metodologias ágeis: temas, avaliação e aproveitamento."
+      content="Aprendizagem Ágil: conheça o curso de metodologias ágeis da Tech0wl."
     />
-    <title>Tech0wl · Certificação em Metodologias Ágeis</title>
+    <title>Aprendizagem Ágil | Tech0wl</title>
+    <link rel="icon" href="assets/figma/coruja.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/joan.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/app.js" defer></script>
   </head>
-  <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header class="header">
-      <a class="brand" href="#inicio" aria-label="Tech0wl, início"
-        ><span class="brand-mark" aria-hidden="true">T</span>Tech<span
-          >0wl</span
-        ></a
-      >
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="navegacao"
-        hidden
-      >
-        Menu
-      </button>
-      <nav id="navegacao" aria-label="Navegação principal">
-        <a href="#sobre">Sobre a certificação</a
-        ><a href="#formato">Como funciona</a><a href="#duvidas">Dúvidas</a>
+  <body class="page-home">
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <header class="hero">
+      <nav aria-label="Navegação principal">
+        <a href="index.html" aria-current="page">Home</a
+        ><a href="curso.html">Curso</a><a href="sobre.html">Sobre nós</a>
       </nav>
+      <h1>Amplie seus conhecimentos<br />e impulsione sua carreira</h1>
+      <a class="start" href="curso.html#curso"
+        >Começar <span aria-hidden="true">⟶</span></a
+      >
     </header>
     <main id="conteudo">
-      <section class="hero section" id="inicio" aria-labelledby="titulo">
-        <div class="hero-copy">
-          <p class="eyebrow">METODOLOGIAS ÁGEIS · TECH0WL</p>
-          <h1 id="titulo">
-            Conhecimento que<br />vira <span>próximo passo.</span>
-          </h1>
-          <p class="lead">
-            Entenda os conceitos da agilidade e conheça o caminho da
-            certificação: estudo por tema, avaliação e reconhecimento do seu
-            aprendizado.
-          </p>
-          <a class="button" href="#formato"
-            >Conheça a certificação <span aria-hidden="true">↗</span></a
-          >
-          <p class="hero-note">
-            Seu ritmo para estudar. Clareza para seguir em frente.
-          </p>
-        </div>
-        <div
-          class="learning-map"
-          aria-label="Etapas: aprender, aplicar e reconhecer"
-        >
-          <div class="map-top">
-            <span class="small-badge">SEU PERCURSO</span
-            ><span class="map-dots" aria-hidden="true">● ● ●</span>
-          </div>
-          <div class="map-step">
-            <span class="step-icon" aria-hidden="true">01</span>
-            <div>
-              <strong>Aprender</strong>
-              <p>Conceitos e exemplos por tema.</p>
-            </div>
-            <span class="step-status">Estudo</span>
-          </div>
-          <div class="map-step active">
-            <span class="step-icon" aria-hidden="true">02</span>
-            <div>
-              <strong>Aplicar</strong>
-              <p>Uma questão para cada tema.</p>
-            </div>
-            <span class="step-status">Avaliação</span>
-          </div>
-          <div class="map-step">
-            <span class="step-icon" aria-hidden="true">03</span>
-            <div>
-              <strong>Reconhecer</strong>
-              <p>Resultado e certificado por aproveitamento.</p>
-            </div>
-            <span class="step-status">Resultado</span>
-          </div>
-          <div class="map-bottom">
-            <span aria-hidden="true">✦</span> Cada etapa faz parte da sua
-            evolução.
-          </div>
-        </div>
-      </section>
-      <section class="facts section" aria-label="Formato da certificação">
-        <div><strong>12</strong><span>temas na avaliação</span></div>
-        <div>
-          <strong>150<span>s</span></strong
-          ><span>por questão</span>
-        </div>
-        <div>
-          <strong>65<span>%</span></strong
-          ><span>aproveitamento mínimo</span>
-        </div>
-      </section>
-      <section class="section about" id="sobre" aria-labelledby="sobre-titulo">
-        <div>
-          <p class="eyebrow">APRENDER COM PROPÓSITO</p>
-          <h2 id="sobre-titulo">Da compreensão<br />à aplicação.</h2>
-        </div>
-        <div>
+      <section class="invitation" aria-labelledby="convite">
+        <div class="invitation-copy">
+          <h2 id="convite">Invista no seu futuro</h2>
           <p>
-            A certificação aborda conhecimentos de metodologias ágeis em uma
-            avaliação organizada por temas. O material de estudo e as questões
-            devem tratar dos mesmos assuntos, aproximando conceitos e situações
-            práticas.
+            Inscreva-se hoje e transforme seu<br class="desktop-break" />
+            potencial em resultado!
           </p>
-          <p>
-            O resultado é calculado após a conclusão dos 12 temas. O certificado
-            é destinado a quem alcançar aproveitamento igual ou superior a 65%.
-          </p>
+          <a class="enroll" href="curso.html#certificacao">Matricula-se</a>
         </div>
-      </section>
-      <section class="section" id="formato" aria-labelledby="formato-titulo">
-        <p class="eyebrow">UM CAMINHO CLARO</p>
-        <h2 id="formato-titulo">Como funciona a avaliação</h2>
-        <div class="cards">
-          <article>
-            <span class="card-number">01 / ESTUDO</span>
-            <h3>Prepare o conhecimento</h3>
-            <p>
-              O estudo acompanha os mesmos 12 temas da certificação, com
-              material didático e imagens de apoio.
-            </p>
-          </article>
-          <article>
-            <span class="card-number">02 / QUESTÕES</span>
-            <h3>Observe e responda</h3>
-            <p>
-              Uma questão é sorteada por tema entre quatro disponíveis. Cada
-              questão tem imagem, quatro alternativas e uma resposta correta.
-            </p>
-          </article>
-          <article>
-            <span class="card-number">03 / RESULTADO</span>
-            <h3>Conheça seu desempenho</h3>
-            <p>
-              Após concluir os temas, consulte o resultado. Com pelo menos 65%
-              de aproveitamento, o certificado terá um QR Code para validação
-              pública.
-            </p>
-          </article>
-        </div>
-        <aside class="notice">
-          <strong>Atenção ao tempo.</strong> Cada questão tem 150 segundos. Sem
-          envio no prazo, ela é encerrada como incorreta e a alternativa correta
-          é apresentada. Uma questão encerrada não pode ser respondida
-          novamente.
-        </aside>
-      </section>
-      <section
-        class="section faq"
-        id="duvidas"
-        aria-labelledby="duvidas-titulo"
-      >
-        <div>
-          <p class="eyebrow">ANTES DE COMEÇAR</p>
-          <h2 id="duvidas-titulo">Perguntas frequentes</h2>
-          <label for="busca">Buscar uma dúvida</label
-          ><input
-            id="busca"
-            type="search"
-            placeholder="Ex.: tempo, certificado ou retomada"
-            aria-describedby="resultado-busca"
+        <div class="student-art">
+          <div class="student-window" aria-hidden="true"></div>
+          <img
+            src="assets/figma/estudante.png"
+            width="791"
+            height="535"
+            alt="Estudante com livros e notebook"
           />
-          <p id="resultado-busca" role="status" aria-live="polite">
-            4 dúvidas disponíveis.
-          </p>
         </div>
-        <div class="faq-list">
-          <details>
-            <summary>Posso interromper e retomar a avaliação?</summary>
-            <p>
-              Sim. A retomada segue para o próximo tema pendente. Se a
-              interrupção ocorrer durante uma questão, ela é encerrada e não
-              poderá ser respondida novamente.
-            </p>
-          </details>
-          <details>
-            <summary>O que acontece quando o tempo acaba?</summary>
-            <p>
-              Após 150 segundos sem envio, a questão é encerrada como incorreta.
-              A alternativa correta é mostrada antes da decisão de continuar ou
-              interromper.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Qual é o aproveitamento para receber o certificado?
-            </summary>
-            <p>
-              É necessário alcançar pelo menos 65% de aproveitamento ao final
-              dos 12 temas. O certificado inclui os dados da avaliação e um QR
-              Code para verificar sua autenticidade.
-            </p>
-          </details>
-          <details>
-            <summary>Como são escolhidas as questões?</summary>
-            <p>
-              Cada tema possui quatro questões. Apenas uma é sorteada por tema
-              para o candidato, com imagem e alternativas A, B, C e D.
-            </p>
-          </details>
+      </section>
+      <section class="banner" aria-label="Aprendizado e conquistas">
+        <div class="triangle-pattern" aria-hidden="true"></div>
+        <p>
+          Inscreva-se hoje e transforme seu aprendizado em conquistas, ampliando
+          suas competências e enriquecendo seu portfólio profissional.
+        </p>
+      </section>
+      <section class="benefits" aria-label="Benefícios do curso">
+        <article>
+          <img src="assets/figma/brain.svg" width="92" height="92" alt="" />
+          <p>Desenvolver novos conhecimentos e competências.</p>
+        </article>
+        <article>
+          <img src="assets/figma/case.svg" width="92" height="92" alt="" />
+          <p>Utilizar os conhecimentos adquiridos na prática</p>
+        </article>
+        <article>
+          <img src="assets/figma/card.svg" width="92" height="92" alt="" />
+          <p>Agregar valor ao currículo e ao portfólio profissional</p>
+        </article>
+      </section>
+      <section class="teachers" aria-labelledby="docentes">
+        <h2 id="docentes">
+          Aprenda com quem entende.<br />Conheça nossos docentes
+        </h2>
+        <div class="teacher-list">
+          <div
+            class="teacher teacher-one"
+            role="img"
+            aria-label="Retrato ilustrativo de um docente"
+          ></div>
+          <div
+            class="teacher teacher-two"
+            role="img"
+            aria-label="Retrato ilustrativo de uma docente"
+          ></div>
+          <div
+            class="teacher teacher-three"
+            role="img"
+            aria-label="Retrato ilustrativo de uma docente"
+          ></div>
         </div>
       </section>
     </main>
-    <footer class="footer">
-      <a class="brand" href="#inicio">Tech<span>0wl</span></a>
-      <p>Portal de Certificação em Metodologias Ágeis</p>
-      <span>Fatec Jacareí · DSM · 2026</span>
+    <footer>
+      <a class="brand" href="index.html" aria-label="Tech0wl — início"
+        ><img
+          src="assets/figma/coruja.svg"
+          width="120"
+          height="120"
+          alt=""
+        /><span>Tech0wl</span></a
+      >
+      <div class="footer-copy">
+        <a href="sobre.html">Sobre nós</a><span>Aprendizagem Ágil 2025</span
+        ><small>Todos os direitos reservados</small>
+      </div>
     </footer>
   </body>
 </html>

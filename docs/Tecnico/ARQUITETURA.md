@@ -1,6 +1,6 @@
 # Arquitetura
 
-O Compose executa frontend em Nginx, API Node.js/Express e PostgreSQL 17. O Nginx encaminha `/api/` ao backend na mesma origem do site. O frontend continua com a página inicial informativa; as telas de cadastro, prova e certificado ainda precisam consumir as rotas.
+O Compose executa frontend em Nginx, API Node.js/Express e PostgreSQL 17. O Nginx encaminha `/api/` ao backend na mesma origem do site. O frontend apresenta Home, Curso e Sobre nós; as telas de cadastro, prova e certificado ainda precisam consumir as rotas.
 
 ## Backend
 

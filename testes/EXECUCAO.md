@@ -33,6 +33,6 @@ npx playwright install --with-deps chromium
 npm test
 ```
 
-Playwright verifica 1440, 390 e 320 pixels, menu/teclado, busca sem acentos, estados vazios, imagens e conteúdo sem JavaScript. Capturas ficam em `test-results/`; no GitHub Actions são artifacts por hash, com retenção de 30 dias. No fechamento da Sprint, conservar as evidências importantes no commit de entrega; artifacts temporários não são o único registro final.
+Playwright verifica as três páginas em 1440, 820, 600, 393 e 320 pixels, navegação, imagens, fontes locais, ausência de sobreposição nas seções do curso, botões e conteúdo sem JavaScript (16 testes). Capturas ficam em `test-results/`; no GitHub Actions são artifacts por hash, com retenção de 30 dias. No fechamento da Sprint, conservar as evidências importantes no commit de entrega; artifacts temporários não são o único registro final.
 
 O CI [Validar incremento e documentação](../.github/workflows/validar-projeto.yml) também sobe containers limpos, prepara consultas e registra versões/imagens. A suíte HTTP do backend está em backend/test e roda no CI em banco PostgreSQL descartável. QR e usabilidade com colegas continuam pendentes.

@@ -2,20 +2,28 @@
 
 Projeto da ABP do 1º semestre de DSM da Fatec Jacareí, turma de 2026-2.
 
-O repositório reúne a página inicial do portal, os scripts do banco de dados, a documentação e os testes. O portal tem como proposta oferecer estudo por tema, avaliação e certificado verificável.
+O repositório reúne as páginas públicas e a API do portal, os scripts do banco de dados, a documentação e os testes. O portal tem como proposta oferecer estudo por tema, avaliação e certificado verificável.
 
 ## O que você encontra aqui
 
 | Pasta ou arquivo | Conteúdo |
 |---|---|
-| [frontend](frontend/README.md) | Página inicial em HTML, CSS e JavaScript, imagens e configuração do servidor web. |
+| [frontend](frontend/README.md) | Home, Curso e Sobre nós em HTML/CSS/JavaScript, imagens e servidor web. |
 | [backend](backend/README.md) | API Node.js/Express com cadastro, login e avaliação. |
 | [database](database) | Banco do backend, modelo de referência e consultas SQL. |
 | [docs](docs) | Requisitos, protótipo, UML, modelagem do banco e documentos de gestão. |
 | [testes](testes/README.md) | Testes do banco, da interface e do importador de issues. |
 | [scripts](scripts) | Servidor local e verificação da estrutura do repositório. |
 | [.github](.github) | Modelos de issues e PRs, workflows e configuração do Project. |
-| [compose.yaml](compose.yaml) | Configuração dos containers do frontend e do PostgreSQL. |
+| [compose.yaml](compose.yaml) | Configuração dos containers do frontend, backend e PostgreSQL. |
+
+## Sprints no Project
+
+Acesse o quadro de atividades de cada sprint:
+
+- [Sprint 1 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/2)
+- [Sprint 2 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/3)
+- [Sprint 3 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/4)
 
 ## Documentação
 
@@ -30,3 +38,5 @@ O repositório reúne a página inicial do portal, os scripts do banco de dados,
 - [Como contribuir](CONTRIBUTING.md)
 
 O acompanhamento das atividades fica no [Project da equipe](https://github.com/users/Tech0wl-2026/projects/7).
+
+[Como abrir a versão local](COMECAR-AQUI.md) · [Review da Sprint 1 em 21/10](docs/sprints/review-sprint-1-2026-10-21.md)

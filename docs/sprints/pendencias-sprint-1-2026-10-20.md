@@ -1,5 +1,7 @@
 # Pendências da Sprint 1 — 20/10/2026
 
+> Registro histórico de 20/10. Consulte o [review de 21/10](review-sprint-1-2026-10-21.md) para o estado atualizado; os acessos desktop/mobile foram liberados.
+
 Prazo: **22/10/2026**. Registro atualizado após a revisão das sequências e a definição dos temas. Não é ata de Review/Retrospectiva nem aceite do professor. Consultar estado/atribuições atuais nas issues.
 
 ## Atualizações realizadas

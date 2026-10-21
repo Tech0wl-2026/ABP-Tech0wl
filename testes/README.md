@@ -5,7 +5,7 @@ Esta pasta reúne os testes do banco de dados, da interface e do importador de i
 | Arquivo | Conteúdo |
 |---|---|
 | [database.sql](database.sql) | Verificações das regras e restrições do PostgreSQL, com rollback dos dados de teste. |
-| [frontend.spec.mjs](frontend.spec.mjs) | Testes de navegação, busca, layout responsivo e uso sem JavaScript com Playwright. |
+| [frontend.spec.mjs](frontend.spec.mjs) | Testes de navegação das três páginas, imagens, fontes, layout responsivo e uso sem JavaScript com Playwright. |
 | [test_importador.py](test_importador.py) | Testes para preservar alterações nas issues ao executar o importador. |
 | [EXECUCAO.md](EXECUCAO.md) | Comandos, requisitos e cobertura dos testes. |
 
