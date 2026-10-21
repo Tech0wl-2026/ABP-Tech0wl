@@ -1,5 +1,5 @@
-# Backend — integração pendente
+# Backend
 
-A equipe ainda deve escolher tecnologia e driver (D01). Nenhum serviço HTTP de backend foi implementado. O Compose atual executa somente frontend estático e banco.
+Pasta reservada para a API do portal. Por enquanto, contém apenas este README.
 
-A implementação deve seguir o [contrato proposto](../docs/Tecnico/API.md), as [decisões de domínio](../docs/Gestao/DECISOES.md) e as invariantes do [modelo físico](../database/schema.sql). Adicionar autenticação/hash seguro, autorização por titular, sorteio e tempo no servidor, transações e testes reais de concorrência antes de declarar DW03/DW05/DW06 atendidos.
+As referências para o backend estão no [contrato da API](../docs/Tecnico/API.md) e na [arquitetura](../docs/Tecnico/ARQUITETURA.md).

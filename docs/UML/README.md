@@ -1,10 +1,12 @@
-# UML do projeto
+# UML
 
-## Diagramas de classes existentes - Thiago
+Esta pasta reúne os diagramas de classes e de caso de uso do portal, além das pastas de sequências e de modelos complementares.
 
-Os cinco arquivos abaixo foram publicados por **Tiago Oliveira** (Thiago, integrante confirmado pelo grupo) em 16/10/2026. Foram localizados na `main` e na branch `sprint/1-prototipo-modelagem` e trazidos para `develop` **sem alteração de conteúdo**. A autoria original permanece registrada no [commit de origem](https://github.com/Tech0wl-2026/ABP-Tech0wl/commit/40beab55c78411b683bfd7b6169498a4c27afd1f).
+## Diagramas de classes
 
-| Tema | Projeto Astah preservado |
+Os arquivos abaixo são projetos editáveis no Astah UML.
+
+| Diagrama | Arquivo |
 |---|---|
 | Cadastro | [diagramacadastro.asta](diagramacadastro.asta) |
 | Login | [diagramalogin.asta](diagramalogin.asta) |
@@ -12,20 +14,18 @@ Os cinco arquivos abaixo foram publicados por **Tiago Oliveira** (Thiago, integr
 | Resposta | [diagramaresposta.asta](diagramaresposta.asta) |
 | Emissão do certificado | [diagramaemissaocertificado.asta](diagramaemissaocertificado.asta) |
 
-## Apenas os complementos ausentes
+## Caso de uso
 
-Após comparar os elementos dos arquivos existentes com o desafio, foram acrescentadas três vistas: **área de estudos**, **tentativa/retomada/histórico/progresso** e **resultado/dados do certificado/validação pública**. Elas referenciam Aluno, Temas, Questão e Resposta já existentes, sem substituir seus diagramas.
+- [Projeto editável no Astah](PortalDeCertificacaoEmMetodologiasAgeis.asta)
+- [Diagrama em PDF](casoDeUsoPortalDeCertificacaoEmMetodologiasAgeis.pdf)
 
-[Abrir os complementos](complementos/README.md) · [Review antes da publicação](REVISAO-CLASSES.md) · [Inventário e hashes dos originais](INVENTARIO-CLASSES-EXISTENTES.json)
+## Outras referências
 
-As novas fontes são **PlantUML**, com SVG e PNG. Não foram inseridas automaticamente nos projetos `.asta`. A equipe deve revisar os complementos e incorporá-los ao Astah se aprovar. A integração com a `main` está registrada no [PR #111](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/111). O [review](REVISAO-CLASSES.md) preserva o registro da publicação inicial em `develop`.
-
-## Caso de uso e outras referências
-
-- [Projeto Astah de caso de uso](PortalDeCertificacaoEmMetodologiasAgeis.asta) e [exportação PDF](casoDeUsoPortalDeCertificacaoEmMetodologiasAgeis.pdf), preservados.
-- [Resumo de domínio anterior](dominio.puml), mantido como referência histórica, sem impor mudança de nomes aos arquivos de Thiago.
-- [Requisitos](../Requisitos/REQUISITOS.md), [schema e dicionário](../database/README.md) e [decisões pendentes](../Gestao/DECISOES.md).
-
-## Sequências revisadas
-
-[Fontes e imagens corrigidas](sequencias/README.md), com cadastro/login, resolução da questão, pausa/retomada, resultado/certificado e validação pública. A [versão inicial do Astah](rascunhos/README.md) foi preservada para continuidade da equipe; a incorporação das correções no editor continua pendente.
+| Pasta ou arquivo | Conteúdo |
+|---|---|
+| [complementos](complementos/README.md) | Classes de estudo, tentativa, histórico, resultado e validação do certificado, em PlantUML, PNG e SVG. |
+| [sequencias](sequencias/README.md) | Interações de cadastro, login, avaliação, retomada, resultado e validação pública. |
+| [rascunhos](rascunhos/README.md) | Projeto Astah com versões iniciais de sequências. |
+| [dominio.puml](dominio.puml) | Visão de domínio em PlantUML. |
+| [REVISAO-CLASSES.md](REVISAO-CLASSES.md) | Registro da revisão dos diagramas de classes. |
+| [INVENTARIO-CLASSES-EXISTENTES.json](INVENTARIO-CLASSES-EXISTENTES.json) | Inventário dos arquivos Astah e seus hashes. |
