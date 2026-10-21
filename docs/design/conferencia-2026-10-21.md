@@ -21,7 +21,7 @@ As substituições foram autorizadas por Breno. A tabela registra as diferenças
 
 ## Retratos ilustrativos
 
-Arquivo: `frontend/assets/figma/docentes.png`. Criado com a ferramenta de geração de imagens a partir deste pedido: “Tríptico fotográfico de pessoas fictícias, em três painéis iguais: homem jovem de camiseta laranja em fundo amarelo; mulher de cabelo escuro e óculos, blazer bege em fundo cinza claro; mulher mais velha de cabelo curto e óculos, blazer verde em fundo cinza. Retratos frontais da cintura para cima, luz suave, sem texto ou marca.” A mesma imagem é recortada pelo CSS nas três posições, sem dependência de URL externa.
+Os retratos são imagens geradas de pessoas fictícias para compor esta versão. O arquivo `frontend/assets/figma/docentes.png` é compartilhado pelas três posições do CSS. As fotos originais do Figma poderão substituí-lo quando estiverem disponíveis.
 
 ## Validação
 
