@@ -64,7 +64,7 @@ Percentual: `acertos / 12 * 100`. Nota de apresentação: `acertos / 12 * 10`. A
 
 Ao concluir pela API, o código do certificado é gerado para o candidato aprovado. São 32 bytes aleatórios, armazenados em 64 caracteres hexadecimais. Consultas repetidas preservam código, instante e dados da emissão.
 
-Esta entrega gera código e dados, conforme o último exemplo do professor. Ainda faltam o documento eletrônico/PDF do candidato, QR Code e página visual de validação. A rota pública retorna JSON com dados mínimos; a definição final desses campos depende da equipe.
+A API gera o código e os dados da emissão. Faltam o documento eletrônico/PDF do candidato, QR Code e página visual de validação. A rota pública retorna JSON com dados mínimos; a equipe ainda precisa confirmar os campos da página pública.
 
 ## Erros
 

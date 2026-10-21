@@ -1,6 +1,6 @@
 # Plano de entregas e cobertura da rubrica
 
-Plano técnico proposto após leitura da rubrica. Preserva as metas acordadas pelo grupo; a equipe deve confirmar com o professor quais critérios entram na avaliação de cada Sprint. Não é ata de aprovação.
+O plano reúne as metas do grupo e a distribuição dos critérios da rubrica. Os critérios avaliados em cada sprint precisam ser combinados com o professor.
 
 | Sprint | Período / fechamento | Meta e demonstração |
 |---|---|---|
@@ -8,7 +8,7 @@ Plano técnico proposto após leitura da rubrica. Preserva as metas acordadas pe
 | 2 | 23/10–05/11/2026; hora a confirmar | Cadastro/login, estudos completos, motor da prova, persistência/retomada e Compose integrado |
 | 3 | 06/11–25/11/2026; hora a confirmar | Resultado, certificado/QR, validação pública, histórico/progresso e regressão integral |
 
-Apresentação: 26/11/2026. O horário de entrega não foi fornecido; não inferir 23h59.
+Apresentação: 26/11/2026. Horário de entrega a confirmar com o professor.
 
 ## Critérios propostos por Sprint
 
@@ -16,11 +16,11 @@ Apresentação: 26/11/2026. O horário de entrega não foi fornecido; não infer
 - Sprint 2: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01, DW02, DW03, DW04, DW05, DW06, DW07, BD01, BD02, BD03, BD04, BD05, DD01, DD02, DD03, DD04.
 - Sprint 3: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01, DW02, DW03, DW04, DW05, DW06, DW07, BD01, BD02, BD03, BD04, BD05, DD01, DD02, DD03, DD04.
 
-ES01–ES09 e DW01 são transversais às três Sprints. BD/DD construídos na primeira continuam sujeitos a revisão cumulativa. DD04 na Sprint 1 exige teste real do protótipo; a comparação integral entre design e sistema acontece com a implementação. O planejamento do item não declara atendimento integral. DW07 já possui infraestrutura para o incremento inicial, mas sua demonstração completa inclui a futura API.
+ES01–ES09 e DW01 são transversais às três Sprints. BD/DD construídos na primeira continuam sujeitos a revisão cumulativa. DD04 na Sprint 1 exige teste real do protótipo; a comparação integral entre design e sistema acontece com a implementação. O Docker Compose já inclui frontend, API e banco. O aceite de cada critério depende da demonstração prevista para a sprint.
 
-A página inicial antecipa uma parte de T001/RF01 para permitir demonstrar HTML/CSS/JS na primeira Sprint, como exige DW01. A issue de implementação na Sprint 2 continua aberta para integração, revisão visual e aceite, sem redistribuir as 107 atividades silenciosamente.
+A página inicial antecipa uma parte de T001/RF01 para permitir demonstrar HTML/CSS/JS na primeira Sprint, como exige DW01. A issue de implementação na Sprint 2 continua aberta para integração, revisão visual e aceite, conforme a distribuição das atividades no backlog.
 
-## Fechamento reproduzível
+## Como fechar a sprint
 
 1. Atualizar o [registro da Sprint](sprints/sprint-1.md), com escopo entregue e não entregue, resultados de testes e feedback real.
 2. Incluir exportações e versão do Figma e contribuições individuais; não depender de um link externo mutável como única evidência.
@@ -29,4 +29,4 @@ A página inicial antecipa uma parte de T001/RF01 para permitir demonstrar HTML/
 5. Somente no fechamento aprovado, criar tag imutável `sprint-1`, `sprint-2` ou `sprint-3` no commit entregue. Não mover a tag depois; correções recebem novo commit/tag suplementar e explicação.
 6. Registrar Review e Retrospectiva reais. Levar a melhoria acordada à próxima Sprint e demonstrar se foi aplicada.
 
-Nenhuma tag final de Sprint foi criada antecipadamente por esta revisão.
+A tag de cada sprint será criada após o aceite da entrega.

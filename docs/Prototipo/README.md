@@ -1,8 +1,12 @@
 # Protótipo
 
-Esta pasta reúne duas versões da tela de certificado:
+Esta pasta reúne os estudos do certificado e os arquivos da marca do portal.
 
-- [Protótipo do certificado — V1](Prototipo-CertificadoV1.png)
-- [Protótipo do certificado — V2](Prototipo-CertificadoV2.png)
+| Arquivo | Conteúdo |
+|---|---|
+| [Certificado — V1](Prototipo-CertificadoV1.png) | Primeira versão da tela do certificado. |
+| [Certificado — V2](Prototipo-CertificadoV2.png) | Segunda versão da tela do certificado. |
+| [Logo com fundo](LogodositeApredizagem%C3%81gil.png) | Marca Aprendizagem Ágil. |
+| [Logo sem fundo](LogodositeApredizagem%C3%81gil%28semfundo%29.png) | Marca com fundo transparente. |
 
-As referências do protótipo estão no [registro do Figma](../design/figma.md), no [fluxo de telas](../design/fluxo-de-telas.md) e no [sistema visual](../design/sistema-visual.md).
+[Protótipos no Figma](../design/figma.md) · [Fluxo de telas](../design/fluxo-de-telas.md) · [Referência visual](../design/sistema-visual.md)

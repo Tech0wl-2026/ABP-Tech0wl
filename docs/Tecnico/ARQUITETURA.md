@@ -12,11 +12,11 @@ Dados de entrada são enviados ao SQL por parâmetros. Cada transação da avali
 
 O schema PostgreSQL `servidor` contém as cinco tabelas usadas pela API: candidatos, temas, questões, alternativas e respostas. É uma adaptação do material do professor, com restrições adicionais para concorrência e preservação das respostas.
 
-As dez tabelas anteriores em `public` continuam como modelo de referência da Sprint 1. A API não grava nelas. Os dois modelos não sincronizam dados. O modelo executável fica em [database/servidor](../../database/servidor/README.md); o alinhamento dos diagramas e do dicionário ainda precisa ser feito com a equipe.
+As dez tabelas em `public` são o modelo de referência da Sprint 1. A API grava apenas em `servidor`; os dois schemas são independentes. O modelo executável fica em [database/servidor](../../database/servidor/README.md); o alinhamento dos diagramas e do dicionário ainda precisa ser feito com a equipe.
 
 O preparador cria estrutura e seed em uma única transação, usando lock de instalação. Reiniciar preserva o banco. Uma base existente incompleta gera erro em vez de apagar ou recarregar tabelas automaticamente.
 
-## Limites
+## Próximos passos
 
 O Compose é local. Uma implantação pública precisa de HTTPS, credencial de banco com privilégios mínimos, backups, gestão de segredos e configuração do limitador de chamadas para os proxies utilizados.
 

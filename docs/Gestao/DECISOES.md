@@ -2,7 +2,7 @@
 
 As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. D02 foi definida pelo grupo e informada por Breno em 20/10/2026; a orientação de backend recebida em 21/10 define a stack e exemplifica o cálculo e a tentativa única. As decisões ainda abertas continuam indicadas abaixo.
 
-| ID | Decisão necessária | Proposta técnica desta revisão | Responsável pela validação |
+| ID | Decisão necessária | Solução adotada ou ponto em aberto | Responsável pela validação |
 |---|---|---|---|
 | D01 | Tecnologia do backend e driver PostgreSQL | Node.js/Express com pg, bcryptjs e JWT, conforme orientação de 21/10; API em backend/ | Equipe técnica |
 | D02 | Seleção e ordem dos 12 temas | **Definida em 20/10/2026:** [12 temas e numeração original](../conteudo/temas.md), com [catálogo JSON](../conteudo/temas.json). Banco de 48 questões em database/servidor; as 12 questões novas precisam de revisão pedagógica | Definição do grupo informada por Breno; acompanhamento por Conteúdo/PO |

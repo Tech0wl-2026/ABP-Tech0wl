@@ -24,7 +24,7 @@ Nos elementos extraídos não foram encontradas as classes **ConteudoEstudo, Ten
 2. [Ciclo da avaliação](complementos/imagens/02-tentativa-retomada-historico.svg), com prazo, estados, retomada, histórico e progresso. Reutiliza as classes de Thiago como referências.
 3. [Resultado e dados do certificado](complementos/imagens/03-resultado-validacao.svg), RF16-RF19/RP08, sem substituir a operação de emissão existente.
 
-A proposta anterior de oito vistas completas não foi publicada. Os complementos não acrescentam um segundo fluxo de cadastro/login/questionário, nem serviços/controllers/repositórios extras.
+Os três complementos cobrem os pontos que faltavam nos arquivos existentes.
 
 ## Pontos para revisão com Thiago/equipe
 
@@ -38,8 +38,8 @@ A proposta anterior de oito vistas completas não foi publicada. Os complementos
 
 ## Escopo da publicação
 
-Somente `develop`, pela conta `breesiqueiramkt`. Os cinco arquivos de Thiago são trazidos de main com os mesmos blobs, sem reautoria do conteúdo. O commit original de Thiago permanece em main e é referenciado nesta documentação. Não serão alteradas main ou as branches de Sprint, não haverá PR nem merge nesta tarefa. Outros trabalhos de main, como o Daily preenchido e o certificado V2, permanecem fora desta alteração de classes.
+Na publicação de 19/10, os cinco arquivos de Thiago foram copiados para `develop` com o mesmo conteúdo e autoria. A revisão preservou também o caso de uso, os registros de Daily e os protótipos do certificado.
 
 ## Verificações
 
-Fontes novas verificadas pelo PlantUML, imagens decodificadas e inspecionadas, links relativos conferidos. Os cinco `.asta` foram comparados byte a byte com os blobs da main. O projeto de caso de uso existente também foi preservado. Isso é revisão técnica assistida; a revisão independente e o aceite ficam com o grupo.
+Fontes novas verificadas pelo PlantUML, imagens decodificadas e inspecionadas, links relativos conferidos. Os cinco `.asta` foram comparados byte a byte com os blobs da main. O projeto de caso de uso existente também foi preservado. A conferência dos modelos no Astah e o aceite do grupo são os próximos passos.

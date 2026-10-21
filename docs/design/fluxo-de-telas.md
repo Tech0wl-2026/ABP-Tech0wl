@@ -1,6 +1,6 @@
 # Fluxo completo de referência — RF01 a RF21
 
-Proposta para implementação no Figma/Astah; não substitui frames navegáveis. Toda tela deve ter versão desktop e mobile relevante, foco visível e mensagens em linguagem simples.
+Este roteiro reúne as telas e os estados que devem ser conferidos no Figma e no Astah. Inclua versões para computador e celular, foco visível e mensagens claras.
 
 | Tela | Requisitos | Estados e saídas a desenhar |
 |---|---|---|
