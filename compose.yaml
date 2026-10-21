@@ -18,10 +18,36 @@ services:
       timeout: 5s
       retries: 12
       start_period: 10s
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-tech0wl}
+      POSTGRES_USER: ${POSTGRES_USER:-tech0wl}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?Gere JWT_SECRET conforme o guia de instalação}
+      APP_PORT: 3001
+    ports:
+      - "127.0.0.1:${APP_PORT:-3001}:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/api/saude').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
   frontend:
     build: ./frontend
     ports:
       - "127.0.0.1:${WEB_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/"]
       interval: 5s

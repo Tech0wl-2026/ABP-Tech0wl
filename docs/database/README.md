@@ -13,3 +13,5 @@ Esta pasta reúne os modelos conceitual e lógico do portal, o dicionário de da
 | [MODELO-DE-DADOS.md](MODELO-DE-DADOS.md) | Entidades, normalização, regras e limites do modelo. |
 
 Os scripts SQL ficam em [database](../../database): [schema](../../database/schema.sql), [dados de exemplo](../../database/seed.sql) e [consultas](../../database/consultas-exemplo.sql). Os testes estão em [testes/database.sql](../../testes/database.sql).
+
+O modelo executável usado pela API fica em [database/servidor](../../database/servidor/README.md), separado destas referências.

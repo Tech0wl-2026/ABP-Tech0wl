@@ -1,16 +1,16 @@
 # Decisões e dúvidas de domínio
 
-As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. D02 foi definida pelo grupo e informada por Breno em 20/10/2026; as demais propostas abaixo não foram aprovadas pelo professor.
+As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. D02 foi definida pelo grupo e informada por Breno em 20/10/2026; a orientação de backend recebida em 21/10 define a stack e exemplifica o cálculo e a tentativa única. As decisões ainda abertas continuam indicadas abaixo.
 
 | ID | Decisão necessária | Proposta técnica desta revisão | Responsável pela validação |
 |---|---|---|---|
-| D01 | Tecnologia do backend e driver PostgreSQL | Escolher uma stack pequena que a equipe saiba manter; nenhuma API implementada ainda | Equipe técnica |
-| D02 | Seleção e ordem dos 12 temas | **Definida em 20/10/2026:** [12 temas e numeração original](../conteudo/temas.md), com [catálogo JSON](../conteudo/temas.json). Conteúdo e 48 questões ainda precisam de produção/revisão | Definição do grupo informada por Breno; acompanhamento por Conteúdo/PO |
-| D03 | Pesos, escala e arredondamento da nota | DDL de referência usa pesos iguais, percentual `acertos/12*100` e nota 0–10, duas casas. 8 acertos = 66,67%, 7 = 58,33%. Confirmar antes de integrar | Professor/PO |
-| D04 | Pontuação em interrupção de questão | Amostra persiste sem resposta e incorreta; requisito garante encerramento, política exata deve ser confirmada | Professor/PO |
-| D05 | Limite de novas tentativas após finalizar | Modelo aceita várias tentativas, uma resposta por tema em cada tentativa. Confirmar se o desafio exige bloqueio por candidato em vez de por tentativa | Professor/PO |
-| D06 | Dados exibidos na validação pública | Contrato proposto usa token opaco e informação mínima; CPF/e-mail completos só no documento privado | Professor/PO |
-| D07 | Política de expiração de sessão e detecção de perda de conexão | Servidor decide prazo e retomada, transação idempotente encerra questão interrompida antes de avançar; testar reconexão e requisições concorrentes | Backend/equipe |
+| D01 | Tecnologia do backend e driver PostgreSQL | Node.js/Express com pg, bcryptjs e JWT, conforme orientação de 21/10; API em backend/ | Equipe técnica |
+| D02 | Seleção e ordem dos 12 temas | **Definida em 20/10/2026:** [12 temas e numeração original](../conteudo/temas.md), com [catálogo JSON](../conteudo/temas.json). Banco de 48 questões em database/servidor; as 12 questões novas precisam de revisão pedagógica | Definição do grupo informada por Breno; acompanhamento por Conteúdo/PO |
+| D03 | Pesos, escala e arredondamento da nota | DDL de referência usa pesos iguais, percentual `acertos/12*100` e nota 0–10, duas casas. 8 acertos = 66,67%, 7 = 58,33%. Material de apoio usa acertos/total; a API adota esse percentual. Confirmar a escala de apresentação 0–10 | Professor/PO |
+| D04 | Pontuação em interrupção de questão | API encerra sem escolha e com acerto falso em expiração ou interrupção explícita. Fechamento/perda de conexão ainda exigem integração da interface | Professor/PO |
+| D05 | Limite de novas tentativas após finalizar | A API segue o material do professor: uma questão por tema/candidato, sem reinício. O modelo anterior em public admite múltiplas tentativas e permanece apenas referência | Professor/PO |
+| D06 | Dados exibidos na validação pública | API pública usa código opaco e retorna nome, percentual e emissão; CPF/e-mail apenas na rota privada. Confirmar apresentação final | Professor/PO |
+| D07 | Política de expiração de sessão e detecção de perda de conexão | JWT dura uma hora conforme o material. Servidor controla prazo e concorrência; perda de conexão/fechamento imediato ainda não são detectados | Backend/equipe |
 | D08 | Horário de fechamento e critérios por Sprint | Datas confirmadas; hora e denominador da rubrica a confirmar | Professor/SM |
 | D09 | Identidade visual e titularidade das imagens existentes | Validar se o logotipo magenta é definitivo antes de harmonizar a página azul; registrar criadores/licenças | Design/equipe |
 

@@ -35,4 +35,4 @@ npm test
 
 Playwright verifica 1440, 390 e 320 pixels, menu/teclado, busca sem acentos, estados vazios, imagens e conteúdo sem JavaScript. Capturas ficam em `test-results/`; no GitHub Actions são artifacts por hash, com retenção de 30 dias. No fechamento da Sprint, conservar as evidências importantes no commit de entrega; artifacts temporários não são o único registro final.
 
-O CI [Validar incremento e documentação](../.github/workflows/validar-projeto.yml) também sobe containers limpos, prepara consultas e registra versões/imagens. Sem API ainda, não há teste real de cadastro, avaliação, QR ou autorização. Completar na implementação e realizar teste de usabilidade com colegas.
+O CI [Validar incremento e documentação](../.github/workflows/validar-projeto.yml) também sobe containers limpos, prepara consultas e registra versões/imagens. A suíte HTTP do backend está em backend/test e roda no CI em banco PostgreSQL descartável. QR e usabilidade com colegas continuam pendentes.
