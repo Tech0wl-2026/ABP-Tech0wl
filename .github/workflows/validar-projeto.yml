@@ -34,6 +34,7 @@ jobs:
       - name: Subir incremento a partir de banco vazio
         run: |
           cp .env.example .env
+          node -e "console.log('JWT_SECRET='+require('node:crypto').randomBytes(32).toString('hex'))" >> .env
           docker compose config --quiet
           docker compose up --build -d --wait --wait-timeout 120
       - name: Integridade no PostgreSQL 17 e consultas preparadas
@@ -43,6 +44,15 @@ jobs:
           docker compose exec -T db sh -c 'psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" -d "$POSTGRES_DB"' < database/consultas-exemplo.sql
           docker compose exec -T db sh -c 'psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT version(); SELECT * FROM v_prontidao_base;"' > test-results/ambiente.txt
           docker compose images >> test-results/ambiente.txt
+      - name: Backend e certificação em banco descartável
+        run: |
+          docker compose exec -T db sh -c 'createdb -U "$POSTGRES_USER" tech0wl_api_test'
+          set -o pipefail
+          docker compose exec -T -e API_TEST_DATABASE=tech0wl_api_test backend npm test | tee test-results/backend.txt
+          curl --fail http://localhost:8080/api/saude
+          docker compose restart backend
+          docker compose up -d --wait --wait-timeout 60
+          curl --fail http://localhost:8080/api/temas
       - name: Navegador desktop/mobile e ausência de JavaScript
         run: npm test
       - name: Diagnóstico

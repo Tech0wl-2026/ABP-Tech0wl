@@ -1,0 +1,1554 @@
+{
+  "temas": [
+    {
+      "ordem": 1,
+      "numero_original": 1,
+      "nome": "Fundamentos da Agilidade"
+    },
+    {
+      "ordem": 2,
+      "numero_original": 3,
+      "nome": "Introdução ao Scrum"
+    },
+    {
+      "ordem": 3,
+      "numero_original": 4,
+      "nome": "Papéis do Scrum"
+    },
+    {
+      "ordem": 4,
+      "numero_original": 5,
+      "nome": "Eventos do Scrum"
+    },
+    {
+      "ordem": 5,
+      "numero_original": 6,
+      "nome": "Artefatos do Scrum"
+    },
+    {
+      "ordem": 6,
+      "numero_original": 8,
+      "nome": "Gestão do Product Backlog"
+    },
+    {
+      "ordem": 7,
+      "numero_original": 9,
+      "nome": "Kanban"
+    },
+    {
+      "ordem": 8,
+      "numero_original": 10,
+      "nome": "Planejamento Ágil"
+    },
+    {
+      "ordem": 9,
+      "numero_original": 11,
+      "nome": "Métricas Ágeis"
+    },
+    {
+      "ordem": 10,
+      "numero_original": 13,
+      "nome": "Extreme Programming (XP)"
+    },
+    {
+      "ordem": 11,
+      "numero_original": 14,
+      "nome": "Ferramentas para Equipes Ágeis"
+    },
+    {
+      "ordem": 12,
+      "numero_original": 15,
+      "nome": "Boas Práticas em Projetos Ágeis"
+    }
+  ],
+  "questoes": [
+    {
+      "id": 1,
+      "tema_id": 1,
+      "ordem": 1,
+      "enunciado": "Qual prática permitiu à equipe incorporar a necessidade identificada na imagem?",
+      "imagem_url": "/assets/questoes/questao01.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Congelar os requisitos até concluir todo o portal.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Revisar as prioridades a partir do feedback e ajustar as próximas entregas.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Eliminar o planejamento para aceitar qualquer solicitação imediatamente.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Adiar o contato com candidatos até a entrega final.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 1 do material do professor; tema original 1.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 2,
+      "tema_id": 1,
+      "ordem": 2,
+      "enunciado": "Como se caracteriza a evolução do produto apresentada na imagem?",
+      "imagem_url": "/assets/questoes/questao02.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Desenvolvimento sequencial, com uso permitido somente ao final.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Produção de protótipos descartáveis sem funcionalidades utilizáveis.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Repetição da mesma entrega sem ampliação do produto.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Desenvolvimento incremental, com ampliação das funcionalidades utilizáveis.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 2 do material do professor; tema original 1.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 3,
+      "tema_id": 1,
+      "ordem": 3,
+      "enunciado": "Qual fundamento da agilidade é evidenciado pela sequência da imagem?",
+      "imagem_url": "/assets/questoes/questao03.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Aprender com evidências e ajustar a solução em ciclos.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Manter a decisão inicial para evitar retrabalho.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Tratar uma hipótese da equipe como requisito validado.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Medir o progresso apenas pela quantidade de telas desenhadas.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 3 do material do professor; tema original 1.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 4,
+      "tema_id": 1,
+      "ordem": 4,
+      "enunciado": "Qual prática de melhoria está representada na imagem?",
+      "imagem_url": "/assets/questoes/questao04.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Substituir a análise de problemas por cobrança individual.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Repetir o processo anterior sem avaliar seus efeitos.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Refletir sobre o trabalho e experimentar ajustes no processo.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Suspender as entregas até estabelecer um processo definitivo.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 4 do material do professor; tema original 1.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 5,
+      "tema_id": 2,
+      "ordem": 1,
+      "enunciado": "A quais pilares do Scrum correspondem, respectivamente, os momentos 1, 2 e 3?",
+      "imagem_url": "/assets/questoes/questao05.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Transparência, inspeção e adaptação.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Inspeção, adaptação e transparência.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Adaptação, transparência e inspeção.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Transparência, adaptação e inspeção.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 9 do material do professor; tema original 3.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 6,
+      "tema_id": 2,
+      "ordem": 2,
+      "enunciado": "Quais características do Scrum Team são demonstradas na imagem?",
+      "imagem_url": "/assets/questoes/questao06.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Hierarquia interna e especialização em departamentos separados.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Dependência de um gerente para distribuir todas as atividades.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Multifuncionalidade e autogerenciamento.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Ausência de responsabilidades e de objetivo compartilhado.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 10 do material do professor; tema original 3.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 7,
+      "tema_id": 2,
+      "ordem": 3,
+      "enunciado": "Qual afirmação sobre a Sprint é compatível com o cenário e com o Scrum?",
+      "imagem_url": "/assets/questoes/questao07.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "A Sprint é apenas a etapa de programação, seguida por uma etapa externa de testes.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "A Sprint contém o trabalho e os eventos necessários para avançar em direção à Meta do Produto.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "A Sprint só termina quando todos os itens do Product Backlog estiverem prontos.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "O planejamento e a reflexão acontecem obrigatoriamente fora da Sprint.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 11 do material do professor; tema original 3.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 8,
+      "tema_id": 2,
+      "ordem": 4,
+      "enunciado": "Qual conclusão é correta sobre os itens X e Y?",
+      "imagem_url": "/assets/questoes/questao08.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Ambos compõem o Incremento porque possuem uma tela visível.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "X compõe o Incremento, pois os testes podem ser adiados sem afetar a conclusão.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Nenhum pode compor um Incremento antes de terminar todo o portal.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Y pode compor o Incremento; X ainda não atende à Definition of Done.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 12 do material do professor; tema original 3.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 9,
+      "tema_id": 3,
+      "ordem": 1,
+      "enunciado": "Qual responsabilidade do Scrum é exercida por Marina no cenário?",
+      "imagem_url": "/assets/questoes/questao09.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Product Owner.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Scrum Master.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Developers.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Comitê de aprovação da Sprint.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 13 do material do professor; tema original 4.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 10,
+      "tema_id": 3,
+      "ordem": 2,
+      "enunciado": "Qual responsabilidade do Scrum melhor corresponde à atuação de Rafael?",
+      "imagem_url": "/assets/questoes/questao10.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Product Owner, por distribuir as tarefas técnicas.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Developers, por aceitar o produto em nome do parceiro.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Scrum Master, por apoiar a efetividade da equipe e a remoção de impedimentos.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Gerente de projetos, uma responsabilidade formal do Scrum.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 14 do material do professor; tema original 4.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 11,
+      "tema_id": 3,
+      "ordem": 3,
+      "enunciado": "Quem responde pela organização e adaptação desse plano técnico no Scrum?",
+      "imagem_url": "/assets/questoes/questao11.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "O parceiro, ao atribuir tarefas diárias.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Os Developers, que planejam e adaptam o trabalho da Sprint.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "O Scrum Master, que deve escolher a implementação.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "O Product Owner, que deve definir quem escreve cada trecho de código.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 15 do material do professor; tema original 4.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 12,
+      "tema_id": 3,
+      "ordem": 4,
+      "enunciado": "Quem permanece responsável pela ordenação do Product Backlog, mesmo ouvindo os demais?",
+      "imagem_url": "/assets/questoes/questao12.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "O parceiro, porque toda solicitação deve ocupar o primeiro lugar.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Bruno, porque o Scrum Master gerencia as prioridades do produto.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Os Developers, exclusivamente por conhecerem o esforço técnico.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Lia, que pode colaborar com todos e responde pelas decisões de ordenação.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 16 do material do professor; tema original 4.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 13,
+      "tema_id": 4,
+      "ordem": 1,
+      "enunciado": "Qual evento do Scrum está representado?",
+      "imagem_url": "/assets/questoes/questao13.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Daily Scrum.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Sprint Review.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Sprint Retrospective.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Sprint Planning.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 17 do material do professor; tema original 5.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 14,
+      "tema_id": 4,
+      "ordem": 2,
+      "enunciado": "Qual é a finalidade do evento apresentado?",
+      "imagem_url": "/assets/questoes/questao14.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Inspecionar o progresso e adaptar o Sprint Backlog na Daily Scrum.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Prestar contas individuais ao Scrum Master para receber novas tarefas.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Obter a aprovação final do parceiro para liberar o produto.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Estimar todos os itens do Product Backlog.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 18 do material do professor; tema original 5.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 15,
+      "tema_id": 4,
+      "ordem": 3,
+      "enunciado": "Qual evento corresponde à situação, considerando seu foco no produto e nos interessados?",
+      "imagem_url": "/assets/questoes/questao15.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Sprint Retrospective.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Daily Scrum.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Sprint Review.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Sprint Planning.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 19 do material do professor; tema original 5.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 16,
+      "tema_id": 4,
+      "ordem": 4,
+      "enunciado": "Em qual evento essa análise do processo e a definição de melhorias se encaixam?",
+      "imagem_url": "/assets/questoes/questao16.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Sprint Review, cujo foco exclusivo é distribuir tarefas.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Sprint Retrospective, voltada a aumentar qualidade e efetividade.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Daily Scrum, destinada a avaliar todo o processo da Sprint encerrada.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Sprint Planning, destinado a aprovar contratos com o parceiro.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 20 do material do professor; tema original 5.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 17,
+      "tema_id": 5,
+      "ordem": 1,
+      "enunciado": "Qual associação identifica corretamente A, B e C?",
+      "imagem_url": "/assets/questoes/questao17.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Sprint Backlog; Product Backlog; Incremento.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Product Backlog; Sprint Backlog; Incremento.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Product Backlog; Incremento; Sprint Backlog.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Incremento; Sprint Backlog; Product Backlog.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 21 do material do professor; tema original 6.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 18,
+      "tema_id": 5,
+      "ordem": 2,
+      "enunciado": "Qual artefato foi diretamente atualizado pelos Developers na imagem?",
+      "imagem_url": "/assets/questoes/questao18.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "A Meta do Produto, necessariamente substituída a cada falha.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "O Incremento, que inclui qualquer atividade ainda não terminada.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "A Definition of Done, reduzida para aceitar a falha.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "O Sprint Backlog, que é atualizado à medida que se aprende sobre o trabalho.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 22 do material do professor; tema original 6.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 19,
+      "tema_id": 5,
+      "ordem": 3,
+      "enunciado": "Quais compromissos associados aos artefatos correspondem, nessa ordem, aos três registros?",
+      "imagem_url": "/assets/questoes/questao19.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Meta do Produto; Meta da Sprint; Definition of Done.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Meta da Sprint; Definition of Done; Meta do Produto.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Definition of Done; Meta do Produto; Meta da Sprint.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Meta do Produto; Definition of Done; Meta da Sprint.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 23 do material do professor; tema original 6.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 20,
+      "tema_id": 5,
+      "ordem": 4,
+      "enunciado": "Qual resultado pode integrar um Incremento, segundo as informações da imagem?",
+      "imagem_url": "/assets/questoes/questao20.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "P, porque a aparência final dispensa integração.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Ambos, pois todo código escrito constitui um Incremento.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Q, pois está utilizável e atende à Definition of Done.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Nenhum, porque o portal inteiro deve ser concluído antes do primeiro Incremento.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 24 do material do professor; tema original 6.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 21,
+      "tema_id": 6,
+      "ordem": 1,
+      "enunciado": "Qual decisão de ordenação é mais adequada ao contexto apresentado?",
+      "imagem_url": "/assets/questoes/questao21.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Priorizar B, pois itens visuais devem sempre vir primeiro.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Manter a ordem de chegada, sem examinar os impactos.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Priorizar A, considerando o risco e o valor de corrigir a emissão incorreta.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Remover A porque correções não podem constar do Product Backlog.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 29 do material do professor; tema original 8.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 22,
+      "tema_id": 6,
+      "ordem": 2,
+      "enunciado": "Qual atividade de gestão do Product Backlog está ilustrada?",
+      "imagem_url": "/assets/questoes/questao22.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Refinamento: detalhar, dividir e melhorar a compreensão dos itens.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Sprint Review: aprovar contratos e congelar requisitos.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Daily Scrum: estimar obrigatoriamente todo o trabalho do produto.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Encerramento do backlog: impedir novas alterações.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 30 do material do professor; tema original 8.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 23,
+      "tema_id": 6,
+      "ordem": 3,
+      "enunciado": "Qual encaminhamento é compatível com o cenário?",
+      "imagem_url": "/assets/questoes/questao23.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Inserir a comparação imediatamente, ainda que a meta deixe de ser viável.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Cancelar automaticamente a Sprint sempre que surgir uma solicitação.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Excluir definitivamente o pedido por ter surgido durante uma Sprint.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Registrar e ordenar a necessidade no Product Backlog para trabalho futuro, preservando a meta atual.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 31 do material do professor; tema original 8.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 24,
+      "tema_id": 6,
+      "ordem": 4,
+      "enunciado": "Qual característica do Product Backlog é evidenciada?",
+      "imagem_url": "/assets/questoes/questao24.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "É um contrato imutável, definido antes da primeira Sprint.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "É uma lista emergente e ordenada que evolui com o aprendizado sobre o produto.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "É exclusivamente a lista de tarefas diárias de um desenvolvedor.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "É formado somente por funcionalidades concluídas.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 32 do material do professor; tema original 8.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 25,
+      "tema_id": 7,
+      "ordem": 1,
+      "enunciado": "Qual ação respeita a política de WIP da imagem?",
+      "imagem_url": "/assets/questoes/questao25.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Iniciar os três itens que aguardam, para maximizar a ocupação.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Ocultar um item iniciado para liberar espaço visual no quadro.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Elevar automaticamente o limite sempre que houver trabalho esperando.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Ajudar a concluir um item em andamento antes de puxar outro para a coluna.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 33 do material do professor; tema original 9.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 26,
+      "tema_id": 7,
+      "ordem": 2,
+      "enunciado": "Qual ação tende a melhorar o fluxo no cenário?",
+      "imagem_url": "/assets/questoes/questao26.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Aumentar somente a quantidade de itens iniciados no desenvolvimento.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Investigar a fila de testes e colaborar para terminar itens antes de iniciar mais trabalho.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Mover os cinco itens para concluído sem verificar seu comportamento.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Remover a etapa de testes do quadro para eliminar a fila visível.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 34 do material do professor; tema original 9.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 27,
+      "tema_id": 7,
+      "ordem": 3,
+      "enunciado": "Que prática do Kanban é representada pelo movimento?",
+      "imagem_url": "/assets/questoes/questao27.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Sistema puxado, com início condicionado à capacidade disponível.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Sistema empurrado, com entrada obrigatória independentemente da capacidade.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Alocação de tarefas por ordem de um gerente em todas as etapas.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Eliminação dos critérios de passagem entre etapas.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 35 do material do professor; tema original 9.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 28,
+      "tema_id": 7,
+      "ordem": 4,
+      "enunciado": "Qual tratamento do item é coerente com a política apresentada?",
+      "imagem_url": "/assets/questoes/questao28.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Removê-lo do quadro para que ninguém considere a espera.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Marcá-lo como concluído, pois o impedimento é externo.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Sinalizar o bloqueio, mantê-lo visível no WIP e agir para resolver a dependência.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Devolver o item a uma lista oculta e descontá-lo do WIP.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 36 do material do professor; tema original 9.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 29,
+      "tema_id": 8,
+      "ordem": 1,
+      "enunciado": "Como a equipe deve usar as informações para planejar a próxima Sprint?",
+      "imagem_url": "/assets/questoes/questao29.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Assumir que concluirá 30 pontos porque todos os itens já foram estimados.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Exigir pelo menos 22 pontos, pois toda Sprint deve superar a anterior.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Considerar desempenho passado, capacidade disponível e riscos para fazer uma previsão realista.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Ignorar as ausências porque story points tornam a capacidade constante.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 37 do material do professor; tema original 10.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 30,
+      "tema_id": 8,
+      "ordem": 2,
+      "enunciado": "Qual escolha melhor orienta uma primeira entrega para validar o fluxo central com candidatos?",
+      "imagem_url": "/assets/questoes/questao30.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Escolher A e testar a capacidade funcional central antes de ampliar o produto.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Escolher B, pois aparência sempre valida a necessidade principal.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Implementar todas as funcionalidades futuras antes de permitir qualquer teste de uso.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Criar somente tabelas e considerar validada toda a experiência do candidato.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 38 do material do professor; tema original 10.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 31,
+      "tema_id": 8,
+      "ordem": 3,
+      "enunciado": "Qual é o próximo passo mais adequado?",
+      "imagem_url": "/assets/questoes/questao31.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Converter 3 pontos em 3 horas e 8 pontos em 8 horas por uma regra universal.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Usar automaticamente o menor valor para reduzir o prazo.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Calcular a média e encerrar a discussão, mesmo mantendo hipóteses diferentes.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Discutir as hipóteses, considerar o trabalho completo e revisar a estimativa.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 39 do material do professor; tema original 10.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 32,
+      "tema_id": 8,
+      "ordem": 4,
+      "enunciado": "Qual previsão inicial é coerente com esses dados?",
+      "imagem_url": "/assets/questoes/questao32.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Uma Sprint, pois todo o Product Backlog deve caber na próxima Sprint.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Cerca de três Sprints, como previsão a revisar quando as hipóteses mudarem.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Exatamente três Sprints garantidas, independentemente de novas descobertas.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Sessenta Sprints, pois um ponto representa obrigatoriamente uma Sprint.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 40 do material do professor; tema original 10.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 33,
+      "tema_id": 9,
+      "ordem": 1,
+      "enunciado": "Qual foi a velocidade da equipe nessa Sprint, segundo a regra apresentada?",
+      "imagem_url": "/assets/questoes/questao33.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "18 pontos.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "10 pontos.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "14 pontos.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "8 pontos.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 41 do material do professor; tema original 11.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 34,
+      "tema_id": 9,
+      "ordem": 2,
+      "enunciado": "Qual interpretação é sustentada pelo gráfico descrito na imagem?",
+      "imagem_url": "/assets/questoes/questao34.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "A equipe deixou de trabalhar durante três dias.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "A Sprint será concluída no prazo com certeza.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "A qualidade caiu exatamente na mesma proporção que os pontos.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Não houve redução registrada do trabalho restante nos dias 3 a 5; é necessário investigar a causa.",
+          "correta": true
+        }
+      ],
+      "origem": "Questão 42 do material do professor; tema original 11.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 35,
+      "tema_id": 9,
+      "ordem": 3,
+      "enunciado": "Qual é o tempo de ciclo, medido do início do trabalho à conclusão?",
+      "imagem_url": "/assets/questoes/questao35.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "5 dias.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "7 dias.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "2 dias.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "8 dias.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 43 do material do professor; tema original 11.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 36,
+      "tema_id": 9,
+      "ordem": 4,
+      "enunciado": "Qual é o throughput da semana, medido em itens concluídos por semana?",
+      "imagem_url": "/assets/questoes/questao36.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "12 itens por semana.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "9 itens por semana.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "7 itens por semana.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "19 itens por semana.",
+          "correta": false
+        }
+      ],
+      "origem": "Questão 44 do material do professor; tema original 11.",
+      "revisao": "Material fornecido pelo professor."
+    },
+    {
+      "id": 37,
+      "tema_id": 10,
+      "ordem": 1,
+      "enunciado": "Qual prática de XP corresponde à forma de trabalho mostrada na imagem?",
+      "imagem_url": "/assets/questoes/questao37.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Programação em par, com colaboração e revisão contínua.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Divisão permanente entre quem programa e quem apenas testa.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Inspeção do código somente no encerramento do projeto.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Execução individual sem compartilhamento de decisões.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 38,
+      "tema_id": 10,
+      "ordem": 2,
+      "enunciado": "Qual sequência de TDD está representada na imagem?",
+      "imagem_url": "/assets/questoes/questao38.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Escrever todo o sistema, documentar e depois testar.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Refatorar, publicar e remover os testes.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Red: teste falhando; Green: implementação mínima; Refactor: melhorar o código.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Aprovar requisitos, aguardar a Sprint Review e testar manualmente.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 39,
+      "tema_id": 10,
+      "ordem": 3,
+      "enunciado": "Que prática de XP ajuda a detectar cedo os problemas apresentados nesse fluxo?",
+      "imagem_url": "/assets/questoes/questao39.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Manter cada alteração isolada até o último dia do semestre.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Integração contínua, com verificações frequentes do código integrado.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Substituir testes por mensagens no chat.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Realizar uma única integração após a entrega final.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 40,
+      "tema_id": 10,
+      "ordem": 4,
+      "enunciado": "Qual objetivo da refatoração é mostrado nessa comparação?",
+      "imagem_url": "/assets/questoes/questao40.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Acrescentar novos requisitos sem conversar com a equipe.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Alterar o resultado da funcionalidade para evitar testes.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Reescrever tudo sem verificar o comportamento anterior.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Melhorar a estrutura interna preservando o comportamento observável.",
+          "correta": true
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 41,
+      "tema_id": 11,
+      "ordem": 1,
+      "enunciado": "Como esse quadro pode ajudar a equipe a acompanhar o trabalho?",
+      "imagem_url": "/assets/questoes/questao41.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Substituindo as conversas e impedindo mudanças de prioridade.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Tornando visíveis as atividades e suas etapas no fluxo.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Comprovando que qualquer cartão já está concluído.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Medindo automaticamente a qualidade individual de cada integrante.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 42,
+      "tema_id": 11,
+      "ordem": 2,
+      "enunciado": "Qual é o papel do pull request no fluxo mostrado?",
+      "imagem_url": "/assets/questoes/questao42.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Permitir comparar, discutir e revisar uma mudança antes de integrá-la.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Eliminar a necessidade de executar testes.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Alterar automaticamente todos os requisitos do produto.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Garantir que qualquer mudança aberta já pode ir para produção.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 43,
+      "tema_id": 11,
+      "ordem": 3,
+      "enunciado": "Qual é a ação mais adequada diante do resultado apresentado pelo pipeline?",
+      "imagem_url": "/assets/questoes/questao43.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Ignorar a falha porque o build foi aprovado.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Remover o teste para obter um resultado verde.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Concluir a atividade sem registrar o problema.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Investigar a falha, corrigir a causa e executar as verificações novamente.",
+          "correta": true
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 44,
+      "tema_id": 11,
+      "ordem": 4,
+      "enunciado": "Qual benefício o registro vinculado à issue oferece nesse cenário?",
+      "imagem_url": "/assets/questoes/questao44.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Dispensar a atualização da documentação quando a decisão mudar.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Ocultar o contexto para quem chegar depois.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Preservar o contexto e facilitar a consulta da decisão pela equipe.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Transformar qualquer conversa em aceite automático do cliente.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 45,
+      "tema_id": 12,
+      "ordem": 1,
+      "enunciado": "Qual evidência permite conferir o critério de aceite apresentado na imagem?",
+      "imagem_url": "/assets/questoes/questao45.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "A quantidade de linhas escritas durante a tarefa.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Somente o cartão estar na coluna de trabalho concluído.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "O relato de que a tela está visualmente bonita.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "O teste que demonstra a recusa do CPF duplicado.",
+          "correta": true
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 46,
+      "tema_id": 12,
+      "ordem": 2,
+      "enunciado": "Por que separar essa correção em uma mudança pequena favorece a revisão?",
+      "imagem_url": "/assets/questoes/questao46.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Porque mudanças pequenas não precisam ser testadas.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Porque torna o objetivo e o impacto da alteração mais fáceis de conferir.",
+          "correta": true
+        },
+        {
+          "letra": "C",
+          "texto": "Porque impede a colaboração dos demais integrantes.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Porque elimina a necessidade de uma descrição do problema.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 47,
+      "tema_id": 12,
+      "ordem": 3,
+      "enunciado": "Que cuidado com a configuração está representado na imagem?",
+      "imagem_url": "/assets/questoes/questao47.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Manter segredos fora do repositório e documentar os nomes das variáveis.",
+          "correta": true
+        },
+        {
+          "letra": "B",
+          "texto": "Publicar a senha real no README para facilitar o uso.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Copiar o token de acesso para o JavaScript do navegador.",
+          "correta": false
+        },
+        {
+          "letra": "D",
+          "texto": "Usar a mesma senha pública em todos os ambientes.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    },
+    {
+      "id": 48,
+      "tema_id": 12,
+      "ordem": 4,
+      "enunciado": "Qual prática de melhoria contínua está representada nesse encadeamento?",
+      "imagem_url": "/assets/questoes/questao48.svg",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Usar a retrospectiva apenas para procurar culpados.",
+          "correta": false
+        },
+        {
+          "letra": "B",
+          "texto": "Repetir o processo sem observar o resultado.",
+          "correta": false
+        },
+        {
+          "letra": "C",
+          "texto": "Transformar um problema observado em uma ação e verificar seu efeito.",
+          "correta": true
+        },
+        {
+          "letra": "D",
+          "texto": "Registrar muitas sugestões sem escolher nenhuma ação.",
+          "correta": false
+        }
+      ],
+      "origem": "Elaboração para os temas escolhidos pelo grupo em 20/10/2026.",
+      "revisao": "Revisão pedagógica da equipe pendente."
+    }
+  ]
+}

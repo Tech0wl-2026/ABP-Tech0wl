@@ -9,8 +9,8 @@ O repositório reúne a página inicial do portal, os scripts do banco de dados,
 | Pasta ou arquivo | Conteúdo |
 |---|---|
 | [frontend](frontend/README.md) | Página inicial em HTML, CSS e JavaScript, imagens e configuração do servidor web. |
-| [backend](backend/README.md) | Pasta reservada para a API do portal. |
-| [database](database) | Schema PostgreSQL, dados de exemplo e consultas SQL. |
+| [backend](backend/README.md) | API Node.js/Express com cadastro, login e avaliação. |
+| [database](database) | Banco do backend, modelo de referência e consultas SQL. |
 | [docs](docs) | Requisitos, protótipo, UML, modelagem do banco e documentos de gestão. |
 | [testes](testes/README.md) | Testes do banco, da interface e do importador de issues. |
 | [scripts](scripts) | Servidor local e verificação da estrutura do repositório. |

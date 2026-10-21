@@ -1,20 +1,25 @@
-# Base de questões e revisão editorial
+# Banco de questões
 
-Estado: **4 questões demonstrativas de um tema**, não 48 questões finais. O [seed](../../database/seed.sql) usa fonte primária Scrum Guide 2020 e imagens SVG locais. Todas as corretas da amostra são A para facilitar inspeção; distribuir alternativas na base final e validar qualidade dos distratores. A prova real não está disponível.
+A API utiliza os 12 temas definidos pelo grupo, com quatro questões por tema, uma imagem por questão e quatro alternativas A/B/C/D. O banco tem 48 questões e 192 alternativas.
+
+- [Catálogo completo com gabarito e origem](../../database/servidor/questoes.json)
+- [Seed executado pelo backend](../../database/servidor/seed.sql)
+- [Imagens das questões](../../backend/assets/questoes)
+- [Temas escolhidos](temas.md)
+
+## Origem e revisão
+
+As 36 questões dos nove temas comuns foram aproveitadas do material do professor. Para XP, Ferramentas para Equipes Ágeis e Boas Práticas em Projetos Ágeis, foram elaboradas 12 questões novas com imagens em SVG. Essas 12 continuam pendentes de revisão pedagógica pelo grupo.
+
+A seleção de temas corresponde à decisão da equipe de 20/10. Isso não significa aprovação editorial automática das perguntas, distratores ou imagens. A revisão deve conferir clareza, contexto, coerência com o estudo, gabarito, fontes e direitos de uso das imagens.
 
 ## Critério por questão
 
-- Identificador, tema, posição 1–4 e versão.
-- Enunciado contextualizado, sem ambiguidade e coerente com o estudo.
-- Imagem útil, descrição alternativa e fonte/licença confirmada.
-- Quatro alternativas A/B/C/D, apenas uma correta e distratores plausíveis.
-- Justificativa e fonte técnica primária com seção/data de consulta.
-- Autor, revisor e revisão pedagógica registrada na issue.
+- Um enunciado claro, coerente com o tema e com a imagem.
+- Quatro alternativas, com exatamente uma correta e distratores plausíveis.
+- Imagem útil para a leitura do cenário.
+- Fundamentação técnica e revisão registrada pela equipe.
 
-O DDL permite rascunhos incompletos e só publica questão com quatro alternativas e uma correta. Questão utilizada e suas alternativas não são alteradas; despublicar e criar nova versão preserva o histórico. A base só fica pronta quando a seleção completa passa na view de prontidão.
+O catálogo e o seed não são arquivos públicos do servidor web. A API retorna alternativas sem indicar o gabarito durante a resolução. O gabarito aparece no feedback e no histórico após o encerramento.
 
-Conteúdo, gabarito e justificativa devem ficar no servidor durante resolução. Servir o seed ou enviar a alternativa correta antes de encerrar a questão violaria a integridade da avaliação.
-
-## Seleção temática definida
-
-Os [12 temas oficiais do projeto](temas.md) foram definidos em 20/10/2026. Esta base continua sendo amostra técnica, não o conjunto final de 48 questões. A distribuição final será de quatro questões revisadas por tema, ligadas ao conteúdo didático correspondente.
+A amostra anterior de quatro questões fica em `database/seed.sql`, vinculada ao modelo de referência em `public`. Ela não é usada pelo backend. Os detalhes dessa separação estão na [arquitetura](../Tecnico/ARQUITETURA.md).

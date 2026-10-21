@@ -10,3 +10,5 @@ Esta pasta reúne os testes do banco de dados, da interface e do importador de i
 | [EXECUCAO.md](EXECUCAO.md) | Comandos, requisitos e cobertura dos testes. |
 
 A execução no GitHub Actions está definida no [workflow de validação](../.github/workflows/validar-projeto.yml).
+
+Os testes do backend ficam em [backend/test](../backend/test), com instruções no [guia de instalação](../docs/Tecnico/INSTALACAO.md).
