@@ -1,0 +1,98 @@
+{
+  "repository": "Tech0wl-2026/ABP-Tech0wl",
+  "project_owner": "Tech0wl-2026",
+  "project_number": 7,
+  "target_status": "Em revisão",
+  "reviewed_commit": "3120a836d5f0d8b110ee96f91266f5db16d2463f",
+  "reviewed_on": "2026-10-20",
+  "issues": [
+    {
+      "number": 1,
+      "body_sha256": "3bb4ed03ef39fec7c38bdfa7417ae378d53f6dd89c1a76a22f7a44a3e997b345"
+    },
+    {
+      "number": 2,
+      "body_sha256": "038daec86b5ec0d94e007075a782e742c15c6add80c52b57c6d368caa754ecbc"
+    },
+    {
+      "number": 4,
+      "body_sha256": "63722e2585fabbf33150c786301c8a71a7f8d654a13eb4ef029794e1e96e5c21"
+    },
+    {
+      "number": 5,
+      "body_sha256": "f876f3bb86ebea645ab9c87806e0a2f59c51ec0e47f79acbec9d2a950f436e9f"
+    },
+    {
+      "number": 9,
+      "body_sha256": "0f389b874fad4fc11a539c22ce1efb0e9bc1186026a053e1bc1feca7b7c5e310"
+    },
+    {
+      "number": 13,
+      "body_sha256": "3fa2cf2ed774c52bf20940f99cf1e0d6a35ffba523ce02e4e24e246bcf3a52d9"
+    },
+    {
+      "number": 24,
+      "body_sha256": "7a7bbe1176b02e53878b3263147f9909fa34fcd76037477b708fcf7af6c8a283"
+    },
+    {
+      "number": 27,
+      "body_sha256": "994901a6eeba1b16103c537ca96429279b8caeb35f740bdf61777f14c0f4343f"
+    },
+    {
+      "number": 38,
+      "body_sha256": "f2a8ae5d78b427ad24990b5a4b6a933ec6361e7115726b76a671a299a2ef14ba"
+    },
+    {
+      "number": 51,
+      "body_sha256": "7525dd8faaf4cc388e14a60f71b929afcc848b22bc568bc207ecf6e2b91a7ad1"
+    },
+    {
+      "number": 54,
+      "body_sha256": "da8239c456e31bb7ba9cd2ab2aeefc0fa050327f61389a16446420bb40c43707"
+    },
+    {
+      "number": 61,
+      "body_sha256": "a90b6ddd7e3ead191179001580e182092d6f6d6d199609745603b2c35e3f2a87"
+    },
+    {
+      "number": 71,
+      "body_sha256": "7e9f526e674c4c6d3bd1f2889efb5f870249be39dbd6ae5f86c1f7a7bbde2d3a"
+    },
+    {
+      "number": 78,
+      "body_sha256": "2becc93db112df92717229e7f576847f84a9aef51f77f4187c4da6e176173089"
+    },
+    {
+      "number": 79,
+      "body_sha256": "234e86414e6ea5f7dd76f28e80792cc5eeee63577b02fd28d7c3429c9089fc5c"
+    },
+    {
+      "number": 80,
+      "body_sha256": "135e6463431166ee0c44754d679ed5e0e187bf71320d2d62ef3aea0301b3faac"
+    },
+    {
+      "number": 82,
+      "body_sha256": "e17c9c624c9a2f0471bb919535baac0b7433dc0d0668d48ccba90fd0b046cd1f"
+    },
+    {
+      "number": 83,
+      "body_sha256": "e3440ea01c52839364abf9e5b6da8df30a6e1db69e2f5252b296398aece027a9"
+    },
+    {
+      "number": 85,
+      "body_sha256": "41cc8b4820bbfec2a1c8cb2d90fcd68fa9c8f878594f5b0f088b827aa1e02b46"
+    },
+    {
+      "number": 88,
+      "body_sha256": "4df8440f4efc25e35db62eac02f03ebe3b460972f03522af7f47dc52196dd9e3"
+    },
+    {
+      "number": 90,
+      "body_sha256": "11203bb7e0f8e1d1099db1be554fd7230d91cade3aa77206efe60d6e35037d3a"
+    },
+    {
+      "number": 94,
+      "body_sha256": "87be3292f93132d18e8c064c59736895fb88877b321fe5a963ef88392b8ae29d"
+    }
+  ]
+}
