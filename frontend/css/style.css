@@ -395,18 +395,18 @@ h1 {
   min-width: 0;
   border-radius: 50%;
   background-image: url("../assets/figma/docentes.png");
-  background-size: 300% 100%;
+  background-size: 300% auto;
   background-repeat: no-repeat;
   background-color: #57307b;
 }
 .teacher-one {
-  background-position: left center;
+  background-position: left top;
 }
 .teacher-two {
-  background-position: center;
+  background-position: center top;
 }
 .teacher-three {
-  background-position: right center;
+  background-position: right top;
 }
 footer {
   height: 228px;
