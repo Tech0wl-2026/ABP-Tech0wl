@@ -2,7 +2,11 @@
 
 Requisitos: Git, Docker e Docker Compose v2 com suporte a `--wait`. Para rodar fora dos containers, use também Node.js 24 e PostgreSQL 17 ou superior.
 
-## Com Docker
+## Inicialização rápida
+
+No ZIP ou checkout completo, execute `bash iniciar.sh` no Linux/macOS ou `powershell -NoProfile -ExecutionPolicy Bypass -File .\iniciar.ps1` no Windows. Esses scripts geram um segredo local quando necessário e sobem os três serviços. Veja [Começar aqui](../../COMECAR-AQUI.md).
+
+## Com Docker, manualmente
 
 ```sh
 git clone https://github.com/Tech0wl-2026/ABP-Tech0wl.git

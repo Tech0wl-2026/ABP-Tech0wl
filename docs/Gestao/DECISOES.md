@@ -12,6 +12,6 @@ As regras transcritas em [Requisitos](../Requisitos/REQUISITOS.md) prevalecem. D
 | D06 | Dados exibidos na validação pública | API pública usa código opaco e retorna nome, percentual e emissão; CPF/e-mail apenas na rota privada. Confirmar apresentação final | Professor/PO |
 | D07 | Política de expiração de sessão e detecção de perda de conexão | JWT dura uma hora conforme o material. Servidor controla prazo e concorrência; perda de conexão/fechamento imediato ainda não são detectados | Backend/equipe |
 | D08 | Horário de fechamento e critérios por Sprint | Datas confirmadas; hora e denominador da rubrica a confirmar | Professor/SM |
-| D09 | Identidade visual e titularidade das imagens existentes | Validar se o logotipo magenta é definitivo antes de harmonizar a página azul; registrar criadores/licenças | Design/equipe |
+| D09 | Identidade visual e titularidade das imagens existentes | Páginas públicas ajustadas aos protótipos desktop/mobile em 21/10; substituições locais autorizadas por Breno, descritas em docs/design/conferencia-2026-10-21.md. Confirmar marca definitiva e direitos dos assets originais | Design/equipe |
 
 O identificador `peso-igual-v1-proposta` na tentativa permite reconhecer a regra usada no modelo. Alterar fórmulas exige migração versionada e preservação dos resultados já emitidos, depois de D03 ser resolvida. Não recalcular certificados antigos silenciosamente.
