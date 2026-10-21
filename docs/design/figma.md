@@ -21,9 +21,9 @@ O contexto de desenho e as imagens de referência dessas seis telas orientaram o
 
 Os endereços temporários de imagens retornaram HTML no lugar dos arquivos. Foi possível recuperar a ilustração original da estudante por exportação; as demais exportações ficaram limitadas pela cota da integração. O runtime dos shaders também não foi disponibilizado.
 
-Breno autorizou em 21/10 a continuidade com substituições próximas ao desenho. Foram usados efeitos em CSS, retratos ilustrativos e vetores locais. A [conferência da implementação](conferencia-2026-10-21.md) identifica as diferenças. A versão não é uma reprodução exata de todos os assets do Figma.
+Para os recursos indisponíveis, foram usados efeitos em CSS, retratos ilustrativos e vetores locais, com autorização de Breno. A [conferência da implementação](conferencia-2026-10-21.md) identifica as diferenças. Os arquivos originais que faltam estão listados nesse registro.
 
-O acesso liberado não comprova, sozinho, a navegação integral de RF01–RF21 nem a revisão de todos os estados da prova. Esses critérios da Sprint 1 continuam sujeitos à conferência e ao aceite da equipe.
+As páginas públicas passaram pela revisão do grupo e foram integradas à `main` no [PR #120](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/120), após a confirmação de Breno. A navegação completa de RF01–RF21 e os estados internos da prova seguem no checklist da Sprint 1.
 
 ## Certificado
 

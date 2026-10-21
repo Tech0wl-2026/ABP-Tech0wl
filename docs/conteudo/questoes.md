@@ -11,7 +11,7 @@ A API utiliza os 12 temas definidos pelo grupo, com quatro questões por tema, u
 
 As 36 questões dos nove temas comuns foram aproveitadas do material do professor. Para XP, Ferramentas para Equipes Ágeis e Boas Práticas em Projetos Ágeis, foram elaboradas 12 questões novas com imagens em SVG. Essas 12 continuam pendentes de revisão pedagógica pelo grupo.
 
-A seleção de temas corresponde à decisão da equipe de 20/10. Isso não significa aprovação editorial automática das perguntas, distratores ou imagens. A revisão deve conferir clareza, contexto, coerência com o estudo, gabarito, fontes e direitos de uso das imagens.
+Os temas foram definidos pela equipe em 20/10. Na revisão das questões, confira clareza, contexto, coerência com o estudo, gabarito, fontes e direitos de uso das imagens.
 
 ## Critério por questão
 

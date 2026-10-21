@@ -1,6 +1,6 @@
 # Sprint 2 — Portal, estudos e motor da avaliação
 
-**Período:** 23/10–05/11/2026, America/Sao_Paulo. **Fechamento:** previsto para o último dia; hora não informada. **Situação:** planejamento, sem declaração de encerramento.
+**Período:** 23/10–05/11/2026, America/Sao_Paulo. **Fechamento:** no último dia do período, em horário a combinar. O encerramento será registrado após o aceite.
 
 ## Escopo e critérios
 
@@ -8,11 +8,11 @@ Meta: Portal, estudos e motor da avaliação. [Atividades e critérios de aceite
 
 Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01, DW02, DW03, DW04, DW05, DW06, DW07, BD01, BD02, BD03, BD04, BD05, DD01, DD02, DD03, DD04. Confirmar plano com professor antes da avaliação.
 
-## Evidências disponíveis nesta revisão
+## Entregas e evidências
 
-Nenhuma entrega funcional desta Sprint foi declarada concluída. Registrar demonstração real e regressão do incremento anterior no fechamento.
+O fechamento está pendente. Registre a demonstração das atividades concluídas e confira se os recursos da entrega anterior continuam funcionando.
 
-## Registro obrigatório no fechamento
+## Registro de fechamento
 
 | Campo | Estado atual |
 |---|---|
@@ -23,10 +23,10 @@ Nenhuma entrega funcional desta Sprint foi declarada concluída. Registrar demon
 | Ambiente e testes | Vincular CI do hash entregue e registrar teste manual com colega |
 | Protótipo e modelagem | Exportar versão datada, link e arquivos editáveis |
 | Snapshot das issues | Registrar responsáveis, estado e evidências no commit de entrega |
-| Participação de cada integrante | Vincular contribuição relevante verificável; não usar atas fictícias |
+| Participação de cada integrante | Vincular os arquivos, commits ou revisões de cada integrante |
 | Review | Data, presentes, feedback real do professor/PO e decisões |
 | Retrospectiva | Data, aprendizado e melhoria realmente acordada |
 | Melhoria da Sprint anterior | Verificar aplicação e resultado da melhoria acordada na Sprint anterior |
 | Próxima ação e responsável | Preencher a partir da reunião real |
 
-Não preencher reuniões futuras como se já tivessem ocorrido. Não substituir registro de execução por um checklist marcado sem evidência.
+Preencha o fechamento com os resultados da entrega e das reuniões realizadas.

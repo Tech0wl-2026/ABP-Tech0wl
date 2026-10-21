@@ -1,6 +1,6 @@
 # Conferência das páginas — 21/10/2026
 
-Home, Curso e Sobre nós foram implementadas a partir dos seis [frames de referência](figma.md), preservando navegação, ordem das seções, cores, fontes e composição de cada tamanho. A publicação é na `develop`, para visualização da equipe.
+Home, Curso e Sobre nós foram implementadas a partir dos seis [frames de referência](figma.md), preservando navegação, ordem das seções, cores, fontes e composição de cada tamanho. A equipe revisou a entrega e Breno confirmou o aceite para integração à `main` no [PR #120](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/120).
 
 ## Diferenças conhecidas
 
@@ -17,7 +17,7 @@ Home, Curso e Sobre nós foram implementadas a partir dos seis [frames de refer�
 | Botões | “Começar” leva à apresentação do curso; “Matricula-se” leva às informações da certificação. Não simulam cadastro concluído. |
 | Regras da certificação | Bloco expansível com as regras de 150 segundos e 65% e o estado de integração das telas. Acrescenta informação funcional ao desenho. |
 
-As substituições foram autorizadas por Breno para continuar sem depender dos recursos bloqueados. Elas permitem revisar layout e responsividade; não encerram a aprovação da identidade visual nem o aceite integral do Figma.
+As substituições foram autorizadas por Breno. A tabela registra as diferenças aceitas nesta versão e os recursos originais que ainda podem ser recuperados.
 
 ## Retratos ilustrativos
 
@@ -25,6 +25,6 @@ Arquivo: `frontend/assets/figma/docentes.png`. Criado com a ferramenta de geraç
 
 ## Validação
 
-Os testes cobrem as três páginas em 1440, 820, 600, 393 e 320 px, imagens/fontes, navegação ativa, ausência de rolagem horizontal, separação dos módulos e do certificado e acesso sem JavaScript. Capturas desktop/mobile orientaram a revisão visual local. Os resultados e as capturas são artifacts do workflow de validação para cada commit publicado.
+Os testes cobrem as três páginas em 1440, 820, 600, 393 e 320 px, imagens/fontes, navegação ativa, ausência de rolagem horizontal, separação dos módulos e do certificado e acesso sem JavaScript. Capturas desktop/mobile orientaram a revisão visual local. Os resultados e as capturas ficam nos artefatos do workflow de validação para cada commit publicado.
 
-A avaliação com colegas continua [pendente de registro real](usabilidade.md). O review da Sprint 1 está em [sprints](../sprints/review-sprint-1-2026-10-21.md).
+A revisão do grupo foi confirmada por Breno. O roteiro e o registro dos testes de uso estão em [usabilidade](usabilidade.md). O review da Sprint 1 está em [sprints](../sprints/review-sprint-1-2026-10-21.md).

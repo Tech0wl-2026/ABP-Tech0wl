@@ -1,4 +1,4 @@
--- Exemplos de contrato SQL para o futuro driver do backend. Não é uma API implementada.
+-- Consultas do modelo de referência em public. A API usa o schema servidor.
 -- Enviar parâmetros separadamente; nunca concatenar CPF ou IDs recebidos em SQL.
 PREPARE candidato_por_cpf(varchar) AS
 SELECT id, nome_completo, senha_hash FROM candidato WHERE cpf = $1;
@@ -17,7 +17,7 @@ JOIN tema t ON t.id = e.tema_id JOIN questao q ON q.id = e.questao_id
 LEFT JOIN resposta r ON r.etapa_id = e.id
 WHERE a.id = $1 AND a.candidato_id = $2 ORDER BY e.ordem;
 
--- A futura validação pública deve retornar apenas os dados de conferência aprovados pela equipe.
+-- A consulta pública do modelo deve expor apenas os dados definidos pela equipe.
 PREPARE validar_certificado(uuid) AS
 SELECT token_validacao, nome_titular, emitido_em, nota, percentual
 FROM certificado WHERE token_validacao = $1;

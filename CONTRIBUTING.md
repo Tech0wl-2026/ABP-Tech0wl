@@ -20,7 +20,7 @@
 | `feat/issue-N-descricao` | Implementação funcional de uma issue |
 | `fix/issue-N-descricao` | Correção rastreável |
 
-Criar branches de atividade a partir do `develop` atualizado. As branches de Sprint começam na mesma base e serão atualizadas no fechamento da entrega; criar a branch não declara conclusão da Sprint.
+Criar branches de atividade a partir do `develop` atualizado. Atualize as branches de sprint no fechamento de cada entrega.
 
 ```bash
 git clone https://github.com/Tech0wl-2026/ABP-Tech0wl.git
@@ -34,9 +34,9 @@ Substituir `N` pelo número real da issue e a descrição por texto curto sem es
 
 ## Commits e Pull Requests
 
-Usar mensagens claras, por exemplo `docs: adiciona diagrama de classes da certificacao` ou `feat: implementa cadastro com CPF`.
+Escreva mensagens curtas que digam o que mudou, como `Adiciona diagrama de classes da certificação` ou `Corrige a validação do CPF no cadastro`.
 
-Abrir PR para `develop` com contexto, requisitos, evidências e validação. Vincular a issue com `Closes #N`. Solicitar revisão de outro integrante e aplicar a [Definition of Done](docs/Gestao/DEFINITION_OF_DONE.md) antes de integrar. As regras de revisão descritas aqui são uma política proposta; proteção de branch depende da configuração do GitHub.
+Abrir PR para `develop` com contexto, requisitos, evidências e validação. Vincular a issue com `Closes #N`. Solicitar revisão de outro integrante e aplicar a [Definition of Done](docs/Gestao/DEFINITION_OF_DONE.md) antes de integrar. Confira também as proteções de branch configuradas no GitHub.
 
 ## Documentação e dados
 
@@ -48,4 +48,4 @@ Abrir PR para `develop` com contexto, requisitos, evidências e validação. Vin
 
 ## Fechamento
 
-Uma issue aberta é planejamento, não evidência de implementação. Só concluir após validar critérios de aceite e anexar evidências. Bloqueios devem ser descritos na issue e comunicados na Daily.
+Conclua a issue depois de conferir os critérios de aceite e anexar as evidências. Registre bloqueios na issue e avise a equipe na Daily.

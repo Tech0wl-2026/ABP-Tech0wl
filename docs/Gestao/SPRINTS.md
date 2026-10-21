@@ -10,7 +10,7 @@ Entregar Figma navegável de RF01 a RF21, fluxos principais e de exceção, mode
 
 Os diagramas devem incluir atores/casos de uso, classes ou domínio, atividades/sequências pertinentes e estados da certificação. O Astah aparece na planilha; o formato editável definitivo deve ser acordado com a equipe.
 
-Cadastro, login e prova continuam previstos para as próximas Sprints. A rubrica exige DW01 nas três Sprints: esta revisão acrescenta uma página informativa HTML/CSS/JS como incremento transversal. O desenho completo dos fluxos continua sendo meta da Sprint 1. Consulte o [plano de cobertura](../plano-de-entregas.md).
+Cadastro, login e prova continuam previstos para as próximas Sprints. A rubrica exige DW01 nas três Sprints: as páginas públicas em HTML/CSS/JS fazem parte desse acompanhamento. O desenho completo dos fluxos continua sendo meta da Sprint 1. Consulte o [plano de cobertura](../plano-de-entregas.md).
 
 ## Sprint 2 — 23 de outubro a 5 de novembro
 
@@ -30,4 +30,4 @@ Demonstrar o fluxo completo e suas evidências. Encerrar desenvolvimento até 25
 
 ## Critério de distribuição
 
-Figma, modelagem e UML de qualquer RF pertencem à Sprint 1. Implementação e testes são distribuídos conforme a dependência e a entrega funcional. Atividades recorrentes de gestão iniciam na Sprint 1 e continuam durante o projeto. Não presumir que issues abertas representam tarefas já executadas.
+Figma, modelagem e UML de qualquer RF pertencem à Sprint 1. Implementação e testes são distribuídos conforme a dependência e a entrega funcional. Atividades recorrentes de gestão iniciam na Sprint 1 e continuam durante o projeto. O progresso de cada atividade fica registrado no Project.

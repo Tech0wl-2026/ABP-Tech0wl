@@ -10,7 +10,7 @@ Derivado do schema de referência. `?` representa nulabilidade no diagrama. Todo
 | `cpf` | character varying(11) | Sim | CPF normalizado, somente 11 dígitos; unicidade não valida dígitos verificadores | `—` |
 | `nome_completo` | character varying(160) | Sim | Nome do titular | `—` |
 | `email` | character varying(254) | Sim | Endereço eletrônico; aplicação deve validar formato completo | `—` |
-| `senha_hash` | text | Sim | Hash produzido pelo futuro backend; tamanho mínimo não prova algoritmo seguro | `—` |
+| `senha_hash` | text | Sim | Hash da senha no modelo de referência; o algoritmo fica a cargo da API | `—` |
 | `criado_em` | timestamp with time zone | Sim | Instante de cadastro com fuso | `CURRENT_TIMESTAMP` |
 
 Restrições:
@@ -273,7 +273,7 @@ Restrições:
 - `etapa_uma_questao_ativa`: uma questão em andamento por tentativa.
 - Triggers validam prazo do servidor, gabarito, estado, fechamento e resultado; impedem editar/excluir resposta, resultado e certificado e reabrir etapa encerrada.
 - Questão e alternativas utilizadas são preservadas para histórico. Nova versão exige despublicar a anterior sem editar seu conteúdo usado.
-- View `v_prontidao_base`: testa currículo completo, mas precisa ser chamada pelo backend antes de iniciar.
-- CPF e e-mail têm validação básica no banco; validação completa, hash seguro, autorização e privacidade pertencem também à API futura.
+- View `v_prontidao_base`: verifica a prontidão do modelo de referência. A API usa o schema `servidor`, com suas próprias verificações.
+- CPF e e-mail têm validação básica no banco; validação completa, hash seguro, autorização e privacidade também são responsabilidade da API.
 
 Consultar o [DDL canônico](../../database/schema.sql) para as funções/triggers completas e [decisões pendentes](../Gestao/DECISOES.md) para D03–D05.

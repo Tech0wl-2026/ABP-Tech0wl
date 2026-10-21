@@ -1,62 +1,49 @@
-# Auditoria integral da rubrica
+# Acompanhamento da rubrica
 
-Referência: [PDF recebido, sete páginas](../referencias/rubrica-sprints-2026-2.pdf). Revisão em 14/10/2026 (America/Sao_Paulo). Este relatório cobre os 25 critérios e os requisitos do desafio. Uma documentação completa não substitui produto, participação ou aceite reais. Não há nota oficial atribuída nesta auditoria.
+Situação em 21/10/2026, com base na [rubrica do professor](../referencias/rubrica-sprints-2026-2.pdf). A tabela reúne os 25 critérios, as referências do projeto e as pendências de avaliação. A nota será definida pelo professor.
 
-## Diagnóstico e tratamento
+## Entrega disponível
 
-| Achado no início da revisão | Alteração realizada | Dependência restante |
-|---|---|---|
-| Repositório tinha planejamento, duas imagens e Daily, sem aplicação executável | Página inicial HTML/CSS/JS, Docker Compose e testes | Backend, integração e jornada completa nas Sprints 2/3 |
-| DDL, DER e dicionário eram diretórios reservados | Modelo conceitual/lógico, dicionário e DDL com testes | Revisão por Miguel/equipe e coerência com Astah/Figma reais |
-| RP08 não estava explicitamente vinculado a tarefas no JSON de planejamento | Vinculado a T062/T063/T098, sem alterar sprints ou quantidade de atividades | Implementar e testar QR com destino à página real |
-| Rubrica não estava ligada às entregas | Matriz dos 25 critérios, rastreabilidade e registros de fechamento | Confirmar critérios planejados e horário com professor |
-| Link/versionamento do Figma ausente | Registro explícito de pendências e roteiro RF01–RF21 | URL navegável, autoria e exportação da versão entregue |
-| Importador poderia substituir texto de issues refinadas | Configuração manual; preservação dos textos, responsáveis e milestones existentes | Refinar no Project conforme trabalho real |
-| Dailys antigas continham atividades inventadas por solicitação anterior | Mantidas identificadas como rascunhos, fora da comprovação de participação | Registrar contribuições reais de todos |
-| Não havia teste de integração do incremento | CI com PostgreSQL 17, Docker e navegador desktop/mobile | Consultar resultado do commit e completar cenários futuros |
+O repositório tem três páginas públicas baseadas no Figma, API Node.js/Express, PostgreSQL e execução pelo Docker Compose. O [CI da versão revisada](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/39694104651) passou pelos testes de instalação, SQL, backend e navegador. Após a revisão do grupo, o [PR #120](https://github.com/Tech0wl-2026/ABP-Tech0wl/pull/120) integrou as páginas e os atalhos das sprints à main.
 
-## Cobertura critério por critério
+O [review da Sprint 1](../sprints/review-sprint-1-2026-10-21.md) detalha as pendências de protótipo, modelagem e fechamento. A [lista de funcionalidades](../Tecnico/FUNCIONALIDADES.md) explica o que já funciona e o que ainda precisa de integração.
 
-| ID | Pontos | Critério | Evidência/referência | Situação e limite |
+## Critérios
+
+| ID | Pontos | Critério | Referência | Situação |
 |---|---:|---|---|---|
-| ES01 | 4 | Product Backlog | [artefato](../../docs/Gestao/BACKLOG.md) | 107 atividades vinculadas a requisitos; refinamento e prioridade exigem acompanhamento. |
-| ES02 | 4 | Planejamento da Sprint | [artefato](../../docs/plano-de-entregas.md) | Metas e períodos registrados; horário de fechamento e aceite do plano com professor pendentes. |
-| ES03 | 2 | Critérios de aceite | [artefato](../../docs/Gestao/BACKLOG_PLANEJADO.json) | Critérios estão nas issues; conclusão depende de demonstrar cada critério. |
-| ES04 | 3 | Rastreabilidade | [artefato](../../docs/avaliacao/RASTREABILIDADE.md) | Mapa requisito → issues → artefatos → validação, sem converter planejamento em conclusão. |
-| ES05 | 2 | Entrega incremental | [artefato](../../frontend/index.html) | Primeiro incremento informativo e banco de referência; validar evolução em cada fechamento. |
-| ES06 | 3 | Review e Retrospectiva | [artefato](../../docs/sprints/sprint-1.md) | Sem ata real de Review/Retrospectiva ou feedback do professor; preencher após reunião. |
-| ES07 | 2 | Definition of Done | [artefato](../../docs/Gestao/DEFINITION_OF_DONE.md) | Proposta publicada; registrar adoção e aplicação pela equipe. |
-| ES08 | 2 | Documentação e execução | [artefato](../../docs/Tecnico/INSTALACAO.md) | Comandos reproduzíveis e limitações publicados; registrar execução no ambiente de entrega. |
-| ES09 | 8 | Participação individual | [artefato](../../docs/evidencias/sprint-1/participacao.md) | Atas inventadas não são evidência; faltam vínculos verificáveis de todos os integrantes. |
-| DW01 | 3 | HTML, CSS e JavaScript sem framework | [artefato](../../frontend/index.html) | Página inicial real com menu e busca; frontend não possui framework. |
-| DW02 | 4 | Responsividade, semântica e validação | [artefato](../../testes/frontend.spec.mjs) | Página informativa responsiva; formulários reais de cadastro/login ainda não existem. |
-| DW03 | 5 | Backend HTTP e PostgreSQL | [artefato](../../docs/Tecnico/ARQUITETURA.md) | Backend e integração HTTP não implementados. |
-| DW04 | 5 | Estudos e base de 48 questões | [artefato](../../docs/conteudo/questoes.md) | Somente amostra com 1 tema e 4 questões; faltam seleção dos 12 temas e conteúdo completo. |
-| DW05 | 6 | Motor completo de certificação | [artefato](../../database/schema.sql) | Restrições de referência e testes SQL; falta fluxo real no servidor/interface. |
-| DW06 | 4 | Autenticação e integridade no servidor | [artefato](../../docs/Tecnico/API.md) | CPF único e hash no modelo; autenticação, autorização e hash real ainda não implementados. |
-| DW07 | 3 | Docker Compose reproduzível | [artefato](../../compose.yaml) | Incremento estático e PostgreSQL em containers; API futura precisará ser integrada. |
-| BD01 | 5 | Modelo conceitual e DER | [artefato](../../docs/database/conceitual.png) | Diagrama e fonte editável publicados como proposta técnica para revisão do grupo. |
-| BD02 | 5 | Modelo lógico e normalização | [artefato](../../docs/database/logico.png) | Chaves, dicionário e justificativa de 3FN; validar com responsável de modelagem. |
-| BD03 | 5 | Modelo físico e DDL PostgreSQL | [artefato](../../database/schema.sql) | DDL executável e suíte em banco vazio; validação no PostgreSQL 17 via CI. |
-| BD04 | 5 | DML e consultas parametrizadas | [artefato](../../database/consultas-exemplo.sql) | Seed e PREPARE demonstram SQL; execução pelo driver da futura API está pendente. |
-| BD05 | 5 | Persistência e histórico consistente | [artefato](../../testes/database.sql) | Restrições e testes de histórico presentes; integração ponta a ponta pendente. |
-| DD01 | 4 | Fluxos e wireframes | [artefato](../../docs/design/fluxo-de-telas.md) | Fluxos de referência publicados; faltam wireframes completos revisados e vínculo ao Figma. |
-| DD02 | 4 | Figma navegável e evidências | [artefato](../../docs/design/figma.md) | URL real, navegação, versão e exportações ainda não disponibilizadas. |
-| DD03 | 4 | Consistência e recursos visuais | [artefato](../../docs/design/sistema-visual.md) | Referência de cores, tipografia e créditos; falta comparação com Figma aprovado. |
-| DD04 | 3 | Mobile/desktop e usabilidade | [artefato](../../docs/design/usabilidade.md) | Verificação técnica responsiva prevista; teste com colegas e comparação com Figma pendentes. |
+| ES01 | 4 | Product Backlog | [artefato](../../docs/Gestao/BACKLOG.md) | 107 atividades no backlog; prioridade e refinamento acompanhados pelo Project. |
+| ES02 | 4 | Planejamento da Sprint | [artefato](../../docs/plano-de-entregas.md) | Metas e períodos registrados; horário de fechamento e critérios de avaliação a confirmar. |
+| ES03 | 2 | Critérios de aceite | [artefato](../../docs/Gestao/BACKLOG_PLANEJADO.json) | Checklists nas issues; revisão dos critérios e evidências registrada em Gestão. |
+| ES04 | 3 | Rastreabilidade | [artefato](../../docs/avaliacao/RASTREABILIDADE.md) | Matriz com os 38 requisitos, issues e referências atualizadas. |
+| ES05 | 2 | Entrega incremental | [artefato](../../frontend/index.html) | Páginas públicas, banco e API disponíveis. Conferir a evolução no fechamento de cada sprint. |
+| ES06 | 3 | Review e Retrospectiva | [artefato](../../docs/sprints/sprint-1.md) | Breno confirmou a revisão das páginas e dos atalhos com o grupo. Atas de Review, Retrospectiva e feedback do professor ainda precisam de registro. |
+| ES07 | 2 | Definition of Done | [artefato](../../docs/Gestao/DEFINITION_OF_DONE.md) | Critérios de pronto publicados; adoção pela equipe pendente na issue #1. |
+| ES08 | 2 | Documentação e execução | [artefato](../../docs/Tecnico/INSTALACAO.md) | Instalação e testes documentados, com execução do Compose no CI. |
+| ES09 | 8 | Participação individual | [artefato](../../docs/evidencias/sprint-1/participacao.md) | Contribuições precisam de vínculos individuais. Os registros reconstruídos de Daily continuam identificados. |
+| DW01 | 3 | HTML, CSS e JavaScript sem framework | [artefato](../../frontend/index.html) | Três páginas públicas em HTML/CSS/JavaScript, sem framework. |
+| DW02 | 4 | Responsividade, semântica e validação | [artefato](../../testes/frontend.spec.mjs) | 16 testes de navegador em cinco larguras. Cadastro e login ainda precisam ser ligados à interface. |
+| DW03 | 5 | Backend HTTP e PostgreSQL | [artefato](../../docs/Tecnico/ARQUITETURA.md) | API Node/Express e PostgreSQL funcionando em containers, com 13 testes do backend. |
+| DW04 | 5 | Estudos e base de 48 questões | [artefato](../../docs/conteudo/questoes.md) | 12 temas, 48 questões e imagens no banco da API. Faltam a área de estudos e a revisão pedagógica das 12 questões novas. |
+| DW05 | 6 | Motor completo de certificação | [artefato](../../database/schema.sql) | API com sorteio, prazo, resposta, retomada e resultado. A jornada pela interface ainda está pendente. |
+| DW06 | 4 | Autenticação e integridade no servidor | [artefato](../../docs/Tecnico/API.md) | CPF único, bcrypt, JWT e regras no servidor. Falta integrar as telas e fechar a política de interrupção por perda de conexão. |
+| DW07 | 3 | Docker Compose reproduzível | [artefato](../../compose.yaml) | Frontend, API e PostgreSQL pelo Compose; scripts de inicialização conferidos no CI. |
+| BD01 | 5 | Modelo conceitual e DER | [artefato](../../docs/database/conceitual.png) | Modelo conceitual e DER disponíveis; alinhar com o modelo executável da API. |
+| BD02 | 5 | Modelo lógico e normalização | [artefato](../../docs/database/logico.png) | Modelo lógico, chaves e dicionário disponíveis. Diferenças entre public e servidor precisam de alinhamento. |
+| BD03 | 5 | Modelo físico e DDL PostgreSQL | [artefato](../../database/schema.sql) | DDL e seed executados em banco vazio, no PostgreSQL 17 do CI. |
+| BD04 | 5 | DML e consultas parametrizadas | [artefato](../../database/consultas-exemplo.sql) | DML, consultas PREPARE de referência e queries parametrizadas pelo driver pg disponíveis. |
+| BD05 | 5 | Persistência e histórico consistente | [artefato](../../testes/database.sql) | Persistência e histórico testados no backend. A conferência do fluxo pelas telas ainda está pendente. |
+| DD01 | 4 | Fluxos e wireframes | [artefato](../../docs/design/fluxo-de-telas.md) | Roteiro de fluxos e arquivos Figma disponíveis; conferir todos os estados internos da avaliação. |
+| DD02 | 4 | Figma navegável e evidências | [artefato](../../docs/design/figma.md) | Links desktop e mobile acessíveis. Versão de entrega e revisão integral de RF01–RF21 ainda precisam de registro. |
+| DD03 | 4 | Consistência e recursos visuais | [artefato](../../docs/design/sistema-visual.md) | Páginas públicas ajustadas ao Figma e revisadas pelo grupo. Substituições visuais documentadas. |
+| DD04 | 3 | Mobile/desktop e usabilidade | [artefato](../../docs/design/usabilidade.md) | Comparação das páginas públicas e testes responsivos feitos. Registrar tarefas, dispositivos e resultados do teste de usabilidade. |
 
-## Como avaliar sem inflar a nota
+## Cálculo e fechamento
 
-A avaliação é cumulativa: mudanças futuras devem preservar o que já funcionava. Somente critérios planejados para a Sprint entram no denominador, conforme acordo com professor. Atendimento parcial vale metade dos pontos; ausência de evidência não equivale a atendimento. A classificação de um item como não avaliável deve ser confirmada pelo professor.
+A avaliação é cumulativa. Os critérios considerados em cada sprint devem ser combinados com o professor. Pela rubrica, atendimento parcial vale metade dos pontos.
 
-Fórmula: `nota = 10 × pontos obtidos / pontos previstos`. O exemplo do PDF com 45 obtidos e 55 previstos resulta em **8,18/10** (81,82%), e não em 81,81/10. Confirmar a apresentação da escala com o professor; nenhuma nota foi calculada para esta equipe.
+A fórmula é `nota = 10 × pontos obtidos / pontos previstos`. No exemplo de 45 pontos obtidos em 55, a nota é **8,18/10**, equivalente a 81,82%. A escala de apresentação deve ser confirmada com o professor.
 
-ES09 exige participação relevante e verificável de todos. O número de commits, um nome em uma tabela ou uma ata reconstruída não demonstra, por si só, contribuição. Revisão automática pela própria conta não é revisão independente de colega.
+Para ES09, vincule arquivos, commits ou revisões às contribuições de cada integrante. Os registros reconstruídos de Daily permanecem identificados; o levantamento está em [participação](../evidencias/sprint-1/participacao.md).
 
-## Critérios de conclusão desta revisão técnica
-
-Executar os comandos de [validação](../../testes/README.md), conferir o resultado do CI do commit e revisar o diff antes de integrar. As pendências pedagógicas acima permanecem abertas, mesmo com CI aprovado. Os registros de [Sprint](../sprints/sprint-1.md) devem receber evidências reais no fechamento.
-
-## Resultado observado nesta revisão
-
-O [registro de execução real](../evidencias/sprint-1/validacao-2026-10-14/README.md) conserva hash, CI aprovado, PostgreSQL 17.11, resultado dos 24 testes SQL e capturas dos quatro testes de navegador. As limitações de produto e evidência listadas acima permanecem. RP08 foi acrescentado às issues T062/T063/T098, preservando seus textos e estados.
+No fechamento, registre a versão entregue, o CI, o feedback e as reuniões no [documento da sprint](../sprints/sprint-1.md). As [evidências de 14/10](../evidencias/sprint-1/validacao-2026-10-14/README.md) conservam os testes daquela versão.

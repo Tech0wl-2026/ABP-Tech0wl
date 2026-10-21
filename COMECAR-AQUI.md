@@ -20,7 +20,7 @@ Abra o terminal na pasta extraída:
 bash iniciar.sh
 ```
 
-Os scripts criam o `.env` local e um segredo JWT aleatório, sem substituir um segredo já preenchido. Em seguida, sobem três serviços: site, backend e PostgreSQL. Se o comando falhar, verifique a mensagem; não é preciso apagar o banco para tentar novamente.
+Os scripts criam o `.env` local e um segredo JWT aleatório, sem substituir um segredo já preenchido. Em seguida, sobem três serviços: site, backend e PostgreSQL. Se houver falha, consulte a mensagem e os logs antes de tentar novamente.
 
 ## Endereços
 
@@ -35,7 +35,7 @@ Os scripts criam o `.env` local e um segredo JWT aleatório, sem substituir um s
 
 Para conferir o mobile, abra as ferramentas do navegador, selecione o modo de dispositivo e ajuste a largura para 393 px. Também há adaptações para 320 px e tablet.
 
-As três páginas públicas seguem as referências desktop/mobile do Figma. Os botões levam às informações do curso e da certificação. Cadastro, login, estudos e avaliação ainda não estão integrados à interface; a [API](docs/Tecnico/API.md) já possui rotas para parte desses fluxos. Não há conta pré-cadastrada nem certificado real na imagem de exemplo.
+As três páginas públicas seguem as referências desktop/mobile do Figma. Os botões levam às informações do curso e da certificação. Cadastro, login, estudos e avaliação ainda não estão integrados à interface; a [API](docs/Tecnico/API.md) já possui rotas para parte desses fluxos. Para usar a API, cadastre um candidato. A imagem do certificado é apenas um modelo.
 
 As substituições visuais estão descritas na [conferência do Figma](docs/design/conferencia-2026-10-21.md). O [review da Sprint 1](docs/sprints/review-sprint-1-2026-10-21.md) reúne as pendências para o fechamento.
 

@@ -1,12 +1,12 @@
 # Backend a partir da orientação do professor
 
-Referência: “ABP 1DSM - Servidor.docx”, enviado com `seed.sql` e `questoes.zip` em 21/10/2026. A implementação segue o código escrito e sua divisão em configuração, middleware, rotas e serviços. Os vídeos são referências complementares; não foi utilizada transcrição deles.
+Referência: “ABP 1DSM - Servidor.docx”, enviado com `seed.sql` e `questoes.zip` em 21/10/2026. O backend segue a divisão do documento em configuração, middleware, rotas e serviços. Os vídeos de apoio estão listados abaixo.
 
 ## Questões e temas
 
 A seleção do grupo usa os temas originais 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14 e 15. O seed do professor usa 1 a 12.
 
-Foram aproveitadas 36 questões e imagens dos nove temas em comum. As 12 questões de Manifesto Ágil, User Stories e Qualidade em Projetos Ágeis foram substituídas por quatro de cada tema restante: XP, Ferramentas para Equipes Ágeis e Boas Práticas em Projetos Ágeis. As novas questões foram elaboradas nesta implementação e precisam de revisão pedagógica do grupo. Não são um banco previamente aprovado pela equipe.
+Foram aproveitadas 36 questões e imagens dos nove temas em comum. As 12 questões de Manifesto Ágil, User Stories e Qualidade em Projetos Ágeis foram substituídas por quatro de cada tema restante: XP, Ferramentas para Equipes Ágeis e Boas Práticas em Projetos Ágeis. As 12 questões novas precisam de revisão pedagógica do grupo.
 
 O [catálogo](../../database/servidor/questoes.json) registra a origem por questão. IDs e nomes das imagens foram organizados de 1 a 48 na ordem dos [temas escolhidos](../conteudo/temas.md). As 36 imagens aproveitadas mantêm o conteúdo dos arquivos enviados pelo professor.
 
@@ -21,7 +21,7 @@ O [catálogo](../../database/servidor/questoes.json) registra a origem por quest
 - Questão alheia e gabarito antecipado não são expostos nas rotas da prova.
 - A imagem é resolvida por ID, sem caminho arbitrário do cliente.
 - Consultas repetidas preservam código, instante e dados do certificado.
-- As credenciais de exemplo do professor não foram copiadas para a aplicação.
+- As credenciais locais são configuradas no `.env`.
 
 ## Referências em vídeo
 

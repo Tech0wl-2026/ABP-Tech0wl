@@ -10,4 +10,4 @@ Execução real em 14/10/2026 às 22h12–22h13 (America/Sao_Paulo), corresponde
 - Capturas inspecionadas: conteúdo legível, sem sobreposição ou rolagem horizontal, menu e FAQ coerentes. O contorno laranja mostra o foco acessível após teste da busca.
 - Regressão do importador de issues adicionada em seguida e validada localmente; o CI do próximo commit confirma sua execução.
 
-As capturas foram copiadas sem alteração do artifact de execução. Não representam sessão de usabilidade com colega, aprovação do professor, comparação com Figma ou produto de certificação completo. O teste de prontidão retorna falso, pois a amostra não seleciona os 12 temas.
+As capturas foram copiadas sem alteração do artifact de execução. Esse registro cobre os testes automatizados da versão de 14/10; a sessão de usabilidade e o aceite do professor têm registros próprios. O teste de prontidão retorna falso, pois a amostra não seleciona os 12 temas.
