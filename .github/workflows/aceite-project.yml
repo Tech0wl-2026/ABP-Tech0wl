@@ -1,0 +1,42 @@
+name: Enviar artefatos conferidos para revisão
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/aceite-project.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+
+concurrency:
+  group: aceite-project-abp
+  cancel-in-progress: false
+
+jobs:
+  revisar:
+    if: github.repository == 'Tech0wl-2026/ABP-Tech0wl' && github.actor == 'breesiqueiramkt'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Atualizar somente os cartões conferidos
+        env:
+          ABP_PROJECT_TOKEN: ${{ secrets.ABP_PROJECT_TOKEN }}
+          ABP_REPO_TOKEN: ${{ github.token }}
+          ABP_REF: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os
+          from urllib.request import Request, urlopen
+
+          repo = os.environ['GITHUB_REPOSITORY']
+          ref = os.environ['ABP_REF']
+          req = Request('https://api.github.com/repos/'+repo+'/contents/.github/scripts/revisar-aceite-project.py?ref='+ref,
+                        headers={'Authorization': 'Bearer '+os.environ['ABP_REPO_TOKEN'],
+                                 'Accept': 'application/vnd.github+json'})
+          with urlopen(req, timeout=30) as response:
+              source = base64.b64decode(json.load(response)['content']).decode()
+          exec(compile(source, 'revisar-aceite-project.py', 'exec'), {'__name__': '__main__'})
+          PY
