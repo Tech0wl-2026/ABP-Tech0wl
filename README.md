@@ -37,7 +37,7 @@ Acesse o quadro de atividades de cada sprint:
 - [Avaliação da rubrica](docs/avaliacao/AUDITORIA.md) e [referências](docs/referencias)
 - [Como contribuir](CONTRIBUTING.md)
 
-O acompanhamento das atividades fica no [Project da equipe](https://github.com/users/Tech0wl-2026/projects/7).
-Link de apresentação do projeto no Youtube: https://youtu.be/E0xYvUSFWYE
+- O acompanhamento das atividades fica no [Project da equipe](https://github.com/users/Tech0wl-2026/projects/7).
+- Link de apresentação do projeto no Youtube: https://youtu.be/E0xYvUSFWYE
 
 [Como abrir a versão local](COMECAR-AQUI.md) · [Review da Sprint 1 em 21/10](docs/sprints/review-sprint-1-2026-10-21.md)
