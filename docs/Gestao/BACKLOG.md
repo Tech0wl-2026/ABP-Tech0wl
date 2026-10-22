@@ -2,7 +2,7 @@
 
 **107 atividades:** 91 tasks da planilha e 16 atividades complementares. Sprint 1 = 50, Sprint 2 = 31, Sprint 3 = 26.
 
-Os identificadores [T001](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/2) a [T091](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/91) preservam as tasks da planilha. [T092](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/92) a [T107](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/107) completam lacunas do desafio. Responsáveis começam sem atribuição. Estimativas de referência normalizadas devem ser validadas pela equipe.
+Os identificadores [T001](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/2) a [T091](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/91) preservam as tasks da planilha. [T092](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/92) a [T107](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/107) cobrem os pontos adicionais do desafio. As atribuições e os estados atuais ficam no Project. As estimativas da planilha servem de referência para a discussão com a equipe.
 
 Correções: [T002](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/3)/[T003](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/4)/[T004](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/5) vinculadas ao RF01 pela descrição original; RF21 mede temas da prova, não estudos visualizados; RNF04 depende da validação do servidor.
 

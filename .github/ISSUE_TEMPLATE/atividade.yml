@@ -1,5 +1,5 @@
 name: Atividade da ABP
-description: Propor uma atividade rastreável com critérios de aceite
+description: Registrar uma atividade do projeto
 title: "[Sprint][RF] Descrição da atividade"
 body:
   - type: input
@@ -29,7 +29,7 @@ body:
     id: aceite
     attributes:
       label: Critérios de aceite
-      description: Use uma lista de critérios observáveis
+      description: Liste o que precisa funcionar ou estar pronto para concluir a atividade
       value: "- [ ] Entrega demonstrável e vinculada ao requisito
 - [ ] Evidência de validação e revisão"
     validations:

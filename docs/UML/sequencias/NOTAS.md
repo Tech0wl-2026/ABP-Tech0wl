@@ -1,6 +1,6 @@
 # Notas dos diagramas de sequência
 
-Os fluxos em PlantUML são referências para implementação. Eles não comprovam uma API, autenticação ou certificação em funcionamento.
+Os fluxos em PlantUML descrevem as interações previstas. Para o funcionamento implementado, consulte a [documentação da API](../../Tecnico/API.md).
 
 ## Regras representadas
 

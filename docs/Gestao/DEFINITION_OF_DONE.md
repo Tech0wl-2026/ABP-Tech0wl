@@ -1,50 +1,33 @@
-# Definition of Done
+# Critérios de pronto
 
-Proposta inicial para validação pela equipe na issue T080. A criação deste documento não significa aceite do grupo ou conclusão das entregas.
+Estes critérios orientam a revisão das atividades. A adoção pela equipe deve ser registrada na [issue #1](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/1).
 
-## Critérios gerais
+## Para qualquer atividade
 
-- Requisito e task identificados e escopo demonstrável.
-- Critérios de aceite atendidos e evidência vinculada à issue.
-- Artefato versionado ou link do Figma registrado.
-- Revisão de outro integrante documentada.
-- Documentação e rastreabilidade atualizadas.
-- Pendências e limitações registradas; nenhum segredo ou dado pessoal real publicado.
+- Identificar a issue e os requisitos envolvidos.
+- Atender aos critérios de aceite e incluir um link ou arquivo que permita conferir a entrega.
+- Versionar os arquivos e atualizar a documentação relacionada.
+- Pedir a revisão de outro integrante e resolver os pontos levantados.
+- Registrar o que ainda falta. Senhas, tokens e dados reais de candidatos ficam fora do repositório.
 
-## Figma
+## Protótipo
 
-- RF01 a RF21 representados, com navegação clicável.
-- Estados de erro, feedback, expiração, interrupção/retomada, aprovação/reprovação e validação pública.
-- Principais telas de celular e computador, com consistência visual.
-- Fluxo revisado contra os requisitos e o modelo de dados.
+O Figma precisa cobrir RF01 a RF21 em computador e celular, com navegação entre as telas. A revisão inclui erros de cadastro/login, resposta e feedback, tempo esgotado, interrupção e retomada, resultado, certificado e validação pública. Os fluxos devem estar de acordo com os requisitos e o modelo de dados.
 
-## Modelagem e UML
+## Banco e UML
 
-- Modelos conceitual, lógico e físico e dicionário de dados.
-- Entidades, atributos, tipos, nulabilidade, chaves, cardinalidades e restrições.
-- UML coerente com Figma, dados e estados da certificação.
-- DDL PostgreSQL executado em ambiente de validação.
-- Invariantes de 12 temas, 4 questões por tema, imagem, A/B/C/D e uma correta documentadas.
-- Retomada, encerramento, histórico, resultado, certificado e QR Code previstos.
+Entregar modelos conceitual, lógico e físico, DER e dicionário. Conferir atributos, tipos, chaves, obrigatoriedade, cardinalidades e restrições. Manter os diagramas editáveis e exportações legíveis, executar o DDL no PostgreSQL e alinhar UML, Figma e banco.
 
-## Implementação
+A modelagem deve representar os 12 temas, quatro questões por tema, imagem, quatro alternativas e uma correta. Também deve prever prazo, retomada, histórico, resultado, certificado e validação por QR Code.
 
-- Caminhos de sucesso e falha pertinentes validados.
-- API valida autorização, prazo, nota, integridade e não repetição.
-- Evidências reproduzíveis, integração revisada e erros conhecidos documentados.
-- Aplicação e banco executáveis por Docker Compose quando a atividade envolver integração/entrega.
+## Código
+
+Conferir os caminhos de sucesso e erro da atividade. Na API, validar acesso, prazo, resposta única, nota e integridade dos dados. Registrar os testes executados e os erros conhecidos. As entregas de integração precisam funcionar pelo Docker Compose.
 
 ## Documentação
 
-- Texto representa o estado real do produto.
-- Links internos funcionam e fontes estão identificadas.
-- Registros reconstruídos de reuniões não são apresentados como atas confirmadas.
+Os textos devem explicar o funcionamento atual, com links válidos e fontes identificadas. Registros reconstruídos de reuniões continuam identificados até a confirmação dos participantes.
 
-## Fechamento da Sprint
+## Fechamento da sprint
 
-- Critérios planejados e horário acordados com professor.
-- CI aprovado no hash entregue e teste manual registrado quando pertinente.
-- Versão/exportação do Figma e fontes editáveis dos modelos no commit.
-- Evidência individual real, Review, Retrospectiva e melhoria acompanhada.
-- Registro em `docs/sprints/`, snapshot das issues e tag imutável apenas no fechamento.
-- Nenhuma funcionalidade, autoria ou aprovação anunciada sem evidência.
+Registrar os critérios combinados com o professor, a versão entregue, o CI, os testes manuais, as contribuições e as reuniões de Review e Retrospectiva. Guardar a versão do Figma e as fontes dos modelos. Após o aceite, criar a tag da sprint e acompanhar a melhoria definida para a próxima entrega.

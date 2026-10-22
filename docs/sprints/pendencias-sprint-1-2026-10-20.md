@@ -2,7 +2,7 @@
 
 > Registro histórico de 20/10. Consulte o [review de 21/10](review-sprint-1-2026-10-21.md) para o estado atualizado; os acessos desktop/mobile foram liberados.
 
-Prazo: **22/10/2026**. Registro atualizado após a revisão das sequências e a definição dos temas. Não é ata de Review/Retrospectiva nem aceite do professor. Consultar estado/atribuições atuais nas issues.
+Prazo: **22/10/2026**. Registro atualizado após a revisão das sequências e a definição dos temas. O andamento e os responsáveis atuais ficam nas issues; as reuniões de Review e Retrospectiva têm registros próprios.
 
 ## Atualizações realizadas
 
@@ -30,4 +30,4 @@ Já estava fechada. A seleção foi agora registrada e pode comprovar seu primei
 
 ## Próximas Sprints
 
-Continuam pendentes implementação e integração de cadastro/login, estudos, motor da prova, resultado, certificado/QR, validação pública e histórico/progresso. Também falta produzir/revisar os materiais e as 48 questões dos temas definidos. Isso não exige antecipar toda a implementação para aceitar uma issue de modelagem da Sprint 1.
+Continuam pendentes implementação e integração de cadastro/login, estudos, motor da prova, resultado, certificado/QR, validação pública e histórico/progresso. Também falta produzir/revisar os materiais e as 48 questões dos temas definidos. Na Sprint 1, o aceite dessas atividades se concentra no protótipo e na modelagem.

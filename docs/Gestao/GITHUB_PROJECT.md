@@ -27,14 +27,14 @@ O campo **Sprint** usa iterações com as durações exatas de 25, 14 e 20 dias.
 | Início | Primeiro dia da janela planejada da sprint |
 | Prazo | Último dia da janela planejada da sprint |
 
-Início e Prazo expressam planejamento, não comprovam que a atividade começou ou terminou. Nenhum responsável ou esforço foi inventado.
+Início e Prazo são as datas planejadas. Atualize o Status conforme o trabalho avançar e preencha a estimativa depois da conversa com a equipe.
 
 ## Visualizações
 
 - **Backlog geral**: tabela.
-- **Quadro da Sprint 1**: quadro com colunas por Status; filtro `sprint:"Sprint 1"`.
-- **Quadro da Sprint 2**: quadro; filtro `sprint:"Sprint 2"`.
-- **Quadro da Sprint 3**: quadro; filtro `sprint:"Sprint 3"`.
+- [**Quadro da Sprint 1**](https://github.com/users/Tech0wl-2026/projects/7/views/2): atividades da primeira sprint, em colunas por Status.
+- [**Quadro da Sprint 2**](https://github.com/users/Tech0wl-2026/projects/7/views/3): atividades da segunda sprint.
+- [**Quadro da Sprint 3**](https://github.com/users/Tech0wl-2026/projects/7/views/4): atividades da terceira sprint.
 - **Minhas atividades**: tabela; filtro `assignee:@me`.
 - **Roadmap por Sprint**: roadmap.
 
@@ -51,11 +51,11 @@ A leitura pública do Project não concede edição. Para assumir issues, o inte
 
 ## Daily Scrum
 
-Reunião de até 15 minutos. Conforme orientação do professor, registrar a data e uma tabela com integrante e atividade do dia em `docs/Daily Scrum/AAAA-MM-DD.md`, usando o [modelo simples](../Daily%20Scrum/TEMPLATE.md). Preencher com os relatos reais da equipe; os registros anteriores permanecem como referência.
+Reunião de até 15 minutos. Conforme orientação do professor, registrar a data e uma tabela com integrante e atividade do dia em `docs/Daily Scrum/AAAA-MM-DD.md`, usando o [modelo simples](../Daily%20Scrum/TEMPLATE.md). Preencha com os relatos da reunião. Os registros reconstruídos continuam identificados na pasta.
 
 ## Automação e verificação
 
-A [conferência final de leitura](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/38497866302) confirmou 107 itens em Backlog, sem responsáveis, com todos os seis campos preenchidos e as datas das três sprints corretas. Os três quadros usam colunas por Status.
+A [conferência da configuração inicial](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/38497866302) confirmou, em 13/10, os 107 itens em Backlog, sem responsáveis, com os seis campos e as datas das sprints preenchidos. Consulte o Project para ver os estados e as atribuições atuais. Os três quadros usam colunas por Status.
 
 A configuração foi executada por [Configurar Project oficial da ABP](https://github.com/Tech0wl-2026/ABP-Tech0wl/actions/runs/38497740488), usando o segredo `ABP_PROJECT_TOKEN` sem registrar seu valor.
 

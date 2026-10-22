@@ -7,18 +7,18 @@ Descreva o que mudou e por quê.
 Closes #
 RF / RNF / RP:
 
-## Evidências e validação
+## Como foi conferido
 
-Descreva o que foi validado e inclua links, arquivos ou imagens adequadas.
+Informe os testes ou a revisão feita e inclua os links necessários.
 
 ## Checklist
 
 - [ ] Critérios de aceite da issue atendidos.
 - [ ] Documentação e rastreabilidade atualizadas.
-- [ ] Validação reproduzível ou revisão de artefato registrada.
+- [ ] Testes ou revisão registrados.
 - [ ] Nenhum segredo ou dado real de candidato incluído.
 - [ ] Revisão solicitada a outro integrante.
 
-## Pendências ou limitações
+## O que ainda falta
 
 Informe o que ainda precisa ser tratado.
