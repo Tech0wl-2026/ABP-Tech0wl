@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feedback do curso</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+
+</head>
+
+<body>
+<!-- Ícone de estrela reaproveitado no site todo: <use href="#star"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.9-4.7 4.5 1.2 6.4L12 17.4l-5.7 3.1 1.2-6.4-4.7-4.5 6.4-.9z" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol></svg>
+
+<!-- Barra de navegação -->
+<header class="nav">
+  <img class="imageslogo" src="/feedback/images.png/APREDIZAGEM 4.png">
+  <nav class="links" aria-label="Principal"><a href="#feedback" aria-current="page">Home</a><a href="#cursos">Cursos</a><a href="#certificado">Certificado</a></nav>
+  <span class="spacer"></span>
+  <img class="perfilusuario" src="/feedback/images.png/Ellipse 1.png">
+  <button class="out" type="button" aria-label="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg></button>
+</header>
+
+<!-- Conteúdo principal -->
+
+<main class="wrap" id="feedback">
+
+
+
+  <!-- Banner de abertura -->
+
+  <section class="hero">
+    <img class="images" src="/feedback/images.png/perfil1.png">
+    <div>
+      <h1>Sua opinião faz a diferença!</h1>
+      <p>Queremos ouvir você para continuarmos melhorando.</p>
+    </div>
+
+  </section>
+
+  <div class="grid">
+
+
+    <!-- Card 1: formulário de feedback -->
+
+    <section class="card" aria-labelledby="t1">
+      <h2 id="t1">Deixe seu feedback</h2>
+      <form id="form" novalidate>
+        <span class="lbl q" id="qr">Como você avalia o curso?</span>
+        <div class="rate" id="rate" role="radiogroup" aria-labelledby="qr">
+          <button type="button" role="radio" aria-label="1 estrela"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg></button>
+          <button type="button" role="radio" aria-label="2 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg></button>
+          <button type="button" role="radio" aria-label="3 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg></button>
+          <button type="button" role="radio" aria-label="4 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg></button>
+          <button type="button" role="radio" aria-label="5 estrelas"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg></button>
+        </div>
+        <label class="lbl" for="topic">Sobre o que é o seu feedback?</label>
+        <select id="topic" required>
+          <option value="" disabled selected hidden>Selecione um assunto</option>
+          <option>Conteúdo das aulas</option>
+          <option>Prova do curso</option>
+          <option>Plataforma / site</option>
+          <option>Certificado</option>
+          <option>Outro assunto</option>
+        </select>
+        <label class="lbl" for="text">Sua mensagem</label>
+        <textarea id="text" maxlength="500" placeholder="Conte o que você achou…"></textarea>
+        <button class="btn" type="submit">Enviar feedback</button>
+        <p id="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Card 2: feedbacks enviados -->
+    <section class="card" aria-labelledby="t2">
+      <h2 id="t2">Seus feedbacks</h2>
+      <p id="empty">Você ainda não enviou nenhum feedback.</p>
+      <ul id="list"></ul>
+    </section>
+  </div>
+</main>
+
+</body>
+</html>

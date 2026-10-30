@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
+/* Feedback do curso — style.css */
+
+/* ===== 1. Variáveis de cor e tema (claro, escuro automático e escuro manual) ===== */
+:root {
+  --purple: #7614d2;
+  --lav: #bdbcdb;
+  --card: #fff;
+  --ink: #1f1d2b;
+  --muted: #5d5b75;
+  --line: #5b4fc7;
+  --accent: #7c56c8;
+  --gold: #edb54a;
+  --star-off: #d6d4e4;
+  --field: #fff;
+  --sep: #ecebf5;
+  --link: #6b2fc9;
+  --danger: #b3261e;
+  --ok: #1f1d2b;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top,0px);
+  padding-bottom: env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --lav: #17162a;
+    --card: #25233d;
+    --ink: #ecebff;
+    --muted: #aaa8c8;
+    --line: #8a7ff2;
+    --star-off: #4b4969;
+    --field: #1b1a30;
+    --sep: #3a3858;
+    --link: #c4b5ff;
+    --danger: #ff9a92;
+    --ok: #ecebff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --lav: #17162a;
+  --card: #25233d;
+  --ink: #ecebff;
+  --muted: #aaa8c8;
+  --line: #8a7ff2;
+  --star-off: #4b4969;
+  --field: #1b1a30;
+  --sep: #3a3858;
+  --link: #c4b5ff;
+  --danger: #ff9a92;
+  --ok: #ecebff;
+  color-scheme: dark;
+}
+
+/* ===== 2. Base da página ===== */
+html {
+  scroll-padding-top: env(safe-area-inset-top,0px);
+}
+
+*,*::before,*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: var(--lav);
+  color: var(--ink);
+  font-family: "Kumbh Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top,0px);
+  background: var(--purple);
+  z-index: 30;
+}
+
+/* ===== 3. Barra de navegação ===== */
+
+.imageslogo{
+  height: 40px;
+  width: 40px;
+}
+
+.perfilusuario{
+  height: 30px;
+  width: 30px;
+}
+
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top,0px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--purple);
+  padding: 10px clamp(12px,3vw,24px);
+  color: #fff;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: .82rem;
+  font-weight: 400;
+}
+
+.nav a:focus-visible,.out:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  flex: none;
+}
+
+.logo svg {
+  width: 22px;
+  height: 22px;
+}
+
+.links {
+  display: flex;
+  gap: clamp(12px,3vw,32px);
+  margin-left: clamp(0px,4vw,56px);
+}
+
+
+nav a:hover,
+nav a.active{
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  flex: none;
+}
+
+.out {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 9px;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  cursor: pointer;
+  flex: none;
+}
+
+.out svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== 4. Conteúdo e banner de abertura ===== */
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 14px clamp(10px,3vw,24px) 48px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px,3vw,36px);
+  padding: clamp(14px,3vw,24px) clamp(16px,4vw,44px);
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(180deg,#1a1465 0%,#5246d4 55%,#2a1fc9 100%);
+}
+
+.pic {
+  width: clamp(72px,16vw,128px);
+  flex: none;
+}
+
+.pic svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1.1rem,4.2vw,2.2rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.images{
+  width: 100px;
+  height: 100px;
+}
+
+.hero p {
+  margin: 6px 0 0;
+  font-size: clamp(.8rem,2.2vw,1.1rem);
+}
+
+/* ===== 5. Layout em duas colunas e cartões ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: clamp(18px,3vw,30px);
+}
+
+h2 {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1.4rem,3.4vw,1.85rem);
+  line-height: 1.2;
+}
+
+.lbl {
+  display: block;
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.q {
+  margin-top: 2px;
+}
+
+/* ===== 6. Formulário: estrelas, campos e botão ===== */
+.rate {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0 20px;
+}
+
+.rate button {
+  background: none;
+  border: 0;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--star-off);
+  line-height: 0;
+  border-radius: 8px;
+  transition: transform .15s;
+}
+
+.rate button.on {
+  color: var(--gold);
+}
+
+.rate button:hover {
+  transform: scale(1.1);
+}
+
+.rate button:focus-visible,select:focus-visible,textarea:focus-visible,.btn:focus-visible,.link:focus-visible {
+  outline: 2px solid var(--line);
+  outline-offset: 2px;
+}
+
+.rate svg {
+  display: block;
+  width: clamp(34px,9vw,44px);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+select,textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+select {
+  max-width: 360px;
+  margin: 8px 0 20px;
+  appearance: none;
+  background: var(--field) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b4fc7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;
+  padding-right: 38px;
+}
+
+select:invalid {
+  color: var(--muted);
+}
+
+option {
+  color: var(--ink);
+  background: var(--card);
+}
+
+textarea {
+  min-height: 112px;
+  margin-top: 8px;
+  resize: vertical;
+}
+
+.btn {
+  margin-top: 16px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 30px;
+  font: inherit;
+  font-size: .95rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+#msg {
+  margin: 12px 0 0;
+  min-height: 1.4em;
+  font-size: .95rem;
+  font-weight: 400;
+}
+
+#msg.ok {
+  color: var(--ok);
+}
+
+#msg.err {
+  color: var(--danger);
+}
+
+/* ===== 7. Lista “Seus feedbacks” ===== */
+#list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+#list li {
+  padding: 0 0 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--sep);
+}
+
+#list li:last-child {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.mini {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.mini svg {
+  width: 14px;
+  height: 14px;
+  color: var(--star-off);
+}
+
+.mini svg.on {
+  color: var(--gold);
+}
+
+.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#list p {
+  margin: 4px 0 0;
+  font-size: .85rem;
+  overflow-wrap: anywhere;
+}
+
+#empty {
+  margin: 14px 0 0;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* ===== 8. Responsivo e movimento reduzido ===== */
+@media (max-width:760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    transition: none!important;
+  }
+}
