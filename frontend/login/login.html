@@ -1,59 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="index.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
-
 <body>
- 
-    <!--Login-->
-    <section class="section">
-        <div class="wrapper">
-            <div class="logreg-box">
-                <div class="form-box login"></div>
-                <div class="logreg-title">
-                    <h2>Login</h2>
-                    <p>Faça login para acessar o conteúdo do curso</p>
+    
+    <div class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+
+            <div class="input-box">
+                    <input type="text" placeholder="CPF" required>
+                    <i class="bx bx-user"></i>
+                </div>
+                 <div class="input-box">
+                    <input type="password" placeholder="Senha" required>
+                    <i class="bx bx-lock-alt"></i>
                 </div>
 
-                <form action="#">
-                    <div class="input-box">
-                        <span class="icon"><i class='bx bxs-user-circle' style='color:#000000'  ></i></span>
-                        <input type="text" placeholder="CPF"required>
-                    </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Lembrar-me</label>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
 
-                    <div class="input-box">
-                        <span class="icon"><i class='bx bxs-lock-alt'></i></i></span>
-                        <input type="password" placeholder="Senha"required>
-                    </div>
+                <button type="submit" class="btn">Login</button>
 
-
-                    <div class="remember-forgot">
-                        <label> <input type="checkbox">Lembra-me</label>
-                        <a href="#">Esqueci a senha</a>
-                    </div>
-
-                    <button type="submit" class="btn">Login</button>
-
-                    <div class="logreg-link">
-                        <p>Não tem uma conta? <a href="#" class="">Cadastre-se</a></p>
-                    </div>
-
-                </form>
-
+                <div class="register-link">
+                    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                </div>
             </div>
-        </div>
-    </section>
-
-    
-
-    <script src="script.js"></script>
+        </form>
+    </div>
 </body>
-
 </html>
