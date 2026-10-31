@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{ scroll-behavior: smooth; }
+
+body{
+    font-family: 'Julius Sans One', sans-serif;
+    color: #fff;
+    line-height: 1.5;
+    background: #000;
+}
+
+/* imagens nunca estouram nem são cortadas, a altura acompanha a largura */
+img{ display: block; max-width: 100%; height: auto; }
+
+a{ color: inherit; text-decoration: none; }
+a:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+
+.container{ width: min(1100px, 90%); margin: 0 auto; }
+
+/* ---------- MENU ---------- */
+.menu{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: #e4e4ea;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+}
+
+.menu a{
+    color: #111;
+    font-size: 20px;
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+
+.menu a.ativo{ background: #fff; }
+.menu a:focus-visible{ outline-color: #2a25a8; outline-offset: 0; }
+
+/* ---------- HERO ---------- */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 100px 5% 60px;
+    text-align: center;
+    background:
+        linear-gradient(#000, transparent 55%),      /* topo escurecendo, como no layout (pode tirar) */
+        url('./images/fundo.png') center / cover no-repeat,
+        #000;
+}
+        
+
+.hero h1{
+    font-family: 'EB Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1.15;
+}
+
+.btn-comecar{
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 6px 6px 20px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    background: #000;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+}
+
+.btn-comecar span{
+    background: #fff;
+    color: #000;
+    padding: 4px 22px;
+    border-radius: 999px;
+}
+
+
+/* ---------- INVISTA NO SEU FUTURO ---------- */
+.invista{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 100px 0;
+}
+
+.invista h2{
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 40px);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.invista p{ max-width: 340px; margin-bottom: 40px; }
+
+.btn-matricula{
+    display: inline-block;
+    background: #2a25a8;
+    padding: 12px 40px;
+    border-radius: 999px;
+}
+
+/* ---------- FAIXA ROXA ---------- */
+.faixa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: #6a2fe0;
+}
+
+.faixa img{ width: 100%; height: 220px; object-fit: cover; }
+.faixa p{ max-width: 520px; padding: 24px 5%; font-size: 18px; line-height: 1.3; }
+
+/* ---------- BENEFÍCIOS ---------- */
+.beneficios{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 140px 0;
+    text-align: center;
+}
+
+.beneficios img{ width: auto; height: 60px; margin: 0 auto 12px; }
+
+/* ---------- PROFESSORES ---------- */
+.professores{
+    padding: 100px 5%;
+    text-align: center;
+    /* brilho roxo nas laterais */
+    background:
+        radial-gradient(ellipse at 0% 65%, #6a2fe0, transparent 35%),
+        radial-gradient(ellipse at 100% 65%, #6a2fe0, transparent 35%),
+        #000;
+}
+
+.professores h2{ font-weight: 400; font-size: 20px; margin-bottom: 40px; }
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
+
+/* object-position: top mantém o rosto na foto */
+.cards img{
+    width: 100%;
+    aspect-ratio: 3 / 5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 999px;
+}
+
+.cards figcaption{ margin-top: 16px; font-size: 14px; font-weight: 500; }
+
+/* ---------- RODAPÉ ---------- */
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 5%;
+    background: #1d1090;
+    text-align: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 30px;
+    border-right: 2px solid #fff;
+    font-size: 32px;
+}
+
+.logo img{ width: 70px; }
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 768px){
+    .invista, .faixa, .beneficios, .cards{ grid-template-columns: 1fr; }
+    .invista{ padding: 60px 0; }
+    .beneficios{ padding: 80px 0; }
+    .cards{ max-width: 320px; }
+    footer{ flex-direction: column; }
+    .logo{ border-right: 0; padding-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+}
