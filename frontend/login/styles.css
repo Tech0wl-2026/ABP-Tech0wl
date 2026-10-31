@@ -1,117 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Istok Web', sans-serif;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    background-color: transparent;
+body{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    z-index: 99;
-}
-
-.logo {
-    font-size: 29px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    pointer-events: none;
-}
-
-/* Cabeçalho */
-.navbar a{
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 40px;
-}
-
-.navbar a:hover,
-nav a.active{
-    color: rgb(255, 47, 172);
-    border-bottom: 3px solid rgb(255, 47, 172);
-}
-
-.navbar .btnLogin-popup{
-    position: relative;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 19px;
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.navbar .btnLogin-popup::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-    opacity: .85;
-}
-
-/* fundo */
-.section{
     min-height: 100vh;
-    background: url('../images/paisagem.jpg') no-repeat;
+    background: url('./images/paisagem.jpg') no-repeat center;
     background-size: cover;
-    background-position: center;
 }
 
 .wrapper{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 450px;
-    height: 100%;
-    background: yellowgreen;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-}
-
-.wrapper .logreg-box{
-    width: 100%;
-    background: pink;
-}
-
-.logreg-box .logreg-title{
-    text-align: center;
-    margin-bottom: 40px;
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0, .2);
     color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
 }
 
-.logreg-title h2{
-    font-size: 14px;
-    font-weight: 500;
-}
-logreg-title p{
-    font-size: 14px;
-    font-weight: 500;
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
 }
 
-.logreg-box .input-box{
+.wrapper .input-box{
     position: relative;
     width: 100%;
     height: 50px;
-    background: red;
     margin: 30px 0;
-    border-bottom: 2px solid #fff;
 }
 
 .input-box input{
@@ -120,21 +45,72 @@ logreg-title p{
     background: transparent;
     border: none;
     outline: none;
+    border: 2px solid rgba(255,255,255, .2);
+    border-radius: 45px;
     font-size: 16px;
     color: #fff;
-    font-weight: 500;
-    padding-right: 25px;
+    padding: 20px 45px 20px 20px;
 }
 
-.input-box label{
-    position: absolute;
-}
-
-.input-box .icon{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: 19px;
+.input-box input::placeholder{
     color: #fff;
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
 }
