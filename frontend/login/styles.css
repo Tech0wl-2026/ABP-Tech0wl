@@ -114,3 +114,19 @@ body{
 .register-link p a:hover{
     text-decoration: underline;
 }
+
+.back-btn{
+    position: absolute;
+    top: 27px;
+    left: 38px;
+}
+
+.back-btn img{
+    display: block;
+    width: 50px;  
+    transition: transform .2s;
+}
+
+.back-btn:hover img{
+    transform: scale(1.1);
+}
