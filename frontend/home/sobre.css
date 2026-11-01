@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{ 
+    scroll-behavior: smooth; 
+}
+
+body{
+    font-family: 'Julius Sans One', sans-serif;
+    color: #fff;
+    line-height: 1.5;
+    background: #000;
+}
+
+/* imagens nunca estouram nem são cortadas, a altura acompanha a largura */
+img{ 
+    display: block; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+a{ 
+    color: inherit; 
+    text-decoration: none; 
+}
+
+a:focus-visible{ 
+    outline: 2px solid #fff; 
+    outline-offset: 3px; 
+}
+
+.container{ 
+    width: min(1100px, 90%); 
+    margin: 0 auto; 
+}
+
+/* ---------- MENU ---------- */
+.menu{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: #e4e4ea;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+}
+
+.menu a{
+    color: #111;
+    font-size: 20px;
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+
+.menu a.ativo{ 
+    background: #fff; 
+}
+
+.menu a:focus-visible{ 
+    outline-color: #2a25a8; 
+    outline-offset: 0; 
+}
+
+/* ---------- HERO ---------- */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 100px 5% 60px;
+    text-align: center;
+    background:
+        linear-gradient(#000, transparent 55%),
+        url('./images/fundo.png') center / cover no-repeat,
+        #000;
+}
+
+.hero h1{
+    font-family: 'EB Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1.15;
+}
+
+.btn-comecar{
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 6px 6px 20px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    background: #000;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+}
+
+.btn-comecar span{
+    background: #fff;
+    color: #000;
+    padding: 4px 22px;
+    border-radius: 999px;
+}
+
+.font1{
+    font-family: 'Kulim Park', sans-serif;
+    font-size: 20px;
+}
+
+.titulo{
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-variant: small-caps;
+    letter-spacing: .08em;
+    text-align: center;
+}
+
+/* ---------- SOBRE NÓS ---------- */
+#sobre{
+    padding: 100px 0 220px;
+    background: linear-gradient(#000, #1f0a85 25%, #6a00a8 55%, #2a0a8a 78%, #000);
+}
+
+.card-sobre{
+    position: relative;
+    width: min(560px, 90%);
+    margin: 180px auto 0;
+    padding: 40px 80px 40px 34px;
+    background: #000;
+}
+
+.card-sobre p{ 
+    font-size: clamp(18px, 2.2vw, 24px); 
+}
+.card-sobre p + p{ 
+    margin-top: 1.5em; 
+}
+
+/* o primeiro parágrafo quebra antes do selo */
+.card-sobre p:first-of-type{ 
+    max-width: 340px; 
+}
+
+.selo-card{
+    position: absolute;
+    top: -66px;
+    right: -66px;
+    width: 203px;
+    height: 203px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: url('./imagens3/selo.png') center / cover no-repeat;
+}
+
+.despedida{
+    margin-top: 40px;
+    font-size: clamp(32px, 4.4vw, 48px);
+    text-align: center;
+}
+
+/* ---------- RODAPÉ ---------- */
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 5%;
+    background: #1d1090;
+    text-align: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 30px;
+    border-right: 2px solid #fff;
+    font-size: 32px;
+}
+
+.logo img{ 
+    width: 70px; 
+}
+
+.marca{
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 35px;
+}
+
+.font2{
+    font-family: 'Kulim Park', sans-serif;
+    font-size: 17px;
+}
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 768px){
+    .card-sobre{ 
+        margin-top: 120px; 
+        padding: 70px 24px 36px; 
+    }
+
+    .card-sobre p:first-of-type{ max-width: none; }
+
+    .selo-card{ 
+        top: -55px; 
+        right: 12px; 
+        width: 110px; 
+        height: 110px; 
+    }
+
+    footer{ 
+        flex-direction: column; 
+    }
+
+    .logo{ 
+        border-right: 0; 
+        padding-right: 0; 
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+}
