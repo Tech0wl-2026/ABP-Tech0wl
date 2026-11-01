@@ -24,13 +24,20 @@
 
         <div class="usuario">
             <img class="avatar" src="./imagens/avatar-aluno.png" alt="Seu perfil">
-            <button type="button" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
+            <!-- Sair: leva para a página de login -->
+            <a href="../login/login.html" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
                 <i class="bx bx-log-out"></i>
-            </button>
+            </a>
         </div>
     </header>
 
     <main class="cursos">
+
+        <!-- BANNER: a foto de fundo é definida no curso.css (imagens/banner-livros.jpg).
+             Se a sua imagem já tiver o texto "WELCOME", apague o <h1>. -->
+        <section class="banner" aria-label="Boas-vindas">
+            <h1>Welcome</h1>
+        </section>
 
         <!-- LISTA DE CURSOS -->
         <section class="lista-cursos" aria-label="Cursos disponíveis">
