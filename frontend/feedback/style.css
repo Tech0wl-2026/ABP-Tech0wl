@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
 /* Feedback do curso — style.css */
 
@@ -83,100 +84,100 @@ body::before {
   z-index: 30;
 }
 
-/* ===== 3. Barra de navegação ===== */
-
-.imageslogo{
-  height: 40px;
-  width: 40px;
-}
-
-.perfilusuario{
-  height: 30px;
-  width: 30px;
-}
-
-.nav {
-  position: sticky;
-  top: env(safe-area-inset-top,0px);
-  z-index: 20;
+/* ===== 3. Barra de navegação (copiada da home, portal.css) ===== */
+.topo{
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: var(--purple);
-  padding: 10px clamp(12px,3vw,24px);
+  gap: 130px;
+  height: 90px;
+  padding: 0 28px 0 25px;
+  background: #7712d6;
   color: #fff;
-}
-
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: .82rem;
+  font-family: 'Kulim Park', sans-serif;
   font-weight: 400;
+  line-height: 1.5;
 }
 
-.nav a:focus-visible,.out:focus-visible {
-  outline: 2px solid #fff;
+.topo a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.topo img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.topo a:focus-visible,
+.topo button:focus-visible{
+  outline: 3px solid #a733ff;
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
-.logo {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
+.logo img{
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: #fff;
-  flex: none;
 }
 
-.logo svg {
-  width: 22px;
-  height: 22px;
-}
-
-.links {
+.menu{
   display: flex;
-  gap: clamp(12px,3vw,32px);
-  margin-left: clamp(0px,4vw,56px);
+  gap: 56px;
+  font-size: 24px;
 }
 
-
-nav a:hover,
-nav a.active{
-  color: #fff;
-  border-bottom: 2px solid #fff;
+.menu a{
+  padding-bottom: 2px;
+  border-bottom: 3px solid transparent;
 }
 
-.spacer {
-  flex: 1;
+.menu a.ativo{ border-bottom-color: #c840ff; }
+
+.usuario{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 27px;
 }
 
-.avatar {
-  width: 34px;
-  height: 34px;
+.avatar{
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
+  object-fit: cover;
   background: #fff;
-  overflow: hidden;
-  flex: none;
 }
 
-.out {
+.btn-sair{
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
   border: 0;
-  border-radius: 9px;
-  background: rgba(255,255,255,.2);
-  color: #fff;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .16);
+  color: inherit;
+  font: inherit;
+  font-size: 24px;
   cursor: pointer;
-  flex: none;
 }
 
-.out svg {
-  width: 18px;
-  height: 18px;
+.btn-sair:hover{ background: rgba(255, 255, 255, .3); }
+
+@media (max-width: 860px){
+  .topo{ gap: 24px; padding: 0 16px; }
+  .menu{ gap: 24px; font-size: 18px; }
+}
+
+@media (max-width: 600px){
+  .topo{ flex-wrap: wrap; height: auto; padding: 10px 16px; row-gap: 8px; }
+  .menu{ order: 3; width: 100%; justify-content: center; }
+  .logo img{ width: 42px; height: 42px; }
+  .avatar{ width: 34px; height: 34px; }
 }
 
 /* ===== 4. Conteúdo e banner de abertura ===== */

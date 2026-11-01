@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="curso.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO (mesmo código da home; só muda quem tem a classe "ativo") -->
+    <header class="topo">
+        <a href="./home.html" class="logo">
+            <img src="./imagens/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
+        </a>
+
+        <nav class="menu">
+            <a href="./home.html">Home</a>
+            <a href="./curso.html" class="ativo" aria-current="page">Cursos</a>
+            <a href="./certificado.html">Certificado</a>
+        </nav>
+
+        <div class="usuario">
+            <img class="avatar" src="./imagens/avatar-aluno.png" alt="Seu perfil">
+            <button type="button" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
+                <i class="bx bx-log-out"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="cursos">
+
+        <!-- LISTA DE CURSOS -->
+        <section class="lista-cursos" aria-label="Cursos disponíveis">
+
+            <article class="curso">
+                <img class="curso-capa" src="./imagens/curso-scrum.png" alt="">
+                <div class="curso-corpo">
+                    <h2>Scrum</h2>
+                    <p>Scrum é um framework ágil que organiza projetos, como também outras funções que iremos abordar nesse capítulo.</p>
+                    <a href="#" class="btn-ver">Ver</a>
+                </div>
+            </article>
+
+            <article class="curso">
+                <img class="curso-capa" src="./imagens/curso-kanban-xp.png" alt="">
+                <div class="curso-corpo">
+                    <h2>Kanban x XP</h2>
+                    <p>Como podemos diferenciar sobre os dois temas distintos que podemos usar como um só, nesse capítulo iremos abordar o tema.</p>
+                    <a href="#" class="btn-ver">Ver</a>
+                </div>
+            </article>
+
+            <article class="curso">
+                <img class="curso-capa" src="./imagens/curso-ferramentas.png" alt="">
+                <div class="curso-corpo">
+                    <h2>Ferramentas e boas práticas para projetos ágeis</h2>
+                    <p>Como melhorar nossas práticas e o nosso conhecimento é o que veremos a seguir.</p>
+                    <a href="#" class="btn-ver">Ver</a>
+                </div>
+            </article>
+
+            <article class="curso">
+                <img class="curso-capa" src="./imagens/curso-principios.png" alt="">
+                <div class="curso-corpo">
+                    <h2>Princípios e práticas da agilidade</h2>
+                    <p>Curso que apresenta os fundamentos da agilidade, técnicas de planejamento e métricas para otimizar a gestão e o desempenho de projetos ágeis.</p>
+                    <a href="#" class="btn-ver">Ver</a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

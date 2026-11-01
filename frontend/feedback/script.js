@@ -152,11 +152,7 @@
   [campoAssunto, campoMensagem].forEach((campo) =>
     campo.addEventListener('input', () => mostrarAviso('')));
 
-  /* ===== 7. Navegação (links só ilustrativos) ===== */
-  document.querySelectorAll('.nav a').forEach((link) =>
-    link.addEventListener('click', (evento) => evento.preventDefault()));
-
-  /* ===== 8. Início ===== */
+  /* ===== 7. Início ===== */
   pintarEstrelas(nota);
   desenharLista();
 })();

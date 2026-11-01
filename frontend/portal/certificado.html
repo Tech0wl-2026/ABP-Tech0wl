@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="certificado.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO (mesmo código da home; só muda quem tem a classe "ativo") -->
+    <header class="topo">
+        <a href="./home.html" class="logo">
+            <img src="./imagens/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
+        </a>
+
+        <nav class="menu">
+            <a href="./home.html">Home</a>
+            <a href="./curso.html">Cursos</a>
+            <a href="./certificado.html" class="ativo" aria-current="page">Certificado</a>
+        </nav>
+
+        <div class="usuario">
+            <img class="avatar" src="./imagens/avatar-aluno.png" alt="Seu perfil">
+            <button type="button" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
+                <i class="bx bx-log-out"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="certificado">
+
+        <section class="cartao">
+            <h1>Certificado de conclusão do curso</h1>
+
+            <!-- Aviso enquanto o certificado não está liberado -->
+            <div class="aviso" id="aviso" role="status">
+                <p>Seu certificado será liberado depois que você finalizar a prova do curso.</p>
+                <p>Média da prova acima de 60</p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

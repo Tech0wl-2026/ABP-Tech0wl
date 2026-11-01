@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Italiana&family=Julius+Sans+One&family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{ scroll-behavior: smooth; }
+
+body{
+    font-family: 'Kulim Park', sans-serif;
+    color: #fff;
+    line-height: 1.5;
+    background: #bcbcdc;
+}
+
+img{ display: block; max-width: 100%; height: auto; }
+
+a{ 
+    color: inherit; 
+    text-decoration: none; 
+}
+
+button{ 
+    border: 0; 
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer; 
+}
+
+a:focus-visible,
+button:focus-visible{ 
+    outline: 3px solid #a733ff; 
+    outline-offset: 3px; 
+}
+
+/* ---------- TOPO ---------- */
+.topo{
+    display: flex;
+    align-items: center;
+    gap: 130px;
+    height: 90px;
+    padding: 0 28px 0 25px;
+    background: #7712d6;
+}
+
+.logo img{ 
+    width: 68px; 
+    height: 68px; 
+    border-radius: 50%; 
+    background: #fff; 
+}
+
+.menu{
+    display: flex;
+    gap: 56px;
+    font-size: 24px;
+}
+
+.menu a{
+    padding-bottom: 2px;
+    border-bottom: 3px solid transparent;
+}
+
+.menu a.ativo{ border-bottom-color: #c840ff; }
+
+.usuario{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.avatar{
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+}
+
+.btn-sair{
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .16);
+    font-size: 24px;
+}
+
+.btn-sair:hover{ background: rgba(255, 255, 255, .3); }
+
+/* ---------- PAINEL ---------- */
+.painel{
+    display: grid;
+    grid-template-columns: minmax(0, 1.93fr) minmax(0, 1fr);
+    gap: 36px 32px;
+    padding: 36px 48px 48px;
+}
+
+/* ---------- ÁREA DE ESTUDOS ---------- */
+.estudos{
+    position: relative;
+    min-height: 550px;
+    padding: 30px 42px;
+    border-radius: 16px;
+    background: linear-gradient(#0b1244, #0d1650 55%, #1b30aa);
+}
+
+.estudos h1{
+    font-family: 'Italiana', sans-serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.05;
+}
+
+.aluno{
+    position: absolute;
+    left: 40px;
+    bottom: 41px;
+    width: 260px;
+}
+
+.balao{
+    position: absolute;
+    left: 336px;
+    bottom: 120px;
+    display: grid;
+    place-items: center;
+    width: 397px;
+    height: 223px;
+    border-radius: 50%;
+    background: #bcbce0;
+    color: #111;
+    font-size: 19px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* ponta do balão, apontando para o aluno */
+.balao::after{
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 192px;
+    width: 125px;
+    height: 43px;
+    background: inherit;
+    clip-path: polygon(50px 0, 125px 25px, 0 43px);
+}
+
+/* ---------- PROVA DO CURSO ---------- */
+.prova{
+    min-height: 550px;
+    padding: 34px 31px;
+    border-radius: 16px;
+    background: linear-gradient(#a322c2, #5d20ad 45%, #121a74 70%, #050519);
+}
+
+.prova h2{ 
+    font-size: 38px; 
+    font-weight: 300; 
+    line-height: 1.2; 
+}
+
+.descricao{ 
+    margin-top: 18px; 
+    font-size: 18px; 
+    font-weight: 300; 
+    line-height: 1.3; 
+}
+
+.btn-prova{
+    margin-top: 28px;
+    padding: 5px 24px;
+    border-radius: 999px;
+    background: #7b52c9;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.btn-prova:disabled{ 
+    opacity: .6; 
+    cursor: default; 
+}
+
+.prova h3{ 
+    margin-top: 49px; 
+    font-size: 28px; 
+    font-weight: 400; 
+    line-height: 1.2; 
+}
+
+.tempo{ 
+    margin-top: 14px; 
+    font-size: 50px; 
+    font-weight: 700; 
+    line-height: 1.2; 
+}
+
+.barra{
+    width: 100%;
+    max-width: 358px;
+    height: 14px;
+    margin-top: 29px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .14);
+    overflow: hidden;
+}
+
+.barra-preenchimento{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: #a97fe0;
+    transition: width .25s linear;
+}
+
+/* ---------- SUA OPINIÃO ---------- */
+.opiniao{
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 262px;
+    padding: 0 32px 0 28px;
+    border: 12px solid #574f9e;
+    border-radius: 16px;
+    background: #fff;
+    color: #000;
+}
+
+.opiniao h2{ 
+    font-size: 30px; 
+    font-style: italic; 
+    font-weight: 600; 
+}
+
+.opiniao h2 span{ 
+    margin-right: 10px; 
+    font-style: normal; 
+}
+
+.opiniao p{ 
+    margin-top: 20px; 
+    font-size: 22px; 
+    font-weight: 300; 
+    line-height: 1.3; 
+}
+
+.btn-feedback{
+    display: inline-block;
+    margin-top: 30px;
+    padding: 5px 38px;
+    border-radius: 999px;
+    background: #7c6fc4;
+    color: #fff;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.opiniao img{ 
+    flex: none; 
+    width: 135px; 
+}
+
+/* ---------- TELAS MENORES ---------- */
+@media (max-width: 1280px){
+    
+    .painel{ 
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media (max-width: 860px){
+    .topo{ 
+        gap: 24px; 
+        padding: 0 16px; 
+    }
+
+    .menu{ 
+        gap: 24px; 
+        font-size: 18px; 
+    }
+
+    .painel{ 
+        padding: 24px 16px 32px; 
+    }
+
+    .estudos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        min-height: 0;
+        padding: 30px 24px;
+        text-align: center;
+    }
+
+    .aluno,
+    .balao{ 
+        position: static; 
+    }
+
+    .aluno{ 
+        width: min(260px, 70%); 
+    }
+
+    .balao{
+        width: min(397px, 100%);
+        height: auto;
+        min-height: 223px;
+        padding: 36px 28px;
+    }
+
+    .balao::after{ 
+        display: none; 
+    }
+
+    .prova{ 
+        min-height: 0; 
+    }
+
+    .opiniao{
+        flex-direction: column-reverse;
+        padding: 24px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px){
+    .topo{ 
+        flex-wrap: wrap; 
+        height: auto; 
+        padding: 10px 16px; 
+        row-gap: 8px; 
+    }
+
+    .menu{ 
+        order: 3; 
+        width: 100%; 
+        justify-content: center; 
+    }
+
+    .logo img{ 
+        width: 42px; 
+        height: 42px; 
+    }
+
+    .avatar{ 
+        width: 34px; 
+        height: 34px; 
+    }
+
+    .balao{ 
+        font-size: 19px; 
+    }
+
+    .opiniao h2{ 
+        font-size: 24px; 
+    }
+
+    .opiniao p{ 
+        font-size: 18px; 
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{ 
+        scroll-behavior: auto; 
+    }
+
+    .barra-preenchimento{ 
+        transition: none; 
+    }
+}
