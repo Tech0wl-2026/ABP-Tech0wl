@@ -10,6 +10,8 @@
     <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
     <script src="../login/auth.js"></script>
     <script>exigirLogin();</script>
+    <!-- Libera o certificado quando o aluno foi aprovado na prova e faz o download em PDF -->
+    <script src="certificado.js"></script>
 </head>
 <body>
 
@@ -39,9 +41,29 @@
             <h1>Certificado de conclusão do curso</h1>
 
             <!-- Aviso enquanto o certificado não está liberado -->
-            <div class="aviso" id="aviso" role="status">
+            <div class="aviso" id="aviso" role="status" data-cert-bloqueado>
                 <p>Seu certificado será liberado depois que você finalizar a prova do curso.</p>
-                <p>Média da prova acima de 60</p>
+                <p>Média da prova acima de 65%</p>
+            </div>
+
+            <!-- Aparece só para quem foi aprovado -->
+            <div data-cert-liberado hidden>
+                <div class="aviso" role="status">
+                    <p>Prova finalizada! Seu certificado está liberado.</p>
+
+                    <h2 class="validacao-titulo">Validação de autenticidade</h2>
+                    <p class="validacao-texto">A validação poderá ser realizada através do QR Code ou do identificador do certificado.</p>
+
+                    <button type="button" class="codigo" data-cert-copiar title="Clique para copiar">
+                        <span data-cert-codigo></span>
+                        <i class="bx bx-copy" aria-hidden="true"></i>
+                    </button>
+                    <small class="dica-copiar" data-cert-dica>Clique para copiar</small>
+                </div>
+
+                <button type="button" class="btn-download" data-cert-baixar>
+                    download <i class="bx bx-download" aria-hidden="true"></i>
+                </button>
             </div>
         </section>
 

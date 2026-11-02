@@ -10,7 +10,8 @@
     <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
     <script src="../login/auth.js"></script>
     <script>exigirLogin();</script>
-    <script src="questao.js" defer></script>
+    <script src="certificado.js"></script>
+    <script src="prova.js" defer></script>
 </head>
 <body>
 
@@ -77,16 +78,6 @@
         <ul class="parcial-lista" id="parcial-lista"></ul>
         <div class="dialogo-acoes">
             <a class="botao" id="btn-parcial-voltar" href="./home.html">Voltar ao portal</a>
-        </div>
-    </dialog>
-
-    <!-- RESULTADO (aparece ao finalizar) -->
-    <dialog class="dialogo" id="dialogo-resultado" aria-labelledby="resultado-titulo" aria-describedby="resultado-texto">
-        <h2 id="resultado-titulo">Prova finalizada</h2>
-        <p id="resultado-texto"></p>
-        <div class="dialogo-acoes">
-            <button type="button" class="botao botao-secundario" id="btn-refazer">Refazer prova</button>
-            <a class="botao" id="btn-voltar" href="./home.html">Voltar ao portal</a>
         </div>
     </dialog>
 

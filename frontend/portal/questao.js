@@ -8,7 +8,8 @@
    • precisa do ../login/auth.js carregado antes (usuário logado)
    ============================================================ */
 
-const HOME_URL       = "./home.html";  // para onde o aluno vai ao parar ou finalizar
+const HOME_URL       = "./home.html";       // para onde o aluno vai ao parar a prova
+const RESULTADO_URL  = "./resultado.html";  // tela de aprovado/reprovado, aberta ao finalizar
 const TEMPO_PERGUNTA = 150;            // segundos para cada pergunta
 const MEDIA_MINIMA   = 65;             // % mínima para ser aprovado
 
@@ -155,8 +156,7 @@ const QUESTOES = [
 
 /* ---------- PROGRESSO (um por aluno, salvo no navegador) ---------- */
 const aluno = usuarioLogado() || {};
-const CHAVE = "prova:" + (aluno.cpf || "anonimo");
-const CHAVE_MELHOR = "prova-melhor:" + (aluno.cpf || "anonimo");   // melhor resultado de todas as tentativas (não é apagado ao refazer)   // para refazer a prova, apague esta chave do localStorage
+const CHAVE = "prova:" + (aluno.cpf || "anonimo");   // para refazer a prova, apague esta chave do localStorage
 
 let estado = { atual: 0, respostas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
 
@@ -321,35 +321,15 @@ function finalizar() {
   const percentual = Math.round((acertos / QUESTOES.length) * 100);
 
   estado.finalizada = true;
-  estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA };
+  estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA, minimo: MEDIA_MINIMA };
   salvar();
-  guardarMelhor(estado.resultado);
+  Certificado.registrar(estado.resultado);   // guarda o melhor resultado e libera o certificado se aprovado
   mostrarResultado();
 }
 
-function guardarMelhor(resultado) {
-  try {
-    const anterior = JSON.parse(localStorage.getItem(CHAVE_MELHOR));
-    if (!anterior || resultado.percentual >= anterior.percentual) {
-      localStorage.setItem(CHAVE_MELHOR, JSON.stringify(resultado));
-    }
-  } catch { /* sem armazenamento */ }
-}
-
-/* ---------- REFAZER (sem limite de tentativas) ---------- */
-function refazer() {
-  pararRelogio();
-  estado = { atual: 0, respostas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
-  salvar();
-  location.reload();
-}
-
+// Finalizou: a tela de Parabéns (aprovado) ou "Não foi dessa vez" (reprovado) é a resultado.html
 function mostrarResultado() {
-  const r = estado.resultado;
-  $("resultado-texto").textContent =
-    `Você acertou ${r.acertos} de ${r.total} perguntas (${r.percentual}%). ` +
-    `A média mínima é ${MEDIA_MINIMA}%: ` + (r.aprovado ? "você foi aprovado(a)!" : "desta vez você não atingiu a média.");
-  $("dialogo-resultado").showModal();
+  location.replace(RESULTADO_URL);
 }
 
 /* ---------- PARAR PROVA: confirmação ---------- */
@@ -415,12 +395,12 @@ $("dialogo-parcial").addEventListener("cancel", (e) => e.preventDefault());   //
 
 /* ---------- INÍCIO ---------- */
 $("btn-proxima").addEventListener("click", avancar);
-$("btn-voltar").href = HOME_URL;
-$("btn-refazer").addEventListener("click", refazer);
-$("dialogo-resultado").addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
 window.addEventListener("pagehide", salvar);
 
 carregar();
-mostrarPergunta();
-if (estado.finalizada && estado.resultado) mostrarResultado();
-else iniciarRelogio();
+if (estado.finalizada && estado.resultado) {
+  mostrarResultado();                    // prova já finalizada: vai direto para o resultado
+} else {
+  mostrarPergunta();
+  iniciarRelogio();
+}

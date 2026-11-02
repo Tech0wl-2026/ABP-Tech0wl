@@ -1,0 +1,19 @@
+/* Andamento da prova na home (selo "Pausado" e posição) */
+[hidden] { display: none !important; }
+
+.selo-prova {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 8px 24px;
+  border-radius: 999px;
+  background: #7E57C8;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.posicao-prova {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  color: #fff;
+  opacity: 0.9;
+}

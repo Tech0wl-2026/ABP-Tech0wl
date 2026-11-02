@@ -6,8 +6,9 @@
     <title>Home | Aprendizagem Ágil</title>
     <link rel="stylesheet" href="portal.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="provahome.css">
     <script src="portal.js" defer></script>
-    <script src="prova-home.js" defer></script>
+    <script src="provahome.js" defer></script>
     <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
     <script src="../login/auth.js"></script>
     <script>exigirLogin();</script>
@@ -51,15 +52,17 @@
         <!-- PROVA DO CURSO -->
         <section class="prova">
             <h2>Prova do curso</h2>
-            <p class="descricao">Duração da prova é de 2:50 minutos, para responder cada questão você terá 150 segundos, podendo parar e continuar quando quiser.</p>
+            <p class="descricao">Duração da prova é de 30:00 minutos (12 questões), para responder cada questão você terá 150 segundos, podendo parar e continuar quando quiser.</p>
             <!-- Botão Realizar: leva para a página das questões -->
             <button type="button" id="btn-prova" class="btn-prova" onclick="window.location.href='./questao.html'">Realizar</button>
 
             <h3>Prova</h3>
-            <p class="tempo" id="tempo" role="timer">02:50</p>
+            <p class="tempo" id="tempo" role="timer">30:00</p>
             <div class="barra" id="barra" role="progressbar" aria-label="Tempo restante da prova" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
                 <div class="barra-preenchimento" id="barra-preenchimento"></div>
             </div>
+            <span class="selo-prova" id="selo-pausado" hidden>Pausado</span>
+            <p class="posicao-prova" id="prova-posicao" hidden></p>
         </section>
 
         <!-- FEEDBACK -->

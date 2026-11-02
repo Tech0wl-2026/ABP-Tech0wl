@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da prova | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="resultado.css">
+
+    <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
+    <script src="../login/auth.js"></script>
+    <script>exigirLogin();</script>
+    <script src="certificado.js"></script>
+    <script src="resultado.js" defer></script>
+</head>
+<body>
+
+    <header class="topo">
+        <a href="home.html" class="voltar" aria-label="Voltar para a home" title="Voltar">
+            <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
+                <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M33 24H15M22 16l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </header>
+
+    <main>
+        <!-- APROVADO -->
+        <section class="cartao aprovado" id="tela-aprovado" hidden>
+            <svg class="estrelas" viewBox="0 0 260 150" aria-hidden="true">
+                <defs>
+                    <linearGradient id="ouro" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#FFC21A"/>
+                        <stop offset="1" stop-color="#FF8A3D"/>
+                    </linearGradient>
+                    <path id="estrela" d="M50 4l13 30 33 3-25 22 8 32-29-17-29 17 8-32L4 37l33-3z"/>
+                </defs>
+                <use href="#estrela" fill="url(#ouro)" transform="translate(-2 62) scale(.6) rotate(-14 50 50)"/>
+                <use href="#estrela" fill="url(#ouro)" transform="translate(80 0)"/>
+                <use href="#estrela" fill="url(#ouro)" transform="translate(166 62) scale(.6) rotate(14 50 50)"/>
+            </svg>
+            <h1>Parabéns!</h1>
+            <p class="destaque">Você foi aprovado!</p>
+            <p class="nota">Sua nota foi <span data-nota></span>%</p>
+            <p>Seu esforço e dedicação fizeram a diferença.<br>Continue assim!</p>
+            <p class="aviso">Para baixar seu certificado, acesse<br>a página de Certificados e<br>clique na opção de download.</p>
+            <div class="acoes">
+                <a class="botao" href="./home.html">Voltar ao início</a>
+            </div>
+        </section>
+
+        <!-- REPROVADO -->
+        <section class="cartao reprovado" id="tela-reprovado" hidden>
+            <div class="livros" aria-hidden="true">📚</div>
+            <h1>Não foi dessa vez</h1>
+            <p class="destaque">Você foi reprovado</p>
+            <p class="nota">Sua nota foi <span data-nota></span>% &nbsp;–&nbsp; <span data-acertos></span> de <span data-total></span> questões corretas</p>
+            <p class="aviso">A nota mínima para aprovação é <span data-minimo></span>%.<br>Revise o conteúdo e tente novamente – você consegue!</p>
+            <div class="acoes">
+                <button type="button" class="botao" id="btn-tentar">Tentar de novo</button>
+                <a class="botao contorno" href="./home.html">Voltar ao início</a>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
