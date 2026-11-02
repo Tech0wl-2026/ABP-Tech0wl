@@ -3,6 +3,7 @@
 
    Lê o progresso salvo pelo questao.js (mesma chave do localStorage):
    • prova pausada:    "Prova em andamento", tempo que falta, barra, selo "Pausado"
+                       (o selo é um botão: volta à pergunta onde parou e continua a prova)
    • prova finalizada: selo Aprovado/Reprovado e botão "Refazer prova"
 
    Se o portal.js também escrever no cronômetro/barra, este script
@@ -53,13 +54,33 @@
     if (estado.finalizada && estado.resultado) {
       const r = estado.resultado;
       if (titulo) titulo.textContent = "Prova finalizada";
-      if (selo) { selo.textContent = (r.aprovado ? "Aprovado" : "Reprovado") + " — " + r.percentual + "%"; selo.hidden = false; }
+      if (selo) {
+        selo.textContent = (r.aprovado ? "Aprovado" : "Reprovado") + " — " + r.percentual + "%";
+        selo.removeAttribute("href");                 // prova feita: o selo é só informativo
+        selo.removeAttribute("title");
+        selo.removeAttribute("aria-label");
+        selo.classList.remove("selo-link");
+        selo.hidden = false;
+      }
       if (botao && botao.textContent !== "Refazer prova") botao.textContent = "Refazer prova";
     } else {
       if (titulo) titulo.textContent = "Prova em andamento";
-      if (selo) { selo.textContent = "Pausado"; selo.hidden = false; }
+      if (selo) {
+        // o selo "Pausado" é o botão para voltar à pergunta onde parou e continuar a prova
+        if (!selo.classList.contains("selo-link")) {
+          const icone = document.createElement("i");
+          icone.className = "bx bx-play";
+          icone.setAttribute("aria-hidden", "true");
+          selo.replaceChildren("Pausado ", icone);
+        }
+        selo.setAttribute("href", "./questao.html");
+        selo.setAttribute("title", "Continuar a prova de onde parou");
+        selo.setAttribute("aria-label", "Pausado. Continuar a prova de onde parou");
+        selo.classList.add("selo-link");
+        selo.hidden = false;
+      }
       if (posicao && Number.isInteger(estado.atual)) {
-        posicao.textContent = "Você parou na pergunta " + (estado.atual + 1) + ". Clique em Realizar para continuar de onde parou.";
+        posicao.textContent = "Você parou na pergunta " + (estado.atual + 1) + ". Clique em Pausado (ou em Realizar) para continuar de onde parou.";
         posicao.hidden = false;
       }
     }
