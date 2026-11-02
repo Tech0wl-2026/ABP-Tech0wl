@@ -42,7 +42,12 @@ body.pagina-material{
 }
 
 /* ---------- ABAS DE MÓDULOS ---------- */
-.abas{ display: flex; flex-wrap: wrap; gap: 8px; }
+.abas{ 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+}
+
 .aba{
     padding: 8px 14px;
     border-radius: 999px;
@@ -52,15 +57,35 @@ body.pagina-material{
     font-size: 15px;
     text-decoration: none;
 }
-.aba:hover{ background: var(--cor, #0d0d8c); color: #fff; }
-.aba-todos{ --cor: #0d0d8c; }
-.aba-ativa{ background: var(--cor); color: #fff; }
+.aba:hover{ 
+    background: var(--cor, #0d0d8c); 
+    color: #fff; 
+}
+
+.aba-todos{ 
+    --cor: #0d0d8c; 
+}
+
+.aba-ativa{ 
+    background: var(--cor);
+    color: #fff; 
+}
 
 /* ---------- MÓDULOS ---------- */
-.modulos{ display: flex; flex-direction: column; gap: 56px; }
+.modulos{ 
+    display: flex; 
+    flex-direction: column; 
+    gap: 56px; 
+}
+
 /* O material.js esconde os módulos que não foram escolhidos (atributo hidden) */
-.modulo[hidden]{ display: none; }
-.modulo{ scroll-margin-top: 16px; }
+.modulo[hidden]{ 
+    display: none; 
+}
+
+.modulo{ 
+    scroll-margin-top: 16px; 
+}
 
 /* ---------- BOTÕES ---------- */
 .btn-voltar,
@@ -80,14 +105,23 @@ body.pagina-material{
     background: #fff;
     color: #000;
 }
-.btn-voltar:hover{ background: #ecebff; }
+.btn-voltar:hover{ 
+    background: #ecebff; 
+}
+
 .btn-proximo{
     border: 3px solid #0d0d8c;
     background: #0d0d8c;
     color: #fff;
 }
-.btn-proximo:hover{ background: #1a1ab5; border-color: #1a1ab5; }
-.btn-voltar i, .btn-proximo i{ font-size: 22px; }
+.btn-proximo:hover{ 
+    background: #1a1ab5;
+    border-color: #1a1ab5; 
+}
+
+.btn-voltar i, .btn-proximo i{ 
+    font-size: 22px; 
+}
 
 /* ---------- CARTÃO DO MÓDULO ---------- */
 .modulo{
@@ -105,9 +139,23 @@ body.pagina-material{
     padding: 16px 56px;
     background: var(--cor);
 }
-.modulo-icone{ font-size: 64px; line-height: 1; color: #000; }
-.modulo-topo h2{ font-size: 32px; font-weight: 400; line-height: 1.1; }
-.modulo-topo p{ margin-top: 4px; font-size: 18px; font-weight: 400; }
+.modulo-icone{ 
+    font-size: 64px; 
+    line-height: 1; 
+    color: #000; 
+}
+
+.modulo-topo h2{ 
+    font-size: 32px; 
+    font-weight: 400; 
+    line-height: 1.1; 
+}
+
+.modulo-topo p{ 
+    margin-top: 4px; 
+    font-size: 18px; 
+    font-weight: 400; 
+}
 
 .modulo-corpo{
     padding: 48px clamp(20px, 6vw, 86px) 56px;
@@ -121,11 +169,29 @@ body.pagina-material{
     border-radius: 8px;
     background: #f5f4fb;
 }
-.indice strong{ font-size: 18px; }
-.indice ul{ margin-top: 8px; padding-left: 20px; list-style: none; }
-.indice li{ margin: 6px 0; }
-.indice a{ color: #0d0d8c; font-size: 17px; text-decoration: none; }
-.indice a:hover{ text-decoration: underline; }
+.indice strong{ 
+    font-size: 18px; 
+}
+
+.indice ul{ 
+    margin-top: 8px; 
+    padding-left: 20px; 
+    list-style: none; 
+}
+
+.indice li{ 
+    margin: 6px 0; 
+}
+
+.indice a{ 
+    color: #0d0d8c; 
+    font-size: 17px; 
+    text-decoration: none; 
+}
+
+.indice a:hover{ 
+    text-decoration: underline; 
+}
 
 /* ---------- SEÇÕES ---------- */
 .secao{
@@ -134,7 +200,9 @@ body.pagina-material{
     border-bottom: 1px solid #e3e1f0;
     scroll-margin-top: 24px;
 }
-.secao:last-of-type{ border-bottom: 0; }
+.secao:last-of-type{ 
+    border-bottom: 0; 
+}
 
 .secao h3{
     font-size: clamp(24px, 2.6vw, 32px);
@@ -159,6 +227,13 @@ body.pagina-material{
     line-height: 1.4;
 }
 
+.fig{
+    max-width: min(100%, 640px);
+    height: auto;
+    border-radius: 8px;
+    align-items: center;
+}
+
 /* ---------- FIGURAS ---------- */
 .figura{ margin: 28px auto; text-align: center; }
 .figura img{
@@ -166,8 +241,16 @@ body.pagina-material{
     height: auto;
     border-radius: 8px;
 }
-.figura-mapa img{ max-width: min(100%, 900px); border: 1px solid #e3e1f0; }
-.figura figcaption{ margin-top: 8px; font-size: 14px; color: #555; }
+.figura-mapa img{ 
+    max-width: min(100%, 900px); 
+    border: 1px solid #e3e1f0; 
+}
+
+.figura figcaption{ 
+    margin-top: 8px; 
+    font-size: 14px; 
+    color: #555; 
+}
 
 /* ---------- IDEIA-CHAVE ---------- */
 .ideia-chave{
@@ -185,12 +268,23 @@ body.pagina-material{
     letter-spacing: .08em;
     text-transform: uppercase;
 }
-.ideia-chave p{ font-weight: 600; }
+.ideia-chave p{ 
+    font-weight: 600; 
+}
 
 /* ---------- REFERÊNCIAS ---------- */
-.referencias ul{ padding-left: 22px; }
-.referencias li{ margin: 8px 0; font-size: 18px; }
-.referencias a{ color: #0d0d8c; }
+.referencias ul{ 
+    padding-left: 22px; 
+}
+
+.referencias li{ 
+    margin: 8px 0; 
+    font-size: 18px; 
+}
+
+.referencias a{ 
+    color: #0d0d8c; 
+}
 
 /* ---------- RODAPÉ ---------- */
 .modulo-rodape{
@@ -203,19 +297,54 @@ body.pagina-material{
 }
 
 /* ---------- AVISO (curso não encontrado) ---------- */
-.aviso-vazio{ padding: 72px 32px; text-align: center; }
-.aviso-vazio h1{ font-size: 32px; font-weight: 400; margin-bottom: 12px; }
-.aviso-vazio p{ margin-bottom: 24px; font-size: 18px; }
+.aviso-vazio{ 
+    padding: 72px 32px; 
+    text-align: center; 
+}
+
+.aviso-vazio h1{ 
+    font-size: 32px; 
+    font-weight: 400; 
+    margin-bottom: 12px; 
+}
+
+.aviso-vazio p{ 
+    margin-bottom: 24px; 
+    font-size: 18px; 
+}
 
 /* ---------- TELAS MENORES ---------- */
 @media (max-width: 860px){
-    .material{ width: calc(100% - 24px); padding-top: 18px; }
-    .modulo{ border-radius: 28px 28px 0 0; }
-    .modulo-topo{ gap: 20px; padding: 14px 24px; min-height: 90px; }
-    .modulo-icone{ font-size: 48px; }
-    .modulo-topo h2{ font-size: 26px; }
-    .modulo-corpo{ padding-top: 32px; }
+    .material{ 
+        width: calc(100% - 24px); 
+        padding-top: 18px; 
+    }
+
+    .modulo{ 
+        border-radius: 28px 28px 0 0; 
+    }
+
+    .modulo-topo{ 
+        gap: 20px; 
+        padding: 14px 24px; 
+        min-height: 90px; 
+    }
+
+    .modulo-icone{ 
+        font-size: 48px; 
+    }
+
+    .modulo-topo h2{ 
+        font-size: 26px; 
+    }
+    .modulo-corpo{ 
+        padding-top: 32px; 
+    }
 }
 @media (max-width: 520px){
-    .btn-voltar, .btn-proximo{ width: 100%; justify-content: center; font-size: 16px; }
+    .btn-voltar, .btn-proximo{ 
+        width: 100%; 
+        justify-content: center; 
+        font-size: 16px; 
+    }
 }
