@@ -44,9 +44,22 @@
     window.scrollTo(0, 0);
 
     /* Barra de progresso de leitura */
+    /* Ao chegar ao fim do material, marca o módulo como concluído (aparece no perfil.html) */
+    function marcarConcluido() {
+        try {
+            const lista = JSON.parse(localStorage.getItem('aa_modulos_concluidos') || '[]');
+            if (!lista.includes(escolhido.dataset.curso)) {
+                lista.push(escolhido.dataset.curso);
+                localStorage.setItem('aa_modulos_concluidos', JSON.stringify(lista));
+            }
+        } catch (e) { /* sem localStorage: segue sem salvar */ }
+    }
+
     function progresso() {
         const total = document.documentElement.scrollHeight - window.innerHeight;
-        barra.style.width = (total > 0 ? Math.min(100, (window.scrollY / total) * 100) : 100) + '%';
+        const pct = total > 0 ? Math.min(100, (window.scrollY / total) * 100) : 100;
+        barra.style.width = pct + '%';
+        if (pct >= 95) marcarConcluido();
     }
     window.addEventListener('scroll', progresso, { passive: true });
     window.addEventListener('resize', progresso);

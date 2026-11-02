@@ -227,29 +227,42 @@ body.pagina-material{
     line-height: 1.4;
 }
 
+/* ---------- IMAGENS / FIGURAS ---------- */
+/* Toda imagem do conteúdo fica centralizada, com espaço antes e depois do texto */
+.secao img{
+    display: block;
+    max-width: min(100%, 640px);
+    height: auto;
+    margin: 32px auto;
+    border-radius: 8px;
+}
+
 .fig{
-    max-width: min(100%, 640px);
-    height: auto;
-    border-radius: 8px;
-    align-items: center;
+    margin: 32px auto 40px;
 }
 
-/* ---------- FIGURAS ---------- */
-.figura{ margin: 28px auto; text-align: center; }
+.figura{
+    margin: 32px auto 40px;
+    text-align: center;
+}
 .figura img{
-    max-width: min(100%, 640px);
-    height: auto;
-    border-radius: 8px;
+    margin: 0 auto 10px;
 }
-.figura-mapa img{ 
-    max-width: min(100%, 900px); 
-    border: 1px solid #e3e1f0; 
+.figura figcaption{
+    margin: 0;
+    font-size: 14px;
+    color: #555;
 }
 
-.figura figcaption{ 
-    margin-top: 8px; 
-    font-size: 14px; 
-    color: #555; 
+.figura-mapa a{
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.figura-mapa img{
+    max-width: min(100%, 900px);
+    border: 1px solid #e3e1f0;
 }
 
 /* ---------- IDEIA-CHAVE ---------- */
