@@ -1,0 +1,20 @@
+.mensagem{
+    display: none;
+    margin: 0 0 15px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.mensagem.erro{
+    display: block;
+    background: rgba(180, 30, 30, .45);
+    border: 1px solid rgba(255, 130, 130, .6);
+}
+
+.mensagem.ok{
+    display: block;
+    background: rgba(20, 120, 60, .45);
+    border: 1px solid rgba(120, 230, 150, .6);
+}

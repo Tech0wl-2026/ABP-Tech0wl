@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="portal.css">
     <link rel="stylesheet" href="certificado.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
+    <script src="../login/auth.js"></script>
+    <script>exigirLogin();</script>
 </head>
 <body>
 

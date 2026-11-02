@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material de estudo | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="material.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
+    <script src="../login/auth.js"></script>
+    <script>exigirLogin();</script>
+</head>
+<body class="pagina-material">
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progresso" aria-hidden="true"><span id="barra-progresso"></span></div>
+
+    <!-- CABEÇALHO: todos os ícones/links levam para fora do material -->
+    <header class="topo">
+        <!-- Logo -> Home -->
+        <a href="./home.html" class="logo" title="Ir para a Home">
+            <img src="./imagens/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
+        </a>
+
+        <nav class="menu">
+            <a href="./home.html">Home</a>
+            <a href="./curso.html" class="ativo" aria-current="page">Cursos</a>
+            <a href="./certificado.html">Certificado</a>
+        </nav>
+
+        <div class="usuario">
+            <!-- Avatar -> Home -->
+            <a href="./home.html" title="Ir para a Home">
+                <img class="avatar" src="./imagens/avatar-aluno.png" alt="Seu perfil">
+            </a>
+            <!-- Sair -> página de login -->
+            <a href="../login/login.html" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
+                <i class="bx bx-log-out"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="material">
+
+        <!-- Botão para sair do material e voltar à lista de cursos -->
+        <div class="material-acoes">
+            <a href="./curso.html" class="btn-voltar" id="btn-voltar-topo">
+                <i class="bx bx-arrow-back"></i> Voltar para Cursos
+            </a>
+        </div>
+
+        <!-- O conteúdo é montado pelo material.js -->
+        <article class="modulo" id="modulo" aria-live="polite"></article>
+
+    </main>
+
+    <script src="./material-dados.js"></script>
+    <script src="./material.js"></script>
+</body>
+</html>
