@@ -1,5 +1,9 @@
 /* Página de material de estudo — usa o portal.css para o cabeçalho */
 
+*{
+    box-sizing: border-box;
+}
+
 body.pagina-material{
     background: #bdbbdb;
 }
@@ -29,7 +33,34 @@ body.pagina-material{
     padding: 28px 0 64px;
 }
 
-.material-acoes{ margin-bottom: 20px; }
+.material-acoes{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    margin-bottom: 20px;
+}
+
+/* ---------- ABAS DE MÓDULOS ---------- */
+.abas{ display: flex; flex-wrap: wrap; gap: 8px; }
+.aba{
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--cor, #0d0d8c);
+    background: #fff;
+    color: #000;
+    font-size: 15px;
+    text-decoration: none;
+}
+.aba:hover{ background: var(--cor, #0d0d8c); color: #fff; }
+.aba-todos{ --cor: #0d0d8c; }
+.aba-ativa{ background: var(--cor); color: #fff; }
+
+/* ---------- MÓDULOS ---------- */
+.modulos{ display: flex; flex-direction: column; gap: 56px; }
+/* O material.js esconde os módulos que não foram escolhidos (atributo hidden) */
+.modulo[hidden]{ display: none; }
+.modulo{ scroll-margin-top: 16px; }
 
 /* ---------- BOTÕES ---------- */
 .btn-voltar,
@@ -75,7 +106,7 @@ body.pagina-material{
     background: var(--cor);
 }
 .modulo-icone{ font-size: 64px; line-height: 1; color: #000; }
-.modulo-topo h1{ font-size: 32px; font-weight: 400; line-height: 1.1; }
+.modulo-topo h2{ font-size: 32px; font-weight: 400; line-height: 1.1; }
 .modulo-topo p{ margin-top: 4px; font-size: 18px; font-weight: 400; }
 
 .modulo-corpo{
@@ -105,13 +136,13 @@ body.pagina-material{
 }
 .secao:last-of-type{ border-bottom: 0; }
 
-.secao h2{
+.secao h3{
     font-size: clamp(24px, 2.6vw, 32px);
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 22px;
 }
-.secao h3{
+.secao h4{
     margin: 28px 0 8px;
     padding-left: 14px;
     border-left: 5px solid var(--cor);
@@ -182,7 +213,7 @@ body.pagina-material{
     .modulo{ border-radius: 28px 28px 0 0; }
     .modulo-topo{ gap: 20px; padding: 14px 24px; min-height: 90px; }
     .modulo-icone{ font-size: 48px; }
-    .modulo-topo h1{ font-size: 26px; }
+    .modulo-topo h2{ font-size: 26px; }
     .modulo-corpo{ padding-top: 32px; }
 }
 @media (max-width: 520px){
