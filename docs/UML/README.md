@@ -11,7 +11,7 @@ Os arquivos abaixo são projetos editáveis no Astah UML.
 | Cadastro | [diagramacadastro.asta](diagramacadastro.asta) |
 | Login | [diagramalogin.asta](diagramalogin.asta) |
 | Questionário | [diagramaquestionario.asta](diagramaquestionario.asta) |
-| Caminho-de-certificação | [diagramaquestionario.asta]() |
+| Caminho-de-certificação | [diagramaquestionario.asta](docs/UML/Fluxo de atividades para exame de certificação..asta) |
 
 | Resposta | [diagramaresposta.asta](diagramaresposta.asta) |
 | Emissão do certificado | [diagramaemissaocertificado.asta](diagramaemissaocertificado.asta) |
