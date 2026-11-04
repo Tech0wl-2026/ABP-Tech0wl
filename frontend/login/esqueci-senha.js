@@ -9,6 +9,7 @@
  * No template do EmailJS: campo "To email" = {{to_email}} e, no texto, use
  * {{nome}}, {{link}} e {{validade}} (minutos).
  */
+
 (function () {
     'use strict';
 
@@ -106,7 +107,6 @@
             try {
                 const usuario = ler(CHAVE_USUARIOS, []).find((u) => normalizar(u && u.email) === email);
 
-                // Só gera o link e envia se o email tem conta; a resposta na tela é a mesma nos dois casos.
                 if (usuario) {
                     const token = novoToken();
                     const pedidos = ler(CHAVE_PEDIDOS, {});
@@ -119,15 +119,17 @@
 
                     const primeiroNome = String(usuario.nome || 'aluno(a)').trim().split(' ')[0];
                     await enviarEmail(email, primeiroNome, montarLink(token));
-                }
 
-                localStorage.setItem(CHAVE_ULTIMO, String(Date.now()));
-                mostrar('Se esse email tiver uma conta, o link já está a caminho e vale por ' + VALIDADE_MIN + ' minutos. Confira também a caixa de spam.', 'ok');
+                    localStorage.setItem(CHAVE_ULTIMO, String(Date.now()));
+                    mostrar('Link enviado para ' + email + '! Ele vale por ' + VALIDADE_MIN + ' minutos. Confira também a caixa de spam.', 'ok');
+                } else {
+                    mostrar('Não encontramos uma conta com este email neste navegador. Confira o endereço ou faça o cadastro.', 'erro');
+                }
             } catch (erro) {
                 console.error('[esqueci-senha]', erro);
                 if (pedidosAntes === null) localStorage.removeItem(CHAVE_PEDIDOS);
                 else localStorage.setItem(CHAVE_PEDIDOS, pedidosAntes);
-                mostrar('Não foi possível enviar o email agora. Tente novamente em instantes.', 'erro');
+                mostrar('Não foi possível enviar o email. Detalhe: ' + (erro && erro.message ? erro.message : erro), 'erro');
             } finally {
                 carregando(botao, false);
             }
