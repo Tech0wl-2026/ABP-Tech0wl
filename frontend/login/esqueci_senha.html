@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Recuperação de senha</title>
     <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="mensagens.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-    
+
     <div class="wrapper">
-        <form action="">
+        <form action="" id="form-esqueci">
 
             <div class="lock"></div>
             <h1>Recuperação de senha</h1>
 
-                <div class="recup">
-                    <p>Informe o email da sua preferência para recuperar sua senha.</p>
-                </div>
+            <div class="recup">
+                <p>Informe o email da sua conta. Enviaremos um link para você criar uma nova senha.</p>
+            </div>
 
-                <div class="input-box">
-                    <input type="text" placeholder="Email" required>
-                    <i class="bx bx-envelope"></i>
-                </div>
-                <button type="submit" class="btn">Recuperar senha</button>
+            <div class="input-box">
+                <input type="email" id="email" placeholder="Email" autocomplete="email" required>
+                <i class="bx bx-envelope"></i>
+            </div>
 
-                <div class="register-link">
-                    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
-                </div>
+            <p id="mensagem" class="mensagem" role="alert"></p>
+
+            <button type="submit" class="btn">Enviar link por email</button>
+
+            <div class="register-link">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
             </div>
         </form>
     </div>
+
+    <script src="esqueci-senha.js"></script>
 </body>
 </html>
