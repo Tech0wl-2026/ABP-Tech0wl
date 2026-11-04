@@ -72,3 +72,29 @@ async function cadastrar({ nome, cpf, email, senha }) {
   localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
   return { ok: true };
 }
+
+* ---------- Login e sessão ---------- */
+async function entrar({ cpf, senha, lembrar }) {
+  const usuario = lerUsuarios().find((u) => u.cpf === soDigitos(cpf));
+
+  if (!usuario || (await gerarHash(senha, usuario.salt)) !== usuario.hash) {
+    return { ok: false, erro: "CPF ou senha incorretos. Confira os dados ou cadastre-se." };
+  }
+
+  // "Lembrar-me" marcado: a sessão fica salva. Desmarcado: dura até fechar a aba.
+  sessionStorage.removeItem(CHAVE_SESSAO);
+  localStorage.removeItem(CHAVE_SESSAO);
+  (lembrar ? localStorage : sessionStorage).setItem(
+    CHAVE_SESSAO,
+    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf })
+  );
+  return { ok: true };
+}
+
+function usuarioLogado() {
+  try {
+    return JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
+  } catch {
+    return null;
+  }
+}
