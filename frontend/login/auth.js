@@ -34,3 +34,41 @@ function cpfValido(valor) {
   }
   return true;
 }
+
+
+const paraHex = (bytes) =>
+  Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+
+const gerarSalt = () => paraHex(crypto.getRandomValues(new Uint8Array(16)));
+
+async function gerarHash(senha, salt) {
+  const dados = new TextEncoder().encode(salt + senha);
+  return paraHex(new Uint8Array(await crypto.subtle.digest("SHA-256", dados)));
+}
+
+/* ---------- Usuários ---------- */
+function lerUsuarios() {
+  try {
+    return JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
+  } catch {
+    return [];
+  }
+}
+
+async function cadastrar({ nome, cpf, email, senha }) {
+  const usuarios = lerUsuarios();
+  cpf = soDigitos(cpf);
+  email = email.trim().toLowerCase();
+
+  if (usuarios.some((u) => u.cpf === cpf)) {
+    return { ok: false, erro: "Já existe uma conta com este CPF. Faça login." };
+  }
+  if (usuarios.some((u) => u.email === email)) {
+    return { ok: false, erro: "Já existe uma conta com este e-mail. Use outro e-mail ou faça login." };
+  }
+
+  const salt = gerarSalt();
+  usuarios.push({ nome: nome.trim(), cpf, email, salt, hash: await gerarHash(senha, salt) });
+  localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
+  return { ok: true };
+}
