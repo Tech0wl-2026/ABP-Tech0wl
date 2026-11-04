@@ -98,3 +98,48 @@ function usuarioLogado() {
     return null;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- Mensagens na tela ---------- */
+function mostrarMensagem(texto, tipo = "erro") {
+  const caixa = document.getElementById("mensagem");
+  caixa.textContent = texto;
+  caixa.className = `mensagem ${tipo}`;
+}
+
+// Aviso que atravessa a troca de página (cadastro → login)
+function guardarAviso(texto) {
+  sessionStorage.setItem(CHAVE_AVISO, texto);
+}
+
+function lerAviso() {
+  const texto = sessionStorage.getItem(CHAVE_AVISO);
+  sessionStorage.removeItem(CHAVE_AVISO);
+  return texto;
+}
+
+/* ---------- Botão "Sair" do portal ---------- */
+// Qualquer elemento com id="btn-sair" passa a encerrar a sessão antes de ir ao login.
+document.addEventListener("DOMContentLoaded", () => {
+  const botao = document.getElementById("btn-sair");
+  if (botao) {
+    botao.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      sair();
+    });
+  }
+});
