@@ -37,7 +37,7 @@ Acesse o quadro de atividades de cada sprint:
 - [Requisitos](docs/Requisitos/REQUISITOS.md)
 - [Protótipo](docs/Prototipo/README.md) e [referência do Figma](docs/design/figma.md)
 - [Diagramas UML](docs/UML/README.md) e [modelagem do banco](docs/database/README.md)
-- [Temas da certificação](docs/conteudo/temas.md) e [questões](docs/conteudo/questoes.md)
+- [Temas da certificação](docs/conteudo/temas.md), [questões](docs/conteudo/questoes.md) e [material de estudo](docs/conteudo) (4 apostilas e 4 conjuntos de questões em Word)
 - [Gestão do projeto](docs/Gestao/GITHUB_PROJECT.md), [backlog](docs/Gestao/BACKLOG.md) e [sprints](docs/Gestao/SPRINTS.md)
 - [Registros de Daily Scrum](docs/Daily%20Scrum/README.md)
 - [Instalação](docs/Tecnico/INSTALACAO.md), [funcionalidades disponíveis](docs/Tecnico/FUNCIONALIDADES.md) e [execução dos testes](testes/EXECUCAO.md)
