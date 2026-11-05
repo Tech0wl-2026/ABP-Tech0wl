@@ -17,6 +17,13 @@ O repositório reúne as páginas públicas e a API do portal, os scripts do ban
 | [.github](.github) | Modelos de issues e PRs, workflows e configuração do Project. |
 | [compose.yaml](compose.yaml) | Configuração dos containers do frontend, backend e PostgreSQL. |
 
+## Apresentações das sprints
+
+| Sprint | Vídeo no YouTube |
+|---|---|
+| Sprint 1 — planejamento, protótipo e modelagem | [Assistir](https://youtu.be/E0xYvUSFWYE) |
+| Sprint 2 — portal, estudos e prova | [Assistir](https://youtu.be/6RZt1Ui2A2o) |
+
 ## Sprints no Project
 
 Acesse o quadro de atividades de cada sprint:
@@ -38,7 +45,6 @@ Acesse o quadro de atividades de cada sprint:
 - [Como contribuir](CONTRIBUTING.md)
 
 - O acompanhamento das atividades fica no [Project da equipe](https://github.com/users/Tech0wl-2026/projects/7).
-- Link de apresentação do projeto no Youtube: https://youtu.be/E0xYvUSFWYE
 - Link do site Aprendizagem Ágil: https://aprendizagem-agil.vercel.app/
 
 [Como abrir a versão local](COMECAR-AQUI.md) · [Review da Sprint 1 em 21/10](docs/sprints/review-sprint-1-2026-10-21.md)
