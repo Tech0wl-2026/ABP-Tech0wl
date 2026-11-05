@@ -1,6 +1,6 @@
 # Abrir o projeto na sua máquina
 
-Extraia o ZIP inteiro antes de iniciar. Você precisa do Docker Desktop aberto (Windows/macOS) ou Docker Engine com Compose v2 (Linux), com as portas 8080, 3001 e 5432 livres. A primeira inicialização precisa de internet para baixar as imagens e os pacotes. Fontes e imagens do site estão incluídas no projeto.
+Clone o repositório (`git clone https://github.com/Tech0wl-2026/ABP-Tech0wl.git`) ou extraia o ZIP inteiro antes de iniciar. Você precisa do Docker Desktop aberto (Windows/macOS) ou Docker Engine com Compose v2 (Linux), com as portas 8080, 3001 e 5432 livres. A primeira inicialização precisa de internet para baixar as imagens e os pacotes. Fontes e imagens do site estão incluídas no projeto.
 
 ## Windows
 
@@ -30,12 +30,15 @@ Os scripts criam o `.env` local e um segredo JWT aleatório, sem substituir um s
 | Home | http://localhost:8080/index.html |
 | Curso | http://localhost:8080/curso.html |
 | Sobre nós | http://localhost:8080/sobre.html |
+| Cadastro | http://localhost:8080/cadastro.html |
+| Login | http://localhost:8080/login.html |
+| Portal do candidato | http://localhost:8080/home.html (após o login) |
 | Saúde da API | http://localhost:3001/api/saude |
 | Banco | localhost:5432; credenciais no seu `.env` |
 
 Para conferir o mobile, abra as ferramentas do navegador, selecione o modo de dispositivo e ajuste a largura para 393 px. Também há adaptações para 320 px e tablet.
 
-As três páginas públicas seguem as referências desktop/mobile do Figma. Os botões levam às informações do curso e da certificação. Cadastro, login, estudos e avaliação ainda não estão integrados à interface; a [API](docs/Tecnico/API.md) já possui rotas para parte desses fluxos. Para usar a API, cadastre um candidato. A imagem do certificado é apenas um modelo.
+Para testar o portal, cadastre um candidato em `cadastro.html`, entre pelo `login.html` e siga para estudos, prova, resultado e certificado. Nesta etapa, as telas guardam os dados no próprio navegador (localStorage); a integração com a [API](docs/Tecnico/API.md), que já possui as rotas desses fluxos, está prevista para a Sprint 3.
 
 As substituições visuais estão descritas na [conferência do Figma](docs/design/conferencia-2026-10-21.md). O [review da Sprint 1](docs/sprints/review-sprint-1-2026-10-21.md) reúne as pendências para o fechamento.
 
