@@ -21,7 +21,7 @@ Caminho do candidato no exame de certificação.
 | Formato | Arquivo |
 |---|---|
 | Astah (editável) | [Fluxodeatividadesparaexamedecertificacao.asta](Fluxodeatividadesparaexamedecertificacao.asta) |
-| Imagem | [diagramadeatividades(certificacao)).png](diagramadeatividades%28certificacao%29%29.png) |
+| Imagem | [diagrama-atividades-certificacao.png](diagrama-atividades-certificacao.png) |
 
 ## Caso de uso
 

@@ -10,7 +10,21 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 
 ## Entregas e evidências
 
-O fechamento está pendente. Registre a demonstração das atividades concluídas e confira se os recursos da entrega anterior continuam funcionando.
+Apresentação em vídeo: [Sprint 2 no YouTube](https://youtu.be/6RZt1Ui2A2o).
+
+| Entrega | Onde está |
+|---|---|
+| Cadastro com validação de nome e sobrenome, CPF e senha; login; recuperação e nova senha | [cadastro.html](../../frontend/cadastro.html), [login.html](../../frontend/login.html), [esqueci_senha.html](../../frontend/esqueci_senha.html), [src/js](../../frontend/src/js) |
+| Home do portal com andamento da prova, pausa e retomada | [home.html](../../frontend/home.html), [provahome.js](../../frontend/src/js/provahome.js) |
+| Área de estudos com 12 temas em 4 módulos | [curso-portal.html](../../frontend/curso-portal.html), [material.html](../../frontend/material.html), [apostilas](../conteudo) |
+| Prova com questão, imagem, quatro alternativas e cronômetro de 150 s | [questao.html](../../frontend/questao.html), [prova.js](../../frontend/src/js/prova.js) |
+| Resultado, certificado em PDF, perfil com progresso e feedback | [resultado.html](../../frontend/resultado.html), [certificado.html](../../frontend/certificado.html), [perfil.html](../../frontend/perfil.html), [feedback.html](../../frontend/feedback.html) |
+| Banco com 12 temas e 48 questões; API com sorteio, prazo e resultado | [database/servidor](../../database/servidor), [backend](../../backend/README.md) |
+| Diagrama de atividades do caminho de certificação | [UML](../UML/README.md) |
+| Docker Compose com site, API e banco | [compose.yaml](../../compose.yaml), [como abrir](../../COMECAR-AQUI.md) |
+| Testes de interface atualizados para as telas da Sprint 2 | [frontend.spec.mjs](../../testes/frontend.spec.mjs) |
+
+Não entregue nesta sprint, previsto para a Sprint 3: ligar as telas à API (hoje elas guardam os dados no navegador), QR code com validação pública do certificado e histórico de respostas na interface.
 
 ## Registro de fechamento
 
