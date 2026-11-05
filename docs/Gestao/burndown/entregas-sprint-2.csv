@@ -1,0 +1,31 @@
+issue,chave,atividade,situacao,data_entrega,evidencia,commit
+#2,T001,Página inicial e instruções da certificação,Entregue,31/10/2026,frontend/home.html,3e7d8a9
+#6,T005,Ações de iniciar e retornar à certificação,Entregue,02/11/2026,frontend/home.html,d0cc187
+#10,T009,Formulário de cadastro,Entregue,31/10/2026,frontend/cadastro.html,1d86832
+#14,T013,Persistência e validação do cadastro,Entregue,21/10/2026,backend/src/services/candidatos.js,5b34f3d
+#15,T014,Formulário de login com CPF e senha,Entregue,04/11/2026,frontend/src/js/login.js,b0b0a00
+#19,T018,Autenticação com CPF e senha,Entregue,21/10/2026,backend/src/services/candidatos.js,5b34f3d
+#20,T019,Consulta dos 12 temas,Entregue,21/10/2026,backend/src/routes/index.js,5b34f3d
+#21,T020,Tela reutilizável de questão,Entregue,02/11/2026,frontend/questao.html,3d4d1c1
+#25,T024,Sorteio de uma questão entre quatro por tema,Entregue,21/10/2026,backend/src/services/avaliacao.js,5b34f3d
+#28,T027,Listagem dos temas para estudo,Entregue,01/11/2026,frontend/curso-portal.html,c659b26
+#29,T028,Conteúdo didático por tema,Entregue,01/11/2026,frontend/material.html,5089a0e
+#32,T031,Imagem e quatro alternativas com uma correta,Entregue,21/10/2026,backend/test/conteudo.test.js,5b34f3d
+#33,T032,Feedback da resposta e ações de continuidade,Parcial,,frontend/questao.html,
+#35,T034,Alternativa correta após encerrar a questão,Entregue,21/10/2026,backend/src/services/avaliacao.js,5b34f3d
+#36,T035,Persistir respostas e estado da certificação,Entregue,21/10/2026,backend/src/services/avaliacao.js,5b34f3d
+#39,T038,Cronômetro regressivo de 150 segundos,Entregue,02/11/2026,frontend/questao.html,3d4d1c1
+#40,T039,Encerrar questão ao esgotar o tempo,Entregue,21/10/2026,backend/src/services/avaliacao.js,5b34f3d
+#41,T040,Continuar ou encerrar após cada resposta,Entregue,02/11/2026,frontend/questao.html,d0cc187
+#42,T041,Persistir a retomada pelo próximo tema,Entregue,21/10/2026,backend/src/services/avaliacao.js,5b34f3d
+#43,T042,Interface de interrupção e retomada,Entregue,02/11/2026,frontend/home.html,d0cc187
+#44,T043,Encerrar a questão em perda de conexão,Não entregue,,,
+#45,T044,Impedir nova resposta a tema encerrado,Entregue,21/10/2026,backend/test/api.test.js,5b34f3d
+#46,T045,Bloquear repetição também na interface,Não entregue,,,
+#65,T064,Histórico completo de respostas,Entregue,21/10/2026,backend/src/routes/index.js,5b34f3d
+#76,T075,Proteção e minimização de dados pessoais,Parcial,,backend/src/services/candidatos.js,
+#88,T088,Docker Compose com aplicação e PostgreSQL,Entregue,05/11/2026,compose.yaml,0264be3
+#91,T091,48 questões com imagens e alternativas,Entregue,21/10/2026,database/servidor/questoes.json,5b34f3d
+#96,T096,"Validar jornada inicial, cadastro e login",Entregue,05/11/2026,testes/frontend.spec.mjs,b80c5db
+#97,T097,"Validar prova, tempo, interrupção e retomada",Parcial,,backend/test/api.test.js,
+#100,T100,"Revisar questões, imagens e material didático",Parcial,,docs/conteudo/questoes.md,
