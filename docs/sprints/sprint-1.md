@@ -10,6 +10,7 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 
 ## Entregas e evidências
 
+- Apresentação em vídeo: [Sprint 1 no YouTube](https://youtu.be/E0xYvUSFWYE).
 - [Página inicial](../../frontend/index.html), [DDL](../../database/schema.sql), [modelos/dicionário](../database/README.md) e [testes](../../testes/README.md) estão disponíveis para consulta.
 - [Figma](../design/figma.md): links desktop/mobile acessíveis; versão de entrega, navegação integral e aceite ainda precisam de conferência.
 - [Participação individual](../evidencias/sprint-1/participacao.md): atividades relatadas e vínculos de contribuição.
