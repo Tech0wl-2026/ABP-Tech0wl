@@ -2,13 +2,13 @@
 
 Projeto da ABP do 1º semestre de DSM da Fatec Jacareí, turma de 2026-2.
 
-O repositório reúne as páginas públicas e a API do portal, os scripts do banco de dados, a documentação e os testes. O portal tem como proposta oferecer estudo por tema, avaliação e certificado verificável.
+O repositório reúne as telas e a API do portal, os scripts do banco de dados, a documentação e os testes. O portal tem como proposta oferecer estudo por tema, avaliação e certificado verificável.
 
 ## O que você encontra aqui
 
 | Pasta ou arquivo | Conteúdo |
 |---|---|
-| [frontend](frontend/README.md) | Home, Curso e Sobre nós em HTML/CSS/JavaScript, imagens e servidor web. |
+| [frontend](frontend/README.md) | Páginas públicas, cadastro e login, e telas do portal (estudos, prova, resultado, certificado, perfil e feedback) em HTML/CSS/JavaScript. |
 | [backend](backend/README.md) | API Node.js/Express com cadastro, login e avaliação. |
 | [database](database) | Banco do backend, modelo de referência e consultas SQL. |
 | [docs](docs) | Requisitos, protótipo, UML, modelagem do banco e documentos de gestão. |
