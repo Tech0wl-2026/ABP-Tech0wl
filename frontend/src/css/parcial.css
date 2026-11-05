@@ -1,0 +1,106 @@
+/* Lista do resultado parcial (diálogo "Prova pausada") */
+/* Diálogo "Prova pausada": o que acertou/errou, alternativa certa e feedback */
+#dialogo-parcial {
+  width: min(780px, calc(100% - 32px));
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.parcial-lista {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.parcial-item {
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.parcial-resumo {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: default;
+}
+summary.parcial-resumo { 
+  cursor: pointer; 
+}
+
+summary.parcial-resumo:focus-visible { 
+  outline: 3px solid #fff; 
+  outline-offset: 2px; 
+  border-radius: 10px; }
+
+.parcial-status{ 
+  font-weight: 700; 
+  white-space: nowrap; }
+
+.parcial-item.acertou{ 
+  border-left-color: #3ddc97; 
+}
+
+.parcial-item.acertou .parcial-status{ 
+  color: #3ddc97; 
+}
+
+.parcial-item.errou{ 
+  border-left-color: #ff6b6b; 
+}
+
+.parcial-item.errou .parcial-status{ 
+  color: #ff6b6b; 
+}
+
+.parcial-item.andamento{ 
+  border-left-color: #ffd166; 
+}
+
+.parcial-item.andamento .parcial-status{ 
+  color: #ffd166; 
+}
+
+.parcial-item.pendente{ 
+  opacity: 0.65; 
+}
+
+/* ---------- detalhes da pergunta ---------- */
+.parcial-corpo{ 
+  padding: 0 14px 14px; 
+}
+
+#dialogo-parcial .parcial-corpo p{
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+#dialogo-parcial .parcial-certa{ 
+  color: #3ddc97; 
+  font-weight: 700; 
+}
+
+.parcial-feedback{
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  color: #000;
+}
+.parcial-feedback strong{ 
+  display: block; 
+  font-size: 1rem; 
+}
+
+#dialogo-parcial .parcial-feedback p{
+  margin-top: 6px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #000;
+  white-space: normal;
+}

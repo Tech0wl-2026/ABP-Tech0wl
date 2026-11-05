@@ -1,0 +1,48 @@
+/* Andamento da prova na home (selo "Pausado" e posição) */
+/* Andamento da prova na home (selo "Pausado" e posição) */
+[hidden] { 
+  display: none !important; 
+}
+
+.selo-prova {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 8px 24px;
+  border-radius: 999px;
+  background: #7E57C8;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.posicao-prova {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* selo "Pausado" como botão de continuar a prova */
+a.selo-prova { 
+  text-decoration: none; 
+}
+
+.selo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.selo-link:hover { 
+  background: #6a42b3; 
+}
+
+.selo-link:focus-visible { 
+  outline: 3px solid #fff; 
+  outline-offset: 3px; 
+}
+
+.selo-link i { 
+  font-size: 1.4rem; 
+  line-height: 1; 
+}

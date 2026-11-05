@@ -1,69 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="src/css/login.css">
+    <link rel="stylesheet" href="src/css/mensagens.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
-
 <body>
+    <a href="index.html" class="back-btn">
+    <img src="src/images/bi_arrow-left-circle.png" alt="Voltar">
+    </a>
     
-    <header class="header">
-        <a href="#" class="logo">Aprendizagem Ágil</a>
-        
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">Curso</a>
-            <a href="#">Sobre nós</a>
-            <button class="btnLogin-popup">Login</button>
-        </nav>
-    </header>
- 
-    <!--Login-->
-    <section class="section">
-        <div class="wrapper">
-            <div class="logreg-box">
-                <div class="form-box login"></div>
-                <div class="logreg-title">
-                    <h2>Login</h2>
-                    <p>Faça login para acessar o conteúdo do curso</p>
-                </div>
+    <div class="wrapper">
+        <form action="" id="form-login">
+            <h1>Login</h1>
 
-                <form action="#">
-                    <div class="input-box">
-                        <span class="icon"><i class='bx bxs-user-circle' style='color:#000000'  ></i></span>
-                        <input type="text" placeholder="CPF"required>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon"><i class='bx bxs-lock-alt'></i></i></span>
-                        <input type="password" placeholder="Senha"required>
-                    </div>
-
-
-                    <div class="remember-forgot">
-                        <label> <input type="checkbox">Lembra-me</label>
-                        <a href="#">Esqueci a senha</a>
-                    </div>
-
-                    <button type="submit" class="btn">Login</button>
-
-                    <div class="logreg-link">
-                        <p>Não tem uma conta? <a href="#" class="">Cadastre-se</a></p>
-                    </div>
-
-                </form>
-
+            <div class="input-box">
+                <input type="text" id="cpf" placeholder="CPF" inputmode="numeric" autocomplete="username" required>
+                <i class="bx bx-user"></i>
             </div>
-        </div>
-    </section>
+            <div class="input-box">
+                <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
 
+            <div class="remember-forgot">
+                <label><input type="checkbox" id="lembrar">Lembrar-me</label>
+                <a href="esqueci_senha.html">Esqueceu a senha?</a>
+            </div>
 
-    <script src="script.js"></script>
+            <p id="mensagem" class="mensagem" role="alert"></p>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/login.js"></script>
 </body>
-
 </html>

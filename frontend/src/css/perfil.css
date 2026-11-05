@@ -1,0 +1,280 @@
+/* Página Perfil — usa o portal.css para o cabeçalho (topo, menu, avatar, sair) */
+
+.perfil{
+    width: min(1302px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 55px 0 64px;
+    color: #000;
+}
+
+/* ---------- BANNER ---------- */
+.banner-perfil{
+    display: flex;
+    align-items: center;
+    gap: 78px;
+    min-height: 241px;
+    padding: 30px 51px;
+    border-radius: 30px;
+    background: linear-gradient(#0e0a45, #2c1d96 60%, #1d0a8c);
+    color: #fff;
+}
+
+.foto{
+    flex: none;
+    width: 194px;
+    height: 181px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+}
+
+.banner-perfil h1{
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 72px);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- COLUNAS ---------- */
+.colunas{
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 34px;
+    margin-top: 39px;
+    align-items: start;
+}
+
+.lateral{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---------- CARTÕES ---------- */
+.cartao{
+    padding: 28px 51px 40px;
+    border-radius: 40px;
+    background: #fff;
+}
+
+.cartao h2{
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 3.4vw, 48px);
+    line-height: 1.2;
+}
+
+/* ---------- FORMULÁRIO ---------- */
+.dados form{ margin-top: 30px; }
+
+.dados label{
+    display: block;
+    margin-top: 18px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+.dados label:first-child{ margin-top: 0; }
+
+.dados input,
+.dados select,
+.dados textarea{
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 0 20px;
+    border: 1px solid #2a1fa8;
+    border-radius: 16px;
+    background: #fff;
+    color: #000;
+    font: inherit;
+    font-size: 22px;
+}
+
+.dados input,
+.dados select{ height: 64px; }
+
+.dados select{
+    appearance: none;
+    padding-right: 52px;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Cpath d='M1 1l11 11L23 1'/%3E%3C/svg%3E")
+        right 20px center / 24px 14px no-repeat #fff;
+    cursor: pointer;
+}
+
+.dados textarea{
+    min-height: 172px;
+    padding-top: 14px;
+    resize: vertical;
+}
+
+.dados input:focus,
+.dados select:focus,
+.dados textarea:focus{
+    outline: 3px solid #cfc9f5;
+    outline-offset: 0;
+}
+
+.dados input.erro{ border-color: #d93b5c; }
+
+.btn-salvar{
+    margin-top: 22px;
+    padding: 7px 36px;
+    border-radius: 999px;
+    background: #8057c9;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.3;
+}
+.btn-salvar:hover{ background: #6c43b6; }
+
+.msg-salvo{
+    margin-top: 12px;
+    font-size: 18px;
+    color: #1f8a2f;
+}
+
+/* ---------- SEU PROGRESSO ---------- */
+.linhas{ margin-top: 30px; list-style: none; }
+
+.linhas li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    font-size: 24px;
+}
+.linhas li + li{ border-top: 1px solid #222; }
+
+.selo{
+    flex: none;
+    min-width: 147px;
+    padding: 1px 16px;
+    border-radius: 999px;
+    background: #7c4fc9;
+    color: #fff;
+    font-size: 19px;
+    line-height: 1.5;
+    text-align: center;
+}
+.selo.ok{ background: #2f9e2f; }
+
+/* ---------- TRILHA ---------- */
+.trilha{ padding-left: 36px; padding-right: 36px; }
+
+.resumo{
+    margin-top: 6px;
+    padding-left: 8px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.filtros{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.filtro{
+    padding: 2px 19px;
+    border-radius: 999px;
+    background: #d2c9e8;
+    color: #000;
+    font-size: 20px;
+    line-height: 1.5;
+}
+.filtro.ativo{ background: #8057c9; color: #fff; }
+
+.barra-trilha{
+    height: 14px;
+    margin-top: 20px;
+    border-radius: 999px;
+    background: #dcdcdc;
+    overflow: hidden;
+}
+.barra-trilha-preenchimento{
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #ae8fe3;
+    transition: width .3s ease;
+}
+
+.modulos-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 26px;
+    list-style: none;
+}
+
+.modulo-item a{
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 14px 18px;
+    border-radius: 12px;
+    background: #dcdcff;
+    color: #000;
+    transition: background .15s;
+}
+.modulo-item a:hover{ background: #cfcff8; }
+
+.icone-status{
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2fb37a, #1d8f9a);
+    color: #fff;
+    font-size: 22px;
+}
+.icone-status.pendente{
+    border-radius: 8px;
+    background: #ff4d6d;
+}
+
+.modulo-texto{ flex: 1; min-width: 0; }
+.modulo-texto strong{ display: block; font-size: 20px; font-weight: 400; line-height: 1.15; }
+.modulo-texto small{ display: block; margin-top: 2px; font-size: 14px; }
+
+.modulo-item .selo{ min-width: 122px; font-size: 18px; }
+
+.nota{
+    margin-top: 20px;
+    padding: 0 4px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ---------- TELAS MENORES ---------- */
+@media (max-width: 1100px){
+    .colunas{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 860px){
+    .perfil{ width: calc(100% - 24px); padding-top: 24px; }
+
+    .banner-perfil{
+        gap: 24px;
+        padding: 24px;
+        border-radius: 24px;
+    }
+    .foto{ width: 110px; height: 110px; }
+
+    .cartao{ padding: 24px 22px 32px; border-radius: 28px; }
+    .linhas li{ font-size: 20px; }
+    .dados label, .dados input, .dados select, .dados textarea{ font-size: 18px; }
+    .dados input, .dados select{ height: 54px; }
+}
+
+@media (max-width: 520px){
+    .banner-perfil{ flex-direction: column; text-align: center; }
+    .modulo-item a{ flex-wrap: wrap; }
+    .modulo-item .selo{ margin-left: 48px; }
+}

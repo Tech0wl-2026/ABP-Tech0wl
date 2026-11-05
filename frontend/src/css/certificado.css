@@ -1,0 +1,143 @@
+/* Página Certificado — usa o portal.css para o cabeçalho (topo, menu, avatar, sair) */
+
+/* ---------- LAYOUT ---------- */
+.certificado{
+    padding: 52px 74px 60px;
+}
+
+/* ---------- CARTÃO ---------- */
+.cartao{
+    max-width: 1100px;
+    padding: 24px 40px 72px;
+    border-radius: 30px;
+    background: #fff;
+    color: #000;
+}
+
+.cartao h1{
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 1.15;
+}
+
+/* ---------- AVISO (caixa tracejada) ---------- */
+.aviso{
+    margin-top: 30px;
+    padding: 26px 24px;
+    border: 3px dashed #9b8fd0;
+    border-radius: 20px;
+    font-size: 22px;
+    line-height: 1.95;
+    text-align: center;
+}
+
+
+/* Estados dos selos de perfil/certificado preenchidos pelo certificado.js */
+[hidden] { 
+    display: none !important; 
+}
+
+/* quando ainda não concluiu / não liberou, o selo fica cinza em vez de verde */
+[data-estado="pendente"] {
+  background: #B9B5D6 !important;
+  color: #3b3566 !important;
+}
+
+
+/* ---------- TELAS MENORES ---------- */
+@media (max-width: 860px){
+    .certificado{ 
+        padding: 24px 16px 32px; 
+    }
+
+    .cartao{
+        padding: 20px 20px 36px;
+        border-radius: 20px;
+    }
+
+    .aviso{ 
+        font-size: 18px; 
+    }
+}
+
+@media (max-width: 600px){
+    .aviso{
+        padding: 18px 14px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+/* ---------- CERTIFICADO LIBERADO ---------- */
+.validacao-titulo{
+    margin: 34px 0 6px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.validacao-texto{
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.codigo{
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 22px;
+    padding: 8px 26px;
+    border-radius: 10px;
+    background: #D3C2E8;
+    color: #000;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.codigo i{ 
+    font-size: 28px; 
+    color: #7a4be0; 
+}
+
+.codigo:hover{ 
+    background: #c8b4e3; 
+}
+
+.codigo:focus-visible{ 
+    outline: 3px solid #7611D4; 
+    outline-offset: 3px; 
+}
+
+.dica-copiar{
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #777;
+}
+
+.btn-download{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 30px auto 0;
+    padding: 14px 44px;
+    border: 0;
+    border-radius: 999px;
+    background: #8559C9;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+.btn-download i{ 
+    font-size: 28px; 
+}
+
+.btn-download:hover{ 
+    background: #7648ba; 
+}
+
+.btn-download:focus-visible{ 
+    outline: 3px solid #7611D4; 
+    outline-offset: 3px; 
+}

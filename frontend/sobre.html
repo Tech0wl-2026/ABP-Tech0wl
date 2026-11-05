@@ -1,83 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Aprendizagem Ágil: conheça o curso de metodologias ágeis da Tech0wl."
-    />
-    <title>Sobre nós | Tech0wl</title>
-    <link rel="icon" href="assets/figma/coruja.svg" type="image/svg+xml" />
-    <link
-      rel="preload"
-      href="assets/fonts/joan.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/app.js" defer></script>
-  </head>
-  <body class="page-sobre">
-    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
-    <header class="hero">
-      <nav aria-label="Navegação principal">
-        <a href="index.html">Home</a><a href="curso.html">Curso</a
-        ><a href="sobre.html" aria-current="page">Sobre nós</a>
-      </nav>
-      <h1>Amplie seus conhecimentos<br />e impulsione sua carreira</h1>
-      <a class="start" href="curso.html#curso"
-        >Começar <span aria-hidden="true">⟶</span></a
-      >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nós | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="src/css/sobre.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="curso.html">Curso</a>
+            <a href="sobre.html" class="ativo">Sobre nós</a>
+        </nav>
     </header>
-    <main id="conteudo">
-      <section class="about" aria-labelledby="sobre-titulo">
-        <h2 id="sobre-titulo">Sobre nós</h2>
-        <article class="about-panel">
-          <img
-            class="education-mark"
-            src="assets/figma/marca.svg"
-            width="200"
-            height="200"
-            alt="Aprendizagem Ágil"
-          />
-          <p>
-            Desenvolvemos este projeto porque acreditamos na força
-            transformadora da educação.
-          </p>
-          <p>
-            O Aprendizagem Ágil representa nosso esforço para criar uma
-            plataforma intuitiva, moderna, divertida e, acima de tudo,
-            tecnológica.
-          </p>
-          <p>
-            Unimos nossas mentes jovens e criativas para dar vida a esta
-            plataforma, e temos plena convicção de que, ao concluírem a
-            certificação oferecida, vocês terão adquirido conhecimentos valiosos
-            sobre metodologias ágeis.
-          </p>
-          <p>
-            A equipe Tech0wl deseja muito sucesso a todos vocês, queridos
-            estudantes!
-          </p>
-        </article>
-        <p class="good-studies">Bons estudos!</p>
-      </section>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <h1>Amplie seus conhecimentos<br>e impulsione sua carreira</h1>
+            <a href="login.html" class="btn-comecar">Começar <span>→</span></a>
+        </section>
+
+        <!-- SOBRE NÓS -->
+        <section id="sobre">
+            <h2 class="titulo">SOBRE NÓS</h2>
+
+            <div class="card-sobre">
+                <img class="selo-card" src="src/images/selo-aprendizagem-agil.png" alt="Selo Aprendizagem Ágil">
+                <p class="font1">Desenvolvemos este projeto porque acreditamos na força transformadora da educação.</p>
+                <p class="font1">O Aprendizagem Ágil representa nosso esforço para criar uma plataforma intuitiva, moderna, divertida e, acima de tudo, tecnológica.</p>
+                <p class="font1">Unimos nossas mentes jovens e criativas para dar vida a esta plataforma, e temos plena convicção de que, ao concluírem a certificação oferecida, vocês terão adquirido conhecimentos valiosos sobre metodologias ágeis.</p>
+                <p class="font1">A equipe Tech0wl deseja muito sucesso a todos vocês, queridos estudantes!</p>
+            </div>
+
+            <p class="despedida">Bons estudos!</p>
+        </section>
+
     </main>
+
     <footer>
-      <a class="brand" href="index.html" aria-label="Tech0wl — início"
-        ><img
-          src="assets/figma/coruja.svg"
-          width="120"
-          height="120"
-          alt=""
-        /><span>Tech0wl</span></a
-      >
-      <div class="footer-copy">
-        <a href="sobre.html">Sobre nós</a><span>Aprendizagem Ágil 2025</span
-        ><small>Todos os direitos reservados</small>
-      </div>
+        <div class="logo">
+            <img src="src/images/logo-tech0wl.png" alt="">
+            <span class="marca">Tech0wl</span>
+        </div>
+        <div class="rodape-texto">
+            <p class="font2">Sobre nós</p>
+            <p class="font2">Aprendizagem Ágil 2025</p>
+            <p class="font2">© 2025 Aprendizagem Ágil</p>
+        </div>
     </footer>
-  </body>
+
+</body>
 </html>

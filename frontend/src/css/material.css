@@ -1,0 +1,363 @@
+/* Página de material de estudo — usa o portal.css para o cabeçalho */
+
+*{
+    box-sizing: border-box;
+}
+
+body.pagina-material{
+    background: #bdbbdb;
+}
+
+:root{ --cor: #58a2e6; }
+
+/* ---------- BARRA DE PROGRESSO ---------- */
+.progresso{
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 4px;
+    z-index: 1000;
+    background: transparent;
+}
+.progresso span{
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--cor);
+    transition: width .1s linear;
+}
+
+/* ---------- ÁREA PRINCIPAL ---------- */
+.material{
+    width: min(1310px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 28px 0 64px;
+}
+
+.material-acoes{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    margin-bottom: 20px;
+}
+
+/* ---------- ABAS DE MÓDULOS ---------- */
+.abas{ 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+}
+
+.aba{
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--cor, #0d0d8c);
+    background: #fff;
+    color: #000;
+    font-size: 15px;
+    text-decoration: none;
+}
+.aba:hover{ 
+    background: var(--cor, #0d0d8c); 
+    color: #fff; 
+}
+
+.aba-todos{ 
+    --cor: #0d0d8c; 
+}
+
+.aba-ativa{ 
+    background: var(--cor);
+    color: #fff; 
+}
+
+/* ---------- MÓDULOS ---------- */
+.modulos{ 
+    display: flex; 
+    flex-direction: column; 
+    gap: 56px; 
+}
+
+/* O material.js esconde os módulos que não foram escolhidos (atributo hidden) */
+.modulo[hidden]{ 
+    display: none; 
+}
+
+.modulo{ 
+    scroll-margin-top: 16px; 
+}
+
+/* ---------- BOTÕES ---------- */
+.btn-voltar,
+.btn-proximo{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+}
+.btn-voltar{
+    border: 3px solid #0d0d8c;
+    background: #fff;
+    color: #000;
+}
+.btn-voltar:hover{ 
+    background: #ecebff; 
+}
+
+.btn-proximo{
+    border: 3px solid #0d0d8c;
+    background: #0d0d8c;
+    color: #fff;
+}
+.btn-proximo:hover{ 
+    background: #1a1ab5;
+    border-color: #1a1ab5; 
+}
+
+.btn-voltar i, .btn-proximo i{ 
+    font-size: 22px; 
+}
+
+/* ---------- CARTÃO DO MÓDULO ---------- */
+.modulo{
+    overflow: hidden;
+    border-radius: 36px 36px 0 0;
+    background: #fff;
+    color: #000;
+}
+
+.modulo-topo{
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    min-height: 117px;
+    padding: 16px 56px;
+    background: var(--cor);
+}
+.modulo-icone{ 
+    font-size: 64px; 
+    line-height: 1; 
+    color: #000; 
+}
+
+.modulo-topo h2{ 
+    font-size: 32px; 
+    font-weight: 400; 
+    line-height: 1.1; 
+}
+
+.modulo-topo p{ 
+    margin-top: 4px; 
+    font-size: 18px; 
+    font-weight: 400; 
+}
+
+.modulo-corpo{
+    padding: 48px clamp(20px, 6vw, 86px) 56px;
+}
+
+/* ---------- ÍNDICE ---------- */
+.indice{
+    margin-bottom: 40px;
+    padding: 18px 24px;
+    border-left: 6px solid var(--cor);
+    border-radius: 8px;
+    background: #f5f4fb;
+}
+.indice strong{ 
+    font-size: 18px; 
+}
+
+.indice ul{ 
+    margin-top: 8px; 
+    padding-left: 20px; 
+    list-style: none; 
+}
+
+.indice li{ 
+    margin: 6px 0; 
+}
+
+.indice a{ 
+    color: #0d0d8c; 
+    font-size: 17px; 
+    text-decoration: none; 
+}
+
+.indice a:hover{ 
+    text-decoration: underline; 
+}
+
+/* ---------- SEÇÕES ---------- */
+.secao{
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid #e3e1f0;
+    scroll-margin-top: 24px;
+}
+.secao:last-of-type{ 
+    border-bottom: 0; 
+}
+
+.secao h3{
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+.secao h4{
+    margin: 28px 0 8px;
+    padding-left: 14px;
+    border-left: 5px solid var(--cor);
+    font-size: clamp(19px, 2vw, 24px);
+    font-weight: 600;
+}
+.secao p{
+    font-size: clamp(17px, 1.7vw, 21px);
+    font-weight: 400;
+    line-height: 1.55;
+}
+.secao p.lead{
+    font-size: clamp(19px, 2vw, 26px);
+    line-height: 1.4;
+}
+
+/* ---------- IMAGENS / FIGURAS ---------- */
+/* Toda imagem do conteúdo fica centralizada, com espaço antes e depois do texto */
+.secao img{
+    display: block;
+    max-width: min(100%, 640px);
+    height: auto;
+    margin: 32px auto;
+    border-radius: 8px;
+}
+
+.fig{
+    margin: 32px auto 40px;
+}
+
+.figura{
+    margin: 32px auto 40px;
+    text-align: center;
+}
+.figura img{
+    margin: 0 auto 10px;
+}
+.figura figcaption{
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.figura-mapa a{
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.figura-mapa img{
+    max-width: min(100%, 900px);
+    border: 1px solid #e3e1f0;
+}
+
+/* ---------- IDEIA-CHAVE ---------- */
+.ideia-chave{
+    margin-top: 28px;
+    padding: 18px 24px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--cor) 16%, #fff);
+    border: 2px solid var(--cor);
+}
+.ideia-chave span{
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.ideia-chave p{ 
+    font-weight: 600; 
+}
+
+/* ---------- REFERÊNCIAS ---------- */
+.referencias ul{ 
+    padding-left: 22px; 
+}
+
+.referencias li{ 
+    margin: 8px 0; 
+    font-size: 18px; 
+}
+
+.referencias a{ 
+    color: #0d0d8c; 
+}
+
+/* ---------- RODAPÉ ---------- */
+.modulo-rodape{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid #e3e1f0;
+}
+
+/* ---------- AVISO (curso não encontrado) ---------- */
+.aviso-vazio{ 
+    padding: 72px 32px; 
+    text-align: center; 
+}
+
+.aviso-vazio h1{ 
+    font-size: 32px; 
+    font-weight: 400; 
+    margin-bottom: 12px; 
+}
+
+.aviso-vazio p{ 
+    margin-bottom: 24px; 
+    font-size: 18px; 
+}
+
+/* ---------- TELAS MENORES ---------- */
+@media (max-width: 860px){
+    .material{ 
+        width: calc(100% - 24px); 
+        padding-top: 18px; 
+    }
+
+    .modulo{ 
+        border-radius: 28px 28px 0 0; 
+    }
+
+    .modulo-topo{ 
+        gap: 20px; 
+        padding: 14px 24px; 
+        min-height: 90px; 
+    }
+
+    .modulo-icone{ 
+        font-size: 48px; 
+    }
+
+    .modulo-topo h2{ 
+        font-size: 26px; 
+    }
+    .modulo-corpo{ 
+        padding-top: 32px; 
+    }
+}
+@media (max-width: 520px){
+    .btn-voltar, .btn-proximo{ 
+        width: 100%; 
+        justify-content: center; 
+        font-size: 16px; 
+    }
+}
