@@ -30,7 +30,7 @@ Acesse o quadro de atividades de cada sprint:
 
 - [Sprint 1 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/2)
 - [Sprint 2 — quadro de atividades](https://github.com/users/Tech0wl-2026/projects/7/views/3)
-- [Sprint 3 — quadro de atividades]
+- Sprint 3 — quadro de atividades (link adicionado no início da sprint, em 06/11)
 
 ## Documentação
 
