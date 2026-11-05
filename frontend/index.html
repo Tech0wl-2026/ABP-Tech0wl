@@ -1,113 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Aprendizagem Ágil: conheça o curso de metodologias ágeis da Tech0wl."
-    />
-    <title>Aprendizagem Ágil | Tech0wl</title>
-    <link rel="icon" href="assets/figma/coruja.svg" type="image/svg+xml" />
-    <link
-      rel="preload"
-      href="assets/fonts/joan.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/app.js" defer></script>
-  </head>
-  <body class="page-home">
-    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
-    <header class="hero">
-      <nav aria-label="Navegação principal">
-        <a href="index.html" aria-current="page">Home</a
-        ><a href="curso.html">Curso</a><a href="sobre.html">Sobre nós</a>
-      </nav>
-      <h1>Amplie seus conhecimentos<br />e impulsione sua carreira</h1>
-      <a class="start" href="curso.html#curso"
-        >Começar <span aria-hidden="true">⟶</span></a
-      >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="src/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="menu">
+            <a href="index.html" class="ativo">Home</a>
+            <a href="curso.html">Curso</a>
+            <a href="sobre.html">Sobre nós</a>
+        </nav>
     </header>
-    <main id="conteudo">
-      <section class="invitation" aria-labelledby="convite">
-        <div class="invitation-copy">
-          <h2 id="convite">Invista no seu futuro</h2>
-          <p>
-            Inscreva-se hoje e transforme seu<br class="desktop-break" />
-            potencial em resultado!
-          </p>
-          <a class="enroll" href="curso.html#certificacao">Matricula-se</a>
-        </div>
-        <div class="student-art">
-          <div class="student-window" aria-hidden="true"></div>
-          <img
-            src="assets/figma/estudante.png"
-            width="791"
-            height="535"
-            alt="Estudante com livros e notebook"
-          />
-        </div>
-      </section>
-      <section class="banner" aria-label="Aprendizado e conquistas">
-        <div class="triangle-pattern" aria-hidden="true"></div>
-        <p>
-          Inscreva-se hoje e transforme seu aprendizado em conquistas, ampliando
-          suas competências e enriquecendo seu portfólio profissional.
-        </p>
-      </section>
-      <section class="benefits" aria-label="Benefícios do curso">
-        <article>
-          <img src="assets/figma/brain.svg" width="92" height="92" alt="" />
-          <p>Desenvolver novos conhecimentos e competências.</p>
-        </article>
-        <article>
-          <img src="assets/figma/case.svg" width="92" height="92" alt="" />
-          <p>Utilizar os conhecimentos adquiridos na prática</p>
-        </article>
-        <article>
-          <img src="assets/figma/card.svg" width="92" height="92" alt="" />
-          <p>Agregar valor ao currículo e ao portfólio profissional</p>
-        </article>
-      </section>
-      <section class="teachers" aria-labelledby="docentes">
-        <h2 id="docentes">
-          Aprenda com quem entende.<br />Conheça nossos docentes
-        </h2>
-        <div class="teacher-list">
-          <div
-            class="teacher teacher-one"
-            role="img"
-            aria-label="Retrato ilustrativo de um docente"
-          ></div>
-          <div
-            class="teacher teacher-two"
-            role="img"
-            aria-label="Retrato ilustrativo de uma docente"
-          ></div>
-          <div
-            class="teacher teacher-three"
-            role="img"
-            aria-label="Retrato ilustrativo de uma docente"
-          ></div>
-        </div>
-      </section>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <h1>Amplie seus conhecimentos<br>e impulsione sua carreira</h1>
+            <a href="login.html" class="btn-comecar">Começar <span>→</span></a>
+        </section>
+
+        <section id="curso">
+
+            <!-- INVISTA NO SEU FUTURO -->
+            <div class="invista container">
+                <div>
+                    <h2>Invista no seu futuro</h2>
+                    <p class="font1">Inscreva-se hoje e transforme seu potencial em resultado!</p>
+                    <a href="login.html" class="btn-matricula">Matricula-se</a>
+                </div>
+                <img class="notebook" src="src/images/mulher-notebook.png" alt="Aluna estudando no notebook">
+            </div>
+
+            <!-- FAIXA ROXA -->
+            <div class="faixa">
+                <img class="triangulos" src="src/images/triangulos.png" alt="">
+                <p class="font1">Inscreva-se hoje e transforme seu aprendizado em conquistas, ampliando suas competências e enriquecendo seu portfólio profissional.</p>
+            </div>
+
+            <!-- BENEFÍCIOS -->
+            <div class="beneficios container">
+                <div>
+                    <img src="src/images/icone-cerebro.png" alt="">
+                    <p class="font1">Desenvolver novos conhecimentos e competências</p>
+                </div>
+                <div>
+                    <img src="src/images/icone-maleta.png" alt="">
+                    <p class="font1">Utilizar os conhecimentos adquiridos na prática</p>
+                </div>
+                <div>
+                    <img src="src/images/icone-perfil.png" alt="">
+                    <p class="font1">Agregar valor ao currículo e ao portfólio profissional</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PROFESSORES -->
+        <section id="sobre" class="professores">
+            <h2>Nossos professores responsáveis<br>por esse grande projeto</h2>
+            <div class="cards">
+                <figure>
+                    <img src="src/images/professor-nicolas.png" alt="Professor Nicolas Ferreira">
+                    <figcaption>Professor Nicolas Ferreira</figcaption>
+                </figure>
+                <figure>
+                    <img src="src/images/professora-ana.png" alt="Professora Ana Beatriz">
+                    <figcaption>Professora Ana Beatriz</figcaption>
+                </figure>
+                <figure>
+                    <img src="src/images/professora-iris.png" alt="Professora Iris de Oliveira">
+                    <figcaption>Professora Iris de Oliveira</figcaption>
+                </figure>
+            </div>
+        </section>
+
     </main>
+
     <footer>
-      <a class="brand" href="index.html" aria-label="Tech0wl — início"
-        ><img
-          src="assets/figma/coruja.svg"
-          width="120"
-          height="120"
-          alt=""
-        /><span>Tech0wl</span></a
-      >
-      <div class="footer-copy">
-        <a href="sobre.html">Sobre nós</a><span>Aprendizagem Ágil 2025</span
-        ><small>Todos os direitos reservados</small>
-      </div>
+        <div class="logo">
+            <img src="src/images/logo-tech0wl.png" alt="">
+            <span class="marca">Tech0wl</span>
+        </div>
+        <div class="rodape-texto">
+            <p class="font2">Sobre nós</p>
+            <p class="font2">Aprendizagem Ágil 2025</p>
+            <p class="font2">© 2025 Aprendizagem Ágil</p>
+        </div>
     </footer>
-  </body>
+
+</body>
 </html>

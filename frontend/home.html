@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="src/css/portal.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/provahome.css">
+    <script src="src/js/provahome.js" defer></script>
+    <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
+    <script src="src/js/auth.js"></script>
+    <script>exigirLogin();</script>
+</head>
+<body>
+
+    <header class="topo">
+        <a href="home.html" class="logo">
+            <img src="src/images/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
+        </a>
+
+        <nav class="menu">
+            <a href="home.html" class="ativo">Home</a>
+            <a href="./curso-portal.html">Cursos</a>
+            <a href="./certificado.html">Certificado</a>
+        </nav>
+
+        <div class="usuario">
+            <a href="./perfil.html" class="link-perfil" title="Meu perfil"><img class="avatar" src="src/images/avatar-aluno.png" alt="Seu perfil"></a>
+            <a href="login.html" id="btn-sair" class="btn-sair" aria-label="Sair" title="Sair">
+                <i class="bx bx-log-out"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="painel">
+
+        <!-- ÁREA DE ESTUDOS -->
+        <section class="estudos">
+            <h1 class="estudos1">Área de estudos<br>do seu curso</h1>
+            <img class="aluno" src="src/images/ilustracao-estudante.png" alt="Aluno estudando no notebook">
+            <blockquote class="balao">
+                “ O sucesso<br>
+                não acontece da noite para o dia.<br>
+                Ele é construído todos os dias, com<br>
+                coragem, dedicação e a decisão de<br>
+                não desistir.”
+            </blockquote>
+        </section>
+
+        <!-- PROVA DO CURSO -->
+        <section class="prova">
+            <h2>Prova do curso</h2>
+            <p class="descricao">Duração da prova é de 30:00 minutos (12 questões), para responder cada questão você terá 150 segundos, podendo parar e continuar quando quiser.</p>
+            <!-- Botão Realizar: leva para a página das questões -->
+            <button type="button" id="btn-prova" class="btn-prova" onclick="window.location.href='./questao.html'">Realizar</button>
+
+            <h3>Prova</h3>
+            <p class="tempo" id="tempo" role="timer">30:00</p>
+            <div class="barra" id="barra" role="progressbar" aria-label="Tempo restante da prova" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                <div class="barra-preenchimento" id="barra-preenchimento"></div>
+            </div>
+            <a class="selo-prova" id="selo-pausado" href="./questao.html" hidden>Pausado</a>
+            <p class="posicao-prova" id="prova-posicao" hidden></p>
+        </section>
+
+        <!-- FEEDBACK -->
+        <section class="opiniao">
+            <div>
+                <h2><span aria-hidden="true">⭐</span>Sua opinião faz a diferença!</h2>
+                <p>Deixe seu feedback.<br>Queremos ouvir você para continuarmos melhorando!</p>
+                <a href="feedback.html" class="btn-feedback">feedback</a>
+            </div>
+            <img src="src/images/ilustracao-feedback.png" alt="">
+        </section>
+
+    </main>
+
+</body>
+</html>
