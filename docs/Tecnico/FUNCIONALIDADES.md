@@ -3,6 +3,8 @@
 | Parte | Situação |
 |---|---|
 | Páginas públicas | Home, Curso e Sobre nós em HTML/CSS/JavaScript, navegação e layout desktop/mobile baseado no Figma. |
+| Telas de acesso | Cadastro com validação de nome e sobrenome, CPF e senha; login com CPF e senha; recuperação e nova senha. |
+| Portal do candidato | Home com andamento da prova (pausa e retomada), módulos e material de estudo, questão com cronômetro de 150 s, resultado, certificado em PDF, perfil com progresso e feedback. Nesta etapa, os dados ficam no navegador (localStorage). |
 | Cadastro/login | API com CPF único, bcrypt e JWT por uma hora. |
 | Conteúdo da prova | 12 temas do grupo, 48 questões, 192 alternativas e 48 imagens. |
 | Sorteio | Uma questão por tema/candidato, prazo persistido e controle de chamadas concorrentes. |
@@ -16,8 +18,7 @@
 
 ## O que falta
 
-- Conectar cadastro, avaliação e resultado nas telas do portal.
-- Preparar a área de estudos com os mesmos temas.
+- Ligar as telas de cadastro, login, prova, resultado e certificado à API (hoje usam o localStorage).
 - Revisar as 12 questões elaboradas para XP, ferramentas e boas práticas.
 - Gerar o documento eletrônico do certificado, QR e página pública de validação.
 - Integrar a interface ao encerramento por interrupção e conferir o RF14.
