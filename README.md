@@ -50,7 +50,7 @@ Acesse o quadro de atividades de cada sprint:
 [Como abrir a versão local](COMECAR-AQUI.md) · [Review da Sprint 1 em 21/10](docs/sprints/review-sprint-1-2026-10-21.md)
 
 
-
+<br>
 <div align="center">
 <img width="80" height="100" alt="sprint-master-logo" src="Logo ABP.png" />
 
