@@ -10,7 +10,7 @@ Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01
 
 ## Entregas e evidências
 
-Apresentação em vídeo: [Sprint 2 no YouTube](https://youtu.be/6RZt1Ui2A2o).
+Apresentação em vídeo: [Sprint 2 no YouTube](https://youtu.be/6RZt1Ui2A2o). Andamento das atividades: [burndown da Sprint 2](../Gestao/burndown/README.md).
 
 | Entrega | Onde está |
 |---|---|
