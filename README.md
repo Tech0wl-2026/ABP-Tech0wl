@@ -67,21 +67,7 @@ Acesse o quadro de atividades de cada sprint:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--Tabela dos participantes-->
 
 <table>
     <tr>
