@@ -1,0 +1,110 @@
+/* =====================================================================
+   MENU MOBILE (hambúrguer) — páginas do portal
+   Home, Curso e Certificado ficam dentro do painel que abre pelo ícone.
+   Carregue este arquivo DEPOIS do CSS da página.
+   ===================================================================== */
+
+/* ---------- Desktop: o wrapper some do layout e os botões ficam ocultos ---------- */
+.painel-menu{ display: contents; }
+
+.btn-menu,
+.btn-menu-fechar,
+.menu-fundo{ display: none; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 768px){
+
+    /* Barra roxa fina, só com o botão hambúrguer à direita */
+    .topo{
+        position: relative;
+        z-index: 50;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 0;
+        row-gap: 0;
+        height: 56px;
+        padding: 0 12px;
+        background: #7513d2;
+    }
+
+    /* Logo da Aprendizagem Ágil no canto esquerdo */
+    .topo .logo{ display: block; flex: none; }
+
+    .topo .logo img{
+        width: 42px;
+        height: 42px;
+    }
+
+    /* "Cursos" vira "Curso" no celular */
+    .sufixo-desktop{ display: none; }
+
+    /* Botão hambúrguer (menu fechado) */
+    .btn-menu{
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 4px;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border: 0;
+        border-radius: 10px;
+        background: #9747ff;
+        cursor: pointer;
+    }
+
+    .btn-menu span{
+        display: block;
+        width: 20px;
+        height: 3px;
+        border-radius: 2px;
+        background: #7513d2;
+    }
+
+    /* Fundo desfocado atrás do painel */
+    .menu-fundo{
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: rgba(22, 9, 67, .25);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease;
+    }
+
+    .topo.menu-aberto .menu-fundo{
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Painel lateral */
+    .painel-menu{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 60;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "fechar usuario"
+            "menu   menu";
+        width: min(301px, 77vw);
+        max-height: 100vh;
+        overflow-y: auto;
+        background: #160943;
+        box-shadow: -8px 0 32px rgba(0, 0, 0, .35);
+        visibility: hidden;
+        transform: translateX(105%);
+        transition: transform .25s ease, visibility 0s linear .25s;
+    }
+
+    .topo.menu-aberto .painel-menu{
+        visibility: visible;
+        transform: none;
+        transition: transform .25s ease;
+    }
+
+}

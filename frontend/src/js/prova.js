@@ -14,6 +14,7 @@ const TEMPO_PERGUNTA = 150;            // segundos para cada pergunta
 const MEDIA_MINIMA   = 65;             // % mínima para ser aprovado
 
 /* ---------- PERGUNTAS ----------
+   tema          módulo da apostila: scrum | kanban-xp | ferramentas | principios
    enunciado     texto ("**negrito**" e "\n" para quebrar linha)
    imagem        opcional: { src, alt }
    alternativas  sempre 4 (A, B, C, D)
@@ -22,6 +23,7 @@ const MEDIA_MINIMA   = 65;             // % mínima para ser aprovado
    (o gabarito foi marcado pela alternativa destacada em cada print: confira) */
 const QUESTOES = [
   {
+    tema: "scrum",
     enunciado: "**Uma equipe de produto trabalha em ciclos curtos: observa os resultados de cada ciclo e ajusta as próximas decisões com base no que aprendeu, em vez de tentar prever tudo no início. Segundo a apostila, essa forma de trabalhar se apoia no empirismo e em três pilares do Scrum. Quais são eles?**",
     imagem: { src: "src/images/questao-01.png", alt: "Trabalho em ciclos curtos: quatro Sprints em sequência, cada uma com “observar e ajustar”, e o produto evoluindo a cada ciclo." },
     alternativas: [
@@ -34,6 +36,7 @@ const QUESTOES = [
     feedback: "Os três pilares do empirismo no Scrum são transparência, inspeção e adaptação. Compromisso, foco, abertura, respeito e coragem são os valores do Scrum (alternativa A). Papéis, eventos e artefatos são elementos do framework, não seus pilares (alternativa D).",
   },
   {
+    tema: "scrum",
     enunciado: "Em uma Scrum Team surgem três situações:\n\n**(I)** decidir qual item deve ocupar o topo do Product Backlog;\n\n**(II)** decidir como organizar o trabalho para criar o Incremento da Sprint;\n\n**(III)** ajudar a equipe a compreender o Scrum e apoiar a remoção de impedimentos.\n\n**Qual alternativa associa corretamente as responsabilidades às situações descritas?**",
     imagem: { src: "src/images/questao-02.png", alt: "Uma única equipe, três responsabilidades: Product Owner, Scrum Master e Developers dentro da mesma Scrum Team." },
     alternativas: [
@@ -46,6 +49,7 @@ const QUESTOES = [
     feedback: "Product Owner = valor e ordenação do Product Backlog; Developers = criar o Incremento e decidir como organizar o trabalho; Scrum Master = efetividade do Scrum, atuando como líder servidor, e não como gerente que distribui tarefas.",
   },
   {
+    tema: "scrum",
     enunciado: "**A imagem mostra os convites de três reuniões de uma mesma Sprint. Com base nas pautas apresentadas e nas características dos eventos do Scrum, qual alternativa identifica corretamente a Reunião A, a Reunião B e a Reunião C, nessa ordem?**",
     imagem: { src: "src/images/questao-03.png", alt: "Convites das Reuniões A, B e C da Sprint, cada um com participantes, duração e pauta." },
     alternativas: [
@@ -58,6 +62,7 @@ const QUESTOES = [
     feedback: "A Reunião A é a Daily Scrum (15 minutos, Developers, progresso rumo ao Sprint Goal e adaptação do Sprint Backlog). A Reunião B é a Sprint Retrospective (foco na forma de trabalhar: pessoas, interações, processos, ferramentas e Definition of Done). A Reunião C é a Sprint Review (Scrum Team e stakeholders examinam os resultados da Sprint e colaboram sobre os próximos passos).",
   },
   {
+    tema: "scrum",
     enunciado: "**A imagem mostra a Definition of Done (DoD) de uma Scrum Team e a situação de um item no último dia da Sprint. Com base na imagem e nos artefatos do Scrum, qual afirmação é correta?**",
     imagem: { src: "src/images/questao-04.png", alt: "Definition of Done da equipe e a situação do item “Pagar com Pix”: três critérios atendidos e um não atendido." },
     alternativas: [
@@ -70,6 +75,7 @@ const QUESTOES = [
     feedback: "O Incremento só inclui o que atende à Definition of Done, seu compromisso associado. Como o critério de integração ao Incremento anterior não foi cumprido, o item não pode ser apresentado como concluído. A qualidade não diminui durante a Sprint, e o Sprint Goal é o compromisso do Sprint Backlog, não do Incremento.",
   },
   {
+    tema: "scrum",
     enunciado: "**A imagem mostra o Product Backlog de um aplicativo de compras e um feedback recebido de usuários. Considerando a gestão eficaz do Product Backlog, qual é a ação mais adequada do Product Owner, em colaboração com a equipe?**",
     imagem: { src: "src/images/questao-05.png", alt: "Product Backlog do aplicativo de compras, com a situação e o valor esperado de cada item, e o feedback dos usuários do protótipo." },
     alternativas: [
@@ -82,6 +88,7 @@ const QUESTOES = [
     feedback: "O item mais importante precisa estar claro o bastante para ser considerado no planejamento. Por isso o refinamento decompõe o item amplo, esclarece critérios, avalia dependências, e a ordem pode mudar com o feedback. Itens distantes podem permanecer amplos, e o refinamento é uma atividade contínua, não um evento formal do Scrum.",
   },
   {
+    tema: "principios",
     enunciado: "**O Manifesto Ágil declara que valoriza “software em funcionamento mais que documentação abrangente”. De acordo com a apostila, como essa declaração deve ser interpretada?**",
     imagem: { src: "src/images/questao-06.png", alt: "Balança do Manifesto Ágil: software em funcionamento de um lado e documentação abrangente do outro." },
     alternativas: [
@@ -94,6 +101,7 @@ const QUESTOES = [
     feedback: "No Manifesto Ágil, os elementos à direita (processos e ferramentas, documentação abrangente, negociação de contratos, seguir um plano) continuam tendo valor: a preferência indica prioridade, não exclusão. O Manifesto é uma base de valores e princípios, não uma receita operacional única.",
   },
   {
+    tema: "principios",
     enunciado: "**Uma startup tem como objetivo reduzir o abandono de carrinhos em sua loja virtual. Qual conduta está mais alinhada ao planejamento ágil adaptativo?**",
     imagem: { src: "src/images/questao-07.png", alt: "Planejamento em níveis: visão e resultados, roadmap de produto e próxima iteração, de hoje ao futuro." },
     alternativas: [
@@ -106,6 +114,7 @@ const QUESTOES = [
     feedback: "O planejamento adaptativo segue a lógica objetivo → priorização → pequenas entregas → feedback → revisão do plano. As alternativas A, B e C descrevem antipadrões citados na apostila: planejar todos os detalhes com excessiva antecedência, medir sucesso apenas pelo cronograma e tratar estimativas como certezas, e mudar prioridades sem critério.",
   },
   {
+    tema: "principios",
     enunciado: "**A linha do tempo da imagem mostra o histórico de um item de trabalho de uma equipe (datas em dias corridos). Considerando as definições de lead time e cycle time apresentadas na apostila, quais são, respectivamente, os valores desse item?**",
     imagem: { src: "src/images/questao-08.png", alt: "Linha do tempo do item “Emitir 2ª via de boleto”: solicitado em 03/09, trabalho iniciado em 10/09 e concluído em 24/09." },
     alternativas: [
@@ -118,6 +127,7 @@ const QUESTOES = [
     feedback: "Lead time é o tempo desde a solicitação (entrada do item no sistema) até a conclusão: de 03/09 a 24/09, 21 dias. Cycle time é o tempo entre o início do trabalho ativo e a conclusão: de 10/09 a 24/09, 14 dias. Os 7 dias entre a solicitação e o início são tempo de espera e entram no lead time, não no cycle time.",
   },
   {
+    tema: "ferramentas",
     enunciado: "**Uma equipe distribuída percebe que usa várias plataformas que duplicam registros e criam versões conflitantes da informação. Qual conduta está mais alinhada à “regra prática” para o uso de ferramentas ágeis?**",
     imagem: { src: "src/images/questao-09.png", alt: "Ferramentas que apoiam equipes ágeis: quadro de tarefas, backlog, documentação, comunicação, controle de versão e testes com integração contínua." },
     alternativas: [
@@ -130,6 +140,7 @@ const QUESTOES = [
     feedback: "A regra prática é começar pelo problema de colaboração ou fluxo, escolher a ferramenta mais simples que o resolva, combinar regras de uso com a equipe e revisar se está ajudando. A apostila alerta que a ferramenta não define a agilidade, que se deve evitar múltiplas ferramentas que duplicam registros e que ela não deve obrigar a equipe a criar trabalho artificial.",
   },
   {
+    tema: "ferramentas",
     enunciado: "**A imagem apresenta o histórico das três últimas retrospectivas de uma equipe. Com base nas boas práticas de inspeção e melhoria contínua, qual é a conclusão e a conduta mais adequadas?**",
     imagem: { src: "src/images/questao-10.png", alt: "Histórico das retrospectivas das Sprints 5, 6 e 7: os mesmos pontos levantados e nenhuma ação definida." },
     alternativas: [
@@ -142,6 +153,7 @@ const QUESTOES = [
     feedback: "A apostila afirma que retrospectivas são úteis quando resultam em ações concretas e acompanhamento, não em uma lista repetida de reclamações; recomenda experimentar melhorias pequenas, definir o que se espera mudar e verificar o efeito. Transparência não é culpabilização, e a equipe deve evitar depender de horas extras.",
   },
   {
+    tema: "kanban-xp",
     enunciado: "**Observe o quadro Kanban da imagem. Um integrante da equipe está sem item atribuído, e há itens aguardando em “A fazer”. Com base nos limites de WIP mostrados no quadro e nos princípios do Kanban, qual é a conduta mais adequada?**",
     imagem: { src: "src/images/questao-11.png", alt: "Quadro Kanban com as colunas A fazer, Em andamento, Em revisão e Concluído, com limites de WIP; Marina está sem item atribuído." },
     alternativas: [
@@ -154,6 +166,7 @@ const QUESTOES = [
     feedback: "No quadro, “Em andamento” (3/3) e “Em revisão” (2/2) já estão no limite de WIP. Quando uma etapa atinge o limite, a resposta preferível é colaborar para concluir ou desbloquear o trabalho existente, em vez de puxar novas tarefas automaticamente. A meta não é manter todas as pessoas ocupadas a qualquer custo, e sim otimizar o fluxo total de valor; o quadro deve representar o processo real.",
   },
   {
+    tema: "kanban-xp",
     enunciado: "**Uma dupla de desenvolvedores de uma equipe que adota Extreme Programming (XP) vai criar uma nova funcionalidade usando Test-Driven Development (TDD). Qual alternativa descreve corretamente o ciclo do TDD?**",
     imagem: { src: "src/images/questao-12.png", alt: "Programação em par: uma pessoa escreve o código e a outra revisa e orienta, alternando os papéis ao longo do trabalho." },
     alternativas: [
@@ -334,7 +347,16 @@ function finalizar() {
   const percentual = Math.round((acertos / QUESTOES.length) * 100);
 
   estado.finalizada = true;
-  estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA, minimo: MEDIA_MINIMA };
+  // desempenho por tema (a página Certificado mostra o que o aluno acertou e errou em cada tema)
+  const temas = {};
+  QUESTOES.forEach((q, i) => {
+    const t = temas[q.tema] || (temas[q.tema] = { acertos: 0, total: 0, itens: [] });
+    const ok = estado.respostas[i] === q.correta;
+    t.total++; if (ok) t.acertos++;
+    t.itens.push(ok);
+  });
+
+  estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA, minimo: MEDIA_MINIMA, temas };
   salvar();
   Certificado.registrar(estado.resultado);   // guarda o melhor resultado e libera o certificado se aprovado
   mostrarResultado();
