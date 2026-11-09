@@ -44,6 +44,23 @@ A divisão segue o que cada um já fez no repositório, para ninguém começar d
 
 **Dependências:** Miguel e Sophia dependem do token que o Tiago vai guardar, então o acesso precisa estar pronto até **10/11**. O QR do Guilherme depende do certificado da Sophia vir da API.
 
+## Itens herdados da Sprint 2 (revisão de 09/11)
+
+Na revisão do Project, o quadro da Sprint 3 tinha 8 itens vindos da Sprint 2 que não estavam neste plano. Eles já estão atendidos pela API e foram trazidos para conferência e fechamento.
+
+| Issue | Atividade | Responsável | O que falta |
+| --- | --- | --- | --- |
+| #14 | Persistência e validação do cadastro | Abdi | Conferir os critérios de aceite com a API e fechar; a tela entra junto com a #105 (Tiago) |
+| #25 | Sorteio de uma questão entre quatro por tema | Abdi | Conferir com os testes da API e fechar |
+| #36 | Persistir respostas e estado da certificação | Sophia | Ligar a tela à resposta da API, junto com a #105 (Miguel) |
+| #40 | Encerrar questão não respondida ao esgotar o tempo | Gabriel | Conferir o prazo de 150 s pelo servidor e registrar evidência |
+| #41 | Continuar ou encerrar após cada resposta | Abdi | Conferir com a tela de questão e fechar |
+| #42 | Persistir a retomada pelo próximo tema pendente | Guilherme e Sophia | Ligar a retomada da home à API (`/temas/proximo`) |
+| #45 | Impedir nova resposta a um tema encerrado | Abdi | Conferir com os testes da API e fechar; o bloqueio na tela é a #46 (Miguel) |
+| #88 | Docker Compose com aplicação e PostgreSQL | Breno | Checklist completo; fechar com o CI verde |
+
+Para a Sprint 3 ficar completa no quadro, as issues #1, #33, #44, #46, #86 e #100, que estão neste plano, precisam ter o campo **Sprint** do Project trocado para Sprint 3.
+
 ## Cronograma
 
 | Período | Foco | Pronto quando |
@@ -61,7 +78,7 @@ Combinado de PR: cada pessoa trabalha numa branch `feature/...`, abre PR para a 
 
 - [ ] Registrar a Review e a Retrospectiva da Sprint 2 em [sprint-2.md](sprint-2.md), com o feedback real do professor e a melhoria combinada
 - [ ] Fechar no GitHub as 24 issues da Sprint 2 marcadas como Entregue no [burndown](../Gestao/burndown/README.md) e mover as 6 pendentes para a Sprint 3
-- [ ] Fechar as issues da Sprint 1 que já têm o checklist completo (49 abertas em 06/11)
+- [ ] Fechar as 21 issues com checklist completo e ainda abertas (revisão de 09/11): Sprint 1 #5, #9, #13, #24, #27, #38, #51, #54, #61, #71, #78, #79, #80, #82, #94, #106; Sprint 2 #2 e #88; Sprint 3 #83, #85 e #90. As outras 31 da Sprint 1 têm critérios pendentes de Figma (DD) e UML/modelagem (BD) e entram nas frentes 7 e 8
 - [ ] Criar as tags `sprint-1` e `sprint-2` nos commits apresentados
 - [ ] Atribuir cada issue da Sprint 3 ao responsável no GitHub, conforme a divisão acima
 - [ ] Publicar o quadro da Sprint 3 no Project e colocar o link no README
