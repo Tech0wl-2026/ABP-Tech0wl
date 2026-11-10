@@ -10,3 +10,4 @@ Registro das issues fechadas após conferência dos critérios de aceite pelo Sc
 | 09/11/2026 | #80 | Documentar branches commits e fluxo de Pull Requests | todos marcados |
 | 09/11/2026 | #82 | Consolidar modelo conceitual lógico físico e DDL PostgreSQL | todos marcados |
 | 09/11/2026 | #88 | Criar serviços de aplicação e PostgreSQL com Docker Compose | todos marcados |
+| 09/11/2026 | #90 | Validar dependências e configuração dos containers | todos marcados |
