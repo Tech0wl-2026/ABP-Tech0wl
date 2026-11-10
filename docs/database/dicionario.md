@@ -276,4 +276,26 @@ Restrições:
 - View `v_prontidao_base`: verifica a prontidão do modelo de referência. A API usa o schema `servidor`, com suas próprias verificações.
 - CPF e e-mail têm validação básica no banco; validação completa, hash seguro, autorização e privacidade também são responsabilidade da API.
 
+## Autenticação e sessão (schema `servidor`, usado pela API)
+
+Atributos de `servidor.candidatos` usados no acesso e política de sessão implementada em [candidatos.js](../../backend/src/services/candidatos.js) e [app.js](../../backend/src/app.js).
+
+| Atributo | Tipo | Uso na autenticação |
+|---|---|---|
+| `cpf` | char(11), `UNIQUE`, `CHECK ^[0-9]{11}$` | Identificador de login; um cadastro por CPF |
+| `senha_hash` | text, obrigatório | Hash bcrypt com custo 12; a senha nunca é gravada nem devolvida |
+| `email` | varchar | Contato do titular; não é usado para entrar |
+| `id` | serial | Identificador gravado no token (`sub`) |
+
+| Regra | Política adotada |
+|---|---|
+| Senha | Mínimo 6 caracteres e máximo 72 bytes UTF-8 (limite do bcrypt) |
+| Sessão | Sem tabela de sessão: token JWT HS256 assinado com `JWT_SECRET`, válido por 1 hora |
+| Envio do token | Cabeçalho `Authorization: Bearer TOKEN` em todas as rotas privadas |
+| Titular | O `id` do token define o candidato; um `candidato_id` enviado no corpo é ignorado |
+| Tentativas | Cadastro e login limitados a 30 chamadas por IP a cada 15 minutos |
+| Falha de login | Mesma mensagem para CPF inexistente e senha errada; hash fictício evita diferença de tempo |
+| Saída (logout) | O navegador apaga o token; ele expira sozinho em 1 hora |
+| Validação pública | `GET /api/certificados/:hash` não retorna CPF nem e-mail |
+
 Consultar o [DDL canônico](../../database/schema.sql) para as funções/triggers completas e [decisões pendentes](../Gestao/DECISOES.md) para D03–D05.
