@@ -12,7 +12,9 @@
       <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
       <script src="src/js/feedback.js" defer></script>
 
-  </head>
+      <link rel="stylesheet" href="src/css/menu-mobile.css">
+    <script src="src/js/menu-mobile.js" defer></script>
+</head>
 
 <body>
   <!-- Ícone de estrela reaproveitado no site todo: <use href="#star"> -->
@@ -24,9 +26,12 @@
       <img src="src/images/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
     </a>
 
-    <nav class="menu" aria-label="Principal">
+    <button type="button" class="btn-menu" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="painel-menu"><span></span><span></span><span></span></button>
+        <div class="painel-menu" id="painel-menu">
+            <button type="button" class="btn-menu-fechar" aria-label="Fechar menu"><span></span><span></span><span></span></button>
+            <nav class="menu" aria-label="Principal">
       <a href="home.html" class="ativo" aria-current="page">Home</a>
-      <a href="curso-portal.html">Cursos</a>
+      <a href="curso-portal.html">Curso<span class="sufixo-desktop">s</span></a>
       <a href="certificado.html">Certificado</a>
     </nav>
 
@@ -36,6 +41,8 @@
           <i class="bx bx-log-out"></i>
         </a>
     </div>
+        </div>
+        <div class="menu-fundo" aria-hidden="true"></div>
   </header>
 
   <!-- Conteúdo principal -->
