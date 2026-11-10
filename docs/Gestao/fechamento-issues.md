@@ -8,3 +8,4 @@ Registro das issues fechadas após conferência dos critérios de aceite pelo Sc
 | 09/11/2026 | #78 | Organizar Product Backlog e rastreabilidade dos requisitos | todos marcados |
 | 09/11/2026 | #79 | Formalizar as metas e o planejamento das três Sprints | todos marcados |
 | 09/11/2026 | #80 | Documentar branches commits e fluxo de Pull Requests | todos marcados |
+| 09/11/2026 | #82 | Consolidar modelo conceitual lógico físico e DDL PostgreSQL | todos marcados |
