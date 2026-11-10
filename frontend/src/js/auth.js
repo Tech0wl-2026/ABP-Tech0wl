@@ -79,25 +79,36 @@ async function cadastrar({ nome, cpf, email, senha }) {
 
 /* ---------- Login e sessão ---------- */
 async function entrar({ cpf, senha, lembrar }) {
-  const usuario = lerUsuarios().find((u) => u.cpf === soDigitos(cpf));
+  const resposta = await apiFetch("/login", {
+    metodo: "POST",
+    corpo: { cpf: soDigitos(cpf), senha},
+  });
 
-  if (!usuario || (await gerarHash(senha, usuario.salt)) !== usuario.hash) {
-    return { ok: false, erro: "CPF ou senha incorretos. Confira os dados ou cadastre-se." };
-  }
+  if (!resposta.ok) return { ok: false, erro: resposta.erro};
 
-  // "Lembrar-me" marcado: a sessão fica salva. Desmarcado: dura até fechar a aba.
-  sessionStorage.removeItem(CHAVE_SESSAO);
+  const { token, expira_em, candidato } = resposta.dados;
+
+    sessionStorage.removeItem(CHAVE_SESSAO);
   localStorage.removeItem(CHAVE_SESSAO);
   (lembrar ? localStorage : sessionStorage).setItem(
     CHAVE_SESSAO,
-    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf })
+    JSON.stringify({
+      token,
+      expira: Date.now() + expira_em * 1000,
+      id: candidato.id,
+      nome: candidato.nome,
+      email: candidato.email,
+      cpf: soDigitos(cpf),
+    })
   );
   return { ok: true };
 }
 
 function usuarioLogado() {
   try {
-    return JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
+    const sessao = JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
+    if (!sessao || !sessao.token || Date.now() >= sessao.expira) return null;
+    return sessao;
   } catch {
     return null;
   }
