@@ -213,6 +213,33 @@ function salvar() {
   try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch { /* sem armazenamento */ }
 }
 
+/* ---------- HISTÓRICO DA CERTIFICAÇÃO (RF20) ----------
+   Registra cada pergunta exibida e o que aconteceu com ela (historico-store.js). */
+const Historico = window.HistoricoCertificacao;
+const NOMES_TEMAS = { scrum: "Scrum", "kanban-xp": "Kanban x XP", ferramentas: "Ferramentas e boas práticas para projetos ágeis", principios: "Princípios e práticas da agilidade" };
+const rotuloAlternativa = (q, i) => "ABCD"[i] + ". " + q.alternativas[i];
+
+function historicoPerguntaExibida() {
+  if (!Historico) return;
+  const q = QUESTOES[estado.atual];
+  Historico.sortearQuestao({
+    tema: NOMES_TEMAS[q.tema] || q.tema,
+    questaoId: estado.atual + 1,
+    enunciado: q.enunciado.replace(/\*\*/g, ""),
+    alternativaCorreta: rotuloAlternativa(q, q.correta),
+  });
+}
+
+// o aluno saiu desta pergunta (próxima, última ou tempo esgotado)
+function historicoPerguntaEncerrada(expirou) {
+  if (!Historico) return;
+  const q = QUESTOES[estado.atual];
+  const r = estado.respostas[estado.atual];
+  if (r !== undefined) Historico.registrarResposta(rotuloAlternativa(q, r));
+  else if (expirou) Historico.registrarExpirada();
+  else Historico.registrarResposta(null);          // avançou sem responder
+}
+
 /* ---------- TELA ---------- */
 const $ = (id) => document.getElementById(id);
 
@@ -234,6 +261,7 @@ function escrever(el, texto) {
 
 function mostrarPergunta() {
   const q = QUESTOES[estado.atual];
+  historicoPerguntaExibida();
 
   $("contador").textContent = `Pergunta ${estado.atual + 1} de ${QUESTOES.length}`;
   $("media").textContent = `Média da prova ${MEDIA_MINIMA}%`;
@@ -326,12 +354,13 @@ function tique() {
   estado.restante = restante;
   mostrarTempo();
   salvar();
-  if (restante === 0) avancar();          // acabou o tempo: segue para a próxima
+  if (restante === 0) avancar(true);      // acabou o tempo: segue para a próxima
 }
 
 /* ---------- PRÓXIMA PERGUNTA E RESULTADO ---------- */
-function avancar() {
+function avancar(expirou = false) {
   pararRelogio();
+  historicoPerguntaEncerrada(expirou);
   if (estado.atual === QUESTOES.length - 1) return finalizar();
 
   estado.atual += 1;
@@ -359,6 +388,7 @@ function finalizar() {
   estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA, minimo: MEDIA_MINIMA, temas };
   salvar();
   Certificado.registrar(estado.resultado);   // guarda o melhor resultado e libera o certificado se aprovado
+  if (Historico) Historico.finalizarAvaliacao({ percentual, aprovado: estado.resultado.aprovado });
   mostrarResultado();
 }
 
@@ -463,13 +493,14 @@ function mostrarParcial() {
 $("dialogo-parcial").addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
 
 /* ---------- INÍCIO ---------- */
-$("btn-proxima").addEventListener("click", avancar);
+$("btn-proxima").addEventListener("click", () => avancar());
 window.addEventListener("pagehide", salvar);
 
 carregar();
 if (estado.finalizada && estado.resultado) {
   mostrarResultado();                    // prova já finalizada: vai direto para o resultado
 } else {
+  if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
   mostrarPergunta();
   iniciarRelogio();
 }

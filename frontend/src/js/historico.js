@@ -35,7 +35,7 @@ export function formatarDataHora(valor) {
 /** Normaliza a resposta da API; tolera campos ausentes. */
 export function normalizarHistorico(dados) {
   const lista = Array.isArray(dados?.avaliacoes) ? dados.avaliacoes : [];
-  return lista
+  return [...lista].reverse()          // empate de data: o gravado por último vem primeiro
     .map((a) => ({
       id: String(a.id ?? ""),
       status: STATUS_AVALIACAO[a.status] ? a.status : "interrompida",
@@ -62,6 +62,7 @@ export function normalizarHistorico(dados) {
 
 /** Texto da resposta escolhida conforme a situação da questão. */
 export function textoResposta(q) {
+  if (q.situacao === "respondida" && q.respostaEscolhida === null) return "Sem resposta";
   if (q.situacao === "expirada") return "Sem resposta (tempo esgotado)";
   if (q.situacao === "interrompida" && q.respostaEscolhida === null) return "Sem resposta (interrompida)";
   return q.respostaEscolhida ?? "—";
@@ -103,10 +104,11 @@ export function renderizarQuestao(q) {
 }
 
 export function renderizarAvaliacao(a) {
-  const art = el("article", "hist-avaliacao");
+  // <details>: fechado por padrão, mostra só o título e a situação; clique para ver as questões
+  const art = el("details", "hist-avaliacao");
   art.dataset.status = a.status;
 
-  const cab = el("header", "hist-avaliacao-topo");
+  const cab = el("summary", "hist-avaliacao-topo");
   const titulo = el("h2", null, `Avaliação de ${formatarDataHora(a.iniciadaEm)}`);
   const selo = el("span", "hist-selo status", STATUS_AVALIACAO[a.status]);
   cab.append(titulo, selo);

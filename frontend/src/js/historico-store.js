@@ -5,9 +5,9 @@
      historico:<cpf>  ->  { avaliacoes: [ ... ] }
 
    Chamado pelo questao.js (carregue este arquivo antes dele):
-     HistoricoCertificacao.iniciarAvaliacao()
+     HistoricoCertificacao.retomarOuIniciar(idSalvo)    // abre ou retoma a avaliação
      HistoricoCertificacao.sortearQuestao({ tema, questaoId, enunciado, alternativaCorreta })
-     HistoricoCertificacao.registrarResposta("texto da alternativa escolhida")
+     HistoricoCertificacao.registrarResposta("texto escolhido")   // null = avançou sem responder
      HistoricoCertificacao.registrarExpirada()          // tempo da questão acabou
      HistoricoCertificacao.interromperAtual()           // aluno saiu / fechou a prova
      HistoricoCertificacao.finalizarAvaliacao({ percentual, aprovado })
@@ -49,15 +49,25 @@
       anterior.status = "interrompida";
       anterior.finalizadaEm = agora();
     }
-    const a = { id: String(Date.now()), status: "em_andamento", iniciadaEm: agora(), finalizadaEm: null, mediaPercentual: null, questoes: [] };
+    const a = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), status: "em_andamento", iniciadaEm: agora(), finalizadaEm: null, mediaPercentual: null, questoes: [] };
     h.avaliacoes.push(a);
     gravar(h);
     return a.id;
   }
 
+  /* Retoma a avaliação em andamento (mesmo id) ou, se não houver, abre uma nova.
+     Se havia outra aberta com id diferente (prova recomeçada), ela vira "interrompida". */
+  function retomarOuIniciar(idSalvo) {
+    const a = atual(ler());
+    if (a && idSalvo && a.id === idSalvo) return a.id;
+    return iniciarAvaliacao();
+  }
+
   function sortearQuestao(q) {
     const h = ler(); const a = atual(h);
     if (!a) return false;
+    const aberta = questaoAberta(a);
+    if (aberta && String(aberta.questaoId) === String(q.questaoId)) return true;   // mesma questão ao retomar
     fecharPendentes(a);
     a.questoes.push({
       tema: q.tema, questaoId: q.questaoId, enunciado: q.enunciado,
@@ -99,7 +109,7 @@
   }
 
   raiz.HistoricoCertificacao = {
-    iniciarAvaliacao, sortearQuestao, registrarResposta, registrarExpirada,
+    iniciarAvaliacao, retomarOuIniciar, sortearQuestao, registrarResposta, registrarExpirada,
     interromperAtual, finalizarAvaliacao, lerHistorico: ler,
   };
 })(typeof window !== "undefined" ? window : globalThis);
