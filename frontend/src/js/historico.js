@@ -1,21 +1,12 @@
 /*
  * Histórico da certificação (RF20)
  *
- * Contrato esperado da API (GET /api/certificacao/historico):
- *   - exige autenticação; o servidor identifica o candidato pelo token e
- *     devolve SOMENTE os registros dele (nunca aceita id de usuário na URL);
- *   - resposta: { avaliacoes: [ {
- *         id, status: "aprovada" | "reprovada" | "interrompida" | "em_andamento",
- *         iniciadaEm, finalizadaEm, mediaPercentual,
- *         questoes: [ {
- *             tema, questaoId, enunciado,
- *             situacao: "respondida" | "expirada" | "interrompida",
- *             respostaEscolhida, alternativaCorreta, respondidaEm
- *         } ]
- *     } ] }
+ * Lê o histórico gravado por historico-store.js (localStorage, por CPF do usuário
+ * logado). O historico-store.js precisa ser carregado antes deste arquivo.
+ * Formato: { avaliacoes: [ { id, status, iniciadaEm, finalizadaEm, mediaPercentual,
+ *   questoes: [ { tema, questaoId, enunciado, situacao, respostaEscolhida,
+ *                 alternativaCorreta, respondidaEm } ] } ] }
  */
-
-export const ENDPOINT = "/api/certificacao/historico";
 
 const STATUS_AVALIACAO = {
   aprovada: "Aprovada",
@@ -28,6 +19,7 @@ const SITUACAO_QUESTAO = {
   respondida: "Respondida",
   expirada: "Tempo esgotado",
   interrompida: "Interrompida",
+  em_andamento: "Em andamento",
 };
 
 export function formatarDataHora(valor) {
@@ -143,39 +135,27 @@ export function renderizarHistorico(container, avaliacoes) {
   avaliacoes.forEach((a) => container.append(renderizarAvaliacao(a)));
 }
 
-/** Token do usuário logado; ajuste se o auth.js expuser outra função. */
-function obterToken() {
-  if (typeof window.obterToken === "function") return window.obterToken();
-  return localStorage.getItem("token");
+/** Lê o histórico do usuário logado (somente o dele: a chave inclui o CPF). */
+export function buscarHistorico(leitor = () => globalThis.HistoricoCertificacao.lerHistorico()) {
+  return normalizarHistorico(leitor());
 }
 
-export async function buscarHistorico(fetchFn = fetch, token = obterToken()) {
-  const resp = await fetchFn(ENDPOINT, {
-    headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
-    credentials: "same-origin",
-  });
-  if (resp.status === 401 || resp.status === 403) {
-    const e = new Error("sessao"); e.codigo = "sessao"; throw e;
-  }
-  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-  return normalizarHistorico(await resp.json());
-}
-
-async function iniciar() {
+function iniciar() {
   const container = document.getElementById("historico-lista");
   const estado = document.getElementById("historico-estado");
-  try {
-    const avaliacoes = await buscarHistorico();
-    estado.textContent = "";
-    renderizarHistorico(container, avaliacoes);
-    document.body.dataset.historicoCarregado = String(avaliacoes.length);
-  } catch (e) {
-    if (e.codigo === "sessao") {
-      window.location.href = "login.html";
-      return;
+  const desenhar = () => {
+    try {
+      const avaliacoes = buscarHistorico();
+      estado.textContent = "";
+      renderizarHistorico(container, avaliacoes);
+      document.body.dataset.historicoCarregado = String(avaliacoes.length);
+    } catch (e) {
+      estado.textContent = "Não foi possível carregar o histórico. Atualize a página para tentar de novo.";
     }
-    estado.textContent = "Não foi possível carregar o histórico. Atualize a página para tentar de novo.";
-  }
+  };
+  desenhar();
+  window.addEventListener("pageshow", desenhar);
+  window.addEventListener("storage", desenhar);
 }
 
 if (typeof document !== "undefined" && document.getElementById("historico-lista")) iniciar();
