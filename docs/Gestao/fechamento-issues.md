@@ -5,3 +5,4 @@ Registro das issues fechadas após conferência dos critérios de aceite pelo Sc
 | Data | Issue | Título | Critérios |
 |---|---|---|---|
 | 09/11/2026 | #9 | Modelar o estado da certificação e a retomada | todos marcados |
+| 09/11/2026 | #78 | Organizar Product Backlog e rastreabilidade dos requisitos | todos marcados |
