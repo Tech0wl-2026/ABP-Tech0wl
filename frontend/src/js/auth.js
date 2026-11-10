@@ -136,4 +136,4 @@ document.addEventListener("DOMContentLoaded", () => {
       sair();
     });
   }
-})
+});

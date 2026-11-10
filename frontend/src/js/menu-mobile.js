@@ -37,4 +37,15 @@
         if (e.key === 'Escape' && topo.classList.contains('menu-aberto')) fecharMenu();
     });
 
+    /* Clicou num link da própria página (ex.: Home dentro da Home): só fecha */
+    painel.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('.menu a') : null;
+        if (link) definir(false);
+    });
 
+    /* Voltou para a tela grande (ou voltou pelo histórico): garante menu fechado */
+    function reset() { definir(false); }
+    if (celular.addEventListener) celular.addEventListener('change', reset);
+    else if (celular.addListener) celular.addListener(reset);
+    window.addEventListener('pageshow', reset);
+})();
