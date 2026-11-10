@@ -6,9 +6,11 @@
     <title>Certificado | Aprendizagem Ágil</title>
     <link rel="stylesheet" href="src/css/portal.css">
     <link rel="stylesheet" href="src/css/certificado.css">
+    <link rel="stylesheet" href="src/css/historico.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
     <script src="src/js/auth.js"></script>
+    <script src="src/js/historico-store.js"></script>
     <script>exigirLogin();</script>
     <!-- Libera o certificado quando o aluno foi aprovado na prova e faz o download em PDF -->
     <script src="src/js/certificado.js"></script>
@@ -87,9 +89,18 @@
                     download <i class="bx bx-download" aria-hidden="true"></i>
                 </button>
             </div>
+
+            <!-- Histórico da certificação: todas as avaliações (src/js/historico.js) -->
+            <section class="historico" id="historico" aria-labelledby="historico-titulo">
+                <h2 id="historico-titulo">Histórico da certificação</h2>
+                <p class="historico-intro">Todas as suas avaliações, inclusive reprovadas, expiradas e interrompidas.</p>
+                <p class="hist-estado" id="historico-estado" role="status" aria-live="polite"></p>
+                <div class="hist-lista" id="historico-lista" aria-busy="false"></div>
+            </section>
         </section>
 
     </main>
 
+    <script type="module" src="src/js/historico.js"></script>
 </body>
 </html>

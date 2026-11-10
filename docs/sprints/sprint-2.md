@@ -38,9 +38,9 @@ Não entregue nesta sprint, previsto para a Sprint 3: ligar as telas à API (hoj
 | Protótipo e modelagem | Exportar versão datada, link e arquivos editáveis |
 | Snapshot das issues | Registrar responsáveis, estado e evidências no commit de entrega |
 | Participação de cada integrante | Vincular os arquivos, commits ou revisões de cada integrante |
-| Review | Data, presentes, feedback real do professor/PO e decisões |
-| Retrospectiva | Data, aprendizado e melhoria realmente acordada |
-| Melhoria da Sprint anterior | Verificar aplicação e resultado da melhoria acordada na Sprint anterior |
+| Review | 10/11/2026 — feedback dos pareceres de 07/11 e 08/11 em [Review e Retrospectiva](retrospectiva-sprint-2.md#1-review--o-que-a-avaliação-mostrou) |
+| Retrospectiva | 10/11/2026 — 10 ações com responsável e prazo em [Review e Retrospectiva](retrospectiva-sprint-2.md#3-retrospectiva) |
+| Melhoria da Sprint anterior | Conferida em [Review e Retrospectiva](retrospectiva-sprint-2.md#2-melhorias-combinadas-na-sprint-1--foram-aplicadas) |
 | Próxima ação e responsável | Preencher a partir da reunião real |
 
 Preencha o fechamento com os resultados da entrega e das reuniões realizadas.

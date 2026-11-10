@@ -92,4 +92,100 @@
         return li;
     }
 
-    
+    /* Quadro "Temas que você acertou" x "Temas para revisar" */
+    function resumirDesempenho(prova, porTema) {
+        var el = document.getElementById('desempenho');
+        if (!el) return;
+        el.textContent = '';
+
+        if (!prova) {
+            el.className = 'desempenho vazio';
+            el.textContent = 'Faça a prova para ver em quais temas você acertou e em quais errou.';
+            return;
+        }
+        if (!porTema) {
+            el.className = 'desempenho vazio';
+            el.textContent = 'Refaça a prova para ver seu desempenho por tema (acertos e erros).';
+            return;
+        }
+
+        var acertou = [], revisar = [];
+        TEMAS.forEach(function (t) {
+            var d = porTema[t.id];
+            if (!d) return;
+            (d.acertos === d.total ? acertou : revisar).push(t.titulo);
+        });
+
+        el.className = 'desempenho';
+        function grupo(classe, rotulo, nomes, vazio) {
+            var g = document.createElement('div');
+            g.className = 'grupo ' + classe;
+            var h = document.createElement('strong');
+            h.textContent = rotulo;
+            var p = document.createElement('span');
+            p.textContent = nomes.length ? nomes.join(', ') : vazio;
+            g.append(h, p);
+            return g;
+        }
+        el.append(
+            grupo('acertou', '\u2713 Temas em que você acertou tudo', acertou, 'nenhum ainda'),
+            grupo('revisar', '\u2717 Temas para revisar (com erros)', revisar, 'nenhum, ótimo!')
+        );
+    }
+
+    function desenhar() {
+        var feitos = concluidos();
+        var aprovado = provaAprovada();
+        var cert = null;
+        try { cert = aprovado ? window.Certificado.status().certificado : null; } catch (e) { /* segue */ }
+
+        var prova = desempenhoDaProva();
+        var porTema = prova && prova.temas ? prova.temas : null;
+
+        lista.textContent = '';
+        var total = TEMAS.length + 1, feitas = 0;
+
+        TEMAS.forEach(function (tema, i) {
+            var ok = feitos.indexOf(tema.id) !== -1;
+            if (ok) feitas++;
+            lista.append(etapa(
+                tema.titulo, ok,
+                'Tema ' + (i + 1) + (ok ? ' · leitura concluída' : ' · ainda não concluído'),
+                './material.html?curso=' + tema.id,
+                ok ? 'Rever' : 'Estudar',
+                'concluído',
+                porTema ? porTema[tema.id] : null
+            ));
+        });
+
+        if (aprovado) feitas++;
+        lista.append(etapa(
+            'Prova do curso', aprovado,
+            aprovado
+                ? 'Aprovado' + (cert && cert.percentual != null ? ' · ' + cert.percentual + '%' : '')
+                : 'Nota mínima de 65% para liberar o certificado',
+            './questao.html',
+            aprovado ? 'Refazer' : 'Fazer prova',
+            'concluída'
+        ));
+
+        resumirDesempenho(prova, porTema);
+
+        var temasFeitos = TEMAS.filter(function (t) { return feitos.indexOf(t.id) !== -1; }).length;
+        var pct = Math.round((feitas / total) * 100);
+        var faltam = total - feitas;
+
+        resumo.textContent = temasFeitos + ' de ' + TEMAS.length + ' temas concluídos'
+            + (aprovado ? ' e prova aprovada.' : ' · prova pendente.')
+            + (faltam ? ' Faltam ' + faltam + (faltam === 1 ? ' etapa.' : ' etapas.') : ' Tudo pronto!');
+        enchente.style.width = pct + '%';
+        barra.setAttribute('aria-valuenow', String(pct));
+        barra.setAttribute('aria-valuetext', pct + '% concluído');
+        barra.dataset.completo = pct === 100 ? 'true' : 'false';
+        document.getElementById('progresso-pct').textContent = pct + '%';
+    }
+
+    desenhar();
+    window.addEventListener('pageshow', desenhar);   // voltou pelo histórico: atualiza
+    window.addEventListener('storage', desenhar);    // outra aba concluiu algo
+})();
