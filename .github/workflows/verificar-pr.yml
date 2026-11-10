@@ -1,0 +1,30 @@
+name: Conferir vínculo com issue
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  vinculo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: PR cita a issue com Closes ou Refs
+        env:
+          CORPO: ${{ github.event.pull_request.body }}
+          BASE: ${{ github.event.pull_request.base.ref }}
+          ORIGEM: ${{ github.event.pull_request.head.ref }}
+        run: |
+          # O PR da develop para a main junta várias issues e não precisa citar uma só.
+          if [ "$BASE" = "main" ] && [ "$ORIGEM" = "develop" ]; then
+            echo "PR de integração develop → main."
+            exit 0
+          fi
+          if printf '%s' "$CORPO" | grep -Eiq '(closes|fixes|resolves|refs) #[0-9]+'; then
+            echo "PR ligado à issue."
+          else
+            echo "::warning::Escreva 'Closes #N' na descrição do PR para ligar à issue e fechar o cartão no board. Veja docs/Gestao/QUADRO.md"
+          fi
