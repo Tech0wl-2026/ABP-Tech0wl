@@ -27,3 +27,7 @@ O CI do GitHub Actions é um ambiente limpo a cada execução: máquina Ubuntu n
 4. Abrir `http://localhost:8080` e conferir `http://localhost:3001/api/saude`.
 
 Guia completo: [COMECAR-AQUI.md](../../../COMECAR-AQUI.md).
+
+## Revisão e aceite
+
+Em 09/11/2026 o Scrum Master (Breno) refez a instalação do zero seguindo este roteiro, validou DDL/DML, persistência, rede e configuração de ambiente, e marcou os três critérios da issue #103.
