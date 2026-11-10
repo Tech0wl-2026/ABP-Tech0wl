@@ -87,7 +87,7 @@ Acesse o quadro de atividades de cada sprint:
     </tr>
   <tr>
           <td> Dev Team </td>
-          <td> Grabriel Augusto Garcia </td>
+          <td> Gabriel Augusto Garcia </td>
     <td> <a href="https://github.com/GabrielK07"> <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=6D39A8'/> </a> </td>
     </tr>
   </tr>
