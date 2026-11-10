@@ -14,6 +14,12 @@ const CHAVE_USUARIOS = "usuarios";
 const CHAVE_SESSAO   = "sessao";
 const CHAVE_AVISO    = "aviso";
 
+// Endereço da API. Assumo "/api" (o nginx repassa para o backend); confirmar com o nginx.conf.
+const API_BASE = "/api";
+
+// Apaga contas e hashes de senha que versões antigas do site guardaram neste navegador.
+try { localStorage.removeItem("usuarios"); } catch { /* sem acesso ao storage: ignora */ }
+
 const ERRO_NAVEGADOR =
   "Não foi possível concluir neste navegador. Abra o site por localhost ou https e tente de novo.";
 
@@ -101,6 +107,55 @@ function sair() {
   sessionStorage.removeItem(CHAVE_SESSAO);
   localStorage.removeItem(CHAVE_SESSAO);
   window.location.href = LOGIN_URL;
+}
+
+function obterToken() {
+  const sessao = usuarioLogado();
+  return sessao && sessao.token ? sessao.token : null;
+}
+
+// Uso: const r = await apiFetch("/login", { metodo: "POST", corpo: {...} });
+// Devolve sempre { ok, status, dados } em sucesso ou { ok:false, status, erro } em falha.
+// privado:true envia o token; se a API responder 401, a sessão expirou e volta para o login.
+async function apiFetch(caminho, { metodo = "GET", corpo, privado = false } = {}) {
+  const headers = { "Content-Type": "application/json" };
+
+  if (privado) {
+    const token = obterToken();
+    if (!token) {
+      guardarAviso("Faça login para continuar.");
+      window.location.replace(LOGIN_URL);
+      return { ok: false, status: 401, erro: "Sem sessão." };
+    }
+    headers.Authorization = "Bearer " + token;
+  }
+
+  let resposta;
+  try {
+    resposta = await fetch(API_BASE + caminho, {
+      method: metodo,
+      headers,
+      body: corpo ? JSON.stringify(corpo) : undefined,
+    });
+  } catch {
+    return { ok: false, status: 0, erro: "Não foi possível falar com o servidor. Confira se ele está no ar e tente de novo." };
+  }
+
+  let dados = null;
+  try { dados = await resposta.json(); } catch { /* resposta sem JSON */ }
+
+  if (resposta.status === 401 && privado) {
+    sessionStorage.removeItem(CHAVE_SESSAO);
+    localStorage.removeItem(CHAVE_SESSAO);
+    guardarAviso("Sua sessão expirou. Entre novamente.");
+    window.location.replace(LOGIN_URL);
+    return { ok: false, status: 401, erro: "Sessão expirada." };
+  }
+
+  if (!resposta.ok) {
+    return { ok: false, status: resposta.status, erro: (dados && dados.erro) || "Erro inesperado do servidor." };
+  }
+  return { ok: true, status: resposta.status, dados };
 }
 
 // As páginas do portal chamam isto no <head>: sem sessão, volta para o login.
