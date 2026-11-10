@@ -3,6 +3,7 @@
 
    • Certificado.registrar(resultado)  chamado pelo questao.js ao finalizar
    • Certificado.status()              { aprovado, certificado }
+   • Certificado.melhorResultado()     melhor tentativa da prova (acertos, percentual e temas)
    • Certificado.baixar()              gera e baixa o certificado em PDF (layout TechOwl)
    • Certificado.preencher()           preenche perfil/certificado pelos data-atributos
 
@@ -389,7 +390,9 @@
     }));
   }
 
-  window.Certificado = { registrar, status, baixar, preencher };
+  function melhorResultado() { return ler(CHAVE_MELHOR); }   // inclui o desempenho por tema (temas)
+
+  window.Certificado = { registrar, status, baixar, preencher, melhorResultado };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", preencher);
   else preencher();
 })();

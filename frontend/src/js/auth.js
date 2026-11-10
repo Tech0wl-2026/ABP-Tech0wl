@@ -84,20 +84,14 @@ async function entrar({ cpf, senha, lembrar }) {
   localStorage.removeItem(CHAVE_SESSAO);
   (lembrar ? localStorage : sessionStorage).setItem(
     CHAVE_SESSAO,
-    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf, email: usuario.email })
+    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf })
   );
   return { ok: true };
 }
 
 function usuarioLogado() {
   try {
-    const sessao = JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
-    if (sessao && !sessao.email) {
-      // Sessões criadas antes de o e-mail ser guardado: busca no cadastro pelo CPF.
-      const cadastro = lerUsuarios().find((u) => u.cpf === sessao.cpf);
-      if (cadastro && cadastro.email) sessao.email = cadastro.email;
-    }
-    return sessao;
+    return JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
   } catch {
     return null;
   }
@@ -142,4 +136,4 @@ document.addEventListener("DOMContentLoaded", () => {
       sair();
     });
   }
-});
+})

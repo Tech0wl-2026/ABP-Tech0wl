@@ -138,6 +138,34 @@ test('fluxos HTTP da certificação no PostgreSQL', {skip:!process.env.API_TEST_
       assert.equal(resultado.acertos,7);assert.equal(resultado.percentual,58.33);
       assert.equal((await req('/candidatos/certificado',{method:'POST',token:reprovado.token})).status,409);
     });
+    await t.test('histórico registra cada resposta, reprovação e questão sem alternativa',async () => {
+      const avaliado=await candidato('00000000006');
+      for (let i=0;i<12;i++) {
+        const sorteio=await req('/questoes/sortear',{method:'POST',token:avaliado.token});
+        const id=sorteio.body.questao.questao.id;
+        if (i===0) {
+          assert.equal((await req(`/questoes/${id}/interromper`,{method:'POST',token:avaliado.token})).status,200);
+          continue;
+        }
+        const {rows:[a]}=await pool.query('SELECT letra FROM alternativas WHERE questao_id=$1 AND NOT correta ORDER BY letra LIMIT 1',[id]);
+        await req(`/questoes/${id}/responder`,{method:'POST',token:avaliado.token,body:{letra_resposta:a.letra}});
+      }
+      const historico=(await req('/candidatos/historico',{token:avaliado.token})).body;
+      assert.equal(historico.length,12);
+      assert.equal(new Set(historico.map(h=>h.tema_id)).size,12);
+      for (const h of historico) {
+        assert.ok(h.tema && h.questao_id && h.enunciado,'tema e questão sorteada registrados');
+        assert.match(h.alternativa_correta,/^[A-D]$/);
+        assert.ok(!Number.isNaN(Date.parse(h.data_horario_resposta)),'data e hora da resposta registradas');
+        assert.equal(h.acertou,false);
+      }
+      const semResposta=historico.filter(h=>h.letra_resposta===null);
+      assert.equal(semResposta.length,1);
+      assert.equal(semResposta[0].tema_id,historico[0].tema_id);
+      assert.ok(historico.slice(1).every(h=>/^[A-D]$/.test(h.letra_resposta)&&h.letra_resposta!==h.alternativa_correta));
+      const resultado=(await req('/candidatos/resultado',{token:avaliado.token})).body;
+      assert.equal(resultado.aprovado,false);assert.equal(resultado.acertos,0);
+    });
   } finally {
     if (server) await new Promise(r=>server.close(r));
     await pool.end();

@@ -12,6 +12,9 @@
     <script>exigirLogin();</script>
     <!-- Libera o certificado quando o aluno foi aprovado na prova e faz o download em PDF -->
     <script src="src/js/certificado.js"></script>
+    <link rel="stylesheet" href="src/css/menu-mobile.css">
+    <script src="src/js/menu-mobile.js" defer></script>
+    <script src="src/js/certificado-progresso.js" defer></script>
 </head>
 <body>
 
@@ -21,9 +24,12 @@
             <img src="src/images/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
         </a>
 
-        <nav class="menu">
+        <button type="button" class="btn-menu" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="painel-menu"><span></span><span></span><span></span></button>
+        <div class="painel-menu" id="painel-menu">
+            <button type="button" class="btn-menu-fechar" aria-label="Fechar menu"><span></span><span></span><span></span></button>
+            <nav class="menu">
             <a href="./home.html">Home</a>
-            <a href="./curso-portal.html">Cursos</a>
+            <a href="./curso-portal.html">Curso<span class="sufixo-desktop">s</span></a>
             <a href="./certificado.html" class="ativo" aria-current="page">Certificado</a>
         </nav>
 
@@ -33,12 +39,28 @@
                 <i class="bx bx-log-out"></i>
             </a>
         </div>
+        </div>
+        <div class="menu-fundo" aria-hidden="true"></div>
     </header>
 
     <main class="certificado">
 
         <section class="cartao">
             <h1>Certificado de conclusão do curso</h1>
+
+            <!-- Progresso na certificação: temas concluídos e pendentes (src/js/certificado-progresso.js) -->
+            <section class="progresso" aria-labelledby="progresso-titulo">
+                <div class="progresso-topo">
+                    <h2 id="progresso-titulo">Seu progresso na certificação</h2>
+                    <span class="progresso-pct" id="progresso-pct">0%</span>
+                </div>
+                <p class="progresso-resumo" id="progresso-resumo" aria-live="polite"></p>
+                <div class="progresso-barra" id="progresso-barra" role="progressbar" aria-labelledby="progresso-titulo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="progresso-preenchimento"></div>
+                </div>
+                <div class="desempenho" id="desempenho"></div>
+                <ul class="etapas" id="lista-etapas"></ul>
+            </section>
 
             <!-- Aviso enquanto o certificado não está liberado -->
             <div class="aviso" id="aviso" role="status" data-cert-bloqueado>
