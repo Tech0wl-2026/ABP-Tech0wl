@@ -29,3 +29,7 @@ bash iniciar.sh
 curl http://localhost:8080/api/saude
 curl http://localhost:8080/api/temas
 ```
+
+## Revisão e aceite
+
+Em 09/11/2026 o Scrum Master (Breno) refez o roteiro acima na máquina local, conferiu os três critérios da issue #89 e marcou o checklist. Evidência do CI na `main`: run 42723188055 (commit `0abf5bb`).
