@@ -8,24 +8,26 @@
   html, body { max-width: 100%; overflow-x: hidden; }
   img { max-width: 100%; height: auto; }
 
-  /* ---------- BARRA DE NAVEGAÇÃO (Home | Curso | Sobre nós) ---------- */
+    /* ---------- BARRA DE NAVEGAÇÃO (Home | Curso | Sobre nós) ---------- */
   header { padding: 10px 12px !important; }
   header .menu {
     display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap !important;        /* tudo na mesma linha */
+    justify-content: space-between;      /* um item em cada ponta, Curso no meio */
     align-items: center;
-    gap: 2px 8px !important;
-    width: fit-content !important;      /* só o tamanho dos links, não a tela toda */
-    max-width: calc(100% - 24px);
-    padding: 4px 8px !important;
+    gap: 0 !important;
+    width: calc(100% - 24px) !important; /* ocupa a largura da tela */
+    max-width: 360px;
+    padding: 4px !important;
     margin: 0 auto !important;
   }
   header .menu a {
-    padding: 6px 10px !important;
+    padding: 6px 12px !important;
     font-size: 15px !important;
     line-height: 1.2;
+    white-space: nowrap;                 /* "Sobre nós" não quebra */
   }
+    header .menu a { padding: 6px 8px !important; font-size: 14px !important; }
 
   /* ---------- HERO ---------- */
   .hero {
