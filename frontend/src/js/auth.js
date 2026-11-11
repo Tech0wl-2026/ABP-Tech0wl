@@ -60,20 +60,23 @@ function lerUsuarios() {
 }
 
 async function cadastrar({ nome, cpf, email, senha }) {
-  const usuarios = lerUsuarios();
-  cpf = soDigitos(cpf);
-  email = email.trim().toLowerCase();
+  const resposta = await apiFetch("/candidatos", {
+    metodo: "POST",
+    corpo: {
+      cpf: soDigitos(cpf),
+      nome: nome.trim(),
+      email: email.trim().toLowerCase(),
+      senha,
+    },
+  });
 
-  if (usuarios.some((u) => u.cpf === cpf)) {
-    return { ok: false, erro: "Já existe uma conta com este CPF. Faça login." };
+  if (!resposta.ok) {
+    // A API não diz se o repetido foi o CPF ou o e-mail.
+    if (resposta.status === 409) {
+      return { ok: false, erro: "Já existe uma conta com este CPF ou e-mail. Faça login." };
+    }
+    return { ok: false, erro: resposta.erro };
   }
-  if (usuarios.some((u) => u.email === email)) {
-    return { ok: false, erro: "Já existe uma conta com este e-mail. Use outro e-mail ou faça login." };
-  }
-
-  const salt = gerarSalt();
-  usuarios.push({ nome: nome.trim(), cpf, email, salt, hash: await gerarHash(senha, salt) });
-  localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
   return { ok: true };
 }
 
