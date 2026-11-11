@@ -12,7 +12,6 @@
 
    Precisa do auth.js carregado antes (usuarioLogado).
    ============================================================ */
-
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
   const CURSO         = "Introdução à Tecnologia";           // texto de "Curso concluído"
@@ -108,50 +107,11 @@
   const TEXTO = "#101541";
   const SANS = "Montserrat, Arial, sans-serif";
 
-  // ---- POSIÇÕES (medidas sobre a imagem do modelo 1492×1054) ----
-  // x/y = canto esquerdo da linha de base do texto; "cx" = centro horizontal
-  const POS = {
-    nome:       { cx: 772,  y: 455, max: 900, tam: 84 },
-    cpf:        { cx: 744,  y: 547 },
-    email:      { x: 355,   y: 645 },
-    nota:       { x: 355,   y: 722 },
-    percentual: { x: 355,   y: 799 },
-    dataHora:   { x: 767,   y: 649 },
-    dataExtenso:{ x: 767,   y: 724 },
-    curso:      { x: 767,   y: 800 },
-    qr:         { x: 1064,  y: 600, lado: 158 },   // moldura do QR Code
-    codigo:     { cx: 1142, y: 902 },
-  };
-
-  // Se a imagem do modelo ainda traz os dados de exemplo (ex.: "Mariana Costa Ferreira"),
-  // estas áreas são apagadas com a cor de fundo ao redor antes de escrever os dados reais.
-  // Use false quando o modelo já estiver em branco.
-  const LIMPAR_AMOSTRA = true;
-  const AREAS_AMOSTRA = [
-    [300, 372, 940, 100],   // nome
-    [610, 514, 270, 44],    // CPF
-    [352, 626, 290, 26],    // e-mail
-    [352, 702, 120, 28],    // nota
-    [352, 780, 120, 28],    // percentual
-    [764, 628, 240, 26],    // data e hora
-    [764, 704, 240, 26],    // data por extenso
-    [764, 780, 240, 26],    // curso
-    [1068, 604, 150, 156],  // interior da moldura do QR Code
-  ];
-
-  function limparAmostra(g) {
-    AREAS_AMOSTRA.forEach(([x, y, w, h]) => {
-      const px = g.getImageData(Math.max(x - 4, 0), y + Math.floor(h / 2), 1, 1).data;
-      g.fillStyle = `rgb(${px[0]},${px[1]},${px[2]})`;
-      g.fillRect(x, y, w, h);
-    });
-  }
-
-  function dado(g, p, valor, destaque) {
+  function dado(g, x, y, valor, destaque) {
     g.textAlign = "left"; g.textBaseline = "alphabetic";
     g.fillStyle = TEXTO;
     g.font = (destaque ? "800 24px " : "500 20px ") + SANS;
-    g.fillText(valor, p.x, p.y);
+    g.fillText(valor, x, y);
   }
 
   // desenha só os módulos do QR Code dentro da moldura que já existe na imagem
@@ -190,37 +150,32 @@
     c.width = W; c.height = H;
     const g = c.getContext("2d");
     g.drawImage(modelo, 0, 0, W, H);
-    g.textBaseline = "alphabetic";
-    if (LIMPAR_AMOSTRA) limparAmostra(g);
 
-    // nome (itálico 800, degradê azul → violeta; reduz a fonte se for longo)
-    const pn = POS.nome;
-    g.textAlign = "center";
-    let tam = pn.tam;
-    do { g.font = "italic 800 " + tam + "px " + SANS; tam -= 2; } while (g.measureText(d.nome).width > pn.max && tam > 30);
+    // nome (reduz a fonte se for muito longo)
+    g.textBaseline = "alphabetic"; g.textAlign = "center";
+    let tam = 84;
+    do { g.font = "italic 800 " + tam + "px " + SANS; tam -= 2; } while (g.measureText(d.nome).width > 900 && tam > 30);
     const largura = g.measureText(d.nome).width;
-    const gr = g.createLinearGradient(pn.cx - largura / 2, 0, pn.cx + largura / 2, 0);
+    const gr = g.createLinearGradient(772 - largura / 2, 0, 772 + largura / 2, 0);
     gr.addColorStop(0, "#0a1048"); gr.addColorStop(0.5, "#2236b8"); gr.addColorStop(1, "#6a5acd");
-    g.fillStyle = gr; g.fillText(d.nome, pn.cx, pn.y);
+    g.fillStyle = gr; g.fillText(d.nome, 772, 452);
 
-    // CPF (centralizado, negrito)
-    g.fillStyle = TEXTO; g.font = "800 32px " + SANS; g.textAlign = "center";
-    g.fillText(d.cpf, POS.cpf.cx, POS.cpf.y);
+    // CPF
+    g.fillStyle = TEXTO; g.font = "800 32px " + SANS;
+    g.fillText(d.cpf, 750, 545);
 
-    // coluna esquerda: e-mail, nota, percentual
-    dado(g, POS.email, d.email);
-    dado(g, POS.nota, d.nota, true);
-    dado(g, POS.percentual, d.percentual, true);
-    // coluna direita: data/hora, data por extenso, curso
-    dado(g, POS.dataHora, d.dataHora);
-    dado(g, POS.dataExtenso, d.dataExtenso);
-    dado(g, POS.curso, CURSO);
+    // dados (coluna esquerda e direita)
+    dado(g, 355, 650, d.email);
+    dado(g, 355, 722, d.nota, true);
+    dado(g, 355, 800, d.percentual, true);
+    dado(g, 767, 650, d.dataHora);
+    dado(g, 767, 726, d.dataExtenso);
+    dado(g, 767, 802, CURSO);
 
-    // QR Code dentro da moldura + código de validação abaixo do texto
-    const q = POS.qr;
-    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), q.x, q.y, q.lado);
+    // QR Code + identificador
+    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), 1064, 600, 158);
     g.textAlign = "center"; g.fillStyle = AZUL; g.font = "700 15px " + SANS;
-    g.fillText(cert.codigo, POS.codigo.cx, POS.codigo.y);
+    g.fillText(cert.codigo, 1142, 898);
     return c;
   }
 
