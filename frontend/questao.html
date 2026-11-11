@@ -72,6 +72,17 @@
         </div>
     </dialog>
 
+    <!-- ALTERNATIVA CORRETA: pop-up que aparece depois de responder cada pergunta -->
+    <dialog class="dialogo dialogo-gabarito" id="dialogo-gabarito" aria-labelledby="gabarito-titulo" aria-describedby="gabarito-certa">
+        <h2 id="gabarito-titulo"></h2>
+        <p class="gabarito-marcada" id="gabarito-marcada" hidden></p>
+        <p class="gabarito-certa" id="gabarito-certa"></p>
+        <p class="gabarito-feedback" id="gabarito-feedback" hidden></p>
+        <div class="dialogo-acoes">
+            <button type="button" class="botao" id="btn-gabarito-continuar" autofocus>Próxima pergunta</button>
+        </div>
+    </dialog>
+
     <!-- PROVA PAUSADA: o que acertou, o que errou e o tempo que falta (aparece ao parar) -->
     <dialog class="dialogo" id="dialogo-parcial" aria-labelledby="parcial-titulo" aria-describedby="parcial-texto">
         <h2 id="parcial-titulo">Prova pausada</h2>

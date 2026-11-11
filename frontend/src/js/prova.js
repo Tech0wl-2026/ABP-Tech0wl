@@ -184,7 +184,7 @@ const QUESTOES = [
 const aluno = usuarioLogado() || {};
 const CHAVE = "prova:" + (aluno.cpf || "anonimo");   // para refazer a prova, apague esta chave do localStorage
 
-let estado = { atual: 0, respostas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
+let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
 
 function carregar() {
   try {
@@ -193,6 +193,7 @@ function carregar() {
   } catch { /* dado corrompido: começa do zero */ }
   if (!(estado.atual >= 0 && estado.atual < QUESTOES.length)) estado.atual = 0;
   if (!(estado.restante > 0 && estado.restante <= TEMPO_PERGUNTA)) estado.restante = TEMPO_PERGUNTA;
+  if (estado.reveladas[estado.atual] === "expirou") estado.restante = 0;   // pergunta encerrada por tempo
 }
 
 // tempo que falta para terminar a prova inteira (pergunta atual + perguntas seguintes)
@@ -354,13 +355,59 @@ function tique() {
   estado.restante = restante;
   mostrarTempo();
   salvar();
-  if (restante === 0) avancar(true);      // acabou o tempo: segue para a próxima
+  if (restante === 0) revelar(true);      // acabou o tempo: mostra a correta e espera o aluno seguir
 }
 
-/* ---------- PRÓXIMA PERGUNTA E RESULTADO ---------- */
-function avancar(expirou = false) {
+/* ---------- POP-UP DA ALTERNATIVA CORRETA ----------
+   Ao clicar em "Ir para a próxima pergunta" (ou quando o tempo acaba), a pergunta é encerrada
+   e este pop-up mostra qual era a alternativa certa. A resposta não pode mais ser trocada.
+   O estado "reveladas" fica salvo: se o aluno recarregar a página, o pop-up volta a aparecer. */
+const dialogoGabarito = $("dialogo-gabarito");
+
+function revelar(expirou = false) {
   pararRelogio();
-  historicoPerguntaEncerrada(expirou);
+  estado.reveladas[estado.atual] = expirou ? "expirou" : "respondeu";
+  salvar();
+  abrirGabarito();
+}
+
+function abrirGabarito() {
+  const q = QUESTOES[estado.atual];
+  const r = estado.respostas[estado.atual];
+  const acertou = r === q.correta;
+  const ultima = estado.atual === QUESTOES.length - 1;
+
+  dialogoGabarito.classList.toggle("acertou", acertou);
+  dialogoGabarito.classList.toggle("errou", !acertou);
+
+  $("gabarito-titulo").textContent = acertou
+    ? "✔ Resposta correta!"
+    : (r === undefined ? (estado.reveladas[estado.atual] === "expirou" ? "⏱ Tempo esgotado" : "Você não respondeu") : "✘ Resposta incorreta");
+
+  const marcada = $("gabarito-marcada");
+  marcada.textContent = (!acertou && r !== undefined) ? "Você marcou: " + rotuloAlternativa(q, r) : "";
+  marcada.hidden = !marcada.textContent;
+
+  $("gabarito-certa").textContent = "Alternativa correta: " + rotuloAlternativa(q, q.correta);
+
+  const fb = $("gabarito-feedback");
+  fb.textContent = q.feedback || "";
+  fb.hidden = !q.feedback;
+
+  $("btn-gabarito-continuar").textContent = ultima ? "Finalizar a prova" : "Próxima pergunta";
+  if (!dialogoGabarito.open) dialogoGabarito.showModal();
+}
+
+$("btn-gabarito-continuar").addEventListener("click", () => {
+  dialogoGabarito.close();
+  avancar();
+});
+dialogoGabarito.addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
+
+/* ---------- PRÓXIMA PERGUNTA E RESULTADO ---------- */
+function avancar() {
+  pararRelogio();
+  historicoPerguntaEncerrada(estado.reveladas[estado.atual] === "expirou");
   if (estado.atual === QUESTOES.length - 1) return finalizar();
 
   estado.atual += 1;
@@ -493,7 +540,7 @@ function mostrarParcial() {
 $("dialogo-parcial").addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
 
 /* ---------- INÍCIO ---------- */
-$("btn-proxima").addEventListener("click", () => avancar());
+$("btn-proxima").addEventListener("click", () => revelar());
 window.addEventListener("pagehide", salvar);
 
 carregar();
@@ -502,5 +549,6 @@ if (estado.finalizada && estado.resultado) {
 } else {
   if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
   mostrarPergunta();
-  iniciarRelogio();
+  if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
+  else iniciarRelogio();
 }
