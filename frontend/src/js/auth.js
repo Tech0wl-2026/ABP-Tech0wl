@@ -84,14 +84,20 @@ async function entrar({ cpf, senha, lembrar }) {
   localStorage.removeItem(CHAVE_SESSAO);
   (lembrar ? localStorage : sessionStorage).setItem(
     CHAVE_SESSAO,
-    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf })
+    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf, email: usuario.email })
   );
   return { ok: true };
 }
 
 function usuarioLogado() {
   try {
-    return JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
+    const sessao = JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
+    // Sessões criadas antes de o e-mail ser guardado: busca o e-mail no cadastro (pelo CPF)
+    if (sessao && !sessao.email) {
+      const conta = lerUsuarios().find((u) => u.cpf === sessao.cpf);
+      if (conta && conta.email) sessao.email = conta.email;
+    }
+    return sessao;
   } catch {
     return null;
   }
