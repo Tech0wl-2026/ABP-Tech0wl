@@ -10,7 +10,7 @@
 const LOGIN_URL  = new URL("login.html", location.href).href;           // tela de login
 const PORTAL_URL = new URL("home.html", location.href).href;  // Área de estudos
 
-const CHAVE_USUARIOS = "usuarios";
+
 const CHAVE_SESSAO   = "sessao";
 const CHAVE_AVISO    = "aviso";
 
@@ -39,26 +39,7 @@ function cpfValido(valor) {
   return true;
 }
 
-
-const paraHex = (bytes) =>
-  Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-
-const gerarSalt = () => paraHex(crypto.getRandomValues(new Uint8Array(16)));
-
-async function gerarHash(senha, salt) {
-  const dados = new TextEncoder().encode(salt + senha);
-  return paraHex(new Uint8Array(await crypto.subtle.digest("SHA-256", dados)));
-}
-
 /* ---------- Usuários ---------- */
-function lerUsuarios() {
-  try {
-    return JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
-  } catch {
-    return [];
-  }
-}
-
 async function cadastrar({ nome, cpf, email, senha }) {
   const resposta = await apiFetch("/candidatos", {
     metodo: "POST",
