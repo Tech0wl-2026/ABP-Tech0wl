@@ -1,0 +1,369 @@
+/* ============================================================
+   mobile.css — ajustes para celular (até 768px)
+   Carregar DEPOIS do CSS de cada página. Não altera o desktop.
+   Páginas: index, curso, sobre, login, cadastro, esqueci_senha, senha-nov
+   ============================================================ */
+@media (max-width: 768px) {
+
+  html, body { 
+    max-width: 100%; 
+    overflow-x: hidden; 
+}
+
+  img { 
+    max-width: 100%; 
+    height: auto; 
+}
+
+    /* ---------- BARRA DE NAVEGAÇÃO (Home | Curso | Sobre nós) ---------- */
+  header { 
+    padding: 10px 12px !important; 
+}
+
+    header .menu {
+
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    align-items: center;
+    gap: 2px !important;
+    width: fit-content !important;       /* só o tamanho dos links */
+    max-width: calc(100% - 24px);
+    padding: 4px !important;
+    margin: 0 auto !important;
+  }
+
+  header .menu a {
+
+    padding: 6px 12px !important;        /* mesmo espaço dos dois lados de cada link */
+    font-size: 14px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+    header .menu a { 
+        padding: 6px 8px !important; 
+        font-size: 14px !important; 
+    }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    height: auto !important;
+    min-height: 60vh;
+    padding: 64px 20px 56px !important;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 8vw, 36px) !important;
+    line-height: 1.2 !important;
+  }
+
+    .btn-comecar {
+    padding: 4px 4px 4px 16px !important;
+    gap: 10px !important;
+    font-size: 15px !important;
+  }
+  .btn-comecar span {
+    padding: 2px 16px !important;        /* botão branco com a flecha menor */
+    font-size: 14px !important;
+  }
+
+    .btn-matricula {
+    padding: 8px 28px !important;
+    font-size: 15px !important;
+  }
+  /* ---------- CONTEÚDO GERAL ---------- */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box;
+  }
+
+  .titulo, section > h2 {
+    font-size: clamp(22px, 6.5vw, 32px) !important;
+    line-height: 1.2 !important;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  /* index: Invista no seu futuro */
+  .invista {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 24px;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+    text-align: center;
+  }
+
+  .invista h2 { 
+    font-size: clamp(24px, 7vw, 32px) !important; 
+}
+
+  .notebook { 
+    width: min(100%, 340px) !important; 
+    margin: 0 auto; 
+}
+
+      /* index: faixa roxa */
+  .faixa {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0 !important;
+    padding: 0 0 20px !important;       /* sem padding lateral: a imagem vai de ponta a ponta */
+    text-align: center;
+  }
+  .faixa .triangulos {
+    width: 100% !important;             /* ocupa a tela toda */
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 0;
+  }
+  .faixa p {
+    max-width: 100% !important;
+    padding: 0 20px !important;         /* o texto continua com margem nas laterais */
+    margin-top: 16px !important;        /* espaço entre o triângulo e a frase */
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
+
+  /* index: benefícios */
+  .beneficios {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    text-align: center;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .beneficios img { 
+    width: 72px !important; 
+    margin: 0 auto 8px; 
+}
+
+  /* index: professores (imagens menores) */
+  .professores { 
+    padding: 36px 16px !important; 
+}
+
+  .professores h2 { 
+    font-size: clamp(22px, 6vw, 28px) !important; 
+}
+
+  .professores .cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 28px !important;
+  }
+  .professores figure { 
+    margin: 0 !important; 
+    width: 100%; 
+    text-align: center; 
+}
+
+  .professores figure img {
+    width: min(190px, 52vw) !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .professores figcaption { 
+    margin-top: 10px; 
+    font-size: 17px !important; 
+}
+
+  /* curso */
+  .modulos {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .modulo { 
+    text-align: center; 
+}
+
+  .modulo img { 
+    width: min(100%, 320px) !important; 
+    margin: 0 auto 12px; 
+}
+
+  .lista-feedbacks {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .certificado {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+    padding: 32px 20px !important;
+  }
+  .certificado .titulo { 
+    text-align: left; padding: 0; 
+}
+
+  .certificado .titulo span { 
+    display: block; 
+}
+
+  .lista-check { 
+    padding-left: 0; 
+}
+  .certificado figure { 
+    margin: 0; 
+    text-align: center; 
+}
+
+  .certificado figure img { 
+    width: 100% !important; 
+}
+
+  /* sobre nós */
+  .card-sobre {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 16px !important;
+    padding: 24px 18px !important;
+    box-sizing: border-box;
+  }
+
+  .card-sobre p { 
+    font-size: 16px !important; 
+    line-height: 1.55; 
+}
+
+  .selo-card { 
+    width: 90px !important; 
+    margin: 0 auto 12px; 
+    display: block; 
+}
+
+  .despedida { 
+    font-size: clamp(24px, 7vw, 32px) !important; 
+    text-align: center; 
+}
+
+  /* rodapé */
+  footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px !important;
+    text-align: center;
+  }
+
+  footer .rodape-texto { 
+    text-align: center; 
+}
+
+  /* ---------- LOGIN, CADASTRO, ESQUECI A SENHA, NOVA SENHA ---------- */
+  body:has(.wrapper) {
+    height: auto !important;
+    min-height: 100dvh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px !important;
+    box-sizing: border-box;
+  }
+  .wrapper {
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    padding: 22px 16px !important;
+    box-sizing: border-box;
+  }
+  .wrapper h1 { 
+    font-size: 24px !important; 
+    text-align: center; 
+    margin-bottom: 4px; 
+}
+
+  .wrapper .recup p { 
+    font-size: 14px !important;
+    line-height: 1.45; 
+    text-align: center; 
+}
+
+  .wrapper .input-box {
+    width: 100% !important;
+    height: 44px !important;
+    margin: 14px 0 !important;
+  }
+  .wrapper .input-box i { 
+    font-size: 18px !important; 
+}
+
+  .wrapper .input-box input {
+    width: 100% !important;
+    font-size: 16px !important;      /* 16px evita o zoom automático do iPhone */
+    box-sizing: border-box;
+  }
+
+  .wrapper .remember-forgot {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 12px;
+    font-size: 14px !important;
+  }
+
+  .wrapper .btn {
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 42px;
+    font-size: 15px !important;
+  }
+
+  .wrapper .register-link { 
+    text-align: center; 
+    font-size: 14px !important; 
+}
+
+  .wrapper .mensagem { 
+    font-size: 14px; 
+}
+
+  .lock, .lockout { 
+    max-width: 100%; 
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+  .back-btn { 
+    top: 12px !important; 
+    left: 12px !important; 
+}
+
+  .back-btn img { 
+    width: 36px !important; 
+    height: 36px !important; 
+}
+
+}
+
+/* celulares bem pequenos */
+@media (max-width: 380px) {
+  header .menu a { 
+    padding: 6px 8px !important; 
+    font-size: 14px !important; 
+}
+
+  .wrapper { 
+    padding: 20px 14px !important; 
+    max-width: 300px !important; 
+}
+
+  .wrapper h1 { 
+    font-size: 22px !important; 
+}
+
+}

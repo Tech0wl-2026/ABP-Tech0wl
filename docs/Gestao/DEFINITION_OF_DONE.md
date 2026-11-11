@@ -31,3 +31,8 @@ Os textos devem explicar o funcionamento atual, com links válidos e fontes iden
 ## Fechamento da sprint
 
 Registrar os critérios combinados com o professor, a versão entregue, o CI, os testes manuais, as contribuições e as reuniões de Review e Retrospectiva. Guardar a versão do Figma e as fontes dos modelos. Após o aceite, criar a tag da sprint e acompanhar a melhoria definida para a próxima entrega.
+
+
+## Concluir no board
+
+Um item só é considerado pronto quando, além dos critérios acima, a issue está **fechada** e o cartão em **Done**, no mesmo dia do merge. Passo a passo em [QUADRO.md](QUADRO.md).

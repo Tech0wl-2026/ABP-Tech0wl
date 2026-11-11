@@ -3,8 +3,7 @@
 
    • Certificado.registrar(resultado)  chamado pelo questao.js ao finalizar
    • Certificado.status()              { aprovado, certificado }
-   • Certificado.melhorResultado()     melhor tentativa da prova (acertos, percentual e temas)
-   • Certificado.baixar()              gera e baixa o certificado em PDF (layout TechOwl)
+   • Certificado.baixar()              gera e baixa o certificado em PDF (a partir da imagem do modelo)
    • Certificado.preencher()           preenche perfil/certificado pelos data-atributos
 
    Guarda no navegador (por CPF), e NÃO é apagado ao refazer a prova:
@@ -13,12 +12,12 @@
 
    Precisa do auth.js carregado antes (usuarioLogado).
    ============================================================ */
+
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
   const CURSO         = "Introdução à Tecnologia";           // texto de "Curso concluído"
-  const LOGO_SRC      = "src/images/logo-tech0wl.png";        // logo (PNG, de preferência com fundo transparente)
+  const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
   const VALIDACAO_URL = "https://seusite.com.br/validar";    // o QR Code aponta para: URL?codigo=XXXX
-  const ASSINATURA    = { nome: "Guilherme Akio Kanahara", cargo: "CEO", rubrica: "G Akio K" };
 
   const aluno = (typeof usuarioLogado === "function" && usuarioLogado()) || {};
   const quem = aluno.cpf || "anonimo";
@@ -74,11 +73,18 @@
     });
   }
 
+  function urlCompleta(src) {
+    return new URL(src, document.baseURI).href;
+  }
+
   function carregarImagem(src) {
     return new Promise((ok) => {
       const img = new Image();
       img.onload = () => ok(img);
-      img.onerror = () => ok(null);
+      img.onerror = () => {
+        console.error("Imagem do certificado não encontrada:", urlCompleta(src));
+        ok(null);
+      };
       img.src = src;
     });
   }
@@ -88,7 +94,7 @@
       const l = document.createElement("link");
       l.id = "fontes-certificado";
       l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;1,800&family=Mrs+Saint+Delafield&display=swap";
+      l.href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap";
       document.head.append(l);
     }
     try {
@@ -97,118 +103,75 @@
         document.fonts.load("italic 800 80px Montserrat"),
         document.fonts.load("500 20px Montserrat"),
         document.fonts.load("700 20px Montserrat"),
-        document.fonts.load("70px 'Mrs Saint Delafield'"),
       ]);
     } catch { /* usa a fonte reserva */ }
   }
 
-  /* ---------- DESENHO DO CERTIFICADO (layout TechOwl) ---------- */
-  const W = 1492, H = 1054;
-  const AZUL_ESCURO = "#0a1048", AZUL = "#1a2fa0";
+  /* ---------- DESENHO DO CERTIFICADO (imagem do modelo + dados do aluno) ---------- */
+  // O modelo (fundo, título, logos, ícones, rótulos, assinatura e moldura do QR Code) vem da imagem MODELO_SRC.
+  // Aqui só são escritos os dados de cada aluno por cima dela.
+  const W = 1492, H = 1054;                       // tamanho da imagem do modelo
+  const AZUL = "#1a2fa0";
+  const TEXTO = "#101541";
   const SANS = "Montserrat, Arial, sans-serif";
 
-  function poligono(g, pontos) {
-    g.beginPath();
-    pontos.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y)));
-    g.closePath();
-  }
+  // ---- POSIÇÕES (medidas sobre a imagem do modelo 1492×1054) ----
+  // x/y = canto esquerdo da linha de base do texto; "cx" = centro horizontal
+  const POS = {
+    nome:       { cx: 772,  y: 455, max: 900, tam: 84 },
+    cpf:        { cx: 744,  y: 547 },
+    email:      { x: 355,   y: 645 },
+    nota:       { x: 355,   y: 722 },
+    percentual: { x: 355,   y: 799 },
+    dataHora:   { x: 767,   y: 649 },
+    dataExtenso:{ x: 767,   y: 724 },
+    curso:      { x: 767,   y: 800 },
+    qr:         { x: 1064,  y: 600, lado: 158 },   // moldura do QR Code
+    codigo:     { cx: 1142, y: 902 },
+  };
 
-  function hexagono(g, cx, cy, r) {
-    const p = [];
-    for (let i = 0; i < 6; i++) {
-      const a = Math.PI / 6 + (i * Math.PI) / 3;
-      p.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
-    }
-    poligono(g, p);
-  }
+  // Se a imagem do modelo ainda traz os dados de exemplo (ex.: "Mariana Costa Ferreira"),
+  // estas áreas são apagadas com a cor de fundo ao redor antes de escrever os dados reais.
+  // Use false quando o modelo já estiver em branco.
+  const LIMPAR_AMOSTRA = true;
+  const AREAS_AMOSTRA = [
+    [300, 372, 940, 100],   // nome
+    [610, 514, 270, 44],    // CPF
+    [352, 626, 270, 26],    // e-mail (termina antes da linha vertical do meio)
+    [352, 702, 120, 28],    // nota
+    [352, 780, 120, 28],    // percentual
+    [764, 628, 240, 26],    // data e hora
+    [764, 704, 240, 26],    // data por extenso
+    [764, 780, 240, 26],    // curso
+  ];
 
-  function fundo(g) {
-    const f = g.createLinearGradient(0, 0, W, H);
-    f.addColorStop(0, "#f7f9fe"); f.addColorStop(1, "#e8ecf8");
-    g.fillStyle = f; g.fillRect(0, 0, W, H);
-
-    const a = [[0, 0], [700, 0], [655, 40], [440, 40], [385, 95], [255, 95], [200, 140], [0, 290]];
-    const ga = g.createLinearGradient(0, 0, 700, 290);
-    ga.addColorStop(0, "#040a30"); ga.addColorStop(1, "#0b2186");
-    g.fillStyle = ga; poligono(g, a); g.fill();
-    g.save();
-    g.strokeStyle = "#3d72ff"; g.lineWidth = 3; g.shadowColor = "#3d72ff"; g.shadowBlur = 14;
-    g.beginPath(); a.slice(1).forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
-    g.restore();
-
-    const b = [[W, H], [640, H], [695, 1015], [950, 1015], [1005, 965], [1300, 965], [1360, 910], [W, 740]];
-    const gb = g.createLinearGradient(W, H, 640, 740);
-    gb.addColorStop(0, "#040a30"); gb.addColorStop(1, "#0b2186");
-    g.fillStyle = gb; poligono(g, b); g.fill();
-    g.save();
-    g.strokeStyle = "#3d72ff"; g.lineWidth = 3; g.shadowColor = "#3d72ff"; g.shadowBlur = 14;
-    g.beginPath(); b.slice(1, 7).forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
-    g.restore();
-
-    g.lineWidth = 3;
-    g.strokeStyle = "#cfd6ee"; hexagono(g, 88, 168, 30); g.stroke();
-    g.fillStyle = "#0a1c6e"; hexagono(g, 88, 340, 52); g.fill();
-    g.strokeStyle = "#2a55e8"; g.lineWidth = 5; hexagono(g, 88, 340, 40); g.stroke();
-    g.fillStyle = "#2a55e8";
-    for (let i = 0; i < 5; i++) { g.beginPath(); g.arc(1458, 572 + i * 24, 6, 0, 7); g.fill(); }
-    g.fillStyle = "rgba(255,255,255,.45)";
-    for (let r = 0; r < 3; r++) for (let c = 0; c < 6; c++) g.fillRect(70 + c * 24, 70 + r * 24, 5, 5);
-
-    g.strokeStyle = "rgba(42,85,232,.5)"; g.lineWidth = 1.5;
-    g.strokeRect(20, 20, W - 40, H - 40);
-  }
-
-  function icone(g, tipo, cx, cy) {
-    g.save();
-    g.fillStyle = "#0a1448"; hexagono(g, cx, cy, 33); g.fill();
-    g.strokeStyle = "#e5ebff"; g.fillStyle = "#e5ebff"; g.lineWidth = 2.5; g.lineJoin = "round"; g.lineCap = "round";
-    if (tipo === "email") {
-      g.strokeRect(cx - 15, cy - 10, 30, 20);
-      g.beginPath(); g.moveTo(cx - 15, cy - 10); g.lineTo(cx, cy + 3); g.lineTo(cx + 15, cy - 10); g.stroke();
-    } else if (tipo === "estrela") {
-      const p = [];
-      for (let i = 0; i < 10; i++) {
-        const r = i % 2 ? 7 : 16, an = -Math.PI / 2 + (i * Math.PI) / 5;
-        p.push([cx + r * Math.cos(an), cy + 1 + r * Math.sin(an)]);
+  // Apaga o texto de exemplo refazendo o fundo: para cada linha de pixels, faz um degradê
+  // entre a cor logo à esquerda e a cor logo à direita da área (some sem deixar retângulo).
+  function limparAmostra(g) {
+    AREAS_AMOSTRA.forEach(([x, y, w, h]) => {
+      const esq = g.getImageData(x - 8, y, 1, h).data;
+      const dir = g.getImageData(x + w + 7, y, 1, h).data;
+      const img = g.createImageData(w, h);
+      for (let j = 0; j < h; j++) {
+        for (let i = 0; i < w; i++) {
+          const t = i / (w - 1), k = (j * w + i) * 4;
+          for (let c = 0; c < 3; c++) img.data[k + c] = Math.round(esq[j * 4 + c] + (dir[j * 4 + c] - esq[j * 4 + c]) * t);
+          img.data[k + 3] = 255;
+        }
       }
-      poligono(g, p); g.stroke();
-    } else if (tipo === "alvo") {
-      [15, 9].forEach((r) => { g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke(); });
-      g.beginPath(); g.arc(cx, cy, 2.5, 0, 7); g.fill();
-      g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + 16, cy - 16); g.stroke();
-    } else if (tipo === "calendario") {
-      g.strokeRect(cx - 15, cy - 13, 30, 27);
-      g.beginPath(); g.moveTo(cx - 15, cy - 5); g.lineTo(cx + 15, cy - 5);
-      g.moveTo(cx - 8, cy - 17); g.lineTo(cx - 8, cy - 10); g.moveTo(cx + 8, cy - 17); g.lineTo(cx + 8, cy - 10); g.stroke();
-      for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) g.fillRect(cx - 10 + c * 8, cy + r * 8, 4, 4);
-    } else if (tipo === "escudo") {
-      g.beginPath(); g.moveTo(cx, cy - 17); g.lineTo(cx + 15, cy - 11); g.lineTo(cx + 15, cy + 2);
-      g.quadraticCurveTo(cx + 13, cy + 12, cx, cy + 18); g.quadraticCurveTo(cx - 13, cy + 12, cx - 15, cy + 2);
-      g.lineTo(cx - 15, cy - 11); g.closePath(); g.stroke();
-      g.beginPath(); g.moveTo(cx - 7, cy + 1); g.lineTo(cx - 2, cy + 6); g.lineTo(cx + 8, cy - 5); g.stroke();
-    } else if (tipo === "capelo") {
-      poligono(g, [[cx, cy - 14], [cx + 20, cy - 4], [cx, cy + 6], [cx - 20, cy - 4]]); g.stroke();
-      g.beginPath(); g.moveTo(cx - 11, cy + 1); g.lineTo(cx - 11, cy + 10);
-      g.quadraticCurveTo(cx, cy + 17, cx + 11, cy + 10); g.lineTo(cx + 11, cy + 1); g.stroke();
-    }
-    g.restore();
+      g.putImageData(img, x, y);
+    });
   }
 
-  function itemInfo(g, tipo, x, y, rotulo, valor, destaque) {
-    icone(g, tipo, x, y);
+  function dado(g, p, valor, destaque) {
     g.textAlign = "left"; g.textBaseline = "alphabetic";
-    g.fillStyle = AZUL; g.font = "700 20px " + SANS;
-    g.fillText(rotulo, x + 54, y - 4);
-    g.fillStyle = "#101541";
+    g.fillStyle = TEXTO;
     g.font = (destaque ? "800 24px " : "500 20px ") + SANS;
-    g.fillText(valor, x + 54, y + 24);
+    g.fillText(valor, p.x, p.y);
   }
 
+  // desenha só os módulos do QR Code dentro da moldura que já existe na imagem
   function desenharQr(g, texto, x, y, lado) {
-    g.fillStyle = "#fff"; g.strokeStyle = "#2a55e8"; g.lineWidth = 3;
-    g.beginPath();
-    if (g.roundRect) g.roundRect(x, y, lado, lado, 14); else g.rect(x, y, lado, lado);
-    g.fill(); g.stroke();
     if (typeof window.qrcode !== "function") return;
     const qr = window.qrcode(0, "M"); qr.addData(texto); qr.make();
     const n = qr.getModuleCount(), pad = 14, cel = (lado - pad * 2) / n;
@@ -225,7 +188,8 @@
   async function desenhar(cert) {
     await carregarFontes();
     try { if (typeof window.qrcode !== "function") await carregarScript("https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"); } catch { /* sem QR */ }
-    const logo = await carregarImagem(LOGO_SRC);
+    const modelo = await carregarImagem(MODELO_SRC);
+    if (!modelo) return null;
 
     const quando = new Date(cert.data);
     const d = {
@@ -241,75 +205,38 @@
     const c = document.createElement("canvas");
     c.width = W; c.height = H;
     const g = c.getContext("2d");
+    g.drawImage(modelo, 0, 0, W, H);
+    g.textBaseline = "alphabetic";
+    if (LIMPAR_AMOSTRA) limparAmostra(g);
 
-    fundo(g);
-    g.textBaseline = "alphabetic"; g.textAlign = "center";
-
-    g.fillStyle = AZUL_ESCURO; g.font = "800 84px " + SANS;
-    g.fillText("CERTIFICADO", 750, 222);
-    g.fillStyle = AZUL; g.font = "500 32px " + SANS;
-    if ("letterSpacing" in g) g.letterSpacing = "6px";
-    g.fillText("DE PARTICIPAÇÃO", 750, 274);
-    if ("letterSpacing" in g) g.letterSpacing = "0px";
-
-    g.strokeStyle = "#3a56c8"; g.lineWidth = 1.5;
-    g.beginPath(); g.moveTo(458, 300); g.lineTo(662, 300); g.moveTo(824, 300); g.lineTo(1048, 300); g.stroke();
-    g.beginPath(); g.moveTo(703, 300); g.lineTo(743, 312); g.lineTo(783, 300); g.stroke();
-
-    g.fillStyle = "#101541"; g.font = "500 25px " + SANS;
-    g.fillText("Este certificado comprova que", 750, 350);
-
-    // nome (reduz a fonte se for muito longo)
-    let tam = 84;
-    do { g.font = "italic 800 " + tam + "px " + SANS; tam -= 2; } while (g.measureText(d.nome).width > 900 && tam > 30);
+    // nome (itálico 800, degradê azul → violeta; reduz a fonte se for longo)
+    const pn = POS.nome;
+    g.textAlign = "center";
+    let tam = pn.tam;
+    do { g.font = "italic 800 " + tam + "px " + SANS; tam -= 2; } while (g.measureText(d.nome).width > pn.max && tam > 30);
     const largura = g.measureText(d.nome).width;
-    const gr = g.createLinearGradient(772 - largura / 2, 0, 772 + largura / 2, 0);
+    const gr = g.createLinearGradient(pn.cx - largura / 2, 0, pn.cx + largura / 2, 0);
     gr.addColorStop(0, "#0a1048"); gr.addColorStop(0.5, "#2236b8"); gr.addColorStop(1, "#6a5acd");
-    g.fillStyle = gr; g.fillText(d.nome, 772, 452);
+    g.fillStyle = gr; g.fillText(d.nome, pn.cx, pn.y);
 
-    g.fillStyle = "#101541"; g.font = "500 22px " + SANS;
-    g.fillText("inscrito sob o número do CPF:", 750, 505);
-    g.font = "800 32px " + SANS; g.fillText(d.cpf, 750, 545);
+    // CPF (centralizado, negrito)
+    g.fillStyle = TEXTO; g.font = "800 32px " + SANS; g.textAlign = "center";
+    g.fillText(d.cpf, POS.cpf.cx, POS.cpf.y);
 
-    g.strokeStyle = "#8fa0dc"; g.lineWidth = 1.5;
-    g.beginPath(); g.moveTo(263, 575); g.lineTo(1235, 575); g.stroke();
-    g.beginPath(); g.moveTo(651, 600); g.lineTo(651, 812); g.stroke();
+    // coluna esquerda: e-mail, nota, percentual
+    dado(g, POS.email, d.email);
+    dado(g, POS.nota, d.nota, true);
+    dado(g, POS.percentual, d.percentual, true);
+    // coluna direita: data/hora, data por extenso, curso
+    dado(g, POS.dataHora, d.dataHora);
+    dado(g, POS.dataExtenso, d.dataExtenso);
+    dado(g, POS.curso, CURSO);
 
-    itemInfo(g, "email", 301, 626, "E-mail:", d.email);
-    itemInfo(g, "estrela", 301, 698, "Nota final obtida:", d.nota, true);
-    itemInfo(g, "alvo", 301, 776, "Percentual de acertos:", d.percentual, true);
-    itemInfo(g, "calendario", 713, 626, "Data e hora de emissão:", d.dataHora);
-    itemInfo(g, "escudo", 713, 702, "Certificado emitido em:", d.dataExtenso);
-    itemInfo(g, "capelo", 713, 778, "Curso concluído:", CURSO);
-
-    // QR Code + identificador
-    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), 1064, 600, 158);
-    g.fillStyle = "#0a1448"; g.beginPath();
-    if (g.roundRect) g.roundRect(1051, 779, 181, 28, 14); else g.rect(1051, 779, 181, 28);
-    g.fill();
-    g.fillStyle = "#fff"; g.font = "700 14px " + SANS; g.textAlign = "center";
-    g.fillText("VALIDAR CERTIFICADO", 1141, 798);
-    g.fillStyle = "#101541"; g.font = "500 16px " + SANS;
-    ["Escaneie o QR Code", "para validar a autenticidade", "deste certificado."].forEach((t, i) => g.fillText(t, 1142, 832 + i * 21));
-    g.fillStyle = AZUL; g.font = "700 15px " + SANS;
-    g.fillText(cert.codigo, 1142, 898);
-
-    // assinatura
-    g.fillStyle = "#101541"; g.textAlign = "left"; g.font = "78px 'Mrs Saint Delafield', cursive";
-    g.fillText(ASSINATURA.rubrica, 222, 902);
-    g.strokeStyle = "#6b7ac0"; g.lineWidth = 1.5;
-    g.beginPath(); g.moveTo(207, 918); g.lineTo(470, 918); g.stroke();
-    g.textAlign = "center"; g.fillStyle = AZUL_ESCURO; g.font = "700 20px " + SANS;
-    g.fillText(ASSINATURA.nome, 340, 947);
-    g.fillStyle = "#101541"; g.font = "500 20px " + SANS; g.fillText(ASSINATURA.cargo, 340, 974);
-
-    // logo
-    if (logo) {
-      const esc = Math.min(300 / logo.width, 260 / logo.height);
-      g.drawImage(logo, 1280 - (logo.width * esc) / 2, 90, logo.width * esc, logo.height * esc);
-    } else {
-      g.fillStyle = AZUL_ESCURO; g.font = "800 54px " + SANS; g.textAlign = "center"; g.fillText("TechOwl", 1280, 300);
-    }
+    // QR Code dentro da moldura + código de validação abaixo do texto
+    const q = POS.qr;
+    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), q.x, q.y, q.lado);
+    g.textAlign = "center"; g.fillStyle = AZUL; g.font = "700 15px " + SANS;
+    g.fillText(cert.codigo, POS.codigo.cx, POS.codigo.y);
     return c;
   }
 
@@ -347,7 +274,12 @@
     const { certificado } = status();
     if (!certificado) return false;
     const canvas = await desenhar(certificado);
+    if (!canvas) {
+      alert("Não foi possível carregar a imagem do certificado.\n\nArquivo procurado:\n" + urlCompleta(MODELO_SRC));
+      return false;
+    }
     const jpg = await new Promise((ok) => canvas.toBlob(ok, "image/jpeg", 0.95));
+    if (!jpg) { alert("Não foi possível gerar o PDF do certificado."); return false; }
     const bytes = new Uint8Array(await jpg.arrayBuffer());
     const url = URL.createObjectURL(montarPdf(bytes, canvas.width, canvas.height));
     const a = document.createElement("a");
@@ -390,9 +322,7 @@
     }));
   }
 
-  function melhorResultado() { return ler(CHAVE_MELHOR); }   // inclui o desempenho por tema (temas)
-
-  window.Certificado = { registrar, status, baixar, preencher, melhorResultado };
+  window.Certificado = { registrar, status, baixar, preencher };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", preencher);
   else preencher();
 })();
