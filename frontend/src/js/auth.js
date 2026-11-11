@@ -10,9 +10,15 @@
 const LOGIN_URL  = new URL("login.html", location.href).href;           // tela de login
 const PORTAL_URL = new URL("home.html", location.href).href;  // Área de estudos
 
-const CHAVE_USUARIOS = "usuarios";
+
 const CHAVE_SESSAO   = "sessao";
 const CHAVE_AVISO    = "aviso";
+
+// Endereço da API. Assumo "/api" (o nginx repassa para o backend); confirmar com o nginx.conf.
+const API_BASE = "/api";
+
+// Apaga contas e hashes de senha que versões antigas do site guardaram neste navegador.
+try { localStorage.removeItem("usuarios"); } catch { /* sem acesso ao storage: ignora */ }
 
 const ERRO_NAVEGADOR =
   "Não foi possível concluir neste navegador. Abra o site por localhost ou https e tente de novo.";
@@ -33,58 +39,51 @@ function cpfValido(valor) {
   return true;
 }
 
-
-const paraHex = (bytes) =>
-  Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-
-const gerarSalt = () => paraHex(crypto.getRandomValues(new Uint8Array(16)));
-
-async function gerarHash(senha, salt) {
-  const dados = new TextEncoder().encode(salt + senha);
-  return paraHex(new Uint8Array(await crypto.subtle.digest("SHA-256", dados)));
-}
-
 /* ---------- Usuários ---------- */
-function lerUsuarios() {
-  try {
-    return JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
-  } catch {
-    return [];
-  }
-}
-
 async function cadastrar({ nome, cpf, email, senha }) {
-  const usuarios = lerUsuarios();
-  cpf = soDigitos(cpf);
-  email = email.trim().toLowerCase();
+  const resposta = await apiFetch("/candidatos", {
+    metodo: "POST",
+    corpo: {
+      cpf: soDigitos(cpf),
+      nome: nome.trim(),
+      email: email.trim().toLowerCase(),
+      senha,
+    },
+  });
 
-  if (usuarios.some((u) => u.cpf === cpf)) {
-    return { ok: false, erro: "Já existe uma conta com este CPF. Faça login." };
+  if (!resposta.ok) {
+    // A API não diz se o repetido foi o CPF ou o e-mail.
+    if (resposta.status === 409) {
+      return { ok: false, erro: "Já existe uma conta com este CPF ou e-mail. Faça login." };
+    }
+    return { ok: false, erro: resposta.erro };
   }
-  if (usuarios.some((u) => u.email === email)) {
-    return { ok: false, erro: "Já existe uma conta com este e-mail. Use outro e-mail ou faça login." };
-  }
-
-  const salt = gerarSalt();
-  usuarios.push({ nome: nome.trim(), cpf, email, salt, hash: await gerarHash(senha, salt) });
-  localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
   return { ok: true };
 }
 
 /* ---------- Login e sessão ---------- */
 async function entrar({ cpf, senha, lembrar }) {
-  const usuario = lerUsuarios().find((u) => u.cpf === soDigitos(cpf));
+  const resposta = await apiFetch("/login", {
+    metodo: "POST",
+    corpo: { cpf: soDigitos(cpf), senha},
+  });
 
-  if (!usuario || (await gerarHash(senha, usuario.salt)) !== usuario.hash) {
-    return { ok: false, erro: "CPF ou senha incorretos. Confira os dados ou cadastre-se." };
-  }
+  if (!resposta.ok) return { ok: false, erro: resposta.erro};
 
-  // "Lembrar-me" marcado: a sessão fica salva. Desmarcado: dura até fechar a aba.
-  sessionStorage.removeItem(CHAVE_SESSAO);
+  const { token, expira_em, candidato } = resposta.dados;
+
+    sessionStorage.removeItem(CHAVE_SESSAO);
   localStorage.removeItem(CHAVE_SESSAO);
   (lembrar ? localStorage : sessionStorage).setItem(
     CHAVE_SESSAO,
-    JSON.stringify({ nome: usuario.nome, cpf: usuario.cpf, email: usuario.email })
+    JSON.stringify({
+      token,
+      expira: Date.now() + expira_em * 1000,
+      id: candidato.id,
+      nome: candidato.nome,
+      email: candidato.email,
+      cpf: soDigitos(cpf),
+    })
   );
   return { ok: true };
 }
@@ -92,11 +91,7 @@ async function entrar({ cpf, senha, lembrar }) {
 function usuarioLogado() {
   try {
     const sessao = JSON.parse(sessionStorage.getItem(CHAVE_SESSAO) || localStorage.getItem(CHAVE_SESSAO));
-    // Sessões criadas antes de o e-mail ser guardado: busca o e-mail no cadastro (pelo CPF)
-    if (sessao && !sessao.email) {
-      const conta = lerUsuarios().find((u) => u.cpf === sessao.cpf);
-      if (conta && conta.email) sessao.email = conta.email;
-    }
+    if (!sessao || !sessao.token || Date.now() >= sessao.expira) return null;
     return sessao;
   } catch {
     return null;
@@ -107,6 +102,55 @@ function sair() {
   sessionStorage.removeItem(CHAVE_SESSAO);
   localStorage.removeItem(CHAVE_SESSAO);
   window.location.href = LOGIN_URL;
+}
+
+function obterToken() {
+  const sessao = usuarioLogado();
+  return sessao && sessao.token ? sessao.token : null;
+}
+
+// Uso: const r = await apiFetch("/login", { metodo: "POST", corpo: {...} });
+// Devolve sempre { ok, status, dados } em sucesso ou { ok:false, status, erro } em falha.
+// privado:true envia o token; se a API responder 401, a sessão expirou e volta para o login.
+async function apiFetch(caminho, { metodo = "GET", corpo, privado = false } = {}) {
+  const headers = { "Content-Type": "application/json" };
+
+  if (privado) {
+    const token = obterToken();
+    if (!token) {
+      guardarAviso("Faça login para continuar.");
+      window.location.replace(LOGIN_URL);
+      return { ok: false, status: 401, erro: "Sem sessão." };
+    }
+    headers.Authorization = "Bearer " + token;
+  }
+
+  let resposta;
+  try {
+    resposta = await fetch(API_BASE + caminho, {
+      method: metodo,
+      headers,
+      body: corpo ? JSON.stringify(corpo) : undefined,
+    });
+  } catch {
+    return { ok: false, status: 0, erro: "Não foi possível falar com o servidor. Confira se ele está no ar e tente de novo." };
+  }
+
+  let dados = null;
+  try { dados = await resposta.json(); } catch { /* resposta sem JSON */ }
+
+  if (resposta.status === 401 && privado) {
+    sessionStorage.removeItem(CHAVE_SESSAO);
+    localStorage.removeItem(CHAVE_SESSAO);
+    guardarAviso("Sua sessão expirou. Entre novamente.");
+    window.location.replace(LOGIN_URL);
+    return { ok: false, status: 401, erro: "Sessão expirada." };
+  }
+
+  if (!resposta.ok) {
+    return { ok: false, status: resposta.status, erro: (dados && dados.erro) || "Erro inesperado do servidor." };
+  }
+  return { ok: true, status: resposta.status, dados };
 }
 
 // As páginas do portal chamam isto no <head>: sem sessão, volta para o login.
