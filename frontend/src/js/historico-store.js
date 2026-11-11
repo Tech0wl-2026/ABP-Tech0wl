@@ -9,6 +9,7 @@
      HistoricoCertificacao.sortearQuestao({ tema, questaoId, enunciado, alternativaCorreta })
      HistoricoCertificacao.registrarResposta("texto escolhido")   // null = avançou sem responder
      HistoricoCertificacao.registrarExpirada()          // tempo da questão acabou
+     HistoricoCertificacao.registrarInterrompida()      // saiu da tela / caiu a conexão: só esta questão
      HistoricoCertificacao.interromperAtual()           // aluno saiu / fechou a prova
      HistoricoCertificacao.finalizarAvaliacao({ percentual, aprovado })
 
@@ -88,6 +89,8 @@
   const registrarResposta = (resp) => mudarQuestao((q) => { q.situacao = "respondida"; q.respostaEscolhida = resp; q.respondidaEm = agora(); });
   const registrarExpirada = () => mudarQuestao((q) => { q.situacao = "expirada"; q.respondidaEm = null; });
 
+  const registrarInterrompida = () => mudarQuestao((q) => { q.situacao = "interrompida"; q.respondidaEm = null; });
+
   function interromperAtual() {
     const h = ler(); const a = atual(h);
     if (!a) return false;
@@ -110,6 +113,6 @@
 
   raiz.HistoricoCertificacao = {
     iniciarAvaliacao, retomarOuIniciar, sortearQuestao, registrarResposta, registrarExpirada,
-    interromperAtual, finalizarAvaliacao, lerHistorico: ler,
+    registrarInterrompida, interromperAtual, finalizarAvaliacao, lerHistorico: ler,
   };
 })(typeof window !== "undefined" ? window : globalThis);

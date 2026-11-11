@@ -232,11 +232,12 @@ function historicoPerguntaExibida() {
 }
 
 // o aluno saiu desta pergunta (próxima, última ou tempo esgotado)
-function historicoPerguntaEncerrada(expirou) {
+function historicoPerguntaEncerrada(expirou, interrompida) {
   if (!Historico) return;
   const q = QUESTOES[estado.atual];
   const r = estado.respostas[estado.atual];
-  if (r !== undefined) Historico.registrarResposta(rotuloAlternativa(q, r));
+  if (interrompida) { if (Historico.registrarInterrompida) Historico.registrarInterrompida(); }   // saiu da tela / caiu a conexão
+  else if (r !== undefined) Historico.registrarResposta(rotuloAlternativa(q, r));
   else if (expirou) Historico.registrarExpirada();
   else Historico.registrarResposta(null);          // avançou sem responder
 }
@@ -342,11 +343,13 @@ function iniciarRelogio() {
   pararRelogio();
   fimDoTempo = Date.now() + estado.restante * 1000;
   relogio = setInterval(tique, 200);
+  estado.emAndamento = true;       // pergunta aberta e com o tempo correndo (se a página fechar assim, foi interrupção)
 }
 
 function pararRelogio() {
   clearInterval(relogio);
   relogio = null;
+  estado.emAndamento = false;
 }
 
 function tique() {
@@ -377,15 +380,20 @@ function abrirGabarito() {
   const acertou = r === q.correta;
   const ultima = estado.atual === QUESTOES.length - 1;
 
+  const motivo = estado.reveladas[estado.atual];
   dialogoGabarito.classList.toggle("acertou", acertou);
   dialogoGabarito.classList.toggle("errou", !acertou);
 
-  $("gabarito-titulo").textContent = acertou
-    ? "✔ Resposta correta!"
-    : (r === undefined ? (estado.reveladas[estado.atual] === "expirou" ? "⏱ Tempo esgotado" : "Você não respondeu") : "✘ Resposta incorreta");
+  $("gabarito-titulo").textContent = motivo === "interrompida"
+    ? "⚠ Questão encerrada"
+    : (acertou
+      ? "✔ Resposta correta!"
+      : (r === undefined ? (motivo === "expirou" ? "⏱ Tempo esgotado" : "Você não respondeu") : "✘ Resposta incorreta"));
 
   const marcada = $("gabarito-marcada");
-  marcada.textContent = (!acertou && r !== undefined) ? "Você marcou: " + rotuloAlternativa(q, r) : "";
+  marcada.textContent = motivo === "interrompida"
+    ? "Você saiu da tela ou a conexão caiu durante a questão. A resposta foi considerada em branco e não pode ser refeita."
+    : ((!acertou && r !== undefined) ? "Você marcou: " + rotuloAlternativa(q, r) : "");
   marcada.hidden = !marcada.textContent;
 
   $("gabarito-certa").textContent = "Alternativa correta: " + rotuloAlternativa(q, q.correta);
@@ -404,10 +412,30 @@ $("btn-gabarito-continuar").addEventListener("click", () => {
 });
 dialogoGabarito.addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
 
+/* ---------- INTERRUPÇÃO: saiu da tela, fechou a página ou caiu a conexão ----------
+   Se isso acontece com a pergunta aberta e o tempo correndo, a resposta que estava sendo
+   dada é apagada (fica em branco) e a pergunta é encerrada: não pode mais ser respondida.
+   O "Parar prova" (que pausa o relógio) não conta como interrupção. */
+function encerrarPorInterrupcao() {
+  pararRelogio();
+  delete estado.respostas[estado.atual];
+  estado.reveladas[estado.atual] = "interrompida";
+  salvar();
+}
+
+function interromper() {
+  if (!relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
+  encerrarPorInterrupcao();
+  abrirGabarito();                 // quando o aluno voltar, o aviso já está na tela
+}
+
+document.addEventListener("visibilitychange", () => { if (document.hidden) interromper(); });
+window.addEventListener("offline", interromper);
+
 /* ---------- PRÓXIMA PERGUNTA E RESULTADO ---------- */
 function avancar() {
   pararRelogio();
-  historicoPerguntaEncerrada(estado.reveladas[estado.atual] === "expirou");
+  historicoPerguntaEncerrada(estado.reveladas[estado.atual] === "expirou", estado.reveladas[estado.atual] === "interrompida");
   if (estado.atual === QUESTOES.length - 1) return finalizar();
 
   estado.atual += 1;
@@ -541,14 +569,19 @@ $("dialogo-parcial").addEventListener("cancel", (e) => e.preventDefault());   //
 
 /* ---------- INÍCIO ---------- */
 $("btn-proxima").addEventListener("click", () => revelar());
-window.addEventListener("pagehide", salvar);
+window.addEventListener("pagehide", () => { interromper(); salvar(); });
 
 carregar();
 if (estado.finalizada && estado.resultado) {
   mostrarResultado();                    // prova já finalizada: vai direto para o resultado
 } else {
+  // a página foi fechada (ou travou) com a pergunta correndo e sem passar pelo "Parar prova": interrupção
+  if (estado.emAndamento && !estado.reveladas[estado.atual]) encerrarPorInterrupcao();
   if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
   mostrarPergunta();
   if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
-  else iniciarRelogio();
+  else {
+    iniciarRelogio();
+    if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
+  }
 }
