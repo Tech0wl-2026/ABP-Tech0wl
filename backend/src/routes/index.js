@@ -1,9 +1,11 @@
 import {Router} from 'express';
 import {resolve, basename} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import bcrypt from 'bcrypt'; // troque pela lib de hash que o login usa
 import {autenticacao} from '../middlewares/autenticacao.js';
 import {idValido,falhar} from '../erros.js';
-import {cadastrarCandidato,login} from '../services/candidatos.js';
+import {login} from '../services/candidatos.js';
+import {validarCadastro} from '../services/validacaoCadastro.js';
 import {buscarProximoTema,sortear,questaoDoCandidato,responder,consultarAvaliacao,certificado} from '../services/avaliacao.js';
 
 const pastaImagens = fileURLToPath(new URL('../../assets/questoes/',import.meta.url));
@@ -15,7 +17,27 @@ export function criarRotas(pool,segredo,hashFicticio,limiteLogin) {
     await pool.query('SELECT 1 FROM candidatos LIMIT 1');
     res.json({status:'ok'});
   });
-  rotas.post('/candidatos',limiteLogin,async (req,res) => res.status(201).json(await cadastrarCandidato(pool,req.body)));
+  rotas.post('/candidatos',limiteLogin,async (req,res) => {
+    const {erros,dados} = validarCadastro(req.body);
+    if (erros.length) return res.status(422).json({erros});
+
+    try {
+      const senhaHash = await bcrypt.hash(dados.senha,10); // mesmo método/custo do login
+      const {rows:[{id}]} = await pool.query(
+        `INSERT INTO candidatos (cpf,nome,email,senha_hash)
+         VALUES ($1,$2,$3,$4)
+         RETURNING id`,
+        [dados.cpf,dados.nome,dados.email,senhaHash]
+      );
+      return res.status(201).json({id,nome:dados.nome,email:dados.email});
+    } catch (err) {
+      if (err.code === '23505') { // violação de UNIQUE no PostgreSQL
+        const campo = err.constraint?.includes('email') ? 'email' : 'cpf';
+        return res.status(409).json({erros:[{campo,mensagem:`${campo.toUpperCase()} já cadastrado`}]});
+      }
+      throw err; // cai no tratamento de erros do app.js
+    }
+  });
   rotas.post('/login',limiteLogin,async (req,res) => res.json(await login(pool,req.body,segredo,hashFicticio)));
   rotas.get('/temas',async (req,res) => res.json((await pool.query('SELECT id,nome,ordem FROM temas ORDER BY ordem')).rows));
   rotas.get('/temas/proximo',privado,async (req,res) => res.json(await buscarProximoTema(pool,req.candidatoId)));

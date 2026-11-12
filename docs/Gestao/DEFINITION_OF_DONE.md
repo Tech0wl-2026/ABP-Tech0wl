@@ -1,38 +1,62 @@
-# Critérios de pronto
+# Definition of Done (DoD) — quando uma issue está pronta
 
-Estes critérios orientam a revisão das atividades. A adoção pela equipe deve ser registrada na [issue #1](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/1).
+Uma issue só está **pronta** quando cumpre todos os itens gerais e os do seu tipo. Só então ela é **fechada** e o cartão vai para **Done**, no mesmo dia do merge.
 
-## Para qualquer atividade
+A adoção destes critérios pela equipe é registrada na [issue #1](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/1). Para começar uma issue, veja a [Definition of Ready](DEFINITION_OF_READY.md). As regras do board estão em [QUADRO.md](QUADRO.md).
 
-- Identificar a issue e os requisitos envolvidos.
-- Atender aos critérios de aceite e incluir um link ou arquivo que permita conferir a entrega.
-- Versionar os arquivos e atualizar a documentação relacionada.
-- Pedir a revisão de outro integrante e resolver os pontos levantados.
-- Registrar o que ainda falta. Senhas, tokens e dados reais de candidatos ficam fora do repositório.
+## 1. Para qualquer issue
 
-## Protótipo
+- [ ] Todos os **critérios de aceite** da issue atendidos e marcados.
+- [ ] Trabalho feito numa branch `feat/issue-N-descricao` criada a partir da `develop`.
+- [ ] **PR para a `develop`** com `Closes #N` e descrição do que mudou.
+- [ ] **CI verde** no PR.
+- [ ] **Revisão de outro integrante**: aprovação ou comentário no PR, e os pontos levantados resolvidos.
+- [ ] **Evidência** linkada na issue: PR, print ou arquivo em `docs/evidencias/`.
+- [ ] Documentação relacionada atualizada (README, API, funcionalidades, dicionário).
+- [ ] Sem senhas, tokens ou dados reais de candidatos no repositório.
+- [ ] O que ainda falta registrado em comentário na issue ou em nova issue.
+- [ ] **Issue fechada** e cartão em **Done** no mesmo dia do merge.
 
-O Figma precisa cobrir RF01 a RF21 em computador e celular, com navegação entre as telas. A revisão inclui erros de cadastro/login, resposta e feedback, tempo esgotado, interrupção e retomada, resultado, certificado e validação pública. Os fluxos devem estar de acordo com os requisitos e o modelo de dados.
+## 2. Código (frontend e backend)
 
-## Banco e UML
+- [ ] Caminho de sucesso e de erro testados (ex.: login certo e senha errada).
+- [ ] Frontend usa a **API como fonte dos dados**: nada de conta, senha, questão, gabarito ou nota no `localStorage`.
+- [ ] HTML, CSS e JavaScript sem framework; funciona em computador e celular (393 px e 320 px, sem rolagem lateral).
+- [ ] Na API: acesso pelo token, prazo de 150 s, resposta única, nota calculada no servidor e SQL parametrizado.
+- [ ] Testes existentes continuam passando (`npm test` no backend e testes de interface).
+- [ ] Funciona pelo Docker Compose (`docker compose up --build`).
 
-Entregar modelos conceitual, lógico e físico, DER e dicionário. Conferir atributos, tipos, chaves, obrigatoriedade, cardinalidades e restrições. Manter os diagramas editáveis e exportações legíveis, executar o DDL no PostgreSQL e alinhar UML, Figma e banco.
+## 3. Banco de dados e UML
 
-A modelagem deve representar os 12 temas, quatro questões por tema, imagem, quatro alternativas e uma correta. Também deve prever prazo, retomada, histórico, resultado, certificado e validação por QR Code.
+- [ ] Modelos conceitual, lógico e físico, DER e dicionário coerentes com o schema `servidor` usado pela API.
+- [ ] Atributos, tipos, chaves, obrigatoriedade, cardinalidades e restrições conferidos.
+- [ ] DDL executado no PostgreSQL sem erro.
+- [ ] Arquivo editável (Astah, PlantUML, .dot) e exportação legível (PNG ou PDF) versionados.
+- [ ] Coerente com o Figma e com as telas implementadas.
 
-## Código
+## 4. Design (Figma)
 
-Conferir os caminhos de sucesso e erro da atividade. Na API, validar acesso, prazo, resposta única, nota e integridade dos dados. Registrar os testes executados e os erros conhecidos. As entregas de integração precisam funcionar pelo Docker Compose.
+- [ ] Telas em computador e celular, com navegação entre elas.
+- [ ] Estados de erro, tempo esgotado, interrupção e retomada, resultado, certificado e validação pública.
+- [ ] Exportação datada em `docs/design/` e link do Figma atualizado.
+- [ ] Comparado com a tela implementada; diferenças anotadas.
 
-## Documentação
+## 5. Conteúdo (questões e apostilas)
 
-Os textos devem explicar o funcionamento atual, com links válidos e fontes identificadas. Registros reconstruídos de reuniões continuam identificados até a confirmação dos participantes.
+- [ ] Uma alternativa correta por questão, enunciado claro e coerente com a apostila do tema.
+- [ ] Imagem associada, legível e com procedência registrada.
 
-## Fechamento da sprint
+## 6. Documentação
 
-Registrar os critérios combinados com o professor, a versão entregue, o CI, os testes manuais, as contribuições e as reuniões de Review e Retrospectiva. Guardar a versão do Figma e as fontes dos modelos. Após o aceite, criar a tag da sprint e acompanhar a melhoria definida para a próxima entrega.
+- [ ] Explica o funcionamento **atual**, sem apresentar planejamento como pronto.
+- [ ] Links válidos e fontes identificadas.
+- [ ] Registros de reuniões com data e participantes confirmados.
 
+## 7. Fechamento da sprint
 
-## Concluir no board
-
-Um item só é considerado pronto quando, além dos critérios acima, a issue está **fechada** e o cartão em **Done**, no mesmo dia do merge. Passo a passo em [QUADRO.md](QUADRO.md).
+- [ ] Nenhuma issue da sprint aberta sem decisão (fechada ou movida com o motivo comentado).
+- [ ] Review e Retrospectiva registradas com data, presentes, feedback real e ações com responsável.
+- [ ] Melhoria da sprint anterior conferida.
+- [ ] Burndown atualizado a partir das issues fechadas.
+- [ ] Versão do Figma e fontes dos modelos guardadas.
+- [ ] `develop` integrada à `main` com o CI verde e tag `sprint-N` criada no commit entregue.
