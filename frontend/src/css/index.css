@@ -261,6 +261,28 @@ a:focus-visible{
     color: #d9ceff;
 }
 
+/* espaçamento entre a linha de cima (PO+SM) e a de baixo (devs) */
+.lideranca{
+    margin-bottom: 20px;
+}
+
+/* devs com iniciais um pouco menores pra ficar harmônico */
+.devteam li .iniciais{
+    width: 90px;
+    height: 90px;
+}
+
+.devteam li a{
+    font-size: 14px;
+}
+
+.devteam .funcao{
+    font-size: 12px;
+}
+.devteam{
+    width: min(1100px, 100%);
+    gap: 30px 20px;
+}
 .funcao{
     margin-top: 6px;
     font-family: 'Kulim Park', sans-serif;
