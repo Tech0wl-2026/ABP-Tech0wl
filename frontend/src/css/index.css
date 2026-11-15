@@ -192,13 +192,82 @@ a:focus-visible{
 
 .beneficios img{ width: auto; height: 60px; margin: 0 auto 12px; }
 
-/* ---------- MEMBROS DA EQUIPE ---------- */
+/* ---------- Membros da Equipe ---------- */
 
+.equipe{
+    padding: 100px 5%;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 0% 65%, #fff, #7F67DC, #6a2fe0, transparent 35%),
+        radial-gradient(ellipse at 100% 65%, #fff, #7F67DC, #6a2fe0, transparent 35%),
+        #000;
+}
 
-/* --------- */
+.equipe h2{
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
 
+.membros{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 28px;
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
 
+.membros li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(190px, 100%);
+}
 
+.membros .iniciais{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 16px;
+}
+
+/* PO - cinza escuro */
+.membros li:nth-child(1) .iniciais{
+    background-image: url('../arquivosextras/logoPO.png');
+}
+
+/* SM - cinza arroxeado */
+.membros li:nth-child(2) .iniciais{
+    background-image: url('../arquivosextras/logoSM.png');
+}
+
+/* Dev Team - roxo */
+.membros li:nth-child(n+3) .iniciais{
+    background-image: url('../arquivosextras/logoDT.png');
+}
+
+.membros a{
+    font-family: 'Kulim Park', sans-serif;
+    font-size: 15px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.membros a:hover{
+    color: #d9ceff;
+}
+
+.funcao{
+    margin-top: 6px;
+    font-family: 'Kulim Park', sans-serif;
+    font-size: 13px;
+    opacity: .85;
+}
 
 /* ---------- RODAPÉ ---------- */
 footer{
