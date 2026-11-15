@@ -6,7 +6,7 @@ Telas do Aprendizagem Ágil em HTML, CSS e JavaScript, com versões para computa
 
 | Página | Conteúdo |
 |---|---|
-| [index.html](index.html) | Home, apresentação, benefícios e docentes. |
+| [index.html](index.html) | Home, apresentação, benefícios e equipe responsável. |
 | [curso.html](curso.html) | Módulos, depoimentos ilustrativos e informações do certificado. |
 | [sobre.html](sobre.html) | Apresentação do projeto e da equipe Tech0wl. |
 

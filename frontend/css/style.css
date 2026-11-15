@@ -377,37 +377,7 @@ h1 {
   );
   transform: scaleY(0.83);
 }
-.teachers h2 {
-  font-family: Kulim, Arial, sans-serif;
-  font-size: 32px;
-  line-height: 1.6;
-}
-.teacher-list {
-  display: flex;
-  justify-content: space-between;
-  gap: 45px;
-  margin: 91px 8.33% 0;
-}
-.teacher {
-  width: 370px;
-  height: 564px;
-  flex: 1;
-  min-width: 0;
-  border-radius: 50%;
-  background-image: url("../assets/figma/docentes.png");
-  background-size: 300% auto;
-  background-repeat: no-repeat;
-  background-color: #57307b;
-}
-.teacher-one {
-  background-position: left top;
-}
-.teacher-two {
-  background-position: center top;
-}
-.teacher-three {
-  background-position: right top;
-}
+
 footer {
   height: 228px;
   background: var(--footer);
