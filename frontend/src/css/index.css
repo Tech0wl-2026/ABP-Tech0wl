@@ -238,17 +238,17 @@ a:focus-visible{
 
 /* PO - cinza escuro */
 .membros li:nth-child(1) .iniciais{
-    background-image: url('../arquivosextras/logoPO.png');
+    background-image: url('../images/logoPO.png');
 }
 
 /* SM - cinza arroxeado */
 .membros li:nth-child(2) .iniciais{
-    background-image: url('../arquivosextras/logoSM.png');
+    background-image: url('../images/logoSM.png');
 }
 
 /* Dev Team - roxo */
 .membros li:nth-child(n+3) .iniciais{
-    background-image: url('../arquivosextras/logoDT.png');
+    background-image: url('../images/logoDT.png');
 }
 
 .membros a{
