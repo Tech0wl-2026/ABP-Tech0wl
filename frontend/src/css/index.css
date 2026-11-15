@@ -237,20 +237,19 @@ a:focus-visible{
 }
 
 /* PO - cinza escuro */
-.membros li:nth-child(1) .iniciais{
+.membros li.po .iniciais{
     background-image: url('../images/logoPO.png');
 }
 
 /* SM - cinza arroxeado */
-.membros li:nth-child(2) .iniciais{
+.membros li.sm .iniciais{
     background-image: url('../images/logoSM.png');
 }
 
 /* Dev Team - roxo */
-.membros li:nth-child(n+3) .iniciais{
+.membros li.dev .iniciais{
     background-image: url('../images/logoDT.png');
 }
-
 .membros a{
     font-family: 'Kulim Park', sans-serif;
     font-size: 15px;
