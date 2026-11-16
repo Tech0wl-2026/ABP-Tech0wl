@@ -59,3 +59,59 @@ Commits: "Adiciona apiFetch e base da integração com a API", "Faz login pela A
 - Existem duas tabelas de candidatos no banco: `public.candidato` (modelo de referência) e `servidor.candidatos` (usada pela API).
 - O token fica no navegador e não há renovação: após 1 hora é preciso entrar de novo.
 - Não há tela para o candidato corrigir ou excluir os próprios dados.
+
+## 7. Exemplos com dados fictícios
+
+Conta de teste usada nos exemplos (inventada, sem relação com pessoa real):
+
+- CPF: `11144477735`
+- Nome: `Maria Teste`
+- E-mail: `maria.teste@exemplo.invalid`
+- Senha: `senha-teste-123` (usada só em ambiente local)
+
+**Cadastro**: `POST /api/candidatos`
+
+```json
+{ "cpf": "11144477735", "nome": "Maria Teste",
+  "email": "maria.teste@exemplo.invalid", "senha": "senha-teste-123" }
+```
+
+Resposta 201 (sem senha e sem token):
+
+```json
+{ "id": 1, "cpf": "11144477735", "nome": "Maria Teste",
+  "email": "maria.teste@exemplo.invalid", "criado_em": "2026-11-12T01:20:00.000Z" }
+```
+
+**Login**: `POST /api/login`
+
+```json
+{ "cpf": "11144477735", "senha": "senha-teste-123" }
+```
+
+Resposta 200 (token abreviado):
+
+```json
+{ "token": "eyJhbGciOi...", "tipo": "Bearer", "expira_em": 3600,
+  "candidato": { "id": 1, "nome": "Maria Teste", "email": "maria.teste@exemplo.invalid" } }
+```
+
+**Erros**
+
+```json
+{ "erro": "CPF ou senha incorretos." }
+{ "erro": "Registro já existente." }
+```
+
+**Sessão no navegador** (chave `sessao`, token abreviado):
+
+```json
+{ "token": "eyJhbGciOi...", "expira": 1794450300000, "id": 1,
+  "nome": "Maria Teste", "email": "maria.teste@exemplo.invalid", "cpf": "11144477735" }
+```
+
+**Banco** (`servidor.candidatos`, só os primeiros caracteres do hash):
+
+| id | cpf | nome | inicio_do_hash |
+|---|---|---|---|
+| 1 | 11144477735 | Maria Teste | $2b$12$ |
