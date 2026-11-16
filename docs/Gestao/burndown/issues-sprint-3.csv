@@ -1,0 +1,44 @@
+issue,titulo,responsaveis,situacao,fechada_em
+#1,[S1][T080][RNF05] Definir critérios de pronto da equipe,breesiqueiramkt,Aberta,
+#14,[S2][T013][RF03] Implementar persistência e validação do cadastro,abdisilva,Aberta,
+#25,[S2][T024][RF06] Implementar sorteio de uma questão entre quatro por tema,abdisilva,Aberta,
+#33,[S2][T032][RF09] Implementar feedback da resposta e ações de continuidade,"GabrielK07,Bertuci21,peira2008",Fechada,10/11/2026
+#36,[S2][T035][RF09] Persistir respostas e estado da certificação,Bertuci21,Fechada,10/11/2026
+#40,[S2][T039][RF11] Encerrar questão não respondida ao esgotar o tempo,GabrielK07,Fechada,12/11/2026
+#41,[S2][T040][RF12] Oferecer continuar ou encerrar a sessão após cada resposta,abdisilva,Aberta,
+#42,[S2][T041][RF13] Persistir a retomada pelo próximo tema pendente,"AxelzoldyckGNR,Bertuci21",Fechada,10/11/2026
+#44,[S2][T043][RF14] Encerrar a questão em perda de conexão ou fechamento,"breesiqueiramkt,peira2008",Aberta,
+#45,[S2][T044][RF15] Impedir nova resposta a um tema encerrado,abdisilva,Aberta,
+#46,[S2][T045][RF15] Bloquear repetição também na interface,"GabrielK07,Bertuci21,peira2008",Fechada,10/11/2026
+#47,[S3][T046][RF16] Implementar página de resultado final,Bertuci21,Fechada,10/11/2026
+#49,[S3][T048][RF16] Calcular a nota final no back-end após 12 temas,abdisilva,Aberta,
+#52,[S3][T051][RF17] Emitir certificado somente com aproveitamento mínimo de 65%,Bertuci21,Fechada,10/11/2026
+#56,[S3][T055][RF18] Gerar QR Code e dados de emissão do certificado,AxelzoldyckGNR,Aberta,
+#57,[S3][T056][RF18] Implementar apresentação e exportação do certificado,Bertuci21,Fechada,10/11/2026
+#58,[S3][T057][RF18] Consultar resultado para compor o certificado,abdisilva,Aberta,
+#59,[S3][T058][RF18] Consultar os dados do candidato para o certificado,abdisilva,Aberta,
+#63,[S3][T062][RF19] Consultar autenticidade do certificado pelo identificador,abdisilva,Aberta,
+#64,[S3][T063][RF19] Implementar página pública de validação do certificado,AxelzoldyckGNR,Aberta,
+#66,[S3][T065][RF21] Exibir temas concluídos e pendentes na certificação,Bertuci21,Fechada,10/11/2026
+#67,[S3][T066][RF21] Implementar painel de progresso da certificação,Bertuci21,Fechada,10/11/2026
+#69,[S3][T068][RF21] Persistir temas concluídos na certificação,abdisilva,Aberta,
+#70,[S3][T069][RF21] Consultar progresso do candidato,abdisilva,Aberta,
+#74,[S3][T073][RNF01] Validar responsividade das telas implementadas,Bertuci21,Fechada,10/11/2026
+#75,[S3][T074][RNF02] Medir e melhorar o carregamento de páginas e questões,breesiqueiramkt,Aberta,
+#76,[S2][T075][RNF03] Implementar proteção e minimização de dados pessoais,tiago3000,Aberta,
+#77,[S3][T076][RNF04] Impedir manipulação da nota no back-end,abdisilva,Aberta,
+#83,[S3][T083][RNF06] Documentar instalação e execução do projeto,GabrielK07,Fechada,11/11/2026
+#84,[S3][T084][RNF06] Documentar a API do portal,GabrielK07,Aberta,
+#85,[S3][T085][RNF06] Documentar funcionalidades implementadas e limitações,GabrielK07,Aberta,
+#86,[S1][T086][RNF06] Registrar Daily Scrum Review e Retrospective,"breesiqueiramkt,AxelzoldyckGNR",Aberta,
+#88,[S2][T088][RNF07] Criar serviços de aplicação e PostgreSQL com Docker Compose,breesiqueiramkt,Fechada,09/11/2026
+#89,[S3][T089][RNF07] Integrar aplicação e banco no ambiente de containers,breesiqueiramkt,Fechada,09/11/2026
+#90,[S3][T090][RNF07] Validar dependências e configuração dos containers,breesiqueiramkt,Fechada,09/11/2026
+#97,[S2][T097] Validar prova tempo interrupção e retomada,"tiago3000,breesiqueiramkt,GabrielK07,Bertuci21",Aberta,
+#98,[S3][T098] Validar resultado certificado e proteção da nota,abdisilva,Aberta,
+#99,[S3][T099] Executar validação integral do MVP,breesiqueiramkt,Aberta,
+#100,[S2][T100] Revisar tecnicamente questões imagens e material didático,"breesiqueiramkt,AxelzoldyckGNR,GabrielK07",Fechada,11/11/2026
+#103,[S3][T103] Validar execução do projeto em ambiente limpo,breesiqueiramkt,Fechada,09/11/2026
+#104,[S3][T104] Preparar entrega apresentação Review e Retrospective finais,breesiqueiramkt,Aberta,
+#105,[S2][T105] Integrar front-end e API com tratamento de erros,"tiago3000,peira2008",Aberta,
+#107,[S3][T107][RF20] Implementar consulta e tela do histórico da certificação,Bertuci21,Fechada,10/11/2026

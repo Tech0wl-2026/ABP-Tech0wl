@@ -1,10 +1,47 @@
-# Burndown da Sprint 2
+# Burndown das sprints
+
+- [Sprint 3](#burndown-da-sprint-3) — em andamento, gerado automaticamente pelas issues fechadas
+- [Sprint 2](#burndown-da-sprint-2) — reconstruído pelos commits
+
+## Burndown da Sprint 3
+
+Sprint 3: 06/11 a 25/11/2026, com **43 issues** com a etiqueta `sprint:3` no [milestone da Sprint 3](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3). Situação em **16/11/2026**: **18 fechadas e 25 abertas**.
+
+![Burndown da Sprint 3](burndown-sprint-3.png)
+
+### Como o gráfico é feito
+
+Desde a [Retrospectiva da Sprint 2](../../sprints/retrospectiva-sprint-2.md) o time fecha a issue no dia em que ela fica pronta ([regras do quadro](../QUADRO.md)). Por isso este burndown sai direto do GitHub, sem conferência manual:
+
+- **Ideal:** queda linear de 43 em 06/11 até 0 em 25/11.
+- **Restantes (real):** issues da sprint ainda abertas no fim de cada dia (fuso America/Sao_Paulo).
+- Dados: [burndown-sprint-3.csv](burndown-sprint-3.csv) e situação por issue em [issues-sprint-3.csv](issues-sprint-3.csv).
+
+### Como atualizar
+
+Na raiz do repositório, com o GitHub CLI logado (`gh auth login`) e o matplotlib instalado:
+
+```sh
+python3 scripts/burndown.py 3 2026-11-06 2026-11-25
+```
+
+O script regrava o PNG e os dois CSV. Atualize pelo menos a cada Daily de segunda, quarta e sexta, e no fechamento em 25/11, ajustando também a data e os números do parágrafo acima.
+
+### Leitura em 16/11
+
+- De 06/11 a 08/11 a linha ficou parada em 43: foram dias de planejamento e de distribuição das issues.
+- Entre 09/11 e 11/11 foram fechadas 17 issues, depois que o time passou a fechar o que já estava pronto (evidências da infraestrutura, telas de resultado, certificado, progresso e histórico).
+- De 12/11 a 16/11 a linha ficou parada em 25 e cruzou a ideal em 14/11. Hoje o time está **5 issues acima do ideal** (25 contra 20).
+- Issues abertas por responsável: Abdi 12, Breno 7, Guilherme 3, Gabriel 3, Tiago 3, Miguel 2, Sophia 1 (issues compartilhadas contam para cada um).
+- Para recuperar: Abdi pode fechar as issues de backend que a API já atende (#14, #25, #41, #45, #49, #58, #59, #63, #69, #70, #77) só conferindo os testes, o que traria o real para abaixo da linha ideal.
+
+## Burndown da Sprint 2
 
 Sprint 2: 23/10 a 05/11/2026, com 30 atividades no [milestone da Sprint 2](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/2). No fim da sprint, **24 atividades foram entregues e 6 ficaram pendentes** (4 parciais e 2 não entregues).
 
 ![Burndown da Sprint 2](burndown-sprint-2.png)
 
-## Como o gráfico foi montado
+### Como o gráfico foi montado
 
 As 30 issues da Sprint 2 continuam abertas no GitHub, então um burndown feito pelas issues fecharia a sprint em 30, sem queda. Para mostrar o andamento real, cada atividade foi conferida contra o repositório: a data de entrega é a do commit que trouxe a evidência, e a atividade só conta como concluída quando está **Entregue**. As parciais seguem contando como restantes.
 
@@ -13,13 +50,13 @@ As 30 issues da Sprint 2 continuam abertas no GitHub, então um burndown feito p
 - **12 atividades de backend** (API, banco e testes) foram entregues em 21/10, junto com o backend do portal, antes do início da sprint. Por isso a linha real começa em 18.
 - Dados do gráfico: [burndown-sprint-2.csv](burndown-sprint-2.csv). Revisão por atividade: [entregas-sprint-2.csv](entregas-sprint-2.csv).
 
-## Leitura
+### Leitura
 
 - De 23/10 a 30/10 a linha real ficou parada em 18. Nesse período o trabalho foi o protótipo de login e cadastro em HTML/CSS e as apostilas, que ainda não fechavam nenhuma atividade da sprint.
 - As entregas se concentraram entre 31/10 e 02/11, com 9 atividades em três dias. Em 02/11 entraram a tela de questão, o cronômetro, a pausa e a retomada.
 - A sprint terminou acima da linha ideal: 6 restantes contra 0 planejado.
 
-## Revisão das entregas
+### Revisão das entregas
 
 | Issue | Atividade | Situação | Data | Evidência | Commit |
 |---|---|---|---|---|---|
@@ -54,7 +91,7 @@ As 30 issues da Sprint 2 continuam abertas no GitHub, então um burndown feito p
 | [#44](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/44) | Encerrar a questão em perda de conexão | Não entregue | — | — | — |
 | [#46](https://github.com/Tech0wl-2026/ABP-Tech0wl/issues/46) | Bloquear repetição também na interface | Não entregue | — | — | — |
 
-## Pendências para a Sprint 3
+### Pendências para a Sprint 3
 
 | Issue | O que falta |
 |---|---|
