@@ -42,7 +42,9 @@ export function normalizarHistorico(dados) {
       iniciadaEm: a.iniciadaEm ?? null,
       finalizadaEm: a.finalizadaEm ?? null,
       mediaPercentual: typeof a.mediaPercentual === "number" ? a.mediaPercentual : null,
-      questoes: (Array.isArray(a.questoes) ? a.questoes : []).map((q) => {
+      // Esconde a questão ainda em andamento: é a próxima que a pessoa vai fazer ao voltar
+      // para a prova. Só aparecem as que ela já respondeu, que expiraram ou foram interrompidas.
+      questoes: (Array.isArray(a.questoes) ? a.questoes : []).filter((q) => q?.situacao !== "em_andamento").map((q) => {
         const situacao = SITUACAO_QUESTAO[q.situacao] ? q.situacao : "interrompida";
         const resposta = q.respostaEscolhida ?? null;
         return {
