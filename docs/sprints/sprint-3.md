@@ -8,6 +8,8 @@ Meta: Resultado, certificado e validação integral. [Atividades e critérios de
 
 Plano e divisão das atividades: [plano da Sprint 3](plano-sprint-3.md), definido em 06/11/2026.
 
+Andamento: [burndown da Sprint 3](../Gestao/burndown/README.md#burndown-da-sprint-3), atualizado pelas issues fechadas.
+
 Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01, DW02, DW03, DW04, DW05, DW06, DW07, BD01, BD02, BD03, BD04, BD05, DD01, DD02, DD03, DD04. Confirmar plano com professor antes da avaliação.
 
 ## Entregas e evidências
