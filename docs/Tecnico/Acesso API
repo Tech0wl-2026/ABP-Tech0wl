@@ -39,6 +39,7 @@ Commits: "Adiciona apiFetch e base da integração com a API", "Faz login pela A
 - O token carrega apenas o identificador do candidato e expira em 1 hora.
 - O login dá a mesma mensagem para CPF inexistente e senha errada. Cadastro e login aceitam 30 tentativas por 15 minutos.
 - A validação pública do certificado (`GET /api/certificados/:hash`) devolve `valido`, o hash, a data de emissão, o nome e o percentual. Não devolve CPF nem e-mail.
+- Em falha interna (erro 500), o servidor registra apenas o código ou o nome do erro, sem corpo da requisição, CPF, e-mail ou senha.
 
 ## 5. Evidências
 
