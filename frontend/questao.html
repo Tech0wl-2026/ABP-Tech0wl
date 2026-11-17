@@ -9,6 +9,7 @@
 
     <!-- Proteção: só entra quem fez login (o auth.js fica na pasta login) -->
     <script src="src/js/auth.js"></script>
+    <script src="src/js/historico-store.js"></script>
     <script>exigirLogin();</script>
     <script src="src/js/certificado.js"></script>
     <script src="src/js/prova.js" defer></script>
@@ -68,6 +69,17 @@
         <div class="dialogo-acoes">
             <button type="button" class="botao botao-secundario" id="btn-confirmar-parar">Parar prova</button>
             <button type="button" class="botao" id="btn-continuar" autofocus>Continuar prova</button>
+        </div>
+    </dialog>
+
+    <!-- ALTERNATIVA CORRETA: pop-up que aparece depois de responder cada pergunta -->
+    <dialog class="dialogo dialogo-gabarito" id="dialogo-gabarito" aria-labelledby="gabarito-titulo" aria-describedby="gabarito-certa">
+        <h2 id="gabarito-titulo"></h2>
+        <p class="gabarito-marcada" id="gabarito-marcada" hidden></p>
+        <p class="gabarito-certa" id="gabarito-certa"></p>
+        <p class="gabarito-feedback" id="gabarito-feedback" hidden></p>
+        <div class="dialogo-acoes">
+            <button type="button" class="botao" id="btn-gabarito-continuar" autofocus>Próxima pergunta</button>
         </div>
     </dialog>
 

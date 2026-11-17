@@ -9,6 +9,8 @@ export async function criarApp(pool,segredo) {
   if (typeof segredo !== 'string' || Buffer.byteLength(segredo) < 32) throw new Error('Configure JWT_SECRET com pelo menos 32 bytes aleatórios.');
   const app = express();
   app.disable('x-powered-by');
+  // Render e Nginx ficam na frente da API: usa o IP real do visitante no limite de tentativas.
+  app.set('trust proxy', 1);
   app.use((req,res,next) => {
     res.set('X-Content-Type-Options','nosniff');
     res.set('Cache-Control','no-store');

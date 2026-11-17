@@ -25,7 +25,22 @@
 .hist-avaliacao-topo{
     display: flex; flex-wrap: wrap; align-items: center;
     justify-content: space-between; gap: 8px 16px;
+    cursor: pointer;
+    list-style: none;
 }
+.hist-avaliacao-topo::-webkit-details-marker{ display: none; }
+.hist-avaliacao-topo h2{ margin-right: auto; }
+.hist-avaliacao-topo::after{                /* seta: aponta para baixo quando fechado, para cima quando aberto */
+    content: "";
+    width: 10px; height: 10px;
+    border: solid #5d20ad;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    margin: -4px 4px 0 2px;
+}
+.hist-avaliacao[open] > .hist-avaliacao-topo::after{ transform: rotate(-135deg); margin-top: 4px; }
+.hist-avaliacao-topo:focus-visible{ outline: 3px solid #7611D4; outline-offset: 4px; border-radius: 8px; }
+.hist-avaliacao[open] > .hist-avaliacao-topo{ margin-bottom: 2px; }
 .hist-avaliacao h2{ font-size: 24px; font-weight: 700; line-height: 1.25; }
 .hist-resumo{ margin-top: 4px; font-size: 16px; color: #3b3566; }
 
@@ -66,7 +81,7 @@
 }
 .hist-campo:first-child{ grid-column: 1 / -1; }
 .hist-campo dt{ font-size: 14px; color: #5b557f; }
-.hist-campo dd{ font-size: 16px; line-height: 1.4; overflow-wrap: anywhere; }
+.hist-campo dd{ font-size: 16px; line-height: 1.4; overflow-wrap: anywhere; white-space: pre-line; }
 
 .hist-vazio{
     padding: 18px;
