@@ -12,10 +12,10 @@ INSERT INTO questao(tema_id, numero, enunciado, imagem_caminho, imagem_descricao
 SELECT t.id, v.numero, v.enunciado, v.imagem, v.descricao, 'Diagrama vetorial original da equipe, gerado para demonstração técnica.', v.justificativa,
  'Scrum Guide 2020: https://scrumguides.org/scrum-guide.html'
 FROM tema t CROSS JOIN (VALUES
- (1, 'Qual conceito sustenta o ciclo ilustrado?', '/assets/questoes/demo-01.svg', 'Ciclo de observar, inspecionar e adaptar.', 'O empirismo usa observação e experiência para orientar decisões.'),
- (2, 'Quem responde pelo gerenciamento eficaz do Product Backlog?', '/assets/questoes/demo-02.svg', 'Lista de itens de trabalho do produto.', 'Essa responsabilidade pertence ao Product Owner.'),
- (3, 'Qual é o limite de duração da Daily Scrum?', '/assets/questoes/demo-03.svg', 'Encontro diário de uma equipe.', 'A Daily Scrum tem timebox de 15 minutos.'),
- (4, 'Qual compromisso está associado ao Sprint Backlog?', '/assets/questoes/demo-04.svg', 'Uma seleção de itens de trabalho para a Sprint.', 'O compromisso associado ao Sprint Backlog é a Sprint Goal.')
+ (1, 'Qual conceito sustenta o ciclo ilustrado?', '', 'Ciclo de observar, inspecionar e adaptar.', 'O empirismo usa observação e experiência para orientar decisões.'),
+ (2, 'Quem responde pelo gerenciamento eficaz do Product Backlog?', '', 'Lista de itens de trabalho do produto.', 'Essa responsabilidade pertence ao Product Owner.'),
+ (3, 'Qual é o limite de duração da Daily Scrum?', '', 'Encontro diário de uma equipe.', 'A Daily Scrum tem timebox de 15 minutos.'),
+ (4, 'Qual compromisso está associado ao Sprint Backlog?', '', 'Uma seleção de itens de trabalho para a Sprint.', 'O compromisso associado ao Sprint Backlog é a Sprint Goal.')
 ) AS v(numero, enunciado, imagem, descricao, justificativa) WHERE t.ordem = 1;
 
 INSERT INTO alternativa(questao_id, letra, texto, correta)
