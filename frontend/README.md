@@ -6,7 +6,7 @@ Telas do Aprendizagem Ágil em HTML, CSS e JavaScript, com versões para computa
 
 | Página | Conteúdo |
 |---|---|
-| [index.html](index.html) | Home, apresentação, benefícios e docentes. |
+| [index.html](index.html) | Home, apresentação, benefícios e equipe responsável. |
 | [curso.html](curso.html) | Módulos, depoimentos ilustrativos e informações do certificado. |
 | [sobre.html](sobre.html) | Apresentação do projeto e da equipe Tech0wl. |
 
@@ -42,7 +42,6 @@ Nesta etapa, as telas do portal guardam os dados no navegador (localStorage). A 
 | [src/images](src/images) | Imagens das telas e das questões. |
 | [css](css) e [js](js) | Estilos e script das páginas públicas. |
 | [assets](assets) | Fontes, ilustrações e recursos do layout. |
-| [arquivosextras](arquivosextras) | Versões anteriores das páginas públicas, mantidas como referência. |
 | [Dockerfile](Dockerfile) | Imagem do frontend. |
 | [nginx.conf](nginx.conf) | Servidor das páginas e encaminhamento de `/api/`. |
 

@@ -8,7 +8,7 @@ A seleção do grupo usa os temas originais 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14 
 
 Foram aproveitadas 36 questões e imagens dos nove temas em comum. As 12 questões de Manifesto Ágil, User Stories e Qualidade em Projetos Ágeis foram substituídas por quatro de cada tema restante: XP, Ferramentas para Equipes Ágeis e Boas Práticas em Projetos Ágeis. As 12 questões novas precisam de revisão pedagógica do grupo.
 
-O [catálogo](../../database/servidor/questoes.json) registra a origem por questão. IDs e nomes das imagens foram organizados de 1 a 48 na ordem dos [temas escolhidos](../conteudo/temas.md). As 36 imagens aproveitadas mantêm o conteúdo dos arquivos enviados pelo professor.
+O [catálogo](../../database/servidor/questoes.json) registra a origem por questão. IDs e nomes das imagens foram organizados de 1 a 48 na ordem dos [temas escolhidos](../conteudo/temas.md). As 36 imagens aproveitadas mantêm o conteúdo dos arquivos enviados pela equipe. 'correção de texto'
 
 ## Adaptações
 
