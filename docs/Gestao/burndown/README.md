@@ -5,7 +5,7 @@
 
 ## Burndown da Sprint 3
 
-Sprint 3: 06/11 a 25/11/2026, com **43 issues** com a etiqueta `sprint:3` no [milestone da Sprint 3](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3). Situação em **16/11/2026**: **18 fechadas e 25 abertas**.
+Sprint 3: 06/11 a 25/11/2026, com **43 issues** com a etiqueta `sprint:3` no [milestone da Sprint 3](https://github.com/Tech0wl-2026/ABP-Tech0wl/milestone/3). Situação em **17/11/2026**: **18 fechadas e 25 abertas**.
 
 ![Burndown da Sprint 3](burndown-sprint-3.png)
 
@@ -27,13 +27,14 @@ python3 scripts/burndown.py 3 2026-11-06 2026-11-25
 
 O script regrava o PNG e os dois CSV. Atualize pelo menos a cada Daily de segunda, quarta e sexta, e no fechamento em 25/11, ajustando também a data e os números do parágrafo acima.
 
-### Leitura em 16/11
+### Leitura em 17/11
 
 - De 06/11 a 08/11 a linha ficou parada em 43: foram dias de planejamento e de distribuição das issues.
 - Entre 09/11 e 11/11 foram fechadas 17 issues, depois que o time passou a fechar o que já estava pronto (evidências da infraestrutura, telas de resultado, certificado, progresso e histórico).
-- De 12/11 a 16/11 a linha ficou parada em 25 e cruzou a ideal em 14/11. Hoje o time está **5 issues acima do ideal** (25 contra 20).
+- De 12/11 a 17/11 nenhuma issue foi fechada: a linha está parada em 25 há seis dias e cruzou a ideal em 14/11. Hoje o time está **7 issues acima do ideal** (25 contra 18).
+- Faltam 8 dias para o fim da sprint. Para chegar a 0 em 25/11, o time precisa fechar cerca de 3 issues por dia.
 - Issues abertas por responsável: Abdi 12, Breno 7, Guilherme 3, Gabriel 3, Tiago 3, Miguel 2, Sophia 1 (issues compartilhadas contam para cada um).
-- Para recuperar: Abdi pode fechar as issues de backend que a API já atende (#14, #25, #41, #45, #49, #58, #59, #63, #69, #70, #77) só conferindo os testes, o que traria o real para abaixo da linha ideal.
+- Para recuperar: Abdi pode fechar as issues de backend que a API já atende (#14, #25, #41, #45, #49, #58, #59, #63, #69, #70, #77) só conferindo os testes, e a integração das telas à API (#105) destrava as issues de prova e certificado.
 
 ## Burndown da Sprint 2
 
