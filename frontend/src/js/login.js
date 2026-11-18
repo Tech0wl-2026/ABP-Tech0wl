@@ -18,6 +18,6 @@ document.getElementById("form-login").addEventListener("submit", async (evento) 
     if (!resultado.ok) return mostrarMensagem(resultado.erro);
     location.href = PORTAL_URL;
   } catch {
-    mostrarMensagem(ERRO_NAVEGADOR);
+    mostrarMensagem("Não foi possível entrar. Tente novamente.");
   }
 });

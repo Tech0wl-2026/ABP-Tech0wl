@@ -7,7 +7,7 @@ Home, Curso e Sobre nós foram implementadas a partir dos seis [frames de refer�
 | Recurso | Uso nesta versão |
 |---|---|
 | Estudante da Home | Exportação original do Figma, em `estudante.png`. |
-| Retratos dos docentes | Imagem ilustrativa gerada, com composição e cores próximas às referências. Não representa integrantes ou professores reais. |
+| Retratos dos docentes  | Imagem ilustrativa gerada, com composição e cores próximas às referências. Não representa integrantes ou professores reais. | /att-arquivos revisados e ja modificados, sendo atualmente obsoeltos para o projeto. (15/11/26)
 | Ilustrações dos módulos | Vetores locais de Scrum, Kanban, boas práticas e agilidade. As imagens originais não ficaram acessíveis. |
 | Marca do rodapé e marca educacional | Vetores locais de apoio à composição. Não são os arquivos originais da identidade visual. |
 | Certificado | Vetor ilustrativo, identificado como modelo sem validade. |
@@ -21,7 +21,7 @@ As substituições foram autorizadas por Breno. A tabela registra as diferenças
 
 ## Retratos ilustrativos
 
-Os retratos são imagens geradas de pessoas fictícias para compor esta versão. O arquivo `frontend/assets/figma/docentes.png` é compartilhado pelas três posições do CSS. As fotos originais do Figma poderão substituí-lo quando estiverem disponíveis.
+Os retratos são imagens geradas de pessoas fictícias para compor esta versão. O arquivo `frontend/assets/figma/docentes.png` é compartilhado pelas três posições do CSS. As fotos originais do Figma poderão substituí-lo quando estiverem disponíveis. /att-arquivos ja modificados-
 
 ## Validação
 

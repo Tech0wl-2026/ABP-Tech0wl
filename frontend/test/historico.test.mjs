@@ -1,62 +1,67 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { normalizarHistorico, buscarHistorico, textoResposta, ENDPOINT } from "../src/js/historico.js";
 
-// "Banco" com dois candidatos: a API simulada filtra pelo token, como o servidor real deve fazer.
-const BANCO = {
-  "token-ana": { avaliacoes: [
-    { id: 2, status: "reprovada", iniciadaEm: "2026-11-09T14:00:00Z", finalizadaEm: "2026-11-09T14:40:00Z", mediaPercentual: 40,
-      questoes: [
-        { tema: "Scrum", questaoId: 11, enunciado: "Quem prioriza o backlog?", situacao: "respondida", respostaEscolhida: "Scrum Master", alternativaCorreta: "Product Owner", respondidaEm: "2026-11-09T14:10:00Z" },
-        { tema: "Kanban", questaoId: 21, enunciado: "O que é WIP?", situacao: "expirada", respostaEscolhida: null, alternativaCorreta: "Trabalho em progresso", respondidaEm: null },
-      ] },
-    { id: 1, status: "interrompida", iniciadaEm: "2026-11-01T10:00:00Z", mediaPercentual: null,
-      questoes: [{ tema: "XP", questaoId: 31, enunciado: "O que é TDD?", situacao: "interrompida", alternativaCorreta: "Desenvolvimento guiado por testes" }] },
-  ] },
-  "token-bia": { avaliacoes: [{ id: 99, status: "aprovada", iniciadaEm: "2026-11-05T09:00:00Z", mediaPercentual: 90, questoes: [] }] },
-};
-const apiFalsa = async (url, init) => {
-  const token = init.headers.Authorization?.replace("Bearer ", "");
-  if (url !== ENDPOINT || !BANCO[token]) return { ok: false, status: 401 };
-  return { ok: true, status: 200, json: async () => BANCO[token] };
-};
+// localStorage e usuário falsos, compartilhados por dois candidatos
+const memoria = new Map();
+globalThis.localStorage = { getItem: (k) => memoria.get(k) ?? null, setItem: (k, v) => memoria.set(k, String(v)) };
+let cpf = "11111111111";
+globalThis.usuarioLogado = () => ({ cpf });
 
-test("devolve só o histórico do candidato autenticado", async () => {
-  const ana = await buscarHistorico(apiFalsa, "token-ana");
-  assert.deepEqual(ana.map((a) => a.id), ["2", "1"]);
-  assert.ok(!ana.some((a) => a.id === "99"));
+await import("../src/js/historico-store.js");
+const { normalizarHistorico, buscarHistorico, textoResposta } = await import("../src/js/historico.js");
+const H = globalThis.HistoricoCertificacao;
+const Q1 = { tema: "Scrum", questaoId: 11, enunciado: "Quem prioriza o backlog?", alternativaCorreta: "Product Owner" };
+const Q2 = { tema: "Kanban", questaoId: 21, enunciado: "O que é WIP?", alternativaCorreta: "Trabalho em progresso" };
+
+test("registra avaliação reprovada com resposta e questão expirada", () => {
+  H.iniciarAvaliacao();
+  H.sortearQuestao(Q1); H.registrarResposta("Scrum Master");
+  H.sortearQuestao(Q2); H.registrarExpirada();
+  H.finalizarAvaliacao({ percentual: 40, aprovado: false });
+  const [a] = buscarHistorico();
+  assert.equal(a.status, "reprovada");
+  assert.equal(a.mediaPercentual, 40);
+  const [q1, q2] = a.questoes;
+  assert.deepEqual([q1.tema, q1.enunciado, q1.respostaEscolhida, q1.alternativaCorreta], ["Scrum", Q1.enunciado, "Scrum Master", "Product Owner"]);
+  assert.ok(q1.respondidaEm);
+  assert.equal(q1.acertou, false);
+  assert.equal(q2.situacao, "expirada");
 });
 
-test("não envia identificador de usuário na requisição", async () => {
-  let chamada;
-  await buscarHistorico(async (u, i) => { chamada = { u, i }; return apiFalsa(u, i); }, "token-bia");
-  assert.equal(chamada.u, ENDPOINT);
-  assert.ok(!/user|aluno|candidato|id=/i.test(chamada.u));
+test("prova abandonada vira interrompida, com a questão aberta interrompida", () => {
+  H.iniciarAvaliacao(); H.sortearQuestao(Q1);
+  H.iniciarAvaliacao();                       // nova prova sem finalizar a anterior
+  const h = buscarHistorico();
+  const interrompida = h.find((a) => a.status === "interrompida");
+  assert.ok(interrompida);
+  assert.equal(interrompida.questoes[0].situacao, "interrompida");
+  assert.ok(h.some((a) => a.status === "em_andamento"));
 });
 
-test("sem token válido, sinaliza sessão expirada", async () => {
-  await assert.rejects(() => buscarHistorico(apiFalsa, "x"), { codigo: "sessao" });
+test("interromperAtual encerra a prova em andamento", () => {
+  H.interromperAtual();
+  assert.ok(!buscarHistorico().some((a) => a.status === "em_andamento"));
 });
 
-test("inclui reprovadas, expiradas e interrompidas, ordenadas da mais recente", async () => {
-  const h = await buscarHistorico(apiFalsa, "token-ana");
-  assert.equal(h[0].status, "reprovada");
-  assert.equal(h[1].status, "interrompida");
-  assert.equal(h[0].questoes[1].situacao, "expirada");
-  assert.equal(h[1].questoes[0].situacao, "interrompida");
+test("cada candidato vê só o próprio histórico", () => {
+  const doPrimeiro = buscarHistorico().length;
+  cpf = "22222222222";
+  assert.equal(buscarHistorico().length, 0);
+  H.iniciarAvaliacao(); H.finalizarAvaliacao({ percentual: 90, aprovado: true });
+  assert.equal(buscarHistorico().length, 1);
+  cpf = "11111111111";
+  assert.equal(buscarHistorico().length, doPrimeiro);
+  assert.ok(!buscarHistorico().some((a) => a.status === "aprovada"));
 });
 
-test("expõe tema, questão, resposta, correta e data/hora", () => {
-  const [q] = normalizarHistorico(BANCO["token-ana"])[0].questoes;
-  assert.equal(q.tema, "Scrum");
-  assert.equal(q.enunciado, "Quem prioriza o backlog?");
-  assert.equal(q.respostaEscolhida, "Scrum Master");
-  assert.equal(q.alternativaCorreta, "Product Owner");
-  assert.equal(q.respondidaEm, "2026-11-09T14:10:00Z");
-  assert.equal(q.acertou, false);
-});
-
-test("texto da resposta para expirada e interrompida", () => {
+test("mais recente primeiro e texto de resposta sem resposta", () => {
+  const datas = buscarHistorico().map((a) => new Date(a.iniciadaEm));
+  assert.ok(datas.every((d, i) => i === 0 || datas[i - 1] >= d));
   assert.match(textoResposta({ situacao: "expirada", respostaEscolhida: null }), /tempo esgotado/);
   assert.match(textoResposta({ situacao: "interrompida", respostaEscolhida: null }), /interrompida/);
+});
+
+test("dados inválidos não quebram a tela", () => {
+  assert.deepEqual(normalizarHistorico(null), []);
+  assert.deepEqual(normalizarHistorico({ avaliacoes: "x" }), []);
 });

@@ -184,7 +184,7 @@ const QUESTOES = [
 const aluno = usuarioLogado() || {};
 const CHAVE = "prova:" + (aluno.cpf || "anonimo");   // para refazer a prova, apague esta chave do localStorage
 
-let estado = { atual: 0, respostas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
+let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
 
 function carregar() {
   try {
@@ -193,6 +193,7 @@ function carregar() {
   } catch { /* dado corrompido: começa do zero */ }
   if (!(estado.atual >= 0 && estado.atual < QUESTOES.length)) estado.atual = 0;
   if (!(estado.restante > 0 && estado.restante <= TEMPO_PERGUNTA)) estado.restante = TEMPO_PERGUNTA;
+  if (estado.reveladas[estado.atual] === "expirou") estado.restante = 0;   // pergunta encerrada por tempo
 }
 
 // tempo que falta para terminar a prova inteira (pergunta atual + perguntas seguintes)
@@ -211,6 +212,34 @@ function salvar() {
   estado.tempoTotal = QUESTOES.length * TEMPO_PERGUNTA;   // a home lê estes dois valores
   estado.tempoTotalRestante = tempoTotalRestante();
   try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch { /* sem armazenamento */ }
+}
+
+/* ---------- HISTÓRICO DA CERTIFICAÇÃO (RF20) ----------
+   Registra cada pergunta exibida e o que aconteceu com ela (historico-store.js). */
+const Historico = window.HistoricoCertificacao;
+const NOMES_TEMAS = { scrum: "Scrum", "kanban-xp": "Kanban x XP", ferramentas: "Ferramentas e boas práticas para projetos ágeis", principios: "Princípios e práticas da agilidade" };
+const rotuloAlternativa = (q, i) => "ABCD"[i] + ". " + q.alternativas[i];
+
+function historicoPerguntaExibida() {
+  if (!Historico) return;
+  const q = QUESTOES[estado.atual];
+  Historico.sortearQuestao({
+    tema: NOMES_TEMAS[q.tema] || q.tema,
+    questaoId: estado.atual + 1,
+    enunciado: q.enunciado.replace(/\*\*/g, ""),
+    alternativaCorreta: rotuloAlternativa(q, q.correta),
+  });
+}
+
+// o aluno saiu desta pergunta (próxima, última ou tempo esgotado)
+function historicoPerguntaEncerrada(expirou, interrompida) {
+  if (!Historico) return;
+  const q = QUESTOES[estado.atual];
+  const r = estado.respostas[estado.atual];
+  if (interrompida) { if (Historico.registrarInterrompida) Historico.registrarInterrompida(); }   // saiu da tela / caiu a conexão
+  else if (r !== undefined) Historico.registrarResposta(rotuloAlternativa(q, r));
+  else if (expirou) Historico.registrarExpirada();
+  else Historico.registrarResposta(null);          // avançou sem responder
 }
 
 /* ---------- TELA ---------- */
@@ -234,6 +263,7 @@ function escrever(el, texto) {
 
 function mostrarPergunta() {
   const q = QUESTOES[estado.atual];
+  historicoPerguntaExibida();
 
   $("contador").textContent = `Pergunta ${estado.atual + 1} de ${QUESTOES.length}`;
   $("media").textContent = `Média da prova ${MEDIA_MINIMA}%`;
@@ -313,11 +343,13 @@ function iniciarRelogio() {
   pararRelogio();
   fimDoTempo = Date.now() + estado.restante * 1000;
   relogio = setInterval(tique, 200);
+  estado.emAndamento = true;       // pergunta aberta e com o tempo correndo (se a página fechar assim, foi interrupção)
 }
 
 function pararRelogio() {
   clearInterval(relogio);
   relogio = null;
+  estado.emAndamento = false;
 }
 
 function tique() {
@@ -326,12 +358,84 @@ function tique() {
   estado.restante = restante;
   mostrarTempo();
   salvar();
-  if (restante === 0) avancar();          // acabou o tempo: segue para a próxima
+  if (restante === 0) revelar(true);      // acabou o tempo: mostra a correta e espera o aluno seguir
 }
+
+/* ---------- POP-UP DA ALTERNATIVA CORRETA ----------
+   Ao clicar em "Ir para a próxima pergunta" (ou quando o tempo acaba), a pergunta é encerrada
+   e este pop-up mostra qual era a alternativa certa. A resposta não pode mais ser trocada.
+   O estado "reveladas" fica salvo: se o aluno recarregar a página, o pop-up volta a aparecer. */
+const dialogoGabarito = $("dialogo-gabarito");
+
+function revelar(expirou = false) {
+  pararRelogio();
+  estado.reveladas[estado.atual] = expirou ? "expirou" : "respondeu";
+  salvar();
+  abrirGabarito();
+}
+
+function abrirGabarito() {
+  const q = QUESTOES[estado.atual];
+  const r = estado.respostas[estado.atual];
+  const acertou = r === q.correta;
+  const ultima = estado.atual === QUESTOES.length - 1;
+
+  const motivo = estado.reveladas[estado.atual];
+  dialogoGabarito.classList.toggle("acertou", acertou);
+  dialogoGabarito.classList.toggle("errou", !acertou);
+
+  $("gabarito-titulo").textContent = motivo === "interrompida"
+    ? "⚠ Questão encerrada"
+    : (acertou
+      ? "✔ Resposta correta!"
+      : (r === undefined ? (motivo === "expirou" ? "⏱ Tempo esgotado" : "Você não respondeu") : "✘ Resposta incorreta"));
+
+  const marcada = $("gabarito-marcada");
+  marcada.textContent = motivo === "interrompida"
+    ? "Você saiu da tela ou a conexão caiu durante a questão. A resposta foi considerada em branco e não pode ser refeita."
+    : ((!acertou && r !== undefined) ? "Você marcou: " + rotuloAlternativa(q, r) : "");
+  marcada.hidden = !marcada.textContent;
+
+  $("gabarito-certa").textContent = "Alternativa correta: " + rotuloAlternativa(q, q.correta);
+
+  const fb = $("gabarito-feedback");
+  fb.textContent = q.feedback || "";
+  fb.hidden = !q.feedback;
+
+  $("btn-gabarito-continuar").textContent = ultima ? "Finalizar a prova" : "Próxima pergunta";
+  if (!dialogoGabarito.open) dialogoGabarito.showModal();
+}
+
+$("btn-gabarito-continuar").addEventListener("click", () => {
+  dialogoGabarito.close();
+  avancar();
+});
+dialogoGabarito.addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
+
+/* ---------- INTERRUPÇÃO: saiu da tela, fechou a página ou caiu a conexão ----------
+   Se isso acontece com a pergunta aberta e o tempo correndo, a resposta que estava sendo
+   dada é apagada (fica em branco) e a pergunta é encerrada: não pode mais ser respondida.
+   O "Parar prova" (que pausa o relógio) não conta como interrupção. */
+function encerrarPorInterrupcao() {
+  pararRelogio();
+  delete estado.respostas[estado.atual];
+  estado.reveladas[estado.atual] = "interrompida";
+  salvar();
+}
+
+function interromper() {
+  if (!relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
+  encerrarPorInterrupcao();
+  abrirGabarito();                 // quando o aluno voltar, o aviso já está na tela
+}
+
+document.addEventListener("visibilitychange", () => { if (document.hidden) interromper(); });
+window.addEventListener("offline", interromper);
 
 /* ---------- PRÓXIMA PERGUNTA E RESULTADO ---------- */
 function avancar() {
   pararRelogio();
+  historicoPerguntaEncerrada(estado.reveladas[estado.atual] === "expirou", estado.reveladas[estado.atual] === "interrompida");
   if (estado.atual === QUESTOES.length - 1) return finalizar();
 
   estado.atual += 1;
@@ -359,6 +463,7 @@ function finalizar() {
   estado.resultado = { acertos, total: QUESTOES.length, percentual, aprovado: percentual >= MEDIA_MINIMA, minimo: MEDIA_MINIMA, temas };
   salvar();
   Certificado.registrar(estado.resultado);   // guarda o melhor resultado e libera o certificado se aprovado
+  if (Historico) Historico.finalizarAvaliacao({ percentual, aprovado: estado.resultado.aprovado });
   mostrarResultado();
 }
 
@@ -463,13 +568,20 @@ function mostrarParcial() {
 $("dialogo-parcial").addEventListener("cancel", (e) => e.preventDefault());   // só sai pelo botão
 
 /* ---------- INÍCIO ---------- */
-$("btn-proxima").addEventListener("click", avancar);
-window.addEventListener("pagehide", salvar);
+$("btn-proxima").addEventListener("click", () => revelar());
+window.addEventListener("pagehide", () => { interromper(); salvar(); });
 
 carregar();
 if (estado.finalizada && estado.resultado) {
   mostrarResultado();                    // prova já finalizada: vai direto para o resultado
 } else {
+  // a página foi fechada (ou travou) com a pergunta correndo e sem passar pelo "Parar prova": interrupção
+  if (estado.emAndamento && !estado.reveladas[estado.atual]) encerrarPorInterrupcao();
+  if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
   mostrarPergunta();
-  iniciarRelogio();
+  if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
+  else {
+    iniciarRelogio();
+    if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
+  }
 }

@@ -1,5 +1,5 @@
 -- 12 temas definidos pelo grupo. Fonte: questoes.json nesta pasta.
--- 36 questões do professor e 12 elaboradas para XP, ferramentas e boas práticas.
+-- 48 questões feitas pela equipe de desenvolvimento.
 BEGIN;
 SET LOCAL search_path TO servidor;
 INSERT INTO temas(id,nome,ordem) VALUES

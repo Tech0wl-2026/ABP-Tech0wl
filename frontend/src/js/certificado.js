@@ -73,11 +73,18 @@
     });
   }
 
+  function urlCompleta(src) {
+    return new URL(src, document.baseURI).href;
+  }
+
   function carregarImagem(src) {
     return new Promise((ok) => {
       const img = new Image();
       img.onload = () => ok(img);
-      img.onerror = () => ok(null);
+      img.onerror = () => {
+        console.error("Imagem do certificado não encontrada:", urlCompleta(src));
+        ok(null);
+      };
       img.src = src;
     });
   }
@@ -130,20 +137,29 @@
   const AREAS_AMOSTRA = [
     [300, 372, 940, 100],   // nome
     [610, 514, 270, 44],    // CPF
-    [352, 626, 290, 26],    // e-mail
+    [352, 626, 270, 26],    // e-mail (termina antes da linha vertical do meio)
     [352, 702, 120, 28],    // nota
     [352, 780, 120, 28],    // percentual
     [764, 628, 240, 26],    // data e hora
     [764, 704, 240, 26],    // data por extenso
     [764, 780, 240, 26],    // curso
-    [1068, 604, 150, 156],  // interior da moldura do QR Code
   ];
 
+  // Apaga o texto de exemplo refazendo o fundo: para cada linha de pixels, faz um degradê
+  // entre a cor logo à esquerda e a cor logo à direita da área (some sem deixar retângulo).
   function limparAmostra(g) {
     AREAS_AMOSTRA.forEach(([x, y, w, h]) => {
-      const px = g.getImageData(Math.max(x - 4, 0), y + Math.floor(h / 2), 1, 1).data;
-      g.fillStyle = `rgb(${px[0]},${px[1]},${px[2]})`;
-      g.fillRect(x, y, w, h);
+      const esq = g.getImageData(x - 8, y, 1, h).data;
+      const dir = g.getImageData(x + w + 7, y, 1, h).data;
+      const img = g.createImageData(w, h);
+      for (let j = 0; j < h; j++) {
+        for (let i = 0; i < w; i++) {
+          const t = i / (w - 1), k = (j * w + i) * 4;
+          for (let c = 0; c < 3; c++) img.data[k + c] = Math.round(esq[j * 4 + c] + (dir[j * 4 + c] - esq[j * 4 + c]) * t);
+          img.data[k + 3] = 255;
+        }
+      }
+      g.putImageData(img, x, y);
     });
   }
 
@@ -258,8 +274,12 @@
     const { certificado } = status();
     if (!certificado) return false;
     const canvas = await desenhar(certificado);
-    if (!canvas) { alert("Não foi possível carregar a imagem do certificado."); return false; }
+    if (!canvas) {
+      alert("Não foi possível carregar a imagem do certificado.\n\nArquivo procurado:\n" + urlCompleta(MODELO_SRC));
+      return false;
+    }
     const jpg = await new Promise((ok) => canvas.toBlob(ok, "image/jpeg", 0.95));
+    if (!jpg) { alert("Não foi possível gerar o PDF do certificado."); return false; }
     const bytes = new Uint8Array(await jpg.arrayBuffer());
     const url = URL.createObjectURL(montarPdf(bytes, canvas.width, canvas.height));
     const a = document.createElement("a");

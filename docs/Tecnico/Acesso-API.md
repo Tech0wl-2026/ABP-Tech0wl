@@ -1,0 +1,117 @@
+# Acesso pela API: cadastro, login e sessão (frontend)
+
+Responsável: Tiago. Issues: #76 (critério 2, documentação) e #105 (parte de acesso).
+Todas as contas e dados citados são fictícios.
+
+## 1. Escopo desta entrega
+
+Ligar as telas de cadastro e login à API e tirar a senha do navegador. A API (rotas, banco, bcrypt, JWT) já existia e **não foi alterada** nesta entrega. Prova, resultado, certificado e perfil não fazem parte dela.
+
+## 2. O que foi alterado
+
+| Arquivo | Alteração |
+|---|---|
+| `frontend/src/js/auth.js` | `apiFetch` (chamada central à API com token); `cadastrar()` e `entrar()` passaram a usar a API; `usuarioLogado()` considera a expiração do token; limpeza da chave antiga `usuarios` do `localStorage`; remoção de salt, hash SHA-256 e lista de contas do navegador |
+| `frontend/src/js/login.js` e `cadastro.js` | Ajuste das mensagens de erro |
+| `frontend/feedback.html` | Passou a chamar `exigirLogin()` |
+
+Commits: "Adiciona apiFetch e base da integração com a API", "Faz login pela API e Salva em token", "Faz o cadastro pela API", "Remove hash e lista de usuários do navegador" e "Protege a tela de feedback com exigirLogin".
+
+## 3. Tratamento de dados pessoais no frontend
+
+| Dado | Tratamento |
+|---|---|
+| Senha | Enviada à API apenas no cadastro e no login. **Não é guardada no navegador**, nem como texto nem como hash. |
+| CPF | Enviado só com dígitos. A sessão guarda o CPF. |
+| Nome e e-mail | Enviados à API no cadastro. A sessão guarda os que a API devolve no login. |
+| Token JWT | Guardado na chave `sessao`, com o horário de expiração (1 hora). Sem "Lembrar-me": `sessionStorage`. Com "Lembrar-me": `localStorage`. |
+| Logs | O `auth.js` não escreve CPF, senha ou token no console. |
+
+- A sessão (`sessao`) contém: `token`, `expira`, `id`, `nome`, `email` e `cpf`.
+- `sair()` apaga a sessão dos dois armazenamentos.
+- Com token ausente, expirado ou recusado pela API (401) numa rota privada, o `apiFetch` apaga a sessão e leva ao login.
+- No login, o 401 apenas mostra a mensagem "CPF ou senha incorretos.", sem redirecionar.
+
+## 4. Comportamento da API usado por esta entrega (lido no código, não alterado)
+
+- A senha é gravada como hash bcrypt (custo 12) em `senha_hash`.
+- A resposta do cadastro traz somente `id`, `cpf`, `nome`, `email` e `criado_em`.
+- O token carrega apenas o identificador do candidato e expira em 1 hora.
+- O login dá a mesma mensagem para CPF inexistente e senha errada. Cadastro e login aceitam 30 tentativas por 15 minutos.
+- A validação pública do certificado (`GET /api/certificados/:hash`) devolve `valido`, o hash, a data de emissão, o nome e o percentual. Não devolve CPF nem e-mail.
+- Em falha interna (erro 500), o servidor registra apenas o código ou o nome do erro, sem corpo da requisição, CPF, e-mail ou senha.
+
+## 5. Evidências
+
+- `apiFetch("/saude")` respondeu `ok: true`, status 200.
+- Cadastro pelo console (`POST /candidatos`) respondeu 201.
+- Login com senha correta levou à `home.html`. Senha errada e CPF inexistente mostraram "CPF ou senha incorretos." sem sair do login.
+- O Session Storage mostrou a chave `sessao` com `token`, `expira`, `id`, `nome`, `email` e `cpf`, **sem senha**. Com "Lembrar-me", a chave foi para o Local Storage.
+- Cadastro pela tela criou a conta, o login com ela funcionou, e repetir os mesmos dados foi recusado (409).
+- Consulta ao banco (`servidor.candidatos`) mostrou duas contas de teste com `senha_hash` começando em `$2b$12$`.
+
+## 6. Limitações e pontos fora desta entrega
+
+- `esqueci-senha.js` não foi alterado e ainda usa a lista local `usuarios`, que não é mais preenchida. A API não tem rota de recuperação de senha.
+- `feedback.js` guarda os feedbacks no `localStorage`, na chave `feedbacks-v1`, sem uso da API.
+- `perfil.html` e `perfil.js` não foram ligados à sessão.
+- A prova ainda guarda dados no navegador (chave `prova:CPF`). A migração é da frente da prova.
+- Existem duas tabelas de candidatos no banco: `public.candidato` (modelo de referência) e `servidor.candidatos` (usada pela API).
+- O token fica no navegador e não há renovação: após 1 hora é preciso entrar de novo.
+- Não há tela para o candidato corrigir ou excluir os próprios dados.
+
+## 7. Exemplos com dados fictícios
+
+Conta de teste usada nos exemplos (inventada, sem relação com pessoa real):
+
+- CPF: `11144477735`
+- Nome: `Maria Teste`
+- E-mail: `maria.teste@exemplo.invalid`
+- Senha: `senha-teste-123` (usada só em ambiente local)
+
+**Cadastro**: `POST /api/candidatos`
+
+```json
+{ "cpf": "11144477735", "nome": "Maria Teste",
+  "email": "maria.teste@exemplo.invalid", "senha": "senha-teste-123" }
+```
+
+Resposta 201 (sem senha e sem token):
+
+```json
+{ "id": 1, "cpf": "11144477735", "nome": "Maria Teste",
+  "email": "maria.teste@exemplo.invalid", "criado_em": "2026-11-12T01:20:00.000Z" }
+```
+
+**Login**: `POST /api/login`
+
+```json
+{ "cpf": "11144477735", "senha": "senha-teste-123" }
+```
+
+Resposta 200 (token abreviado):
+
+```json
+{ "token": "eyJhbGciOi...", "tipo": "Bearer", "expira_em": 3600,
+  "candidato": { "id": 1, "nome": "Maria Teste", "email": "maria.teste@exemplo.invalid" } }
+```
+
+**Erros**
+
+```json
+{ "erro": "CPF ou senha incorretos." }
+{ "erro": "Registro já existente." }
+```
+
+**Sessão no navegador** (chave `sessao`, token abreviado):
+
+```json
+{ "token": "eyJhbGciOi...", "expira": 1794450300000, "id": 1,
+  "nome": "Maria Teste", "email": "maria.teste@exemplo.invalid", "cpf": "11144477735" }
+```
+
+**Banco** (`servidor.candidatos`, só os primeiros caracteres do hash):
+
+| id | cpf | nome | inicio_do_hash |
+|---|---|---|---|
+| 1 | 11144477735 | Maria Teste | $2b$12$ |
