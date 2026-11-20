@@ -48,7 +48,7 @@ questão e 48 imagens em SVG, em `database/servidor/questoes.json` e
 | Parte | Situação |
 |---|---|
 | Site público | Home, Curso e Sobre nós em HTML, CSS e JavaScript, com layout desktop e mobile. A Home apresenta a equipe com link para o perfil de cada integrante. |
-| Acesso | Cadastro e login estão ligados à API: validam os campos, criam a conta, guardam o token da sessão e levam ao portal. O CPF também é conferido pelos dígitos verificadores no navegador. Páginas protegidas voltam ao login quando não há sessão válida ou quando a API responde 401 (`frontend/src/js/auth.js`). |
+| Acesso | Cadastro e login estão ligados à API: validam os campos, criam a conta, guardam o token da sessão e levam ao portal. No cadastro, o navegador também confere os dígitos verificadores do CPF. Páginas protegidas voltam ao login quando não há sessão válida ou quando a API responde 401 (`frontend/src/js/auth.js`). |
 | Portal do candidato | Home do portal com andamento, material de estudo, questão com cronômetro, resultado, certificado em PDF, perfil e feedback. Nesta etapa o conteúdo da prova vem do próprio JavaScript e o andamento fica no navegador; veja as limitações. |
 
 ## Infraestrutura e segurança
@@ -65,12 +65,12 @@ questão e 48 imagens em SVG, em `database/servidor/questoes.json` e
 | Comando | O que cobre |
 |---|---|
 | `npm test` em `backend/` | Fluxos HTTP contra PostgreSQL: cadastro, login, sorteio concorrente, envio duplicado, acesso a questão alheia, entrega de imagem, interrupção, resposta atrasada, emissão concorrente do certificado, aprovação e reprovação, histórico. Inclui a conferência de 12 temas, 48 questões e 192 alternativas. |
-| `npm test` na raiz | Cadastro e entrada no portal pelo front-end (`testes/frontend.spec.mjs`). |
+| `npm test` na raiz | Playwright no Chromium (`testes/frontend.spec.mjs`): Home, Curso e Sobre nós em cinco larguras, de 320 a 1440 px, sem rolagem horizontal, sem erro de JavaScript e com as imagens carregadas; telas de cadastro, login e recuperação de senha abrindo com formulário; sete páginas do portal redirecionando ao login sem sessão; fluxo de cadastro, login e entrada no portal. |
 | `npm run check` na raiz | `scripts/validar-repositorio.py`: links locais, critérios, tarefas e requisitos. |
-| GitHub Actions | Validação do projeto e conferência dos pull requests, em `.github/workflows/`. |
+| GitHub Actions | `.github/workflows/validar-projeto.yml`, a cada push e pull request para `develop` e `main`: valida a documentação e a sintaxe, sobe o ambiente a partir de um banco vazio com `iniciar.sh` e `iniciar.ps1`, roda `testes/database.sql` no PostgreSQL 17, executa os testes do backend em um banco descartável e o Playwright, e guarda as evidências como artefato por 30 dias. |
 
-Há roteiros adicionais em `frontend/test/` que ainda não estão ligados aos scripts de
-`npm` e, por isso, não rodam na integração contínua.
+Há roteiros adicionais em `frontend/test/` que não são chamados pelos scripts de `npm`
+nem pelo workflow, e por isso não rodam na integração contínua.
 
 ## Limitações e pendências
 
