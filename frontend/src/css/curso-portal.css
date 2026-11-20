@@ -1,7 +1,7 @@
 /* Página Cursos — usa o portal.css para o cabeçalho (topo, menu, avatar, sair) */
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&display=swap');
 
-/* ---------- BANNER "WELCOME" ---------- */
+/* ---------- BANNER "BEM-VINDO" ---------- */
 .banner{
     display: grid;
     place-items: center;
