@@ -23,6 +23,11 @@
     -webkit-text-stroke: 1px #fff;
     text-shadow: -2px 3px 0 #0b0b14;
 }
+
+.banner h1{
+    white-space: nowrap;
+}
+
 /* ---------- LISTA DE CURSOS ---------- */
 .lista-cursos{
     display: grid;
