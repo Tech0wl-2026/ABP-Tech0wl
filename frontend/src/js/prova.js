@@ -478,7 +478,7 @@ function encerrarPorInterrupcao() {
 }
 
 function interromper() {
-  if (!relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
+  if (parando || !relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
   encerrarPorInterrupcao();
   abrirGabarito();                 // quando o aluno voltar, o aviso já está na tela
 }
@@ -545,6 +545,10 @@ dialogoParar.addEventListener("close", () => { if (!parando) iniciarRelogio(); }
 // Parar: o progresso fica salvo, mostra o que acertou e errou e depois volta para o portal
 $("btn-confirmar-parar").addEventListener("click", () => {
   parando = true;
+  pararRelogio();
+  estado.emAndamento = false;
+  estado.pausada = true;
+  estado.finalizada = false;
   salvar();
   dialogoParar.close();
   mostrarParcial();
