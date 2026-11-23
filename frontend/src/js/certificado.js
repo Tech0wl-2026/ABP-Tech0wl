@@ -45,6 +45,22 @@
     if (!melhor || resultado.percentual >= melhor.percentual) gravar(CHAVE_MELHOR, resultado);
     if (!resultado.aprovado) return;
 
+    // Emissão no backend via API caso autenticado
+    if (typeof apiFetch === "function" && usuarioLogado()) {
+      apiFetch("/candidatos/certificado", { metodo: "POST", privado: true }).then((res) => {
+        if (res.ok && res.dados) {
+          const dadosCert = {
+            codigo: res.dados.certificado_hash || novoCodigo(new Date()),
+            data: res.dados.emitido_em || new Date().toISOString(),
+            percentual: resultado.percentual,
+            acertos: resultado.acertos,
+            total: resultado.total
+          };
+          gravar(CHAVE_CERT, dadosCert);
+        }
+      }).catch(() => {});
+    }
+
     const cert = ler(CHAVE_CERT);
     const nota = { percentual: resultado.percentual, acertos: resultado.acertos, total: resultado.total };
     if (!cert) {
