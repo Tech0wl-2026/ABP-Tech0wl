@@ -166,6 +166,40 @@ test('fluxos HTTP da certificação no PostgreSQL', {skip:!process.env.API_TEST_
       const resultado=(await req('/candidatos/resultado',{token:avaliado.token})).body;
       assert.equal(resultado.aprovado,false);assert.equal(resultado.acertos,0);
     });
+    await t.test('abandono sem aviso do navegador encerra a questão pelo prazo do servidor',async () => {
+      const abandonou=await candidato('00000000007');
+      // Só no banco descartável do teste: recua o início em 200 s, como se o prazo de 150 s tivesse passado.
+      async function voltarNoTempo(candidatoId,questaoId) {
+        const db=await pool.connect();
+        try {
+          await db.query('BEGIN');
+          await db.query('ALTER TABLE respostas DISABLE TRIGGER resposta_imutavel');
+          await db.query("UPDATE respostas SET data_horario_inicio=data_horario_inicio-interval '200 seconds' WHERE candidato_id=$1 AND questao_id=$2",[candidatoId,questaoId]);
+          await db.query('ALTER TABLE respostas ENABLE TRIGGER resposta_imutavel');
+          await db.query('COMMIT');
+        } finally { db.release(); }
+      }
+      // Simula aba fechada ou conexão perdida: nenhuma chamada a /interromper, só o tempo passando.
+      let sorteio=await req('/questoes/sortear',{method:'POST',token:abandonou.token});
+      let id=sorteio.body.questao.questao.id;
+      await voltarNoTempo(abandonou.id,id);
+      // Ao voltar, a retomada já encontra o tema encerrado e oferece o próximo.
+      const proximo=(await req('/temas/proximo',{token:abandonou.token})).body;
+      assert.equal(proximo.tema.ordem,2);
+      // Responder depois, inclusive por chamada direta à API, é recusado.
+      assert.equal((await req(`/questoes/${id}/responder`,{method:'POST',token:abandonou.token,body:{letra_resposta:'A'}})).status,409);
+      assert.equal((await req(`/questoes/${id}/interromper`,{method:'POST',token:abandonou.token})).status,409);
+      // Mesmo sem a rotina de expiração ter rodado, resposta fora do prazo vale como incorreta e sem alternativa.
+      sorteio=await req('/questoes/sortear',{method:'POST',token:abandonou.token});
+      id=sorteio.body.questao.questao.id;
+      await voltarNoTempo(abandonou.id,id);
+      const {rows:[a]}=await pool.query('SELECT letra FROM alternativas WHERE questao_id=$1 AND correta',[id]);
+      const atrasada=await req(`/questoes/${id}/responder`,{method:'POST',token:abandonou.token,body:{letra_resposta:a.letra}});
+      assert.ok([200,409].includes(atrasada.status));
+      const historico=(await req('/candidatos/historico',{token:abandonou.token})).body;
+      assert.equal(historico.length,2);
+      assert.ok(historico.every(h=>h.letra_resposta===null&&h.acertou===false),'questões abandonadas contam como incorretas e sem alternativa');
+    });
   } finally {
     if (server) await new Promise(r=>server.close(r));
     await pool.end();
