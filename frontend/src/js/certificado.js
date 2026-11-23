@@ -16,7 +16,7 @@
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
   const CURSO         = "Introdução à Tecnologia";           // texto de "Curso concluído"
-  const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
+  const MODELO_SRC    = "src/images/certificado-modelo.jpg";  // imagem do certificado (sem os dados do aluno)
   const VALIDACAO_URL = "https://seusite.com.br/validar";    // o QR Code aponta para: URL?codigo=XXXX
 
   const aluno = (typeof usuarioLogado === "function" && usuarioLogado()) || {};

@@ -45,9 +45,17 @@
         if (nome) nomeBanner.textContent = nome;
     }
 
+    // Os dados salvos só valem para o mesmo CPF; sem eles, usa o nome e o CPF de quem fez login.
+    const sessao = typeof usuarioLogado === 'function' ? usuarioLogado() : null;
+    const digitos = v => String(v || '').replace(/\D/g, '');
     const salvo = lerJSON('aa_perfil', null);
-    if (salvo) {
+    if (salvo && (!sessao || digitos(salvo.cpf) === digitos(sessao.cpf))) {
         Object.keys(campos).forEach(k => { if (salvo[k] !== undefined) campos[k].value = salvo[k]; });
+        atualizarBanner();
+    } else if (sessao) {
+        campos.nome.value = sessao.nome || '';
+        campos.cpf.value = sessao.cpf || '';
+        campos.sobre.value = '';
         atualizarBanner();
     }
 

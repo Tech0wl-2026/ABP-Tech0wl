@@ -84,7 +84,7 @@ a:focus-visible {
   background:
     linear-gradient(#000, transparent 55%),
     /* topo escurecendo, como no layout (pode tirar) */
-    url("../images/fundo.png") center / cover no-repeat,
+    url("../images/fundo.jpg") center / cover no-repeat,
     #000;
 }
 
