@@ -10,6 +10,8 @@ Plano e divisão das atividades: [plano da Sprint 3](plano-sprint-3.md), definid
 
 Andamento: [burndown da Sprint 3](../Gestao/burndown/README.md#burndown-da-sprint-3), atualizado pelas issues fechadas.
 
+Apresentação final de 26/11: [roteiro, evidências e pendências](apresentacao-final.md).
+
 Critérios propostos: ES01, ES02, ES03, ES04, ES05, ES06, ES07, ES08, ES09, DW01, DW02, DW03, DW04, DW05, DW06, DW07, BD01, BD02, BD03, BD04, BD05, DD01, DD02, DD03, DD04. Confirmar plano com professor antes da avaliação.
 
 ## Entregas e evidências
