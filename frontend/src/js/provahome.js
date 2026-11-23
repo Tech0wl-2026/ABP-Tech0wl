@@ -63,6 +63,30 @@
         selo.hidden = false;
       }
       if (botao && botao.textContent !== "Refazer prova") botao.textContent = "Refazer prova";
+      if (posicao) posicao.hidden = true;             // esconde "Você parou na pergunta X" após finalizar
+    } else if (estado.pausada && !estado.emAndamento && !estado.finalizada) {
+      // prova pausada: mesma UI de "em andamento" mas título diferente
+      if (titulo) titulo.textContent = "Prova pausada";
+      if (botao) botao.textContent = "Continuar prova";
+      if (selo) {
+        if (!selo.classList.contains("selo-link")) {
+          const icone = document.createElement("i");
+          icone.className = "bx bx-pause";
+          icone.setAttribute("aria-hidden", "true");
+          selo.replaceChildren("Pausado ", icone);
+        } else {
+          // já é link, só atualiza ícone se necessário
+        }
+        selo.setAttribute("href", "./questao.html");
+        selo.setAttribute("title", "Continuar a prova de onde parou");
+        selo.setAttribute("aria-label", "Pausado. Continuar a prova de onde parou");
+        selo.classList.add("selo-link");
+        selo.hidden = false;
+      }
+      if (posicao && Number.isInteger(estado.atual)) {
+        posicao.textContent = "Você parou na pergunta " + (estado.atual + 1) + ". Clique em Continuar prova (ou em Pausado) para continuar de onde parou.";
+        posicao.hidden = false;
+      }
     } else {
       if (titulo) titulo.textContent = "Prova em andamento";
       if (botao) botao.textContent = "Continuar prova";
