@@ -15,9 +15,10 @@
 
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
-  const CURSO         = "Introdução à Tecnologia";           // texto de "Curso concluído"
-  const MODELO_SRC    = "src/images/certificado-modelo.jpg";  // imagem do certificado (sem os dados do aluno)
-  const VALIDACAO_URL = "https://seusite.com.br/validar";    // o QR Code aponta para: URL?codigo=XXXX
+  const CURSO         = "Certificação em Metodologias Ágeis";           // texto de "Curso concluído"
+  const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
+  const VALIDACAO_URL = new URL("validar.html", location.href).href;    // o QR Code aponta para: validar.html?codigo=XXXX
+  const QRCODE_SRC    = "src/js/Qrcode.js";   // biblioteca local: a CSP do Nginx bloqueia scripts de CDN
 
   const aluno = (typeof usuarioLogado === "function" && usuarioLogado()) || {};
   const quem = aluno.cpf || "anonimo";
@@ -44,6 +45,22 @@
     const melhor = ler(CHAVE_MELHOR);
     if (!melhor || resultado.percentual >= melhor.percentual) gravar(CHAVE_MELHOR, resultado);
     if (!resultado.aprovado) return;
+
+    // Emissão no backend via API caso autenticado
+    if (typeof apiFetch === "function" && usuarioLogado()) {
+      apiFetch("/candidatos/certificado", { metodo: "POST", privado: true }).then((res) => {
+        if (res.ok && res.dados) {
+          const dadosCert = {
+            codigo: res.dados.certificado_hash || novoCodigo(new Date()),
+            data: res.dados.emitido_em || new Date().toISOString(),
+            percentual: resultado.percentual,
+            acertos: resultado.acertos,
+            total: resultado.total
+          };
+          gravar(CHAVE_CERT, dadosCert);
+        }
+      }).catch(() => {});
+    }
 
     const cert = ler(CHAVE_CERT);
     const nota = { percentual: resultado.percentual, acertos: resultado.acertos, total: resultado.total };
@@ -73,18 +90,11 @@
     });
   }
 
-  function urlCompleta(src) {
-    return new URL(src, document.baseURI).href;
-  }
-
   function carregarImagem(src) {
     return new Promise((ok) => {
       const img = new Image();
       img.onload = () => ok(img);
-      img.onerror = () => {
-        console.error("Imagem do certificado não encontrada:", urlCompleta(src));
-        ok(null);
-      };
+      img.onerror = () => ok(null);
       img.src = src;
     });
   }
@@ -120,14 +130,14 @@
   const POS = {
     nome:       { cx: 772,  y: 455, max: 900, tam: 84 },
     cpf:        { cx: 744,  y: 547 },
-    email:      { x: 355,   y: 645 },
-    nota:       { x: 355,   y: 722 },
-    percentual: { x: 355,   y: 799 },
+    email:      { x: 334,   y: 645 },
+    nota:       { x: 334,   y: 722 },
+    percentual: { x: 334,   y: 799 },
     dataHora:   { x: 767,   y: 649 },
     dataExtenso:{ x: 767,   y: 724 },
     curso:      { x: 767,   y: 800 },
-    qr:         { x: 1064,  y: 600, lado: 158 },   // moldura do QR Code
-    codigo:     { cx: 1142, y: 902 },
+    qr:         { x: 1078,  y: 603, lado: 174 },   // moldura do QR Code (módulos ocupam lado - 2×14)
+    codigo:     { cx: 1165, y: 902 },
   };
 
   // Se a imagem do modelo ainda traz os dados de exemplo (ex.: "Mariana Costa Ferreira"),
@@ -137,29 +147,28 @@
   const AREAS_AMOSTRA = [
     [300, 372, 940, 100],   // nome
     [610, 514, 270, 44],    // CPF
-    [352, 626, 270, 26],    // e-mail (termina antes da linha vertical do meio)
-    [352, 702, 120, 28],    // nota
-    [352, 780, 120, 28],    // percentual
+    [328, 626, 276, 26],    // e-mail
+    [328, 702, 60, 28],     // nota
+    [328, 780, 70, 28],     // percentual
     [764, 628, 240, 26],    // data e hora
     [764, 704, 240, 26],    // data por extenso
     [764, 780, 240, 26],    // curso
+    [1090, 611, 150, 155, "#f8f9fc"],  // interior da moldura do QR Code (cor fixa: a borda é escura)
   ];
 
-  // Apaga o texto de exemplo refazendo o fundo: para cada linha de pixels, faz um degradê
-  // entre a cor logo à esquerda e a cor logo à direita da área (some sem deixar retângulo).
   function limparAmostra(g) {
-    AREAS_AMOSTRA.forEach(([x, y, w, h]) => {
-      const esq = g.getImageData(x - 8, y, 1, h).data;
-      const dir = g.getImageData(x + w + 7, y, 1, h).data;
-      const img = g.createImageData(w, h);
-      for (let j = 0; j < h; j++) {
-        for (let i = 0; i < w; i++) {
-          const t = i / (w - 1), k = (j * w + i) * 4;
-          for (let c = 0; c < 3; c++) img.data[k + c] = Math.round(esq[j * 4 + c] + (dir[j * 4 + c] - esq[j * 4 + c]) * t);
-          img.data[k + 3] = 255;
-        }
+    AREAS_AMOSTRA.forEach(([x, y, w, h, cor]) => {
+      if (!cor) {                                          // cor de fundo = ponto mais claro logo ao redor da área
+        const pontos = [[x - 4, y + h / 2], [x + w / 2, y - 4], [x + w / 2, y + h + 4], [x + w + 4, y + h / 2]];
+        let melhor = -1;
+        pontos.forEach(([px, py]) => {
+          const d = g.getImageData(Math.max(Math.round(px), 0), Math.max(Math.round(py), 0), 1, 1).data;
+          const brilho = d[0] + d[1] + d[2];
+          if (brilho > melhor) { melhor = brilho; cor = `rgb(${d[0]},${d[1]},${d[2]})`; }
+        });
       }
-      g.putImageData(img, x, y);
+      g.fillStyle = cor;
+      g.fillRect(x, y, w, h);
     });
   }
 
@@ -173,7 +182,7 @@
   // desenha só os módulos do QR Code dentro da moldura que já existe na imagem
   function desenharQr(g, texto, x, y, lado) {
     if (typeof window.qrcode !== "function") return;
-    const qr = window.qrcode(0, "M"); qr.addData(texto); qr.make();
+    const qr = window.qrcode(0, "L"); qr.addData(texto); qr.make();
     const n = qr.getModuleCount(), pad = 14, cel = (lado - pad * 2) / n;
     g.fillStyle = "#050b2e";
     for (let r = 0; r < n; r++) for (let c = 0; c < n; c++)
@@ -187,7 +196,7 @@
 
   async function desenhar(cert) {
     await carregarFontes();
-    try { if (typeof window.qrcode !== "function") await carregarScript("https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"); } catch { /* sem QR */ }
+    try { if (typeof window.qrcode !== "function") await carregarScript(QRCODE_SRC); } catch { /* sem QR */ }
     const modelo = await carregarImagem(MODELO_SRC);
     if (!modelo) return null;
 
@@ -234,7 +243,14 @@
 
     // QR Code dentro da moldura + código de validação abaixo do texto
     const q = POS.qr;
-    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), q.x, q.y, q.lado);
+    // dados da conta/certificado vão no próprio link do QR: c=código, n=nome, f=CPF (só dígitos), d=data de emissão (segundos)
+    const dadosQr = new URLSearchParams({
+      c: cert.codigo,
+      n: d.nome,
+      f: String(aluno.cpf || "").replace(/\D/g, ""),
+      d: String(Math.floor(quando.getTime() / 1000)),
+    });
+    desenharQr(g, VALIDACAO_URL + "?" + dadosQr.toString(), q.x, q.y, q.lado);
     g.textAlign = "center"; g.fillStyle = AZUL; g.font = "700 15px " + SANS;
     g.fillText(cert.codigo, POS.codigo.cx, POS.codigo.y);
     return c;
@@ -274,12 +290,8 @@
     const { certificado } = status();
     if (!certificado) return false;
     const canvas = await desenhar(certificado);
-    if (!canvas) {
-      alert("Não foi possível carregar a imagem do certificado.\n\nArquivo procurado:\n" + urlCompleta(MODELO_SRC));
-      return false;
-    }
+    if (!canvas) { alert("Não foi possível carregar a imagem do certificado."); return false; }
     const jpg = await new Promise((ok) => canvas.toBlob(ok, "image/jpeg", 0.95));
-    if (!jpg) { alert("Não foi possível gerar o PDF do certificado."); return false; }
     const bytes = new Uint8Array(await jpg.arrayBuffer());
     const url = URL.createObjectURL(montarPdf(bytes, canvas.width, canvas.height));
     const a = document.createElement("a");

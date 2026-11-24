@@ -175,14 +175,27 @@
         var pct = Math.round((feitas / total) * 100);
         var faltam = total - feitas;
 
-        resumo.textContent = temasFeitos + ' de ' + TEMAS.length + ' temas concluídos'
+        var textoBase = temasFeitos + ' de ' + TEMAS.length + ' temas de estudo lidos'
             + (aprovado ? ' e prova aprovada.' : ' · prova pendente.')
             + (faltam ? ' Faltam ' + faltam + (faltam === 1 ? ' etapa.' : ' etapas.') : ' Tudo pronto!');
+        resumo.textContent = textoBase;
         enchente.style.width = pct + '%';
         barra.setAttribute('aria-valuenow', String(pct));
         barra.setAttribute('aria-valuetext', pct + '% concluído');
         barra.dataset.completo = pct === 100 ? 'true' : 'false';
         document.getElementById('progresso-pct').textContent = pct + '%';
+
+        // Consulta progresso oficial na API se logado
+        if (typeof apiFetch === "function" && usuarioLogado()) {
+            apiFetch("/candidatos/progresso", { privado: true }).then(function (res) {
+                if (res.ok && res.dados && res.dados.temas) {
+                    var concluidosApi = res.dados.temas.filter(function(t) { return t.estado === 'CONCLUIDO'; }).length;
+                    if (resumo) {
+                        resumo.textContent = textoBase + ' Prova: ' + concluidosApi + ' de 12 temas respondidos.';
+                    }
+                }
+            }).catch(function() {});
+        }
     }
 
     desenhar();

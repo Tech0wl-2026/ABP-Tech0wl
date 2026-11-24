@@ -1,6 +1,6 @@
 issue,titulo,responsaveis,situacao,fechada_em
-#1,[S1][T080][RNF05] Definir critérios de pronto da equipe,breesiqueiramkt,Aberta,
-#14,[S2][T013][RF03] Implementar persistência e validação do cadastro,abdisilva,Aberta,
+#1,[S1][T080][RNF05] Definir critérios de pronto da equipe,breesiqueiramkt,Fechada,18/11/2026
+#14,[S2][T013][RF03] Implementar persistência e validação do cadastro,abdisilva,Fechada,18/11/2026
 #25,[S2][T024][RF06] Implementar sorteio de uma questão entre quatro por tema,abdisilva,Aberta,
 #33,[S2][T032][RF09] Implementar feedback da resposta e ações de continuidade,"GabrielK07,Bertuci21,peira2008",Fechada,10/11/2026
 #36,[S2][T035][RF09] Persistir respostas e estado da certificação,Bertuci21,Fechada,10/11/2026
@@ -24,17 +24,17 @@ issue,titulo,responsaveis,situacao,fechada_em
 #69,[S3][T068][RF21] Persistir temas concluídos na certificação,abdisilva,Aberta,
 #70,[S3][T069][RF21] Consultar progresso do candidato,abdisilva,Aberta,
 #74,[S3][T073][RNF01] Validar responsividade das telas implementadas,Bertuci21,Fechada,10/11/2026
-#75,[S3][T074][RNF02] Medir e melhorar o carregamento de páginas e questões,breesiqueiramkt,Aberta,
-#76,[S2][T075][RNF03] Implementar proteção e minimização de dados pessoais,tiago3000,Aberta,
+#75,[S3][T074][RNF02] Medir e melhorar o carregamento de páginas e questões,breesiqueiramkt,Fechada,23/11/2026
+#76,[S2][T075][RNF03] Implementar proteção e minimização de dados pessoais,tiago3000,Fechada,18/11/2026
 #77,[S3][T076][RNF04] Impedir manipulação da nota no back-end,abdisilva,Aberta,
 #83,[S3][T083][RNF06] Documentar instalação e execução do projeto,GabrielK07,Fechada,11/11/2026
-#84,[S3][T084][RNF06] Documentar a API do portal,GabrielK07,Aberta,
-#85,[S3][T085][RNF06] Documentar funcionalidades implementadas e limitações,GabrielK07,Aberta,
-#86,[S1][T086][RNF06] Registrar Daily Scrum Review e Retrospective,"breesiqueiramkt,AxelzoldyckGNR",Aberta,
+#84,[S3][T084][RNF06] Documentar a API do portal,GabrielK07,Fechada,23/11/2026
+#85,[S3][T085][RNF06] Documentar funcionalidades implementadas e limitações,GabrielK07,Fechada,23/11/2026
+#86,[S1][T086][RNF06] Registrar Daily Scrum Review e Retrospective,"breesiqueiramkt,AxelzoldyckGNR",Fechada,18/11/2026
 #88,[S2][T088][RNF07] Criar serviços de aplicação e PostgreSQL com Docker Compose,breesiqueiramkt,Fechada,09/11/2026
 #89,[S3][T089][RNF07] Integrar aplicação e banco no ambiente de containers,breesiqueiramkt,Fechada,09/11/2026
 #90,[S3][T090][RNF07] Validar dependências e configuração dos containers,breesiqueiramkt,Fechada,09/11/2026
-#97,[S2][T097] Validar prova tempo interrupção e retomada,"tiago3000,breesiqueiramkt,GabrielK07,Bertuci21",Aberta,
+#97,[S2][T097] Validar prova tempo interrupção e retomada,"tiago3000,breesiqueiramkt,GabrielK07,Bertuci21",Fechada,20/11/2026
 #98,[S3][T098] Validar resultado certificado e proteção da nota,abdisilva,Aberta,
 #99,[S3][T099] Executar validação integral do MVP,breesiqueiramkt,Aberta,
 #100,[S2][T100] Revisar tecnicamente questões imagens e material didático,"breesiqueiramkt,AxelzoldyckGNR,GabrielK07",Fechada,11/11/2026

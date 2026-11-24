@@ -15,3 +15,4 @@ Registro das issues fechadas após conferência dos critérios de aceite pelo Sc
 | 09/11/2026 | #106 | Revisar entrega integral do Figma UML e banco da Sprint 1 | todos marcados |
 | 23/11/2026 | #65 | Registrar histórico completo de respostas da certificação | todos marcados |
 | 23/11/2026 | #75 | Medir e melhorar o carregamento de páginas e questões | todos marcados |
+| 23/11/2026 | #44 | Encerrar a questão em perda de conexão ou fechamento | todos marcados |

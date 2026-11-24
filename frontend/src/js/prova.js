@@ -3,8 +3,9 @@
 
    • uma pergunta por vez, com 150 s para responder
    • "Parar prova" abre uma confirmação: continuar ou parar
-   • o progresso (pergunta atual, respostas e tempo restante) fica salvo
-     no navegador: o aluno para e continua de onde parou
+   • a questão, o prazo, a correção e a nota vêm da API (/questoes/sortear,
+     /responder, /interromper e /candidatos/resultado); o navegador guarda só a
+     posição e a tela, para o aluno parar e continuar de onde parou
    • precisa do auth.js carregado antes (usuário logado)
    ============================================================ */
 
@@ -18,9 +19,8 @@ const MEDIA_MINIMA   = 65;             // % mínima para ser aprovado
    enunciado     texto ("**negrito**" e "\n" para quebrar linha)
    imagem        opcional: { src, alt }
    alternativas  sempre 4 (A, B, C, D)
-   correta       posição da certa: 0 = A, 1 = B, 2 = C, 3 = D
    feedback      explicação mostrada ao parar a prova (para as perguntas já concluídas)
-   (o gabarito foi marcado pela alternativa destacada em cada print: confira) */
+   O gabarito NÃO fica no navegador: a correção vem do servidor. */
 const QUESTOES = [
   {
     tema: "scrum",
@@ -32,7 +32,6 @@ const QUESTOES = [
       "Transparência, inspeção e adaptação.",
       "Papéis, eventos e artefatos.",
     ],
-    correta: 2,
     feedback: "Os três pilares do empirismo no Scrum são transparência, inspeção e adaptação. Compromisso, foco, abertura, respeito e coragem são os valores do Scrum (alternativa A). Papéis, eventos e artefatos são elementos do framework, não seus pilares (alternativa D).",
   },
   {
@@ -45,7 +44,6 @@ const QUESTOES = [
       "(I) Product Owner, que ordena o backlog;\n(II) Scrum Master, que distribui as tarefas como gerente;\n(III) Developers, que garantem a efetividade do Scrum.",
       "(I) Developers, que ordenam o backlog;\n(II) Product Owner, que cria o Incremento;\n(III) Scrum Master, que define o Sprint Backlog.",
     ],
-    correta: 0,
     feedback: "Product Owner = valor e ordenação do Product Backlog; Developers = criar o Incremento e decidir como organizar o trabalho; Scrum Master = efetividade do Scrum, atuando como líder servidor, e não como gerente que distribui tarefas.",
   },
   {
@@ -58,7 +56,6 @@ const QUESTOES = [
       "Sprint Retrospective; Daily Scrum; Sprint Review.",
       "Daily Scrum; Sprint Retrospective; Sprint Review.",
     ],
-    correta: 3,
     feedback: "A Reunião A é a Daily Scrum (15 minutos, Developers, progresso rumo ao Sprint Goal e adaptação do Sprint Backlog). A Reunião B é a Sprint Retrospective (foco na forma de trabalhar: pessoas, interações, processos, ferramentas e Definition of Done). A Reunião C é a Sprint Review (Scrum Team e stakeholders examinam os resultados da Sprint e colaboram sobre os próximos passos).",
   },
   {
@@ -71,7 +68,6 @@ const QUESTOES = [
       "O item faz parte do Incremento, pois o compromisso associado ao Incremento é o Sprint Goal, e não a Definition of Done.",
       "O item deve ser dado como concluído para respeitar o fim da Sprint, pois a DoD pode ser flexibilizada quando o prazo se aproxima.",
     ],
-    correta: 1,
     feedback: "O Incremento só inclui o que atende à Definition of Done, seu compromisso associado. Como o critério de integração ao Incremento anterior não foi cumprido, o item não pode ser apresentado como concluído. A qualidade não diminui durante a Sprint, e o Sprint Goal é o compromisso do Sprint Backlog, não do Incremento.",
   },
   {
@@ -84,7 +80,6 @@ const QUESTOES = [
       "Refinar o item do topo, decompondo-o em itens menores (como cartão, Pix e tratamento de falhas), esclarecendo critérios e dependências, e reordenar conforme o feedback.",
       "Agendar a reunião formal de Refinamento, evento obrigatório do Scrum, e aguardar sua realização antes de qualquer alteração no backlog.",
     ],
-    correta: 2,
     feedback: "O item mais importante precisa estar claro o bastante para ser considerado no planejamento. Por isso o refinamento decompõe o item amplo, esclarece critérios, avalia dependências, e a ordem pode mudar com o feedback. Itens distantes podem permanecer amplos, e o refinamento é uma atividade contínua, não um evento formal do Scrum.",
   },
   {
@@ -97,7 +92,6 @@ const QUESTOES = [
       "A documentação deve ser produzida por completo antes de qualquer software ser desenvolvido.",
       "O Manifesto define uma receita operacional única, na qual documentar é uma prática proibida.",
     ],
-    correta: 1,
     feedback: "No Manifesto Ágil, os elementos à direita (processos e ferramentas, documentação abrangente, negociação de contratos, seguir um plano) continuam tendo valor: a preferência indica prioridade, não exclusão. O Manifesto é uma base de valores e princípios, não uma receita operacional única.",
   },
   {
@@ -110,7 +104,6 @@ const QUESTOES = [
       "Alterar as prioridades todos os dias, sem critério definido, sempre que surgir uma nova ideia.",
       "Partir do objetivo, priorizar por valor, risco e dependências, entregar em partes pequenas, comparar o resultado com o objetivo e revisar o plano.",
     ],
-    correta: 3,
     feedback: "O planejamento adaptativo segue a lógica objetivo → priorização → pequenas entregas → feedback → revisão do plano. As alternativas A, B e C descrevem antipadrões citados na apostila: planejar todos os detalhes com excessiva antecedência, medir sucesso apenas pelo cronograma e tratar estimativas como certezas, e mudar prioridades sem critério.",
   },
   {
@@ -123,7 +116,6 @@ const QUESTOES = [
       "Lead time de 21 dias e cycle time de 7 dias.",
       "Lead time de 14 dias e cycle time de 7 dias.",
     ],
-    correta: 0,
     feedback: "Lead time é o tempo desde a solicitação (entrada do item no sistema) até a conclusão: de 03/09 a 24/09, 21 dias. Cycle time é o tempo entre o início do trabalho ativo e a conclusão: de 10/09 a 24/09, 14 dias. Os 7 dias entre a solicitação e o início são tempo de espera e entram no lead time, não no cycle time.",
   },
   {
@@ -136,7 +128,6 @@ const QUESTOES = [
       "Exigir que todos registrem atividades adicionais na ferramenta para mantê-la sempre preenchida, mesmo que isso não ajude o trabalho.",
       "Manter todas as plataformas em uso, para que cada pessoa registre as informações onde preferir.",
     ],
-    correta: 0,
     feedback: "A regra prática é começar pelo problema de colaboração ou fluxo, escolher a ferramenta mais simples que o resolva, combinar regras de uso com a equipe e revisar se está ajudando. A apostila alerta que a ferramenta não define a agilidade, que se deve evitar múltiplas ferramentas que duplicam registros e que ela não deve obrigar a equipe a criar trabalho artificial.",
   },
   {
@@ -149,7 +140,6 @@ const QUESTOES = [
       "A equipe deve compensar os problemas com horas extras permanentes até que as reclamações deixem de aparecer.",
       "As retrospectivas repetem as mesmas reclamações sem ações; a equipe deve definir melhorias pequenas, o efeito esperado e acompanhá-las.",
     ],
-    correta: 3,
     feedback: "A apostila afirma que retrospectivas são úteis quando resultam em ações concretas e acompanhamento, não em uma lista repetida de reclamações; recomenda experimentar melhorias pequenas, definir o que se espera mudar e verificar o efeito. Transparência não é culpabilização, e a equipe deve evitar depender de horas extras.",
   },
   {
@@ -162,7 +152,6 @@ const QUESTOES = [
       "Aumentar os limites de WIP das colunas, para que todos possam iniciar novos itens.",
       "Iniciar um item de “A fazer” sem registrá-lo no quadro, para não ultrapassar o limite de WIP.",
     ],
-    correta: 1,
     feedback: "No quadro, “Em andamento” (3/3) e “Em revisão” (2/2) já estão no limite de WIP. Quando uma etapa atinge o limite, a resposta preferível é colaborar para concluir ou desbloquear o trabalho existente, em vez de puxar novas tarefas automaticamente. A meta não é manter todas as pessoas ocupadas a qualquer custo, e sim otimizar o fluxo total de valor; o quadro deve representar o processo real.",
   },
   {
@@ -175,7 +164,6 @@ const QUESTOES = [
       "Escrever um teste que falha, implementar o mínimo necessário para fazê-lo passar e, depois, refatorar o código.",
       "Integrar o código sem testes automatizados e só depois escrever um teste que falhe.",
     ],
-    correta: 2,
     feedback: "No TDD, a equipe escreve um teste que falha, implementa o mínimo necessário para fazê-lo passar e depois refatora o código. O ciclo costuma ser descrito como vermelho → verde → refatorar. Testes automatizados dão confiança para mudar o sistema e detectar regressões.",
   },
 ];
@@ -184,7 +172,98 @@ const QUESTOES = [
 const aluno = usuarioLogado() || {};
 const CHAVE = "prova:" + (aluno.cpf || "anonimo");   // para refazer a prova, apague esta chave do localStorage
 
-let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
+let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null, questaoServidorId: null,
+  servidor: {},   // pergunta (índice) -> questão sorteada pelo servidor { id, enunciado, imagem, alternativas, letras }
+  gabarito: {},   // pergunta (índice) -> { correta: índice da alternativa certa, acertou } devolvido pela API
+};
+
+/* ---------- QUESTÃO EXIBIDA ----------
+   A questão oficial é a sorteada pelo servidor (/questoes/sortear). O vetor QUESTOES só
+   fornece o tema (módulo) de cada posição e serve de reserva se a API estiver fora do ar. */
+function questao(i) {
+  const local = QUESTOES[i];
+  const s = estado.servidor && estado.servidor[i];
+  if (!s) return local;
+  const g = estado.gabarito && estado.gabarito[i];
+  return { tema: local.tema, enunciado: s.enunciado, imagem: s.imagem, alternativas: s.alternativas,
+    correta: g ? g.correta : undefined, feedback: "" };
+}
+const usaServidor = (i) => !!(estado.servidor && estado.servidor[i]);
+function acertouDe(i) {
+  const g = estado.gabarito && estado.gabarito[i];
+  if (usaServidor(i)) return !!(g && g.acertou);
+  return estado.respostas[i] === QUESTOES[i].correta;
+}
+
+let temasServidor = null;   // id do tema -> ordem (1 a 12)
+async function carregarTemasServidor() {
+  if (temasServidor) return;
+  const res = await apiFetch("/temas");
+  if (res.ok && Array.isArray(res.dados)) temasServidor = Object.fromEntries(res.dados.map((t) => [t.id, t.ordem]));
+}
+
+/* Sincronização com o Backend da ABP (schema servidor) */
+async function sincronizarQuestaoServidor() {
+  if (typeof apiFetch !== "function" || !usuarioLogado()) return;
+  if (estado.reveladas[estado.atual] && usaServidor(estado.atual)) return;   // pergunta já encerrada: não sorteia a próxima antes da hora
+  try {
+    const res = await apiFetch("/questoes/sortear", { metodo: "POST", privado: true });
+    if (res.ok && res.dados) {
+      if (res.dados.concluido) {
+        estado.concluidoServidor = true;   // os 12 temas já foram encerrados no servidor
+        return;
+      }
+      if (res.dados.questao && res.dados.questao.questao) {
+        const qs = res.dados.questao.questao;
+        try { await carregarTemasServidor(); } catch { /* segue com a posição atual */ }
+        const ordem = temasServidor && temasServidor[qs.tema_id];
+        if (ordem >= 1 && ordem <= QUESTOES.length) estado.atual = ordem - 1;   // a posição segue o tema do servidor
+        const alternativas = (qs.alternativas || []).slice().sort((a, b) => a.letra.localeCompare(b.letra));
+        estado.servidor[estado.atual] = {
+          id: qs.id,
+          enunciado: qs.enunciado,
+          imagem: qs.imagem_url ? { src: qs.imagem_url, alt: "Imagem da questão " + (estado.atual + 1) } : null,
+          alternativas: alternativas.map((a) => a.texto),
+          letras: alternativas.map((a) => a.letra),
+        };
+        estado.questaoServidorId = qs.id;
+        if (res.dados.questao.data_horario_limite) {
+          const limite = new Date(res.dados.questao.data_horario_limite).getTime();
+          const restanteSeg = Math.max(0, Math.floor((limite - Date.now()) / 1000));
+          if (restanteSeg > 0 && restanteSeg <= TEMPO_PERGUNTA) {
+            estado.restante = restanteSeg;
+          }
+        }
+        salvar();
+      }
+    }
+  } catch (err) {
+    console.warn("Executando prova em modo local ou fallback:", err);
+  }
+}
+
+async function submeterRespostaServidor(letra, interromperQuestao = false) {
+  if (typeof apiFetch !== "function" || !usuarioLogado() || !estado.questaoServidorId) return;
+  try {
+    const endpoint = `/questoes/${estado.questaoServidorId}/${interromperQuestao ? "interromper" : "responder"}`;
+    const corpo = interromperQuestao ? undefined : { letra_resposta: letra };
+    const res = await apiFetch(endpoint, { metodo: "POST", corpo, privado: true });
+    let dados = res.ok ? res.dados : null;
+    if (!dados) {
+      // já encerrada no servidor (prazo ou outra aba): busca o desfecho no histórico
+      const h = await apiFetch("/candidatos/historico", { privado: true });
+      if (h.ok && Array.isArray(h.dados)) dados = h.dados.find((x) => x.questao_id === estado.questaoServidorId) || null;
+    }
+    if (dados) {
+      const letras = (estado.servidor[estado.atual] && estado.servidor[estado.atual].letras) || ["A", "B", "C", "D"];
+      estado.gabarito[estado.atual] = { correta: letras.indexOf(dados.alternativa_correta), acertou: !!dados.acertou };
+      if (dados.resultado && dados.resultado.concluido) estado.resultadoServidor = dados.resultado;
+      salvar();
+    }
+  } catch (err) {
+    console.warn("Falha ao registrar resposta no servidor:", err);
+  }
+}
 
 function carregar() {
   try {
@@ -222,19 +301,19 @@ const rotuloAlternativa = (q, i) => "ABCD"[i] + ". " + q.alternativas[i];
 
 function historicoPerguntaExibida() {
   if (!Historico) return;
-  const q = QUESTOES[estado.atual];
+  const q = questao(estado.atual);
   Historico.sortearQuestao({
     tema: NOMES_TEMAS[q.tema] || q.tema,
     questaoId: estado.atual + 1,
     enunciado: q.enunciado.replace(/\*\*/g, ""),
-    alternativaCorreta: rotuloAlternativa(q, q.correta),
+    alternativaCorreta: q.correta !== undefined ? rotuloAlternativa(q, q.correta) : null,
   });
 }
 
 // o aluno saiu desta pergunta (próxima, última ou tempo esgotado)
 function historicoPerguntaEncerrada(expirou, interrompida) {
   if (!Historico) return;
-  const q = QUESTOES[estado.atual];
+  const q = questao(estado.atual);
   const r = estado.respostas[estado.atual];
   if (interrompida) { if (Historico.registrarInterrompida) Historico.registrarInterrompida(); }   // saiu da tela / caiu a conexão
   else if (r !== undefined) Historico.registrarResposta(rotuloAlternativa(q, r));
@@ -262,7 +341,7 @@ function escrever(el, texto) {
 }
 
 function mostrarPergunta() {
-  const q = QUESTOES[estado.atual];
+  const q = questao(estado.atual);
   historicoPerguntaExibida();
 
   $("contador").textContent = `Pergunta ${estado.atual + 1} de ${QUESTOES.length}`;
@@ -367,17 +446,27 @@ function tique() {
    O estado "reveladas" fica salvo: se o aluno recarregar a página, o pop-up volta a aparecer. */
 const dialogoGabarito = $("dialogo-gabarito");
 
-function revelar(expirou = false) {
+async function revelar(expirou = false) {
+  if (estado.reveladas[estado.atual]) return abrirGabarito();
   pararRelogio();
   estado.reveladas[estado.atual] = expirou ? "expirou" : "respondeu";
   salvar();
+  $("btn-proxima").disabled = true;
+
+  const r = estado.respostas[estado.atual];
+  const s = estado.servidor[estado.atual];
+  const letra = r !== undefined ? ((s && s.letras[r]) || "ABCD"[r]) : null;
+  // sem alternativa marcada a questão é encerrada no servidor como em branco
+  await submeterRespostaServidor(letra, !letra);
+
+  $("btn-proxima").disabled = false;
   abrirGabarito();
 }
 
 function abrirGabarito() {
-  const q = QUESTOES[estado.atual];
+  const q = questao(estado.atual);
   const r = estado.respostas[estado.atual];
-  const acertou = r === q.correta;
+  const acertou = acertouDe(estado.atual);
   const ultima = estado.atual === QUESTOES.length - 1;
 
   const motivo = estado.reveladas[estado.atual];
@@ -396,7 +485,9 @@ function abrirGabarito() {
     : ((!acertou && r !== undefined) ? "Você marcou: " + rotuloAlternativa(q, r) : "");
   marcada.hidden = !marcada.textContent;
 
-  $("gabarito-certa").textContent = "Alternativa correta: " + rotuloAlternativa(q, q.correta);
+  $("gabarito-certa").textContent = q.correta >= 0
+    ? "Alternativa correta: " + rotuloAlternativa(q, q.correta)
+    : "Não foi possível consultar a alternativa correta agora.";
 
   const fb = $("gabarito-feedback");
   fb.textContent = q.feedback || "";
@@ -418,15 +509,18 @@ dialogoGabarito.addEventListener("cancel", (e) => e.preventDefault());   // só 
    O "Parar prova" (que pausa o relógio) não conta como interrupção. */
 function encerrarPorInterrupcao() {
   pararRelogio();
+  const envio = submeterRespostaServidor(null, true);
   delete estado.respostas[estado.atual];
   estado.reveladas[estado.atual] = "interrompida";
   salvar();
+  return envio;
 }
 
 function interromper() {
-  if (!relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
-  encerrarPorInterrupcao();
+  if (parando || !relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
+  const envio = encerrarPorInterrupcao();
   abrirGabarito();                 // quando o aluno voltar, o aviso já está na tela
+  envio.then(abrirGabarito);       // atualiza com a correta devolvida pelo servidor
 }
 
 document.addEventListener("visibilitychange", () => { if (document.hidden) interromper(); });
@@ -441,21 +535,33 @@ function avancar() {
   estado.atual += 1;
   estado.restante = TEMPO_PERGUNTA;
   salvar();
-  mostrarPergunta();
-  iniciarRelogio();
+  sincronizarQuestaoServidor().then(() => {
+    mostrarPergunta();
+    iniciarRelogio();
+  });
 }
 
-function finalizar() {
+async function finalizar() {
   pararRelogio();
-  const acertos = QUESTOES.filter((q, i) => estado.respostas[i] === q.correta).length;
-  const percentual = Math.round((acertos / QUESTOES.length) * 100);
+  let acertos = QUESTOES.filter((q, i) => acertouDe(i)).length;
+  let percentual = Math.round((acertos / QUESTOES.length) * 100);
+  // a nota oficial é sempre a do servidor
+  if (typeof apiFetch === "function" && usuarioLogado()) {
+    try {
+      const res = await apiFetch("/candidatos/resultado", { privado: true });
+      if (res.ok && res.dados && res.dados.concluido) {
+        acertos = res.dados.acertos;
+        percentual = res.dados.percentual;
+      }
+    } catch { /* fica com a conta local */ }
+  }
 
   estado.finalizada = true;
   // desempenho por tema (a página Certificado mostra o que o aluno acertou e errou em cada tema)
   const temas = {};
   QUESTOES.forEach((q, i) => {
     const t = temas[q.tema] || (temas[q.tema] = { acertos: 0, total: 0, itens: [] });
-    const ok = estado.respostas[i] === q.correta;
+    const ok = acertouDe(i);
     t.total++; if (ok) t.acertos++;
     t.itens.push(ok);
   });
@@ -489,6 +595,10 @@ dialogoParar.addEventListener("close", () => { if (!parando) iniciarRelogio(); }
 // Parar: o progresso fica salvo, mostra o que acertou e errou e depois volta para o portal
 $("btn-confirmar-parar").addEventListener("click", () => {
   parando = true;
+  pararRelogio();
+  estado.emAndamento = false;
+  estado.pausada = true;
+  estado.finalizada = false;
   salvar();
   dialogoParar.close();
   mostrarParcial();
@@ -506,7 +616,8 @@ function mostrarParcial() {
 
   const alternativa = (q, i) => "ABCD"[i] + ". " + q.alternativas[i];
 
-  QUESTOES.forEach((q, i) => {
+  QUESTOES.forEach((_, i) => {
+    const q = questao(i);
     const num = "Pergunta " + (i + 1);
 
     // a pergunta atual e as seguintes ainda não são corrigidas
@@ -521,7 +632,7 @@ function mostrarParcial() {
     }
 
     const resposta = estado.respostas[i];
-    const acertou = resposta === q.correta;
+    const acertou = acertouDe(i);
     if (acertou) acertos++; else erros++;
 
     const item = criar("li", "parcial-item " + (acertou ? "acertou" : "errou"));
@@ -540,7 +651,7 @@ function mostrarParcial() {
         ? "Você não respondeu esta pergunta."
         : "Sua resposta: " + alternativa(q, resposta)));
     }
-    corpo.append(criar("p", "parcial-linha parcial-certa",
+    if (q.correta >= 0) corpo.append(criar("p", "parcial-linha parcial-certa",
       (acertou ? "Você acertou: " : "Alternativa correta: ") + alternativa(q, q.correta)));
 
     if (q.feedback) {
@@ -576,12 +687,15 @@ if (estado.finalizada && estado.resultado) {
   mostrarResultado();                    // prova já finalizada: vai direto para o resultado
 } else {
   // a página foi fechada (ou travou) com a pergunta correndo e sem passar pelo "Parar prova": interrupção
-  if (estado.emAndamento && !estado.reveladas[estado.atual]) encerrarPorInterrupcao();
+  const interrompida = (estado.emAndamento && !estado.reveladas[estado.atual]) ? encerrarPorInterrupcao() : Promise.resolve();
   if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
-  mostrarPergunta();
-  if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
-  else {
-    iniciarRelogio();
-    if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
-  }
+  interrompida.then(sincronizarQuestaoServidor).finally(() => {
+    if (estado.concluidoServidor) return finalizar();   // prova já concluída no servidor
+    mostrarPergunta();
+    if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
+    else {
+      iniciarRelogio();
+      if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
+    }
+  });
 }

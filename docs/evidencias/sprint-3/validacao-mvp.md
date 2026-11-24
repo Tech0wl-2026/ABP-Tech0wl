@@ -73,3 +73,34 @@ Depois que as etapas de integração entrarem, repetir este roteiro pela interfa
 ```sql
 SELECT count(*) FROM servidor.respostas;   -- deve ser 12 por candidato que concluiu
 ```
+
+## Repetição em 23/11/2026, 22h (depois da integração da prova)
+
+Mesmo roteiro, na `develop` com os commits de integração de 22 e 23/11 (`prova.js` ligado a `/questoes/sortear`, `/responder` e `/interromper`; `validar.html`; certificado com QR). API com 15 testes aprovados.
+
+| Etapa | Antes (23/11, 19h) | Agora (23/11, 22h) |
+|---|---|---|
+| Prova grava no banco | 0 respostas | **12 respostas por candidato** (`POST /api/questoes/:id/responder` → 200) |
+| Pausa e abandono | Só no navegador | Chamam `POST /api/questoes/:id/interromper` (`pagehide`, `visibilitychange`, `offline`) |
+| Certificado | Só no navegador | **Emitido pela API** (`certificado_hash` gravado) |
+| Validação pública | 404 | `validar.html` existe: código válido → `GET /api/certificados/:hash` 200; código inexistente → 404 tratado na tela |
+| Histórico | 404 | Continua 404 (`historico.html` não existe) |
+
+### Bug impeditivo encontrado — questão da tela diferente da questão do servidor
+
+A tela mostra as questões fixas do `prova.js` (vetor `QUESTOES`, com o gabarito no JavaScript), mas envia a letra escolhida para a questão **sorteada pelo servidor**, que é outra. Resultado: **a nota da tela e a nota do servidor não batem**.
+
+Evidência no teste do celular: escolhendo a letra correta da questão do servidor em cada tema, a API registrou **12 acertos e emitiu o certificado**, enquanto a tela de resultado mostrou **"reprovado — 2 de 12"**, calculada com o gabarito local.
+
+| Onde | Problema | Correção necessária |
+|---|---|---|
+| `prova.js` | Renderiza `QUESTOES[estado.atual]` em vez de `res.dados.questao.questao` | Mostrar enunciado, imagem (`imagem_url`) e alternativas que vêm de `/questoes/sortear`; apagar o vetor `QUESTOES` com gabarito |
+| `prova.js` | Feedback da correta vem do gabarito local | Usar `alternativa_correta` da resposta de `/responder` |
+| `resultado.js` | Nota calculada no navegador | Ler `GET /api/candidatos/resultado` |
+
+Responsáveis: Miguel e Tiago (#105), com apoio do Abdi. Até essa correção, a demonstração da prova deve ser feita sabendo que **a nota oficial é a do servidor**.
+
+### Outros pontos
+
+- No computador, depois de pausar, ao abrir `questao.html` de novo a tela não mostrou as alternativas da próxima questão. Reproduzir manualmente antes da apresentação.
+- O certificado ainda mostra "0 de 4 temas concluídos · prova pendente" no topo, embora a parte da API mostre 12 de 12.
