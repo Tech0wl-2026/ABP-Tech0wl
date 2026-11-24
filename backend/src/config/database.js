@@ -9,10 +9,14 @@ export function criarPool(env = process.env) {
     password: env.POSTGRES_PASSWORD,
     options: '-c search_path=servidor,public',
     max: 10,
-    connectionTimeoutMillis: 5000,
+    connectionTimeoutMillis: 10000,
+    // Em hospedagem, conexões paradas são cortadas pela rede: fecha antes e renova periodicamente.
+    keepAlive: true,
+    idleTimeoutMillis: 10000,
+    maxLifetimeSeconds: 120,
     statement_timeout: 10000,
   });
-  pool.on('error', () => console.error('Conexão ociosa do banco foi encerrada.'));
+  pool.on('error', (erro) => console.error('Conexão ociosa do banco foi encerrada:', erro.message));
   return pool;
 }
 
