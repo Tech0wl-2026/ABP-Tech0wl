@@ -15,6 +15,17 @@
             border-radius: 12px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             text-align: center;
+            color: #111827;
+        }
+        .card-validar h1 {
+            color: #1a2fa0;
+            font-size: 1.75rem;
+            margin: 0 0 10px;
+        }
+        .card-validar > p {
+            color: #4b5563;
+            margin: 0 0 16px;
+            line-height: 1.5;
         }
         .status-badge {
             display: inline-block;
@@ -68,16 +79,24 @@
     <header class="topo">
         <a href="index.html" class="logo">
             <img src="src/images/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
-        </a>
+        </a><h1>Validação Pública de Certificado</h1>
     </header>
 
     <main>
         <section class="card-validar">
-            <h2>Autenticidade de Certificado</h2>
-            <p>Consulte a autenticidade de um certificado emitido pelo portal Aprendizagem Ágil.</p>
+            <h1>Validação Pública de Certificado</h1>
+            <p>Consulte a autenticidade e os dados oficiais de um certificado emitido pelo portal <strong>Aprendizagem Ágil</strong>.</p>
+
+            <div class="info-grid" style="margin-top: 16px;">
+                <p><strong>Como validar:</strong></p>
+                <p>1. Escaneie o <strong>QR Code</strong> presente no corpo do certificado em PDF para abrir esta página com o código preenchido automaticamente; ou</p>
+                <p>2. Cole o <strong>código de registro (hash)</strong> impresso abaixo do QR Code no campo abaixo e clique em <strong>Verificar</strong>.</p>
+                <p style="font-size: 12px; color: #6b7280; margin-top: 4px;">Por segurança e conformidade com a LGPD, apenas os dados públicos necessários para comprovação de autenticidade são exibidos.</p>
+            </div>
 
             <form id="form-consulta" style="margin: 20px 0;">
-                <input type="text" id="campo-codigo" class="input-busca" placeholder="Cole o código hash do certificado" required>
+                <label for="campo-codigo" class="sr-only" style="position:absolute;left:-9999px;">Código de registro do certificado</label>
+                <input type="text" id="campo-codigo" class="input-busca" placeholder="Cole o código de registro (hash) do certificado" required>
                 <button type="submit" class="btn-busca">Verificar</button>
             </form>
 
@@ -95,6 +114,10 @@
             <div id="painel-erro" class="status-badge status-invalido" hidden>
                 Certificado não encontrado ou código inválido.
             </div>
+
+            <p style="margin-top: 24px; font-size: 14px;">
+                <a href="index.html" style="color: #1a2fa0; text-decoration: none; font-weight: 600;">← Voltar para a página inicial</a>
+            </p>
         </section>
     </main>
 
