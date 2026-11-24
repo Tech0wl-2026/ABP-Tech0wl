@@ -16,7 +16,7 @@
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
   const CURSO         = "Certificação em Metodologias Ágeis";           // texto de "Curso concluído"
-  const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
+  const MODELO_SRC    = "src/images/certificado-modelo.jpg";  // imagem do certificado (sem os dados do aluno)
   const VALIDACAO_URL = new URL("validar.html", location.href).href;    // o QR Code aponta para: validar.html?codigo=XXXX
   const QRCODE_SRC    = "src/js/Qrcode.js";   // biblioteca local: a CSP do Nginx bloqueia scripts de CDN
 
@@ -70,6 +70,24 @@
     } else if (resultado.percentual > cert.percentual) {
       gravar(CHAVE_CERT, { ...cert, ...nota });           // o código e a data continuam os mesmos
     }
+  }
+
+  // O código oficial é o emitido pela API (o mesmo que a página validar.html consulta).
+  async function sincronizarComServidor() {
+    if (typeof apiFetch !== "function" || !usuarioLogado()) return false;
+    try {
+      const res = await apiFetch("/candidatos/certificado", { metodo: "POST", privado: true });
+      if (!res.ok || !res.dados || !res.dados.certificado_hash) return false;
+      const dados = res.dados.dados || {};
+      gravar(CHAVE_CERT, {
+        codigo: res.dados.certificado_hash,
+        data: res.dados.emitido_em || new Date().toISOString(),
+        percentual: dados.percentual != null ? Number(dados.percentual) : undefined,
+        acertos: dados.acertos,
+        total: dados.total || 12,
+      });
+      return true;
+    } catch { return false; }
   }
 
   function status() {
@@ -243,16 +261,12 @@
 
     // QR Code dentro da moldura + código de validação abaixo do texto
     const q = POS.qr;
-    // dados da conta/certificado vão no próprio link do QR: c=código, n=nome, f=CPF (só dígitos), d=data de emissão (segundos)
-    const dadosQr = new URLSearchParams({
-      c: cert.codigo,
-      n: d.nome,
-      f: String(aluno.cpf || "").replace(/\D/g, ""),
-      d: String(Math.floor(quando.getTime() / 1000)),
-    });
-    desenharQr(g, VALIDACAO_URL + "?" + dadosQr.toString(), q.x, q.y, q.lado);
+    // o QR leva só o código: a página pública consulta a API e não expõe CPF nem e-mail
+    desenharQr(g, VALIDACAO_URL + "?codigo=" + encodeURIComponent(cert.codigo), q.x, q.y, q.lado);
     g.textAlign = "center"; g.fillStyle = AZUL; g.font = "700 15px " + SANS;
-    g.fillText(cert.codigo, POS.codigo.cx, POS.codigo.y);
+    // o código da API tem 64 caracteres: no PDF aparece abreviado (o QR leva o código completo)
+    const codigo = String(cert.codigo);
+    g.fillText(codigo.length > 20 ? codigo.slice(0, 10) + "…" + codigo.slice(-6) : codigo, POS.codigo.cx, POS.codigo.y);
     return c;
   }
 
@@ -287,6 +301,7 @@
   }
 
   async function baixar() {
+    await sincronizarComServidor();
     const { certificado } = status();
     if (!certificado) return false;
     const canvas = await desenhar(certificado);
@@ -306,6 +321,10 @@
 
   /* ---------- PÁGINAS (perfil e certificado), pelos data-atributos ---------- */
   function preencher() {
+    sincronizarComServidor().then((ok) => {
+      const atual = ok && status().certificado;
+      if (atual) document.querySelectorAll("[data-cert-codigo]").forEach((el) => { el.textContent = atual.codigo; });
+    });
     const { aprovado, certificado } = status();
     const marcar = (el, ok, textoOk, textoNao) => {
       el.textContent = ok ? textoOk : textoNao;

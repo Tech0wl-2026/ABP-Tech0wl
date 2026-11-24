@@ -195,6 +195,20 @@ function acertouDe(i) {
   return estado.respostas[i] === QUESTOES[i].correta;
 }
 
+// Recarregou com a pergunta já encerrada (ex.: a aba fechou no meio): busca a correta no histórico
+async function completarGabarito() {
+  const s = estado.servidor && estado.servidor[estado.atual];
+  if (!s || (estado.gabarito && estado.gabarito[estado.atual]) || typeof apiFetch !== "function") return;
+  try {
+    const h = await apiFetch("/candidatos/historico", { privado: true });
+    const item = h.ok && Array.isArray(h.dados) && h.dados.find((x) => x.questao_id === s.id);
+    if (item) {
+      estado.gabarito[estado.atual] = { correta: s.letras.indexOf(item.alternativa_correta), acertou: !!item.acertou };
+      salvar();
+    }
+  } catch { /* segue sem a correta */ }
+}
+
 let temasServidor = null;   // id do tema -> ordem (1 a 12)
 async function carregarTemasServidor() {
   if (temasServidor) return;
@@ -689,7 +703,7 @@ if (estado.finalizada && estado.resultado) {
   // a página foi fechada (ou travou) com a pergunta correndo e sem passar pelo "Parar prova": interrupção
   const interrompida = (estado.emAndamento && !estado.reveladas[estado.atual]) ? encerrarPorInterrupcao() : Promise.resolve();
   if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
-  interrompida.then(sincronizarQuestaoServidor).finally(() => {
+  interrompida.then(sincronizarQuestaoServidor).then(() => estado.reveladas[estado.atual] && completarGabarito()).finally(() => {
     if (estado.concluidoServidor) return finalizar();   // prova já concluída no servidor
     mostrarPergunta();
     if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
