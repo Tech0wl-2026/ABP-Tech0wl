@@ -40,7 +40,7 @@ Nesta etapa, as telas do portal guardam os dados no navegador (localStorage). A 
 | [src/js](src/js) | Scripts das telas de acesso e do portal. |
 | [src/css](src/css) | Estilos das telas de acesso e do portal. |
 | [src/images](src/images) | Imagens das telas e das questões. |
-| [css](css) e [js](js) | Estilos e script das páginas públicas. |
+| [css](css) | Estilo base das páginas públicas. |
 | [assets](assets) | Fontes, ilustrações e recursos do layout. |
 | [Dockerfile](Dockerfile) | Imagem do frontend. |
 | [nginx.conf](nginx.conf) | Servidor das páginas e encaminhamento de `/api/`. |

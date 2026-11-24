@@ -24,7 +24,7 @@ jobs:
         run: |
           python3 scripts/validar-repositorio.py
           python3 -m unittest discover -s testes -p 'test_*.py'
-          node --check frontend/js/app.js
+          for f in frontend/src/js/*.js; do node --check "$f"; done
           node --check scripts/servidor-local.mjs
           python3 -m py_compile .github/scripts/configurar-project.py
       - name: Dependências de teste
