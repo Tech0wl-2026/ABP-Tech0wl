@@ -21,6 +21,8 @@ services:
         value: "10000"
       - key: JWT_SECRET
         generateValue: true
+      - key: CORS_ORIGINS
+        value: https://tech0wl-abp.onrender.com
       - key: POSTGRES_HOST
         fromDatabase: { name: tech0wl-db, property: host }
       - key: POSTGRES_PORT

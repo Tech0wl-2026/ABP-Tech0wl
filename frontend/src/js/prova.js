@@ -236,7 +236,7 @@ async function sincronizarQuestaoServidor() {
         estado.servidor[estado.atual] = {
           id: qs.id,
           enunciado: qs.enunciado,
-          imagem: qs.imagem_url ? { src: qs.imagem_url, alt: "Imagem da questão " + (estado.atual + 1) } : null,
+          imagem: qs.imagem_url ? { src: (typeof API_ORIGEM === "string" ? API_ORIGEM : "") + qs.imagem_url, alt: "Imagem da questão " + (estado.atual + 1) } : null,
           alternativas: alternativas.map((a) => a.texto),
           letras: alternativas.map((a) => a.letra),
         };

@@ -11,6 +11,20 @@ export async function criarApp(pool,segredo) {
   app.disable('x-powered-by');
   // Render e Nginx ficam na frente da API: usa o IP real do visitante no limite de tentativas.
   app.set('trust proxy', 1);
+  // Site publicado em outro endereço (ex.: Render) chama a API direto: libera só as origens configuradas.
+  const origens = String(process.env.CORS_ORIGINS || '').split(',').map(o => o.trim()).filter(Boolean);
+  if (origens.length) app.use((req,res,next) => {
+    const origem = req.get('Origin');
+    if (origem && origens.includes(origem)) {
+      res.set('Access-Control-Allow-Origin', origem);
+      res.set('Vary', 'Origin');
+      res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+      res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      res.set('Access-Control-Max-Age', '600');
+    }
+    if (req.method === 'OPTIONS') return res.sendStatus(204);
+    next();
+  });
   app.use((req,res,next) => {
     res.set('X-Content-Type-Options','nosniff');
     res.set('Cache-Control','no-store');
