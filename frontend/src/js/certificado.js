@@ -18,7 +18,7 @@
   const CURSO         = "Certificação em Metodologias Ágeis";           // texto de "Curso concluído"
   const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
   const VALIDACAO_URL = new URL("validar.html", location.href).href;    // o QR Code aponta para: validar.html?codigo=XXXX
-  const QRCODE_SRC    = "https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js";
+  const QRCODE_SRC    = "src/js/Qrcode.js";   // biblioteca local: a CSP do Nginx bloqueia scripts de CDN
 
   const aluno = (typeof usuarioLogado === "function" && usuarioLogado()) || {};
   const quem = aluno.cpf || "anonimo";
