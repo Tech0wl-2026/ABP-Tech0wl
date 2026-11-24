@@ -15,7 +15,7 @@ services:
     region: oregon
     dockerfilePath: ./backend/Dockerfile
     dockerContext: .
-    healthCheckPath: /api/saude
+    # Sem health check no banco: uma lentidão do Postgres gratuito fazia o Render reiniciar a API.
     envVars:
       - key: APP_PORT
         value: "10000"
