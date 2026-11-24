@@ -15,17 +15,9 @@
 
 (function () {
   /* ---------- AJUSTES DO CERTIFICADO ---------- */
-  const CURSO         = "Introdução à Tecnologia";           // texto de "Curso concluído"
-  const MODELO_SRC    = "src/images/certificado.png";         // imagem-modelo do certificado (os dados de exemplo são apagados ao desenhar)
-  // Página aberta pelo QR Code. O celular NÃO enxerga "localhost" / "127.0.0.1" do computador.
-  // • TESTE NO LIVE SERVER: preencha URL_VALIDACAO_TESTE com o IP do computador (celular no mesmo Wi-Fi).
-  //   Pode continuar abrindo o portal em 127.0.0.1; só o QR passa a apontar para o IP.
-  // • SITE PUBLICADO: deixe URL_VALIDACAO_TESTE vazio; em localhost o QR usa URL_VALIDACAO_PUBLICA.
-  const URL_VALIDACAO_TESTE   = "";   // ex.: "http://192.168.0.10:5501/ABP-Tech0wl/frontend/validar.html"
-  const URL_VALIDACAO_PUBLICA = "https://aprendizagem-agil.vercel.app/validar.html";   // site publicado (precisa conter validar.html)
-  const ENDERECO_LOCAL = /^(localhost|127\.\d+\.\d+\.\d+|0\.0\.0\.0|\[?::1\]?)$/i.test(location.hostname) || location.protocol === "file:";
-  const VALIDACAO_URL = ENDERECO_LOCAL ? (URL_VALIDACAO_TESTE || URL_VALIDACAO_PUBLICA) : new URL("validar.html", location.href).href;
-  const QRCODE_SRC    = "src/js/qrcode.js";                  // gerador de QR local (não depende de CDN)
+  const CURSO         = "Certificação em Metodologias Ágeis";           // texto de "Curso concluído"
+  const MODELO_SRC    = "src/images/certificado-modelo.png";  // imagem do certificado (sem os dados do aluno)
+  const VALIDACAO_URL = new URL("validar.html", location.href).href;    // o QR Code aponta para: validar.html?codigo=XXXX
 
   const aluno = (typeof usuarioLogado === "function" && usuarioLogado()) || {};
   const quem = aluno.cpf || "anonimo";
@@ -52,6 +44,22 @@
     const melhor = ler(CHAVE_MELHOR);
     if (!melhor || resultado.percentual >= melhor.percentual) gravar(CHAVE_MELHOR, resultado);
     if (!resultado.aprovado) return;
+
+    // Emissão no backend via API caso autenticado
+    if (typeof apiFetch === "function" && usuarioLogado()) {
+      apiFetch("/candidatos/certificado", { metodo: "POST", privado: true }).then((res) => {
+        if (res.ok && res.dados) {
+          const dadosCert = {
+            codigo: res.dados.certificado_hash || novoCodigo(new Date()),
+            data: res.dados.emitido_em || new Date().toISOString(),
+            percentual: resultado.percentual,
+            acertos: resultado.acertos,
+            total: resultado.total
+          };
+          gravar(CHAVE_CERT, dadosCert);
+        }
+      }).catch(() => {});
+    }
 
     const cert = ler(CHAVE_CERT);
     const nota = { percentual: resultado.percentual, acertos: resultado.acertos, total: resultado.total };

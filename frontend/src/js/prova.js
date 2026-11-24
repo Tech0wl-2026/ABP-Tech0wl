@@ -184,7 +184,51 @@ const QUESTOES = [
 const aluno = usuarioLogado() || {};
 const CHAVE = "prova:" + (aluno.cpf || "anonimo");   // para refazer a prova, apague esta chave do localStorage
 
-let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null };
+let estado = { atual: 0, respostas: {}, reveladas: {}, restante: TEMPO_PERGUNTA, finalizada: false, resultado: null, questaoServidorId: null };
+
+/* Sincronização com o Backend da ABP (schema servidor) */
+async function sincronizarQuestaoServidor() {
+  if (typeof apiFetch !== "function" || !usuarioLogado()) return;
+  try {
+    const res = await apiFetch("/questoes/sortear", { metodo: "POST", privado: true });
+    if (res.ok && res.dados) {
+      if (res.dados.concluido) {
+        estado.finalizada = true;
+        salvar();
+        return;
+      }
+      if (res.dados.questao && res.dados.questao.questao) {
+        estado.questaoServidorId = res.dados.questao.questao.id;
+        if (res.dados.questao.data_horario_limite) {
+          const limite = new Date(res.dados.questao.data_horario_limite).getTime();
+          const restanteSeg = Math.max(0, Math.floor((limite - Date.now()) / 1000));
+          if (restanteSeg > 0 && restanteSeg <= TEMPO_PERGUNTA) {
+            estado.restante = restanteSeg;
+          }
+        }
+        salvar();
+      }
+    }
+  } catch (err) {
+    console.warn("Executando prova em modo local ou fallback:", err);
+  }
+}
+
+async function submeterRespostaServidor(letra, interromperQuestao = false) {
+  if (typeof apiFetch !== "function" || !usuarioLogado() || !estado.questaoServidorId) return;
+  try {
+    const endpoint = `/questoes/${estado.questaoServidorId}/${interromperQuestao ? "interromper" : "responder"}`;
+    const corpo = interromperQuestao ? undefined : { letra_resposta: letra };
+    const res = await apiFetch(endpoint, { metodo: "POST", corpo, privado: true });
+    if (res.ok && res.dados?.resultado) {
+      if (res.dados.resultado.concluido) {
+        estado.resultadoServidor = res.dados.resultado;
+      }
+    }
+  } catch (err) {
+    console.warn("Falha ao registrar resposta no servidor:", err);
+  }
+}
 
 function carregar() {
   try {
@@ -371,6 +415,15 @@ function revelar(expirou = false) {
   pararRelogio();
   estado.reveladas[estado.atual] = expirou ? "expirou" : "respondeu";
   salvar();
+
+  const r = estado.respostas[estado.atual];
+  const letra = r !== undefined ? "ABCD"[r] : null;
+  if (letra) {
+    submeterRespostaServidor(letra, false);
+  } else if (expirou) {
+    submeterRespostaServidor(null, true);
+  }
+
   abrirGabarito();
 }
 
@@ -418,13 +471,14 @@ dialogoGabarito.addEventListener("cancel", (e) => e.preventDefault());   // só 
    O "Parar prova" (que pausa o relógio) não conta como interrupção. */
 function encerrarPorInterrupcao() {
   pararRelogio();
+  submeterRespostaServidor(null, true);
   delete estado.respostas[estado.atual];
   estado.reveladas[estado.atual] = "interrompida";
   salvar();
 }
 
 function interromper() {
-  if (!relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
+  if (parando || !relogio || estado.finalizada || estado.reveladas[estado.atual]) return;
   encerrarPorInterrupcao();
   abrirGabarito();                 // quando o aluno voltar, o aviso já está na tela
 }
@@ -441,8 +495,10 @@ function avancar() {
   estado.atual += 1;
   estado.restante = TEMPO_PERGUNTA;
   salvar();
-  mostrarPergunta();
-  iniciarRelogio();
+  sincronizarQuestaoServidor().then(() => {
+    mostrarPergunta();
+    iniciarRelogio();
+  });
 }
 
 function finalizar() {
@@ -489,6 +545,10 @@ dialogoParar.addEventListener("close", () => { if (!parando) iniciarRelogio(); }
 // Parar: o progresso fica salvo, mostra o que acertou e errou e depois volta para o portal
 $("btn-confirmar-parar").addEventListener("click", () => {
   parando = true;
+  pararRelogio();
+  estado.emAndamento = false;
+  estado.pausada = true;
+  estado.finalizada = false;
   salvar();
   dialogoParar.close();
   mostrarParcial();
@@ -578,10 +638,12 @@ if (estado.finalizada && estado.resultado) {
   // a página foi fechada (ou travou) com a pergunta correndo e sem passar pelo "Parar prova": interrupção
   if (estado.emAndamento && !estado.reveladas[estado.atual]) encerrarPorInterrupcao();
   if (Historico) { estado.avaliacaoId = Historico.retomarOuIniciar(estado.avaliacaoId); salvar(); }
-  mostrarPergunta();
-  if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
-  else {
-    iniciarRelogio();
-    if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
-  }
+  sincronizarQuestaoServidor().finally(() => {
+    mostrarPergunta();
+    if (estado.reveladas[estado.atual]) abrirGabarito();   // recarregou com a pergunta já encerrada
+    else {
+      iniciarRelogio();
+      if (navigator.onLine === false) interromper();   // abriu a pergunta sem conexão
+    }
+  });
 }

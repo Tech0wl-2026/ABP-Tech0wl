@@ -3,49 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validação de certificado | Tech0wl</title>
-    <link rel="stylesheet" href="src/css/validar.css">
-    <script src="src/js/validar.js" defer></script>
+    <title>Validação de Certificado | Aprendizagem Ágil</title>
+    <link rel="stylesheet" href="src/css/portal.css">
+    <link rel="stylesheet" href="src/css/resultado.css">
+    <style>
+        .card-validar {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .status-valido { background: #e6f7ed; color: #0d8a43; border: 1px solid #a3e2bb; }
+        .status-invalido { background: #fdf2f2; color: #c81e1e; border: 1px solid #f8b4b4; }
+        .info-grid {
+            text-align: left;
+            margin: 24px 0;
+            display: grid;
+            gap: 12px;
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .info-grid p { margin: 0; color: #4b5563; font-size: 14px; }
+        .info-grid strong { color: #111827; }
+        .hash-code {
+            word-break: break-all;
+            font-family: monospace;
+            background: #e5e7eb;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .btn-busca {
+            padding: 10px 20px;
+            background: #1a2fa0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .input-busca {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
 
     <header class="topo">
-        <span class="marca">Aprendizagem Ágil</span>
-        <span class="inst">Tech0wl</span>
+        <a href="index.html" class="logo">
+            <img src="src/images/selo-aprendizagem-agil.png" alt="Aprendizagem Ágil">
+        </a>
     </header>
 
-    <main class="pagina">
-        <section class="cartao" aria-labelledby="titulo">
+    <main>
+        <section class="card-validar">
+            <h2>Autenticidade de Certificado</h2>
+            <p>Consulte a autenticidade de um certificado emitido pelo portal Aprendizagem Ágil.</p>
 
-            <!-- Estado preenchido pelo validar.js: data-estado="valido" | "invalido" -->
-            <div id="status" class="status" data-estado="carregando" role="status" aria-live="polite">
-                <svg id="icone-ok" class="icone" viewBox="0 0 24 24" aria-hidden="true" hidden>
-                    <circle cx="12" cy="12" r="11" fill="currentColor"/>
-                    <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <svg id="icone-erro" class="icone" viewBox="0 0 24 24" aria-hidden="true" hidden>
-                    <circle cx="12" cy="12" r="11" fill="currentColor"/>
-                    <path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
-                </svg>
-                <div>
-                    <h1 id="titulo">Verificando…</h1>
-                    <p id="texto"></p>
+            <form id="form-consulta" style="margin: 20px 0;">
+                <input type="text" id="campo-codigo" class="input-busca" placeholder="Cole o código hash do certificado" required>
+                <button type="submit" class="btn-busca">Verificar</button>
+            </form>
+
+            <div id="painel-resultado" hidden>
+                <div id="badge-status" class="status-badge"></div>
+                <div class="info-grid" id="dados-cert">
+                    <p><strong>Titular:</strong> <span id="cert-nome">—</span></p>
+                    <p><strong>Curso:</strong> Certificação em Metodologias Ágeis</p>
+                    <p><strong>Aproveitamento:</strong> <span id="cert-percentual">—</span>%</p>
+                    <p><strong>Emitido em:</strong> <span id="cert-data">—</span></p>
+                    <p><strong>Código de Registro:</strong><br><span id="cert-hash" class="hash-code">—</span></p>
                 </div>
             </div>
 
-            <dl id="dados" class="dados" hidden>
-                <div><dt>Nome</dt><dd id="d-nome"></dd></div>
-                <div><dt>CPF</dt><dd id="d-cpf"></dd></div>
-                <div><dt>Data de emissão</dt><dd id="d-data"></dd></div>
-                <div><dt>Código do certificado</dt><dd id="d-codigo"></dd></div>
-            </dl>
-
-            <p id="exemplo" class="exemplo" hidden>
-                Esta página é aberta pelo QR Code do certificado.
-                <a id="link-exemplo" href="#">Ver um exemplo</a>
-            </p>
+            <div id="painel-erro" class="status-badge status-invalido" hidden>
+                Certificado não encontrado ou código inválido.
+            </div>
         </section>
     </main>
 
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const codigoUrl = params.get("codigo") || params.get("hash");
+
+        const form = document.getElementById("form-consulta");
+        const campo = document.getElementById("campo-codigo");
+        const painelRes = document.getElementById("painel-resultado");
+        const painelErro = document.getElementById("painel-erro");
+        const badgeStatus = document.getElementById("badge-status");
+
+        async function validarCertificado(hash) {
+            painelRes.hidden = true;
+            painelErro.hidden = true;
+            if (!hash) return;
+
+            try {
+                const res = await fetch("/api/certificados/" + encodeURIComponent(hash.trim()));
+                if (!res.ok) {
+                    painelErro.hidden = false;
+                    painelErro.textContent = "Certificado não encontrado na base de dados.";
+                    return;
+                }
+                const dados = await res.json();
+                if (dados.valido) {
+                    badgeStatus.className = "status-badge status-valido";
+                    badgeStatus.textContent = "✔ Certificado Autêntico e Válido";
+                    document.getElementById("cert-nome").textContent = dados.nome || "—";
+                    document.getElementById("cert-percentual").textContent = dados.percentual || "—";
+                    document.getElementById("cert-data").textContent = dados.emitido_em ? new Date(dados.emitido_em).toLocaleString("pt-BR") : "—";
+                    document.getElementById("cert-hash").textContent = dados.certificado_hash || hash;
+                    painelRes.hidden = false;
+                } else {
+                    painelErro.hidden = false;
+                }
+            } catch (err) {
+                painelErro.hidden = false;
+                painelErro.textContent = "Erro ao conectar com o serviço de validação.";
+            }
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            validarCertificado(campo.value);
+        });
+
+        if (codigoUrl) {
+            campo.value = codigoUrl;
+            validarCertificado(codigoUrl);
+        }
+    </script>
 </body>
 </html>

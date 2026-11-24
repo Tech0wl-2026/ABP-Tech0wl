@@ -183,6 +183,18 @@
         barra.setAttribute('aria-valuetext', pct + '% concluído');
         barra.dataset.completo = pct === 100 ? 'true' : 'false';
         document.getElementById('progresso-pct').textContent = pct + '%';
+
+        // Consulta progresso oficial na API se logado
+        if (typeof apiFetch === "function" && usuarioLogado()) {
+            apiFetch("/candidatos/progresso", { privado: true }).then(function (res) {
+                if (res.ok && res.dados && res.dados.temas) {
+                    var concluidosApi = res.dados.temas.filter(function(t) { return t.estado === 'CONCLUIDO'; }).length;
+                    if (resumo) {
+                        resumo.textContent += ' (API: ' + concluidosApi + ' de 12 temas da prova finalizados)';
+                    }
+                }
+            }).catch(function() {});
+        }
     }
 
     desenhar();
