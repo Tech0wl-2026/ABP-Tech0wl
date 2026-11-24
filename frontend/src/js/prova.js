@@ -538,6 +538,25 @@ $("btn-parar").addEventListener("click", () => {
   dialogoParar.showModal();
 });
 
+const btnGabaritoEncerrar = $("btn-gabarito-encerrar");
+if (btnGabaritoEncerrar) {
+  btnGabaritoEncerrar.addEventListener("click", () => {
+    parando = true;
+    pararRelogio();
+    historicoPerguntaEncerrada(estado.reveladas[estado.atual] === "expirou", estado.reveladas[estado.atual] === "interrompida");
+    if (estado.atual < QUESTOES.length - 1) {
+      estado.atual += 1;
+      estado.restante = TEMPO_PERGUNTA;
+    }
+    estado.emAndamento = false;
+    estado.pausada = true;
+    estado.finalizada = false;
+    salvar();
+    $("dialogo-gabarito").close();
+    mostrarParcial();
+  });
+}
+
 // Continuar (botão ou tecla Esc): fecha e o relógio volta de onde parou
 $("btn-continuar").addEventListener("click", () => dialogoParar.close());
 dialogoParar.addEventListener("close", () => { if (!parando) iniciarRelogio(); });
