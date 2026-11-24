@@ -38,7 +38,7 @@ Os scripts criam o `.env` local e um segredo JWT aleatório, sem substituir um s
 
 Para conferir o mobile, abra as ferramentas do navegador, selecione o modo de dispositivo e ajuste a largura para 393 px. Também há adaptações para 320 px e tablet.
 
-Para testar o portal, cadastre um candidato em `cadastro.html`, entre pelo `login.html` e siga para estudos, prova, resultado e certificado. Nesta etapa, as telas guardam os dados no próprio navegador (localStorage); a integração com a [API](docs/Tecnico/API.md), que já possui as rotas desses fluxos, está prevista para a Sprint 3.
+Para testar o portal, cadastre um candidato em `cadastro.html`, entre pelo `login.html` e siga para estudos, prova, resultado e certificado. Cadastro, login, prova, resultado e certificado usam a [API](docs/Tecnico/API.md) e ficam gravados no PostgreSQL. O certificado traz um QR Code que abre `validar.html` e confere a autenticidade sem mostrar CPF nem e-mail. O navegador guarda só a sessão e a posição na prova.
 
 As substituições visuais estão descritas na [conferência do Figma](docs/design/conferencia-2026-10-21.md). O [review da Sprint 1](docs/sprints/review-sprint-1-2026-10-21.md) reúne as pendências para o fechamento.
 
