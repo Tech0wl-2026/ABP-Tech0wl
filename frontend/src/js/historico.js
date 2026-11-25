@@ -156,6 +156,20 @@ function iniciar() {
     } catch (e) {
       estado.textContent = "Não foi possível carregar o histórico. Atualize a página para tentar de novo.";
     }
+
+    if (typeof globalThis.apiFetch === "function" && typeof globalThis.usuarioLogado === "function" && globalThis.usuarioLogado()) {
+      globalThis.apiFetch("/candidatos/historico", { privado: true }).then((res) => {
+        if (res.ok && res.dados) {
+          const dadosApi = Array.isArray(res.dados) ? { avaliacoes: res.dados } : res.dados;
+          const avaliacoesApi = normalizarHistorico(dadosApi);
+          if (avaliacoesApi.length) {
+            estado.textContent = "";
+            renderizarHistorico(container, avaliacoesApi);
+            document.body.dataset.historicoCarregado = String(avaliacoesApi.length);
+          }
+        }
+      }).catch(() => { /* mantém histórico local como fallback */ });
+    }
   };
   desenhar();
   window.addEventListener("pageshow", desenhar);
