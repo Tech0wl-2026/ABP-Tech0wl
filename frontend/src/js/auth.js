@@ -15,7 +15,9 @@ const CHAVE_SESSAO   = "sessao";
 const CHAVE_AVISO    = "aviso";
 
 // Endereço da API. Assumo "/api" (o nginx repassa para o backend); confirmar com o nginx.conf.
-const API_BASE = "/api";
+// No Render o site e a API ficam em endereços diferentes: o site chama a API direto.
+const API_BASE = location.hostname === "tech0wl-abp.onrender.com" ? "https://tech0wl-abp-api.onrender.com/api" : "/api";
+const API_ORIGEM = API_BASE.replace(/\/api$/, "");
 
 // Apaga contas e hashes de senha que versões antigas do site guardaram neste navegador.
 try { localStorage.removeItem("usuarios"); } catch { /* sem acesso ao storage: ignora */ }
@@ -126,14 +128,22 @@ async function apiFetch(caminho, { metodo = "GET", corpo, privado = false } = {}
   }
 
   let resposta;
-  try {
-    resposta = await fetch(API_BASE + caminho, {
-      method: metodo,
-      headers,
-      body: corpo ? JSON.stringify(corpo) : undefined,
-    });
-  } catch {
-    return { ok: false, status: 0, erro: "Não foi possível falar com o servidor. Confira se ele está no ar e tente de novo." };
+  // 502/503/504 vêm do provedor enquanto o servidor acorda: a requisição não chegou à API, então dá para repetir.
+  for (let tentativa = 0; tentativa < 4; tentativa++) {
+    try {
+      resposta = await fetch(API_BASE + caminho, {
+        method: metodo,
+        headers,
+        body: corpo ? JSON.stringify(corpo) : undefined,
+      });
+    } catch {
+      resposta = null;
+    }
+    if (resposta && ![502, 503, 504].includes(resposta.status)) break;
+    if (tentativa < 3) await new Promise((ok) => setTimeout(ok, 4000));
+  }
+  if (!resposta) {
+    return { ok: false, status: 0, erro: "Não foi possível falar com o servidor. Aguarde alguns segundos e tente de novo." };
   }
 
   let dados = null;
@@ -148,7 +158,7 @@ async function apiFetch(caminho, { metodo = "GET", corpo, privado = false } = {}
   }
 
   if (!resposta.ok) {
-    return { ok: false, status: resposta.status, erro: (dados && dados.erro) || "Erro inesperado do servidor." };
+    return { ok: false, status: resposta.status, erro: (dados && dados.erro) || "O servidor está iniciando. Aguarde alguns segundos e tente de novo." };
   }
   return { ok: true, status: resposta.status, dados };
 }

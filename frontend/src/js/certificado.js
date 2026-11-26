@@ -154,8 +154,8 @@
     dataHora:   { x: 767,   y: 649 },
     dataExtenso:{ x: 767,   y: 724 },
     curso:      { x: 767,   y: 800 },
-    qr:         { x: 1078,  y: 603, lado: 174 },   // moldura do QR Code (módulos ocupam lado - 2×14)
-    codigo:     { cx: 1165, y: 902 },
+    qr:         { x: 1064,  y: 603, lado: 156 },   // moldura do QR Code no modelo: x 1063–1220, y 601–762 (módulos ocupam lado - 2×14)
+    codigo:     { cx: 1141, y: 902 },   // centralizado sob a moldura do QR
   };
 
   // Se a imagem do modelo ainda traz os dados de exemplo (ex.: "Mariana Costa Ferreira"),

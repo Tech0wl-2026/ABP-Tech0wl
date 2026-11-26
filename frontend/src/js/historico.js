@@ -32,6 +32,45 @@ export function formatarDataHora(valor) {
   }).replace(", ", " às ");
 }
 
+/**
+ * GET /candidatos/historico devolve uma linha por questão sorteada (uma por tema),
+ * e não uma lista de avaliações. Junta essas linhas em uma única avaliação, no
+ * formato que normalizarHistorico espera.
+ */
+export function agruparRespostasApi(linhas) {
+  const lista = Array.isArray(linhas) ? linhas : [];
+  if (!lista.length) return { avaliacoes: [] };
+
+  const questoes = lista.map((r) => ({
+    tema: r.tema,
+    questaoId: r.questao_id,
+    enunciado: r.enunciado,
+    // Sem data de resposta: questão aberta agora. Encerrada sem letra ou fora do prazo: tempo esgotado.
+    situacao: !r.data_horario_resposta ? "em_andamento"
+      : (r.letra_resposta && r.valida !== false ? "respondida" : "expirada"),
+    respostaEscolhida: r.letra_resposta ?? null,
+    alternativaCorreta: r.alternativa_correta,
+    respondidaEm: r.data_horario_resposta ?? null,
+  }));
+
+  const encerradas = lista.filter((r) => r.data_horario_resposta);
+  const concluida = encerradas.length === 12;
+  const acertos = lista.filter((r) => r.acertou && r.valida !== false).length;
+  const media = concluida ? Math.round((acertos * 10000) / 12) / 100 : null;
+  const datas = (campo) => lista.map((r) => r[campo]).filter(Boolean).sort();
+
+  return {
+    avaliacoes: [{
+      id: "servidor",
+      status: !concluida ? "em_andamento" : media >= 65 ? "aprovada" : "reprovada",
+      iniciadaEm: datas("data_horario_inicio")[0] ?? null,
+      finalizadaEm: concluida ? datas("data_horario_resposta").at(-1) : null,
+      mediaPercentual: media,
+      questoes,
+    }],
+  };
+}
+
 /** Normaliza a resposta da API; tolera campos ausentes. */
 export function normalizarHistorico(dados) {
   const lista = Array.isArray(dados?.avaliacoes) ? dados.avaliacoes : [];
@@ -147,19 +186,36 @@ export function buscarHistorico(leitor = () => globalThis.HistoricoCertificacao.
 function iniciar() {
   const container = document.getElementById("historico-lista");
   const estado = document.getElementById("historico-estado");
-  const desenhar = () => {
+  const desenhar = async () => {
+    if (typeof globalThis.apiFetch !== "function" || typeof globalThis.usuarioLogado !== "function" || !globalThis.usuarioLogado()) {
+      estado.textContent = "Faça login para visualizar seu histórico na API.";
+      renderizarHistorico(container, []);
+      document.body.dataset.historicoCarregado = "0";
+      return;
+    }
+
+    estado.textContent = "Carregando histórico...";
     try {
-      const avaliacoes = buscarHistorico();
+      const res = await globalThis.apiFetch("/candidatos/historico", { privado: true });
+      if (!res.ok) {
+        estado.textContent = "Não foi possível carregar o histórico da API.";
+        renderizarHistorico(container, []);
+        document.body.dataset.historicoCarregado = "0";
+        return;
+      }
+      const dadosApi = Array.isArray(res.dados) ? agruparRespostasApi(res.dados) : (res.dados || { avaliacoes: [] });
+      const avaliacoes = normalizarHistorico(dadosApi);
       estado.textContent = "";
       renderizarHistorico(container, avaliacoes);
       document.body.dataset.historicoCarregado = String(avaliacoes.length);
     } catch (e) {
-      estado.textContent = "Não foi possível carregar o histórico. Atualize a página para tentar de novo.";
+      estado.textContent = "Não foi possível carregar o histórico da API. Atualize a página para tentar de novo.";
+      renderizarHistorico(container, []);
+      document.body.dataset.historicoCarregado = "0";
     }
   };
   desenhar();
   window.addEventListener("pageshow", desenhar);
-  window.addEventListener("storage", desenhar);
 }
 
 if (typeof document !== "undefined" && document.getElementById("historico-lista")) iniciar();
