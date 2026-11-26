@@ -147,19 +147,36 @@ export function buscarHistorico(leitor = () => globalThis.HistoricoCertificacao.
 function iniciar() {
   const container = document.getElementById("historico-lista");
   const estado = document.getElementById("historico-estado");
-  const desenhar = () => {
+  const desenhar = async () => {
+    if (typeof globalThis.apiFetch !== "function" || typeof globalThis.usuarioLogado !== "function" || !globalThis.usuarioLogado()) {
+      estado.textContent = "Faça login para visualizar seu histórico na API.";
+      renderizarHistorico(container, []);
+      document.body.dataset.historicoCarregado = "0";
+      return;
+    }
+
+    estado.textContent = "Carregando histórico...";
     try {
-      const avaliacoes = buscarHistorico();
+      const res = await globalThis.apiFetch("/candidatos/historico", { privado: true });
+      if (!res.ok) {
+        estado.textContent = "Não foi possível carregar o histórico da API.";
+        renderizarHistorico(container, []);
+        document.body.dataset.historicoCarregado = "0";
+        return;
+      }
+      const dadosApi = Array.isArray(res.dados) ? { avaliacoes: res.dados } : (res.dados || { avaliacoes: [] });
+      const avaliacoes = normalizarHistorico(dadosApi);
       estado.textContent = "";
       renderizarHistorico(container, avaliacoes);
       document.body.dataset.historicoCarregado = String(avaliacoes.length);
     } catch (e) {
-      estado.textContent = "Não foi possível carregar o histórico. Atualize a página para tentar de novo.";
+      estado.textContent = "Não foi possível carregar o histórico da API. Atualize a página para tentar de novo.";
+      renderizarHistorico(container, []);
+      document.body.dataset.historicoCarregado = "0";
     }
   };
   desenhar();
   window.addEventListener("pageshow", desenhar);
-  window.addEventListener("storage", desenhar);
 }
 
 if (typeof document !== "undefined" && document.getElementById("historico-lista")) iniciar();
