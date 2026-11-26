@@ -12,7 +12,7 @@ const timer = setInterval(async () => {
   if (executando) return;
   executando = true;
   try { await expirar(pool); }
-  catch (erro) { console.error('Falha ao encerrar questões expiradas:',erro.code || erro.name); }
+  catch (erro) { console.error('Falha ao encerrar questões expiradas:',erro.code || erro.name, String(erro.message || '').slice(0, 160)); }
   finally { executando = false; }
 },5000);
 timer.unref();

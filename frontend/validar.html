@@ -137,7 +137,7 @@
             if (!hash) return;
 
             try {
-                const res = await fetch("/api/certificados/" + encodeURIComponent(hash.trim()));
+                const res = await fetch((location.hostname === "tech0wl-abp.onrender.com" ? "https://tech0wl-abp-api.onrender.com/api" : "/api") + "/certificados/" + encodeURIComponent(hash.trim()));
                 if (!res.ok) {
                     painelErro.hidden = false;
                     painelErro.textContent = "Certificado não encontrado na base de dados.";
