@@ -23,7 +23,7 @@ O repositório reúne as telas e a API do portal, os scripts do banco de dados, 
 |---|---|
 | Sprint 1 — planejamento, protótipo e modelagem | [Assistir](https://youtu.be/E0xYvUSFWYE) |
 | Sprint 2 — portal, estudos e prova | [Assistir](https://youtu.be/6RZt1Ui2A2o) |
-| Sprint 3 — Conclusão | [Assistir](https://www.youtube.com/watch?v=eNIscgRfh8A) |
+| Sprint 3 — conclusão das sprints | [Assistir](https://www.youtube.com/watch?v=eNIscgRfh8A) |
 
 ## Sprints no Project
 
