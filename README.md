@@ -54,8 +54,6 @@ Acesse o quadro de atividades de cada sprint:
 <br>
 <div align="center">
 <img width="80" height="100" alt="sprint-master-logo" src="Logo ABP.png" />
-
-
 <br>
  
 ## 📌 Sobre o Projeto
