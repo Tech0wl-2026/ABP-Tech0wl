@@ -1,0 +1,45 @@
+# Publicação no Render (Blueprint): banco PostgreSQL, API e site.
+# Render → New → Blueprint → escolher este repositório. Plano gratuito.
+databases:
+  - name: tech0wl-db
+    databaseName: tech0wl
+    user: tech0wl
+    plan: free
+    region: oregon
+
+services:
+  - type: web
+    name: tech0wl-abp-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    # Sem health check no banco: uma lentidão do Postgres gratuito fazia o Render reiniciar a API.
+    envVars:
+      - key: APP_PORT
+        value: "10000"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://tech0wl-abp.onrender.com
+      - key: POSTGRES_HOST
+        fromDatabase: { name: tech0wl-db, property: host }
+      - key: POSTGRES_PORT
+        fromDatabase: { name: tech0wl-db, property: port }
+      - key: POSTGRES_DB
+        fromDatabase: { name: tech0wl-db, property: database }
+      - key: POSTGRES_USER
+        fromDatabase: { name: tech0wl-db, property: user }
+      - key: POSTGRES_PASSWORD
+        fromDatabase: { name: tech0wl-db, property: password }
+
+  - type: web
+    name: tech0wl-abp
+    runtime: static
+    buildCommand: echo "site estático"
+    staticPublishPath: ./frontend
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://tech0wl-abp-api.onrender.com/api/*

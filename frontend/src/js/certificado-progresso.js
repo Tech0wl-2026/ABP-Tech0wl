@@ -188,11 +188,25 @@
         // Consulta progresso oficial na API se logado
         if (typeof apiFetch === "function" && usuarioLogado()) {
             apiFetch("/candidatos/progresso", { privado: true }).then(function (res) {
-                if (res.ok && res.dados && res.dados.temas) {
-                    var concluidosApi = res.dados.temas.filter(function(t) { return t.estado === 'CONCLUIDO'; }).length;
+                if (res.ok && res.dados && Array.isArray(res.dados.temas)) {
+                    var temasApi = res.dados.temas;
+                    var concluidosApi = temasApi.filter(function(t) { return t.estado === 'CONCLUIDO'; }).length;
                     if (resumo) {
-                        resumo.textContent = textoBase + ' Prova: ' + concluidosApi + ' de 12 temas respondidos.';
+                        resumo.textContent = textoBase + ' Prova: ' + concluidosApi + ' de ' + temasApi.length + ' temas respondidos.';
                     }
+                    // Exibe os 12 temas da certificação (concluídos e pendentes) na lista de etapas
+                    temasApi.forEach(function (t, idx) {
+                        var concluido = t.estado === 'CONCLUIDO';
+                        var nomeTema = t.titulo || t.nome || ('Tema ' + (idx + 1));
+                        lista.append(etapa(
+                            'Certificação · ' + nomeTema,
+                            concluido,
+                            concluido ? 'Tema respondido na prova' : 'Aguardando resposta na prova',
+                            './questao.html',
+                            concluido ? 'Ver' : 'Responder',
+                            'concluído'
+                        ));
+                    });
                 }
             }).catch(function() {});
         }

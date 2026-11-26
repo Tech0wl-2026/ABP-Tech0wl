@@ -17,6 +17,6 @@ export function tratarErro(erro, req, res, next) {
   if (erro.type === 'entity.parse.failed') return res.status(400).json({erro: 'JSON inválido.'});
   if (erro.type === 'entity.too.large') return res.status(413).json({erro: 'Corpo da requisição muito grande.'});
   const status = Number.isInteger(erro.status) && erro.status >= 400 && erro.status < 500 ? erro.status : 500;
-  if (status === 500) console.error('Falha interna na API:', erro.code || erro.name);
+  if (status === 500) console.error('Falha interna na API:', erro.code || erro.name, String(erro.message || '').slice(0, 160));
   res.status(status).json({erro: status === 500 ? 'Não foi possível concluir a operação.' : erro.message});
 }
