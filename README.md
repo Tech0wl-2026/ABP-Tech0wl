@@ -63,7 +63,6 @@ Acesse o quadro de atividades de cada sprint:
 <p  style="text-align: justify;">
 <b>Nossa plataforma web de ensino foi desenvolvida para promover o desenvolvimento acadêmico e profissional por meio de conteúdos abrangentes em diversas áreas do conhecimento. Os usuários têm acesso a materiais didáticos para estudo e, posteriormente, podem realizar uma avaliação para validar os conhecimentos adquiridos. Após a conclusão da prova, é emitido um certificado, reconhecendo oficialmente a participação e o aproveitamento obtido.
 </p>
- 
 <br>
 
 
